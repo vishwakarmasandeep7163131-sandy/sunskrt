@@ -238,6 +238,13 @@
 </head>
 
 <body>
+<div class="stock-heading-container">
+    <h2 class="stock-main-heading">
+        <span class="live-pulse-dot"></span> 
+        STOCK MARKET <span class="highlight-text">NEWS & UPDATES</span>
+    </h2>
+</div>
+
 <div class="top-ticker-wrapper">
     <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
@@ -245,49 +252,79 @@
 </div>
 
 <style>
-/* Website ke top layout ko fix karne ke liye */
+/* Pure Page Ka Gap Fix Karne Ke Liye */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
+/* Heading Ka Design */
+.stock-heading-container {
+    width: 100%;
+    background: #131722; /* TradingView Theme Se Match Karta Background */
+    padding: 20px 0 10px 0;
+    text-align: center;
+}
+
+.stock-main-heading {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+.stock-main-heading .highlight-text {
+    color: #ff3c00; /* Orange/Red Alert Color */
+    text-shadow: 0 0 10px rgba(255, 60, 0, 0.3);
+}
+
+/* Green Live Blinking Dot */
+.live-pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #00ff66;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse-animation 1.5s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
+}
+
+/* Ticker Wrapper Ka Design */
 .top-ticker-wrapper {
     width: 100%;
-    background: #131722; /* TradingView official dark background */
+    background: #131722;
     border-bottom: 1px solid #2a2e39;
-    padding: 4px 0;
+    padding: 2px 0;
     position: relative;
     z-index: 99999;
+}
+
+/* Mobile Screens Ke Liye Size Auto Adjust */
+@media (max-width: 768px) {
+    .stock-main-heading { font-size: 18px; letter-spacing: 1px; }
+    .live-pulse-dot { width: 8px; height: 8px; }
 }
 </style>
 
 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
 {
   "symbols": [
-    {
-      "proName": "FOREXCOM:SPXUSD",
-      "title": "S&P 500"
-    },
-    {
-      "proName": "FOREXCOM:NSXUSD",
-      "title": "US NASDAQ 100"
-    },
-    {
-      "proName": "FX_IDC:INRUSD",
-      "title": "USD TO INR"
-    },
-    {
-      "proName": "BITSTAMP:BTCUSD",
-      "title": "BITCOIN"
-    },
-    {
-      "proName": "BSE:SENSEX",
-      "title": "SENSEX"
-    },
-    {
-      "proName": "NSE:NIFTY",
-      "title": "NIFTY 50"
-    }
+    { "proName": "INDEX:NIFTY", "title": "NIFTY 50" },
+    { "proName": "INDEX:SENSEX", "title": "SENSEX" },
+    { "proName": "FX_IDC:INRUSD", "title": "USD TO INR" },
+    { "proName": "BITSTAMP:BTCUSD", "title": "BITCOIN" },
+    { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" }
   ],
   "showSymbolLogo": true,
   "colorTheme": "dark",
