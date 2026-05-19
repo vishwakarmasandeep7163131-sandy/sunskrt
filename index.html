@@ -238,88 +238,157 @@
 </head>
 
 <body>
-<!-- LIVE STOCK MARKET INDICATOR -->
+<!-- ===== LIVE GLOBAL MARKET SLIDER ===== -->
+<div class="market-slider">
+  <div class="market-track">
 
-<div class="stock-ticker">
+    <!-- Indian Market -->
+    <div class="market-item nifty">
+      🇮🇳 NIFTY 50 <span>24,850 ▲ +145</span>
+    </div>
 
-  <div class="ticker-wrap">
+    <div class="market-item sensex">
+      🇮🇳 SENSEX <span>81,420 ▲ +520</span>
+    </div>
 
-    <div class="ticker-move">
+    <div class="market-item banknifty">
+      🇮🇳 BANK NIFTY <span>53,210 ▲ +180</span>
+    </div>
 
-      <span>📈 NIFTY 50 +1.25%</span>
+    <!-- Gold & Silver -->
+    <div class="market-item gold">
+      🟡 GOLD <span>₹96,540 ▲ +420</span>
+    </div>
 
-      <span>📊 SENSEX +0.88%</span>
+    <div class="market-item silver">
+      ⚪ SILVER <span>₹1,12,800 ▲ +950</span>
+    </div>
 
-      <span>💹 TATA MOTORS +2.14%</span>
+    <!-- US Market -->
+    <div class="market-item dow">
+      🇺🇸 DOW JONES <span>42,850 ▲ +210</span>
+    </div>
 
-      <span>🚗 TESLA +1.72%</span>
+    <div class="market-item nasdaq">
+      🇺🇸 NASDAQ <span>18,720 ▲ +95</span>
+    </div>
 
-      <span>🏎 BMW +0.91%</span>
+    <div class="market-item sp500">
+      🇺🇸 S&P 500 <span>5,620 ▲ +28</span>
+    </div>
 
-      <span>⚡ RELIANCE +1.48%</span>
+    <!-- Duplicate for Smooth Loop -->
+    <div class="market-item nifty">
+      🇮🇳 NIFTY 50 <span>24,850 ▲ +145</span>
+    </div>
 
-      <span>💰 BITCOIN +3.10%</span>
+    <div class="market-item gold">
+      🟡 GOLD <span>₹96,540 ▲ +420</span>
+    </div>
 
-      <span>📉 ADANI -0.42%</span>
-
+    <div class="market-item dow">
+      🇺🇸 DOW JONES <span>42,850 ▲ +210</span>
     </div>
 
   </div>
-
 </div>
 
 <style>
+body{
+  margin:0;
+  background:#000;
+  font-family:Arial, sans-serif;
+}
 
-.stock-ticker{
+.market-slider{
   width:100%;
-  background:#ff3c00;
   overflow:hidden;
+  background:#111;
+  border-top:2px solid #222;
+  border-bottom:2px solid #222;
   padding:12px 0;
-  position:sticky;
-  top:0;
-  z-index:9999;
 }
 
-.ticker-wrap{
-  width:100%;
-  overflow:hidden;
-}
-
-.ticker-move{
+.market-track{
   display:flex;
   width:max-content;
-  animation:ticker 25s linear infinite;
+  animation:scroll 30s linear infinite;
 }
 
-.ticker-move span{
+.market-item{
+  min-width:260px;
+  margin:0 12px;
+  padding:14px 20px;
+  border-radius:14px;
   color:#fff;
+  font-size:18px;
+  font-weight:bold;
+  box-shadow:0 0 12px rgba(255,255,255,0.15);
+  transition:0.3s;
+}
+
+.market-item span{
+  display:block;
+  margin-top:6px;
   font-size:16px;
-  font-weight:600;
-  padding:0 40px;
-  white-space:nowrap;
+  color:#00ff88;
 }
 
-@keyframes ticker{
+/* Different Colors */
+.nifty{
+  background:linear-gradient(135deg,#ff6a00,#ffb347);
+}
 
+.sensex{
+  background:linear-gradient(135deg,#ff1744,#ff616f);
+}
+
+.banknifty{
+  background:linear-gradient(135deg,#7b1fa2,#ba68c8);
+}
+
+.gold{
+  background:linear-gradient(135deg,#d4af37,#ffd700);
+  color:#000;
+}
+
+.gold span{
+  color:#000;
+}
+
+.silver{
+  background:linear-gradient(135deg,#9e9e9e,#e0e0e0);
+  color:#000;
+}
+
+.silver span{
+  color:#111;
+}
+
+.dow{
+  background:linear-gradient(135deg,#1565c0,#42a5f5);
+}
+
+.nasdaq{
+  background:linear-gradient(135deg,#00897b,#26c6da);
+}
+
+.sp500{
+  background:linear-gradient(135deg,#2e7d32,#66bb6a);
+}
+
+.market-item:hover{
+  transform:scale(1.05);
+}
+
+@keyframes scroll{
   0%{
-    transform:translateX(100%);
+    transform:translateX(0);
   }
-
   100%{
-    transform:translateX(-100%);
+    transform:translateX(-50%);
   }
-
 }
-
-@media(max-width:768px){
-
-  .ticker-move span{
-    font-size:14px;
-    padding:0 25px;
-  }
-
-}
-
 </style>
   <!-- NAVBAR -->
 
