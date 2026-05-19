@@ -659,29 +659,6 @@ setInterval(changeNews,4000);
 
   </div>
   
-   <!-- NEWS CARD 3 -->
-    <div class="news-card">
-
-      <!-- IMAGE URL YAHAN PASTE KARO -->
-      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="news-info">
-
-        <!-- NEWS TITLE -->
-        <h3>
-          Lamborghini Launches New Supercar
-        </h3>
-
-        <!-- NEWS DESCRIPTION -->
-        <p>
-          Lamborghini reveals futuristic hybrid technology
-          with premium performance and design.
-        </p>
-
-      </div>
-
-    </div>
-
 </section>
 
 <style>
@@ -699,10 +676,33 @@ setInterval(changeNews,4000);
 
 .news-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(5,1fr);
+  gap:20px;
 }
 
+@media(max-width:1200px){
+
+.news-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+@media(max-width:768px){
+
+.news-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:500px){
+
+.news-grid{
+grid-template-columns:1fr;
+}
+
+}
 .news-card{
   background:#181818;
   border-radius:20px;
