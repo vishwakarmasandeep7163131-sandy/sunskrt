@@ -841,9 +841,150 @@ height:180px;
 
   <!-- FOOTER -->
 
-  <footer>
-    <p>© 2026 AutoDrive News. All Rights Reserved.</p>
-  </footer>
+  <!-- FOOTER -->
 
-</body>
-</html>
+<footer class="main-footer">
+
+  <div class="footer-container">
+
+    <!-- LOGO & ABOUT -->
+
+    <div class="footer-box">
+
+      <h2 class="footer-logo">
+        AutoDrive
+      </h2>
+
+      <p>
+        Latest automobile, stock market,
+        political and world news updates
+        every day with premium coverage.
+      </p>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+
+    <div class="footer-box">
+
+      <h3>Quick Links</h3>
+
+      <a href="index.html">Home</a>
+      <a href="cars.html">Cars</a>
+      <a href="News.html">News</a>
+      <a href="About.html">About</a>
+      <a href="Contect.html">Contact</a>
+
+    </div>
+
+    <!-- CATEGORIES -->
+
+    <div class="footer-box">
+
+      <h3>Categories</h3>
+
+      <a href="#">Automobile</a>
+      <a href="#">Politics</a>
+      <a href="#">Stock Market</a>
+      <a href="#">Technology</a>
+      <a href="#">World News</a>
+
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+
+    <div class="footer-box">
+
+      <h3>Follow Us</h3>
+
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">YouTube</a>
+
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT -->
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 AutoDrive News. All Rights Reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+<style>
+
+.main-footer{
+  background:#080808;
+  padding:70px 8% 20px;
+  border-top:1px solid #222;
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.footer-box h3{
+  margin-bottom:20px;
+  font-size:22px;
+  color:#fff;
+}
+
+.footer-logo{
+  font-size:30px;
+  color:#ff3c00;
+  margin-bottom:20px;
+}
+
+.footer-box p{
+  color:#aaa;
+  line-height:1.8;
+  font-size:15px;
+}
+
+.footer-box a{
+  display:block;
+  margin-bottom:12px;
+  color:#bbb;
+  transition:0.3s;
+  font-size:15px;
+}
+
+.footer-box a:hover{
+  color:#ff3c00;
+  padding-left:5px;
+}
+
+.footer-bottom{
+  margin-top:50px;
+  padding-top:20px;
+  border-top:1px solid #222;
+  text-align:center;
+}
+
+.footer-bottom p{
+  color:#777;
+  font-size:14px;
+}
+
+@media(max-width:768px){
+
+.footer-container{
+gap:30px;
+}
+
+.footer-logo{
+font-size:26px;
+}
+
+}
+
+</style>
