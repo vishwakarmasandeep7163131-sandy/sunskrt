@@ -377,6 +377,155 @@ body {
       <a href="#">News</a>
       <a href="#">Reviews</a>
       <a href="#">Contact</a>
+      <section class="interactive-info-section">
+    <div class="info-tabs-container">
+        
+        <div class="info-accordion-item">
+            <input type="checkbox" id="accordion-about" class="accordion-toggle">
+            <label for="accordion-about" class="accordion-header">
+                <span>ℹ️ ABOUT US</span>
+                <span class="arrow-icon">▼</span>
+            </label>
+            <div class="accordion-content">
+                <p>Welcome to our platform! We are dedicated to providing the latest financial insights, live stock market updates, and real-time news to help you stay ahead in the market. Our mission is to simplify complex financial data for everyone.</p>
+            </div>
+        </div>
+
+        <div class="info-accordion-item">
+            <input type="checkbox" id="accordion-services" class="accordion-toggle">
+            <label for="accordion-services" class="accordion-header">
+                <span>💼 OUR SERVICES</span>
+                <span class="arrow-icon">▼</span>
+            </label>
+            <div class="accordion-content">
+                <ul class="services-list">
+                    <li>📊 <strong>Live Market Tracking:</strong> Real-time price feeds of top Indian and global stocks.</li>
+                    <li>🔥 <strong>Breaking News Stream:</strong> Automatic financial and economy updates right on your screen.</li>
+                    <li>📈 <strong>Portfolio Insights:</strong> Premium layouts and data tools designed for modern traders.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-accordion-item">
+            <input type="checkbox" id="accordion-contact" class="accordion-toggle">
+            <label for="accordion-contact" class="accordion-header">
+                <span>📞 CONTACT DETAILS</span>
+                <span class="arrow-icon">▼</span>
+            </label>
+            <div class="accordion-content">
+                <div class="contact-details-grid">
+                    <p><strong>Name:</strong> Sandeep Vishwakarma</p>
+                    <p><strong>Email:</strong> <a href="mailto:aapkaemail@example.com" style="color: #ff3c00; text-decoration: none;">aapkaemail@example.com</a></p>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Location:</strong> Mumbai, Maharashtra, India</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* Section Wrapper */
+.interactive-info-section {
+    padding: 60px 20px;
+    background: #131722; /* Matches your live ticker theme */
+    display: flex;
+    justify-content: center;
+}
+
+/* Container for all sections */
+.info-tabs-container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+}
+
+/* Single Item Styling */
+.info-accordion-item {
+    background: #1e222d; /* Contrast dark container */
+    border: 1px solid #2a2e39;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Hide the checkbox completely */
+.accordion-toggle {
+    display: none;
+}
+
+/* Clickable Header/Button */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+}
+
+.accordion-header:hover {
+    background: #242936;
+}
+
+/* Arrow Icon Animation */
+.accordion-header .arrow-icon {
+    font-size: 12px;
+    color: #848e9c;
+    transition: transform 0.3s ease;
+}
+
+/* Content Area - Hidden by default */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    padding: 0 24px;
+    background: #171b26; /* Slightly deeper tone for open area */
+    color: #d1d4dc;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Magic CSS: When checked, expand content and change colors */
+.accordion-toggle:checked ~ .accordion-content {
+    max-height: 300px; /* Adjust according to text size */
+    padding: 20px 24px;
+    border-top: 1px solid #2a2e39;
+}
+
+/* Rotate Arrow when open */
+.accordion-toggle:checked ~ .accordion-header .arrow-icon {
+    transform: rotate(180deg);
+    color: #ff3c00; /* Changes to your alert orange color */
+}
+
+.accordion-toggle:checked ~ .accordion-header {
+    color: #ff3c00;
+}
+
+/* Extra lists alignment inside services */
+.services-list {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-details-grid p {
+    margin: 8px 0;
+}
+</style>
       <a href="#">About</a>
     </div>
   </nav>
