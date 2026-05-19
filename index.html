@@ -238,64 +238,7 @@
 </head>
 
 <body>
-<div class="top-ticker-wrapper">
-    <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-    </div>
-</div>
 
-<style>
-/* Resetting margin for perfect top alignment */
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: #0d1117;
-}
-<div class="top-ticker-wrapper">
-    <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-    </div>
-</div>
-
-<style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-}
-/* Top Sidebar/Banner Wrapper */
-.top-ticker-wrapper {
-    width: 100%;
-    background: #111827;
-    border-bottom: 1px solid #2d333b;
-    padding: 2px 0;
-    position: relative;
-    z-index: 99999;
-}
-</style>
-
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-{
-  "symbols": [
-    { "proName": "NSE:NIFTY", "title": "NIFTY 50" },
-    { "proName": "BSE:SENSEX", "title": "SENSEX" },
-    { "proName": "NSE:RELIANCE", "title": "RELIANCE" },
-    { "proName": "NSE:TCS", "title": "TCS" },
-    { "proName": "NSE:HDFCBANK", "title": "HDFC BANK" },
-    { "proName": "NSE:INFY", "title": "INFOSYS" },
-    { "proName": "NSE:ICICIBANK", "title": "ICICI BANK" },
-    { "proName": "NSE:SBIN", "title": "SBI" },
-    { "proName": "TVC:GOLD", "title": "GOLD" },
-    { "proName": "TVC:SILVER", "title": "SILVER" },
-    { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
-    { "proName": "NASDAQ:NDX", "title": "NASDAQ" }
-  ],
-  "showSymbolLogo": true,
-  "colorTheme": "dark",
-  "isTransparent": true,
-  "displayMode": "adaptive",
-  "locale": "en"
-}
-</script>
   <!-- NAVBAR -->
 
   <nav>
@@ -307,7 +250,6 @@ body {
       <a href="#">News</a>
       <a href="#">Reviews</a>
       <a href="#">Contact</a>
-       <a href="#">About</a>
     </div>
   </nav>
 
@@ -410,129 +352,6 @@ body {
   <footer>
     <p>© 2026 AutoDrive News. All Rights Reserved.</p>
   </footer>
-<!-- LIVE CAR NEWS SLIDER START -->
 
-<section class="news-slider-section">
-
-  <h2 class="slider-title">🔥 Live Car News</h2>
-
-  <div class="news-slider">
-
-    <div class="slide-track">
-
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
-        <h3>New Lamborghini Hybrid Revealed</h3>
-      </div>
-
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop">
-        <h3>BMW M5 2026 Official Launch</h3>
-      </div>
-
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=1200&auto=format&fit=crop">
-        <h3>Future Electric SUV Technology</h3>
-      </div>
-
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop">
-        <h3>Tesla Announces New AI Features</h3>
-      </div>
-
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1200&auto=format&fit=crop">
-        <h3>Top Supercars Of 2026</h3>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-
-.news-slider-section{
-  padding:70px 8%;
-  background:#0f0f0f;
-}
-
-.slider-title{
-  color:#fff;
-  font-size:38px;
-  margin-bottom:35px;
-}
-
-.news-slider{
-  overflow:hidden;
-  position:relative;
-}
-
-.slide-track{
-  display:flex;
-  gap:25px;
-  width:calc(350px * 10);
-  animation:scroll 25s linear infinite;
-}
-
-.slide{
-  width:350px;
-  background:#181818;
-  border-radius:20px;
-  overflow:hidden;
-  border:1px solid #222;
-  flex-shrink:0;
-  transition:0.4s;
-}
-
-.slide:hover{
-  transform:translateY(-10px);
-}
-
-.slide img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-
-.slide h3{
-  color:#fff;
-  padding:20px;
-  font-size:20px;
-  line-height:1.5;
-}
-
-@keyframes scroll{
-
-  0%{
-    transform:translateX(0);
-  }
-
-  100%{
-    transform:translateX(calc(-350px * 5));
-  }
-
-}
-
-@media(max-width:768px){
-
-  .slide{
-    width:280px;
-  }
-
-  .slide img{
-    height:180px;
-  }
-
-  .slider-title{
-    font-size:28px;
-  }
-
-}
-
-</style>
-
-<!-- LIVE CAR NEWS SLIDER END -->
 </body>
 </html>
