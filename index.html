@@ -238,15 +238,13 @@
 </head>
 
 <body>
-<div class="ticker-main-container">
-    <div class="stock-box-container">
-        <div class="stock-left-box-heading">
-            <span class="live-pulse-dot"></span>
-            <span class="heading-text">STOCK MARKET <span class="highlight-text">UPDATES</span></span>
-        </div>
+<div class="ticker-news-container">
+    <div class="stock-fixed-badge">
+        <span class="live-pulse-dot"></span>
+        <span class="badge-text">STOCK MARKET <span class="highlight-orange">UPDATES</span></span>
     </div>
 
-    <div class="top-ticker-wrapper">
+    <div class="rolling-ticker-content">
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
         </div>
@@ -259,8 +257,8 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Main Container to hold Heading Box and Ticker side by side */
-.ticker-main-container {
+/* Main Container */
+.ticker-news-container {
     display: flex;
     align-items: center;
     width: 100%;
@@ -268,30 +266,28 @@ body {
     border-bottom: 1px solid #2a2e39;
     position: relative;
     z-index: 99999;
+    height: 46px; /* Ekdam perfect sleek height */
     overflow: hidden;
-    padding: 5px 0; /* Box ko top-bottom se thoda space dene ke liye */
 }
 
-/* Container for the Box to give spacing from left edge */
-.stock-box-container {
-    padding-left: 15px;
-    z-index: 2; /* Ticker ke upar layer rakhne ke liye */
-}
-
-/* Left Side Heading BOX Style */
-.stock-left-box-heading {
+/* Left Side FIXED BOX - Isko strict position dekar fixed kiya hai */
+.stock-fixed-badge {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #1e222d; /* Dark Premium Box Color */
-    padding: 8px 16px;
-    border: 1px solid #ff3c00; /* Neon Orange/Red Border for the Box */
-    border-radius: 6px; /* Smooth rounded corners for the box */
+    background: #1e222d; /* Premium Dark Contrast Box */
+    padding: 0 16px;
+    border-right: 2px solid #ff3c00; /* Separator line between box and ticker */
     white-space: nowrap;
-    box-shadow: 0 0 10px rgba(255, 60, 0, 0.2); /* Soft glow around the box */
+    z-index: 10; /* Ticker text iske piche rahega aur samne se nikalta dikhega */
+    box-shadow: 8px 0 15px rgba(0, 0, 0, 0.6);
 }
 
-.stock-left-box-heading .heading-text {
+.stock-fixed-badge .badge-text {
     color: #ffffff;
     font-size: 13px;
     font-weight: 800;
@@ -299,43 +295,54 @@ body {
     text-transform: uppercase;
 }
 
-.stock-left-box-heading .highlight-text {
-    color: #ff3c00; /* Neon Orange/Red Inside Box */
+.stock-fixed-badge .highlight-orange {
+    color: #ff3c00; /* Alert Orange Color */
 }
 
-/* Green Live Blinking Dot Inside Box */
+/* Live Blinking Dot Indicator */
 .live-pulse-dot {
     width: 8px;
     height: 8px;
     background-color: #00ff66;
     border-radius: 50%;
     display: inline-block;
-    animation: pulse-animation 1.5s infinite;
+    animation: pulse-glow 1.5s infinite;
 }
 
-@keyframes pulse-animation {
+@keyframes pulse-glow {
     0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7); }
     70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 255, 102, 0); }
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
 }
 
-/* Right Side Ticker Wrapper */
-.top-ticker-wrapper {
-    flex-grow: 1;
+/* Right Side Rolling Ticker Area */
+.rolling-ticker-content {
+    width: 100%;
+    height: 100%;
+    /* 195px padding isliye taaki stocks heading ke upar na chadhon, uske samne se shuru hon */
+    padding-left: 195px; 
+    display: flex;
+    align-items: center;
     z-index: 1;
-    margin-left: 10px; /* Box aur Slide hote stocks ke beech thoda gap */
 }
 
-/* Mobile Screens Ke Liye Adjustments */
+.rolling-ticker-content .tradingview-widget-container {
+    width: 100%;
+}
+
+/* Mobile Screens Adjustments */
 @media (max-width: 768px) {
-    .stock-box-container {
-        padding-left: 8px;
+    .ticker-news-container {
+        height: 38px;
     }
-    .stock-left-box-heading {
-        padding: 6px 10px;
+    .stock-fixed-badge {
+        padding: 0 10px;
     }
-    .stock-left-box-heading .heading-text {
-        font-size: 11px;
+    .stock-fixed-badge .badge-text {
+        font-size: 10px;
+    }
+    .rolling-ticker-content {
+        padding-left: 150px; /* Mobile ke liye space kam kiya */
     }
 }
 </style>
