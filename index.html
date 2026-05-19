@@ -64,47 +64,118 @@
 
     /* HERO */
 
-    .hero{
-      height:90vh;
-      background:
-      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
-      url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:center;
-      padding:0 8%;
-    }
+   <section class="hero" id="hero">
 
-    .hero-content{
-      max-width:700px;
-    }
+  <div class="hero-content">
 
-    .hero h1{
-      font-size:60px;
-      line-height:1.2;
-      margin-bottom:20px;
-    }
+    <span class="live-tag">🔴 LIVE NEWS</span>
 
-    .hero p{
-      color:#ddd;
-      margin-bottom:30px;
-      font-size:18px;
-    }
+    <h1 id="title">
+      Loading Live News...
+    </h1>
 
-    .btn{
-      display:inline-block;
-      padding:14px 35px;
-      background:#ff3c00;
-      border-radius:10px;
-      transition:0.3s;
-      font-weight:600;
-    }
+    <p id="desc">
+      Latest world and Indian news updates.
+    </p>
 
-    .btn:hover{
-      background:#ff5722;
-      transform:translateY(-3px);
-    }
+    <a href="news.html" class="btn">
+      Explore News
+    </a>
+
+  </div>
+
+</section>
+
+<style>
+
+.live-tag{
+  display:inline-block;
+  background:red;
+  padding:10px 18px;
+  border-radius:50px;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:20px;
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+0%{opacity:1;}
+50%{opacity:0.5;}
+100%{opacity:1;}
+
+}
+
+</style>
+
+<script>
+
+const news = [
+
+{
+title:"Breaking World News Updates",
+desc:"Latest international headlines and politics updates.",
+image:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Indian Stock Market Surges",
+desc:"Sensex and Nifty gain strongly in today's market session.",
+image:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Tesla Launches AI Driving System",
+desc:"Tesla introduces advanced autonomous driving technology.",
+image:"https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Political Leaders Meet For Summit",
+desc:"World leaders gather for important global discussions.",
+image:"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Future EV Cars Coming In 2026",
+desc:"Automobile companies prepare futuristic electric vehicles.",
+image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop"
+}
+
+];
+
+let current = 0;
+
+const title = document.getElementById("title");
+const desc = document.getElementById("desc");
+const hero = document.getElementById("hero");
+
+function changeNews(){
+
+current++;
+
+if(current >= news.length){
+current = 0;
+}
+
+title.innerText = news[current].title;
+
+desc.innerText = news[current].desc;
+
+hero.style.background =
+`linear-gradient(rgba(0,0,0,0.6),
+rgba(0,0,0,0.7)),
+url('${news[current].image}')`;
+
+hero.style.backgroundSize = "cover";
+hero.style.backgroundPosition = "center";
+
+}
+
+setInterval(changeNews,4000);
+
+</script>
 
     /* SECTION */
 
