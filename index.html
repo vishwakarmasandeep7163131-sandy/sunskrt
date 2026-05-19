@@ -434,97 +434,56 @@ body {
 
 <script>
 
-const liveNews = [
-  {
-title:"US Elections Create Global Impact",
-desc:"Political developments in the United States affect global markets and diplomacy.",
-image:"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=1600&auto=format&fit=crop"
-},
+<script>
 
-{
-title:"World Leaders Meet For Climate Summit",
-desc:"Major countries discuss climate change and future environmental policies.",
-image:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600&auto=format&fit=crop"
-},
+const apiKey = "HcqsIUq2aTifMaYMkqJG26i2taccr1k9icnreHPd";
 
-{
-title:"India Announces New Economic Policies",
-desc:"Government introduces major economic reforms and infrastructure projects.",
-image:"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop"
-},
+async function fetchNews(){
 
-{
-title:"Breaking World News Updates",
-desc:"Latest political, economic and international headlines from around the globe.",
-image:"https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=1600&auto=format&fit=crop"
-},
+const response = await fetch(
+`https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=${apiKey}`
+);
 
-{
-title:"Global Stock Markets Rally",
-desc:"International stock markets rise amid strong investor confidence.",
-image:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
-},
+const data = await response.json();
 
-{
-title:"Lamborghini Launches New Hybrid Supercar",
-desc:"Latest automobile updates and supercar launches worldwide.",
-image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop"
-},
+const articles = data.articles;
 
-{
-title:"Stock Market Hits Record High",
-desc:"Sensex and Nifty surge as investors return strongly.",
-image:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
-},
-
-{
-title:"Tesla AI Technology Goes Viral",
-desc:"Tesla introduces futuristic AI driving features.",
-image:"https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop"
-},
-
-{
-title:"Apple Announces AI Devices",
-desc:"Apple reveals new AI ecosystem and smart technology.",
-image:"https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1600&auto=format&fit=crop"
-},
-
-{
-title:"Future EV SUVs Coming Soon",
-desc:"Top brands prepare futuristic electric SUVs for 2026.",
-image:"https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=1600&auto=format&fit=crop"
-}
-
-];
-
-let currentNews = 0;
+let current = 0;
 
 const hero = document.getElementById("liveHero");
 const title = document.getElementById("heroTitle");
 const desc = document.getElementById("heroDesc");
 
-function updateHero(){
+function updateNews(){
 
-currentNews++;
+const news = articles[current];
 
-if(currentNews >= liveNews.length){
-currentNews = 0;
-}
+title.innerText = news.title;
 
-title.innerText = liveNews[currentNews].title;
-
-desc.innerText = liveNews[currentNews].desc;
+desc.innerText = news.description || "Latest breaking world news updates.";
 
 hero.style.background =
 `linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
-url('${liveNews[currentNews].image}')`;
+url('${news.urlToImage}')`;
 
 hero.style.backgroundSize = "cover";
 hero.style.backgroundPosition = "center";
 
+current++;
+
+if(current >= articles.length){
+current = 0;
 }
 
-setInterval(updateHero,5000);
+}
+
+updateNews();
+
+setInterval(updateNews,5000);
+
+}
+
+fetchNews();
 
 </script>
 
