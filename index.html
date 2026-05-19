@@ -383,20 +383,121 @@ body {
   </nav>
   <!-- HERO -->
 
-  <section class="hero">
+  <!-- LIVE NEWS HERO -->
 
-    <div class="hero-content">
-      <h1>Latest Automobile News & Supercar Updates</h1>
+<section class="hero" id="liveHero">
 
-      <p>
-        Explore luxury cars, electric vehicles, future concepts,
-        supercar launches and trending auto news from around the world.
-      </p>
+  <div class="hero-content">
 
-      <a href="#" class="btn">Explore Now</a>
-    </div>
+    <span class="live-tag">🔴 LIVE NEWS</span>
 
-  </section>
+    <h1 id="heroTitle">
+      Lamborghini Launches New Hybrid Supercar
+    </h1>
+
+    <p id="heroDesc">
+      Latest automobile, stock market, EV and tech updates from around the world.
+    </p>
+
+    <a href="news.html" class="btn">
+      Explore News
+    </a>
+
+  </div>
+
+</section>
+
+<style>
+
+.live-tag{
+  display:inline-block;
+  background:red;
+  padding:10px 18px;
+  border-radius:50px;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:20px;
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+  0%{opacity:1;}
+
+  50%{opacity:0.5;}
+
+  100%{opacity:1;}
+
+}
+
+</style>
+
+<script>
+
+const liveNews = [
+
+{
+title:"Lamborghini Launches New Hybrid Supercar",
+desc:"Latest automobile updates and supercar launches worldwide.",
+image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Stock Market Hits Record High",
+desc:"Sensex and Nifty surge as investors return strongly.",
+image:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Tesla AI Technology Goes Viral",
+desc:"Tesla introduces futuristic AI driving features.",
+image:"https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Apple Announces AI Devices",
+desc:"Apple reveals new AI ecosystem and smart technology.",
+image:"https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Future EV SUVs Coming Soon",
+desc:"Top brands prepare futuristic electric SUVs for 2026.",
+image:"https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=1600&auto=format&fit=crop"
+}
+
+];
+
+let currentNews = 0;
+
+const hero = document.getElementById("liveHero");
+const title = document.getElementById("heroTitle");
+const desc = document.getElementById("heroDesc");
+
+function updateHero(){
+
+currentNews++;
+
+if(currentNews >= liveNews.length){
+currentNews = 0;
+}
+
+title.innerText = liveNews[currentNews].title;
+
+desc.innerText = liveNews[currentNews].desc;
+
+hero.style.background =
+`linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
+url('${liveNews[currentNews].image}')`;
+
+hero.style.backgroundSize = "cover";
+hero.style.backgroundPosition = "center";
+
+}
+
+setInterval(updateHero,5000);
+
+</script>
 
   <!-- TRENDING NEWS -->
 
