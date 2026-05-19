@@ -435,6 +435,74 @@ window.location.href =
       <a href="Contect.html">Contect</a>
     </div>
   </nav>
+
+  <div class="language-switch">
+
+<button onclick="changeLanguage('en')">
+English
+</button>
+
+<button onclick="changeLanguage('hi')">
+हिन्दी
+</button>
+
+</div>
+
+<style>
+
+.language-switch{
+position:fixed;
+top:90px;
+right:20px;
+z-index:9999;
+display:flex;
+gap:10px;
+}
+
+.language-switch button{
+padding:8px 16px;
+border:none;
+border-radius:10px;
+background:#ff3c00;
+color:#fff;
+cursor:pointer;
+font-weight:600;
+}
+
+</style>
+
+<script>
+
+function changeLanguage(lang){
+
+const title =
+document.getElementById("title");
+
+const desc =
+document.getElementById("desc");
+
+if(lang === "en"){
+
+title.innerText =
+"Latest Automobile & World News";
+
+desc.innerText =
+"Get live automobile, political and world news updates.";
+
+}else{
+
+title.innerText =
+"लेटेस्ट ऑटोमोबाइल और विश्व समाचार";
+
+desc.innerText =
+"ऑटोमोबाइल, राजनीति और विश्व की लाइव खबरें पाएँ।";
+
+}
+
+}
+
+</script>
+
   <!-- HERO -->
 
  <section class="hero" id="hero">
@@ -770,7 +838,54 @@ grid-template-columns:1fr;
 }
 
 }
+
+/* NEWS CARD */
+
 .news-card{
+  background:#181818;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid #222;
+  transition:0.3s;
+}
+
+.news-card:hover{
+  transform:translateY(-8px);
+}
+
+.news-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.news-info{
+  padding:20px;
+}
+
+.news-info h3{
+  color:#fff;
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+.news-info p{
+  color:#bbb;
+  line-height:1.7;
+  font-size:14px;
+}
+
+@media(max-width:768px){
+
+.news-heading{
+font-size:28px;
+}
+
+.news-card img{
+height:180px;
+}
+
+}
   background:#181818;
   border-radius:20px;
   overflow:hidden;
