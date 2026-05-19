@@ -239,9 +239,11 @@
 
 <body>
 <div class="ticker-main-container">
-    <div class="stock-left-heading">
-        <span class="live-pulse-dot"></span>
-        <span class="heading-text">STOCK MARKET <span class="highlight-text">UPDATES</span></span>
+    <div class="stock-box-container">
+        <div class="stock-left-box-heading">
+            <span class="live-pulse-dot"></span>
+            <span class="heading-text">STOCK MARKET <span class="highlight-text">UPDATES</span></span>
+        </div>
     </div>
 
     <div class="top-ticker-wrapper">
@@ -257,7 +259,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Main Container to hold Heading and Ticker side by side */
+/* Main Container to hold Heading Box and Ticker side by side */
 .ticker-main-container {
     display: flex;
     align-items: center;
@@ -267,33 +269,41 @@ body {
     position: relative;
     z-index: 99999;
     overflow: hidden;
+    padding: 5px 0; /* Box ko top-bottom se thoda space dene ke liye */
 }
 
-/* Left Side Heading Style */
-.stock-left-heading {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #1e222d; /* Slightly lighter dark for contrast */
-    padding: 10px 20px;
-    white-space: nowrap;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+/* Container for the Box to give spacing from left edge */
+.stock-box-container {
+    padding-left: 15px;
     z-index: 2; /* Ticker ke upar layer rakhne ke liye */
 }
 
-.stock-left-heading .heading-text {
+/* Left Side Heading BOX Style */
+.stock-left-box-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #1e222d; /* Dark Premium Box Color */
+    padding: 8px 16px;
+    border: 1px solid #ff3c00; /* Neon Orange/Red Border for the Box */
+    border-radius: 6px; /* Smooth rounded corners for the box */
+    white-space: nowrap;
+    box-shadow: 0 0 10px rgba(255, 60, 0, 0.2); /* Soft glow around the box */
+}
+
+.stock-left-box-heading .heading-text {
     color: #ffffff;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
-.stock-left-heading .highlight-text {
-    color: #ff3c00; /* Neon Orange/Red Alert Color */
+.stock-left-box-heading .highlight-text {
+    color: #ff3c00; /* Neon Orange/Red Inside Box */
 }
 
-/* Green Live Blinking Dot */
+/* Green Live Blinking Dot Inside Box */
 .live-pulse-dot {
     width: 8px;
     height: 8px;
@@ -313,14 +323,18 @@ body {
 .top-ticker-wrapper {
     flex-grow: 1;
     z-index: 1;
+    margin-left: 10px; /* Box aur Slide hote stocks ke beech thoda gap */
 }
 
 /* Mobile Screens Ke Liye Adjustments */
 @media (max-width: 768px) {
-    .stock-left-heading {
-        padding: 8px 10px;
+    .stock-box-container {
+        padding-left: 8px;
     }
-    .stock-left-heading .heading-text {
+    .stock-left-box-heading {
+        padding: 6px 10px;
+    }
+    .stock-left-box-heading .heading-text {
         font-size: 11px;
     }
 }
