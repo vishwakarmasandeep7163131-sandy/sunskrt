@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto News</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0f0f0f;
+      color:#fff;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:18px 8%;
+      background:#111;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid #222;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#ff3c00;
+    }
+
+    .menu{
+      display:flex;
+      gap:25px;
+    }
+
+    .menu a:hover{
+      color:#ff3c00;
+    }
+
+    /* HEADER */
+
+    .header{
+      text-align:center;
+      padding:80px 20px;
+    }
+
+    .header h1{
+      font-size:55px;
+      margin-bottom:20px;
+    }
+
+    .header p{
+      color:#bbb;
+      font-size:18px;
+    }
+
+    /* NEWS SECTION */
+
+    .news-container{
+      padding:50px 8%;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .news-card{
+      background:#181818;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid #222;
+      transition:0.4s;
+    }
+
+    .news-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .news-card img{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+    }
+
+    .news-content{
+      padding:20px;
+    }
+
+    .news-content h3{
+      margin-bottom:15px;
+      font-size:22px;
+      line-height:1.5;
+    }
+
+    .news-content p{
+      color:#bbb;
+      font-size:15px;
+      line-height:1.7;
+      margin-bottom:20px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:12px 25px;
+      background:#ff3c00;
+      border-radius:10px;
+      font-weight:600;
+    }
+
+    .btn:hover{
+      background:#ff5722;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#080808;
+      text-align:center;
+      padding:30px;
+      border-top:1px solid #222;
+      margin-top:40px;
+    }
+
+    footer p{
+      color:#aaa;
+    }
+
+    @media(max-width:768px){
+
+      .header h1{
+        font-size:38px;
+      }
+
+      .menu{
+        display:none;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">AutoNews</div>
+
+    <div class="menu">
+
+      <a href="index.html">Home</a>
+      <a href="cars.html">Cars</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
+
+    </div>
+
+  </nav>
+
+  <!-- HEADER -->
+
+  <section class="header">
+
+    <h1>Latest Automobile News</h1>
+
+    <p>
+      Daily updates from the automobile world,
+      electric vehicles, supercars and future technology.
+    </p>
+
+  </section>
+
+  <!-- NEWS CARDS -->
+
+  <section class="news-container">
+
+    <div class="news-card">
+
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-content">
+
+        <h3>Lamborghini Launches New Hybrid Supercar</h3>
+
+        <p>
+          Lamborghini unveils its latest futuristic hybrid
+          supercar with incredible speed and design.
+        </p>
+
+        <a href="#" class="btn">Read More</a>
+
+      </div>
+
+    </div>
+
+    <div class="news-card">
+
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-content">
+
+        <h3>BMW M5 2026 Officially Revealed</h3>
+
+        <p>
+          BMW introduces its next-generation M5 with
+          AI-powered driving features and luxury interiors.
+        </p>
+
+        <a href="#" class="btn">Read More</a>
+
+      </div>
+
+    </div>
+
+    <div class="news-card">
+
+      <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-content">
+
+        <h3>Future Electric SUVs Coming Soon</h3>
+
+        <p>
+          Automobile companies are now preparing advanced
+          electric SUVs with futuristic technology.
+        </p>
+
+        <a href="#" class="btn">Read More</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>© 2026 AutoNews. All Rights Reserved.</p>
+
+  </footer>
+
+</body>
+
+</html>
