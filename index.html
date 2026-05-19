@@ -238,157 +238,138 @@
 </head>
 
 <body>
-<!-- ===== LIVE GLOBAL MARKET SLIDER ===== -->
-<div class="market-slider">
-  <div class="market-track">
+<!-- ===== TradingView Style Market Slider ===== -->
 
-    <!-- Indian Market -->
-    <div class="market-item nifty">
-      🇮🇳 NIFTY 50 <span>24,850 ▲ +145</span>
+<div class="tv-market-wrap">
+
+  <div class="tv-market-track">
+
+    <!-- INDIA -->
+    <div class="tv-card">
+      <div class="tv-name">🇮🇳 NIFTY 50</div>
+      <div class="tv-price">24,850.20</div>
+      <div class="tv-up">+145.30 (0.58%)</div>
     </div>
 
-    <div class="market-item sensex">
-      🇮🇳 SENSEX <span>81,420 ▲ +520</span>
+    <div class="tv-card">
+      <div class="tv-name">🇮🇳 SENSEX</div>
+      <div class="tv-price">81,420.55</div>
+      <div class="tv-up">+520.10 (0.64%)</div>
     </div>
 
-    <div class="market-item banknifty">
-      🇮🇳 BANK NIFTY <span>53,210 ▲ +180</span>
+    <!-- GOLD -->
+    <div class="tv-card">
+      <div class="tv-name">🟡 GOLD</div>
+      <div class="tv-price">₹96,540</div>
+      <div class="tv-up">+420 (0.44%)</div>
     </div>
 
-    <!-- Gold & Silver -->
-    <div class="market-item gold">
-      🟡 GOLD <span>₹96,540 ▲ +420</span>
+    <!-- SILVER -->
+    <div class="tv-card">
+      <div class="tv-name">⚪ SILVER</div>
+      <div class="tv-price">₹1,12,800</div>
+      <div class="tv-up">+950 (0.85%)</div>
     </div>
 
-    <div class="market-item silver">
-      ⚪ SILVER <span>₹1,12,800 ▲ +950</span>
+    <!-- US MARKET -->
+    <div class="tv-card">
+      <div class="tv-name">🇺🇸 DOW JONES</div>
+      <div class="tv-price">42,850</div>
+      <div class="tv-up">+210 (0.49%)</div>
     </div>
 
-    <!-- US Market -->
-    <div class="market-item dow">
-      🇺🇸 DOW JONES <span>42,850 ▲ +210</span>
+    <div class="tv-card">
+      <div class="tv-name">🇺🇸 NASDAQ</div>
+      <div class="tv-price">18,720</div>
+      <div class="tv-up">+95 (0.51%)</div>
     </div>
 
-    <div class="market-item nasdaq">
-      🇺🇸 NASDAQ <span>18,720 ▲ +95</span>
+    <div class="tv-card">
+      <div class="tv-name">🇺🇸 S&P 500</div>
+      <div class="tv-price">5,620</div>
+      <div class="tv-up">+28 (0.33%)</div>
     </div>
 
-    <div class="market-item sp500">
-      🇺🇸 S&P 500 <span>5,620 ▲ +28</span>
-    </div>
-
-    <!-- Duplicate for Smooth Loop -->
-    <div class="market-item nifty">
-      🇮🇳 NIFTY 50 <span>24,850 ▲ +145</span>
-    </div>
-
-    <div class="market-item gold">
-      🟡 GOLD <span>₹96,540 ▲ +420</span>
-    </div>
-
-    <div class="market-item dow">
-      🇺🇸 DOW JONES <span>42,850 ▲ +210</span>
+    <!-- DUPLICATE -->
+    <div class="tv-card">
+      <div class="tv-name">🇮🇳 NIFTY 50</div>
+      <div class="tv-price">24,850.20</div>
+      <div class="tv-up">+145.30 (0.58%)</div>
     </div>
 
   </div>
+
 </div>
 
 <style>
+
 body{
   margin:0;
-  background:#000;
+  background:#0d1117;
   font-family:Arial, sans-serif;
 }
 
-.market-slider{
+.tv-market-wrap{
   width:100%;
   overflow:hidden;
-  background:#111;
-  border-top:2px solid #222;
-  border-bottom:2px solid #222;
-  padding:12px 0;
+  background:#0d1117;
+  border-top:1px solid #1f2937;
+  border-bottom:1px solid #1f2937;
+  padding:14px 0;
 }
 
-.market-track{
+.tv-market-track{
   display:flex;
+  gap:14px;
   width:max-content;
-  animation:scroll 30s linear infinite;
+  animation:tvscroll 30s linear infinite;
 }
 
-.market-item{
-  min-width:260px;
-  margin:0 12px;
-  padding:14px 20px;
+.tv-card{
+  min-width:220px;
+  background:#161b22;
+  border:1px solid #30363d;
   border-radius:14px;
-  color:#fff;
-  font-size:18px;
-  font-weight:bold;
-  box-shadow:0 0 12px rgba(255,255,255,0.15);
+  padding:16px;
+  color:white;
+  box-shadow:0 0 10px rgba(0,0,0,0.4);
   transition:0.3s;
 }
 
-.market-item span{
-  display:block;
-  margin-top:6px;
-  font-size:16px;
-  color:#00ff88;
+.tv-card:hover{
+  transform:translateY(-4px);
+  border-color:#00c853;
 }
 
-/* Different Colors */
-.nifty{
-  background:linear-gradient(135deg,#ff6a00,#ffb347);
+.tv-name{
+  font-size:14px;
+  color:#8b949e;
+  margin-bottom:10px;
+  font-weight:600;
 }
 
-.sensex{
-  background:linear-gradient(135deg,#ff1744,#ff616f);
+.tv-price{
+  font-size:26px;
+  font-weight:bold;
+  margin-bottom:8px;
 }
 
-.banknifty{
-  background:linear-gradient(135deg,#7b1fa2,#ba68c8);
+.tv-up{
+  color:#00c853;
+  font-size:15px;
+  font-weight:600;
 }
 
-.gold{
-  background:linear-gradient(135deg,#d4af37,#ffd700);
-  color:#000;
-}
-
-.gold span{
-  color:#000;
-}
-
-.silver{
-  background:linear-gradient(135deg,#9e9e9e,#e0e0e0);
-  color:#000;
-}
-
-.silver span{
-  color:#111;
-}
-
-.dow{
-  background:linear-gradient(135deg,#1565c0,#42a5f5);
-}
-
-.nasdaq{
-  background:linear-gradient(135deg,#00897b,#26c6da);
-}
-
-.sp500{
-  background:linear-gradient(135deg,#2e7d32,#66bb6a);
-}
-
-.market-item:hover{
-  transform:scale(1.05);
-}
-
-@keyframes scroll{
+@keyframes tvscroll{
   0%{
     transform:translateX(0);
   }
+
   100%{
     transform:translateX(-50%);
   }
 }
+
 </style>
   <!-- NAVBAR -->
 
