@@ -238,55 +238,17 @@
 </head>
 
 <body>
-<!-- ===== Thin TradingView Style Market Slider ===== -->
+<!-- ===== LIVE TRADINGVIEW STYLE MARKET TICKER ===== -->
 
-<div class="tv-thin-wrap">
+<div class="ticker-wrapper">
+  <div class="ticker-container">
 
-  <div class="tv-thin-track">
-
-    <div class="tv-thin-card">
-      🇮🇳 NIFTY 50 
-      <span>24,850 ▲ +145</span>
-    </div>
-
-    <div class="tv-thin-card">
-      🇮🇳 SENSEX 
-      <span>81,420 ▲ +520</span>
-    </div>
-
-    <div class="tv-thin-card">
-      🟡 GOLD 
-      <span>₹96,540 ▲ +420</span>
-    </div>
-
-    <div class="tv-thin-card">
-      ⚪ SILVER 
-      <span>₹1,12,800 ▲ +950</span>
-    </div>
-
-    <div class="tv-thin-card">
-      🇺🇸 DOW 
-      <span>42,850 ▲ +210</span>
-    </div>
-
-    <div class="tv-thin-card">
-      🇺🇸 NASDAQ 
-      <span>18,720 ▲ +95</span>
-    </div>
-
-    <div class="tv-thin-card">
-      🇺🇸 S&P 500 
-      <span>5,620 ▲ +28</span>
-    </div>
-
-    <!-- Duplicate -->
-    <div class="tv-thin-card">
-      🇮🇳 NIFTY 50 
-      <span>24,850 ▲ +145</span>
+    <!-- TradingView Widget -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
     </div>
 
   </div>
-
 </div>
 
 <style>
@@ -297,49 +259,67 @@ body{
   font-family:Arial, sans-serif;
 }
 
-.tv-thin-wrap{
+.ticker-wrapper{
   width:100%;
-  overflow:hidden;
   background:#111827;
   border-top:1px solid #222;
   border-bottom:1px solid #222;
-  padding:6px 0;
+  padding:4px 0;
+  overflow:hidden;
 }
 
-.tv-thin-track{
-  display:flex;
-  gap:10px;
-  width:max-content;
-  animation:scrollthin 25s linear infinite;
+.ticker-container{
+  width:100%;
 }
 
-.tv-thin-card{
-  background:#161b22;
-  border:1px solid #2d333b;
-  color:#fff;
-  padding:8px 16px;
-  border-radius:8px;
-  font-size:14px;
-  font-weight:600;
-  white-space:nowrap;
-}
-
-.tv-thin-card span{
-  color:#00c853;
-  margin-left:6px;
-}
-
-@keyframes scrollthin{
-  0%{
-    transform:translateX(0);
-  }
-
-  100%{
-    transform:translateX(-50%);
-  }
+.tradingview-widget-container{
+  width:100%;
 }
 
 </style>
+
+<!-- TradingView Script -->
+<script type="text/javascript" 
+src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" 
+async>
+{
+  "symbols": [
+    {
+      "proName": "NSE:NIFTY",
+      "title": "NIFTY 50"
+    },
+    {
+      "proName": "BSE:SENSEX",
+      "title": "SENSEX"
+    },
+    {
+      "proName": "MCX:GOLD1!",
+      "title": "GOLD"
+    },
+    {
+      "proName": "MCX:SILVER1!",
+      "title": "SILVER"
+    },
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "NASDAQ"
+    },
+    {
+      "proName": "FOREXCOM:DJI",
+      "title": "DOW JONES"
+    }
+  ],
+  "showSymbolLogo": true,
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "colorTheme": "dark",
+  "locale": "en"
+}
+</script>
   <!-- NAVBAR -->
 
   <nav>
