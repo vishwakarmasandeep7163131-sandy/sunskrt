@@ -436,7 +436,9 @@ window.location.href =
     </div>
   </nav>
 
-  <div class="language-switch">
+ <!-- LANGUAGE SWITCH -->
+
+<div class="language-switch">
 
 <button onclick="changeLanguage('en')">
 English
@@ -454,7 +456,7 @@ English
 position:fixed;
 top:90px;
 right:20px;
-z-index:9999;
+z-index:99999;
 display:flex;
 gap:10px;
 }
@@ -465,8 +467,13 @@ border:none;
 border-radius:10px;
 background:#ff3c00;
 color:#fff;
-cursor:pointer;
 font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.language-switch button:hover{
+background:#ff5722;
 }
 
 </style>
@@ -481,6 +488,8 @@ document.getElementById("title");
 const desc =
 document.getElementById("desc");
 
+/* ENGLISH */
+
 if(lang === "en"){
 
 title.innerText =
@@ -488,6 +497,8 @@ title.innerText =
 
 desc.innerText =
 "Get live automobile, political and world news updates.";
+
+/* HINDI */
 
 }else{
 
@@ -502,7 +513,6 @@ desc.innerText =
 }
 
 </script>
-
   <!-- HERO -->
 
  <section class="hero" id="hero">
