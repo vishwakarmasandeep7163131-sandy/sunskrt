@@ -238,7 +238,64 @@
 </head>
 
 <body>
+<div class="top-ticker-wrapper">
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+    </div>
+</div>
 
+<style>
+/* Website ke top layout ko fix karne ke liye */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.top-ticker-wrapper {
+    width: 100%;
+    background: #131722; /* TradingView official dark background */
+    border-bottom: 1px solid #2a2e39;
+    padding: 4px 0;
+    position: relative;
+    z-index: 99999;
+}
+</style>
+
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "US NASDAQ 100"
+    },
+    {
+      "proName": "FX_IDC:INRUSD",
+      "title": "USD TO INR"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "BITCOIN"
+    },
+    {
+      "proName": "BSE:SENSEX",
+      "title": "SENSEX"
+    },
+    {
+      "proName": "NSE:NIFTY",
+      "title": "NIFTY 50"
+    }
+  ],
+  "showSymbolLogo": true,
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+</script>
   <!-- NAVBAR -->
 
   <nav>
