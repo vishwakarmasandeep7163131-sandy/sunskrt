@@ -238,7 +238,89 @@
 </head>
 
 <body>
+<!-- LIVE STOCK MARKET INDICATOR -->
 
+<div class="stock-ticker">
+
+  <div class="ticker-wrap">
+
+    <div class="ticker-move">
+
+      <span>📈 NIFTY 50 +1.25%</span>
+
+      <span>📊 SENSEX +0.88%</span>
+
+      <span>💹 TATA MOTORS +2.14%</span>
+
+      <span>🚗 TESLA +1.72%</span>
+
+      <span>🏎 BMW +0.91%</span>
+
+      <span>⚡ RELIANCE +1.48%</span>
+
+      <span>💰 BITCOIN +3.10%</span>
+
+      <span>📉 ADANI -0.42%</span>
+
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+
+.stock-ticker{
+  width:100%;
+  background:#ff3c00;
+  overflow:hidden;
+  padding:12px 0;
+  position:sticky;
+  top:0;
+  z-index:9999;
+}
+
+.ticker-wrap{
+  width:100%;
+  overflow:hidden;
+}
+
+.ticker-move{
+  display:flex;
+  width:max-content;
+  animation:ticker 25s linear infinite;
+}
+
+.ticker-move span{
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  padding:0 40px;
+  white-space:nowrap;
+}
+
+@keyframes ticker{
+
+  0%{
+    transform:translateX(100%);
+  }
+
+  100%{
+    transform:translateX(-100%);
+  }
+
+}
+
+@media(max-width:768px){
+
+  .ticker-move span{
+    font-size:14px;
+    padding:0 25px;
+  }
+
+}
+
+</style>
   <!-- NAVBAR -->
 
   <nav>
