@@ -238,16 +238,11 @@
 </head>
 
 <body>
-<!-- ===== LIVE TRADINGVIEW STYLE MARKET TICKER ===== -->
+<!-- ===== LIVE TRADINGVIEW MARKET TICKER ===== -->
 
 <div class="ticker-wrapper">
-  <div class="ticker-container">
-
-    <!-- TradingView Widget -->
-    <div class="tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"></div>
-    </div>
-
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
   </div>
 </div>
 
@@ -256,7 +251,7 @@
 body{
   margin:0;
   background:#0d1117;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 .ticker-wrapper{
@@ -268,55 +263,85 @@ body{
   overflow:hidden;
 }
 
-.ticker-container{
-  width:100%;
-}
-
-.tradingview-widget-container{
-  width:100%;
-}
-
 </style>
 
-<!-- TradingView Script -->
-<script type="text/javascript" 
-src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" 
+<script type="text/javascript"
+src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
 async>
 {
   "symbols": [
+
     {
       "proName": "NSE:NIFTY",
       "title": "NIFTY 50"
     },
+
     {
       "proName": "BSE:SENSEX",
       "title": "SENSEX"
     },
+
     {
-      "proName": "MCX:GOLD1!",
+      "proName": "NSE:RELIANCE",
+      "title": "RELIANCE"
+    },
+
+    {
+      "proName": "NSE:TCS",
+      "title": "TCS"
+    },
+
+    {
+      "proName": "NSE:HDFCBANK",
+      "title": "HDFC BANK"
+    },
+
+    {
+      "proName": "NSE:INFY",
+      "title": "INFOSYS"
+    },
+
+    {
+      "proName": "NSE:ICICIBANK",
+      "title": "ICICI BANK"
+    },
+
+    {
+      "proName": "NSE:SBIN",
+      "title": "SBI"
+    },
+
+    {
+      "proName": "TVC:GOLD",
       "title": "GOLD"
     },
+
     {
-      "proName": "MCX:SILVER1!",
+      "proName": "TVC:SILVER",
       "title": "SILVER"
     },
+
     {
       "proName": "FOREXCOM:SPXUSD",
       "title": "S&P 500"
     },
+
     {
-      "proName": "FOREXCOM:NSXUSD",
+      "proName": "NASDAQ:NDX",
       "title": "NASDAQ"
     },
+
     {
-      "proName": "FOREXCOM:DJI",
+      "proName": "DJ:DJI",
       "title": "DOW JONES"
     }
+
   ],
+
   "showSymbolLogo": true,
+  "colorTheme": "dark",
   "isTransparent": false,
   "displayMode": "adaptive",
-  "colorTheme": "dark",
   "locale": "en"
 }
 </script>
