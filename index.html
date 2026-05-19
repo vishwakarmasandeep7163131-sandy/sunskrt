@@ -238,63 +238,51 @@
 </head>
 
 <body>
-<!-- ===== TradingView Style Market Slider ===== -->
+<!-- ===== Thin TradingView Style Market Slider ===== -->
 
-<div class="tv-market-wrap">
+<div class="tv-thin-wrap">
 
-  <div class="tv-market-track">
+  <div class="tv-thin-track">
 
-    <!-- INDIA -->
-    <div class="tv-card">
-      <div class="tv-name">🇮🇳 NIFTY 50</div>
-      <div class="tv-price">24,850.20</div>
-      <div class="tv-up">+145.30 (0.58%)</div>
+    <div class="tv-thin-card">
+      🇮🇳 NIFTY 50 
+      <span>24,850 ▲ +145</span>
     </div>
 
-    <div class="tv-card">
-      <div class="tv-name">🇮🇳 SENSEX</div>
-      <div class="tv-price">81,420.55</div>
-      <div class="tv-up">+520.10 (0.64%)</div>
+    <div class="tv-thin-card">
+      🇮🇳 SENSEX 
+      <span>81,420 ▲ +520</span>
     </div>
 
-    <!-- GOLD -->
-    <div class="tv-card">
-      <div class="tv-name">🟡 GOLD</div>
-      <div class="tv-price">₹96,540</div>
-      <div class="tv-up">+420 (0.44%)</div>
+    <div class="tv-thin-card">
+      🟡 GOLD 
+      <span>₹96,540 ▲ +420</span>
     </div>
 
-    <!-- SILVER -->
-    <div class="tv-card">
-      <div class="tv-name">⚪ SILVER</div>
-      <div class="tv-price">₹1,12,800</div>
-      <div class="tv-up">+950 (0.85%)</div>
+    <div class="tv-thin-card">
+      ⚪ SILVER 
+      <span>₹1,12,800 ▲ +950</span>
     </div>
 
-    <!-- US MARKET -->
-    <div class="tv-card">
-      <div class="tv-name">🇺🇸 DOW JONES</div>
-      <div class="tv-price">42,850</div>
-      <div class="tv-up">+210 (0.49%)</div>
+    <div class="tv-thin-card">
+      🇺🇸 DOW 
+      <span>42,850 ▲ +210</span>
     </div>
 
-    <div class="tv-card">
-      <div class="tv-name">🇺🇸 NASDAQ</div>
-      <div class="tv-price">18,720</div>
-      <div class="tv-up">+95 (0.51%)</div>
+    <div class="tv-thin-card">
+      🇺🇸 NASDAQ 
+      <span>18,720 ▲ +95</span>
     </div>
 
-    <div class="tv-card">
-      <div class="tv-name">🇺🇸 S&P 500</div>
-      <div class="tv-price">5,620</div>
-      <div class="tv-up">+28 (0.33%)</div>
+    <div class="tv-thin-card">
+      🇺🇸 S&P 500 
+      <span>5,620 ▲ +28</span>
     </div>
 
-    <!-- DUPLICATE -->
-    <div class="tv-card">
-      <div class="tv-name">🇮🇳 NIFTY 50</div>
-      <div class="tv-price">24,850.20</div>
-      <div class="tv-up">+145.30 (0.58%)</div>
+    <!-- Duplicate -->
+    <div class="tv-thin-card">
+      🇮🇳 NIFTY 50 
+      <span>24,850 ▲ +145</span>
     </div>
 
   </div>
@@ -309,58 +297,39 @@ body{
   font-family:Arial, sans-serif;
 }
 
-.tv-market-wrap{
+.tv-thin-wrap{
   width:100%;
   overflow:hidden;
-  background:#0d1117;
-  border-top:1px solid #1f2937;
-  border-bottom:1px solid #1f2937;
-  padding:14px 0;
+  background:#111827;
+  border-top:1px solid #222;
+  border-bottom:1px solid #222;
+  padding:6px 0;
 }
 
-.tv-market-track{
+.tv-thin-track{
   display:flex;
-  gap:14px;
+  gap:10px;
   width:max-content;
-  animation:tvscroll 30s linear infinite;
+  animation:scrollthin 25s linear infinite;
 }
 
-.tv-card{
-  min-width:220px;
+.tv-thin-card{
   background:#161b22;
-  border:1px solid #30363d;
-  border-radius:14px;
-  padding:16px;
-  color:white;
-  box-shadow:0 0 10px rgba(0,0,0,0.4);
-  transition:0.3s;
-}
-
-.tv-card:hover{
-  transform:translateY(-4px);
-  border-color:#00c853;
-}
-
-.tv-name{
+  border:1px solid #2d333b;
+  color:#fff;
+  padding:8px 16px;
+  border-radius:8px;
   font-size:14px;
-  color:#8b949e;
-  margin-bottom:10px;
   font-weight:600;
+  white-space:nowrap;
 }
 
-.tv-price{
-  font-size:26px;
-  font-weight:bold;
-  margin-bottom:8px;
-}
-
-.tv-up{
+.tv-thin-card span{
   color:#00c853;
-  font-size:15px;
-  font-weight:600;
+  margin-left:6px;
 }
 
-@keyframes tvscroll{
+@keyframes scrollthin{
   0%{
     transform:translateX(0);
   }
