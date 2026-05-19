@@ -1,269 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- BREAKING NEWS LAYOUT -->
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto News</title>
+<section class="breaking-news-section">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- LEFT BIG NEWS -->
 
-  <style>
+  <div class="main-news">
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
+    <span class="news-time">
+      News On AIR | May 19, 2026 7:49 AM
+    </span>
 
-    body{
-      background:#0f0f0f;
-      color:#fff;
-    }
+    <h1>
+      Judges Inquiry Committee Investigating Allegations Against Justice Yashwant Varma Submits Report To LS Speaker
+    </h1>
 
-    a{
-      text-decoration:none;
-      color:white;
-    }
-
-    /* NAVBAR */
-
-    nav{
-      width:100%;
-      padding:18px 8%;
-      background:#111;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      border-bottom:1px solid #222;
-      position:sticky;
-      top:0;
-      z-index:1000;
-    }
-
-    .logo{
-      font-size:28px;
-      font-weight:700;
-      color:#ff3c00;
-    }
-
-    .menu{
-      display:flex;
-      gap:25px;
-    }
-
-    .menu a:hover{
-      color:#ff3c00;
-    }
-
-    /* HEADER */
-
-    .header{
-      text-align:center;
-      padding:80px 20px;
-    }
-
-    .header h1{
-      font-size:55px;
-      margin-bottom:20px;
-    }
-
-    .header p{
-      color:#bbb;
-      font-size:18px;
-    }
-
-    /* NEWS SECTION */
-
-    .news-container{
-      padding:50px 8%;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:30px;
-    }
-
-    .news-card{
-      background:#181818;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid #222;
-      transition:0.4s;
-    }
-
-    .news-card:hover{
-      transform:translateY(-10px);
-    }
-
-    .news-card img{
-      width:100%;
-      height:230px;
-      object-fit:cover;
-    }
-
-    .news-content{
-      padding:20px;
-    }
-
-    .news-content h3{
-      margin-bottom:15px;
-      font-size:22px;
-      line-height:1.5;
-    }
-
-    .news-content p{
-      color:#bbb;
-      font-size:15px;
-      line-height:1.7;
-      margin-bottom:20px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:12px 25px;
-      background:#ff3c00;
-      border-radius:10px;
-      font-weight:600;
-    }
-
-    .btn:hover{
-      background:#ff5722;
-    }
-
-    /* FOOTER */
-
-    footer{
-      background:#080808;
-      text-align:center;
-      padding:30px;
-      border-top:1px solid #222;
-      margin-top:40px;
-    }
-
-    footer p{
-      color:#aaa;
-    }
-
-    @media(max-width:768px){
-
-      .header h1{
-        font-size:38px;
-      }
-
-      .menu{
-        display:none;
-      }
-
-    }
-
-  </style>
-
-</head>
-
-<body>
-
-  <!-- NAVBAR -->
-
-  <nav>
-
-    <div class="logo">AutoNews</div>
-
-    <div class="menu">
-
-      <a href="index.html">Home</a>
-      <a href="cars.html">Cars</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-
-    </div>
-
-  </nav>
-
-  <!-- HEADER -->
-
-  <section class="header">
-
-    <h1>Latest Automobile News</h1>
+    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=1600&auto=format&fit=crop">
 
     <p>
-      Daily updates from the automobile world,
-      electric vehicles, supercars and future technology.
+      The Judges Inquiry Committee investigating allegations concerning Justice Yashwant Varma submitted its report to Lok Sabha Speaker Om Birla at the Parliament House.
     </p>
 
-  </section>
+  </div>
 
-  <!-- NEWS CARDS -->
+  <!-- RIGHT SIDEBAR -->
 
-  <section class="news-container">
+  <div class="sidebar-news">
 
-    <div class="news-card">
+    <div class="sidebar-top">
 
-      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
+      <h2>Most Read</h2>
 
-      <div class="news-content">
+      <a href="#">
+        View All →
+      </a>
 
-        <h3>Lamborghini Launches New Hybrid Supercar</h3>
+    </div>
 
-        <p>
-          Lamborghini unveils its latest futuristic hybrid
-          supercar with incredible speed and design.
-        </p>
+    <!-- NEWS ITEM -->
 
-        <a href="#" class="btn">Read More</a>
+    <div class="side-news-item">
+
+      <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=500&auto=format&fit=crop">
+
+      <div>
+
+        <span>16 hours ago</span>
+
+        <h3>
+          Judges Inquiry Committee investigating allegations...
+        </h3>
 
       </div>
 
     </div>
 
-    <div class="news-card">
+    <!-- NEWS ITEM -->
 
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop">
+    <div class="side-news-item">
 
-      <div class="news-content">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=500&auto=format&fit=crop">
 
-        <h3>BMW M5 2026 Officially Revealed</h3>
+      <div>
 
-        <p>
-          BMW introduces its next-generation M5 with
-          AI-powered driving features and luxury interiors.
-        </p>
+        <span>15 hours ago</span>
 
-        <a href="#" class="btn">Read More</a>
-
-      </div>
-
-    </div>
-
-    <div class="news-card">
-
-      <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="news-content">
-
-        <h3>Future Electric SUVs Coming Soon</h3>
-
-        <p>
-          Automobile companies are now preparing advanced
-          electric SUVs with futuristic technology.
-        </p>
-
-        <a href="#" class="btn">Read More</a>
+        <h3>
+          PM Modi calls for 100 billion US dollar investment...
+        </h3>
 
       </div>
 
     </div>
 
-  </section>
+    <!-- NEWS ITEM -->
 
-  <!-- FOOTER -->
+    <div class="side-news-item">
 
-  <footer>
+      <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=500&auto=format&fit=crop">
 
-    <p>© 2026 AutoNews. All Rights Reserved.</p>
+      <div>
 
-  </footer>
+        <span>12 hours ago</span>
 
-</body>
+        <h3>
+          US President says military strike was postponed...
+        </h3>
 
-</html>
+      </div>
+
+    </div>
+
+    <!-- NEWS ITEM -->
+
+    <div class="side-news-item">
+
+      <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=500&auto=format&fit=crop">
+
+      <div>
+
+        <span>6 hours ago</span>
+
+        <h3>
+          India and Nordic countries strengthen relations...
+        </h3>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+.breaking-news-section{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:35px;
+  padding:60px 8%;
+  background:#f3f4fa;
+}
+
+/* LEFT SIDE */
+
+.main-news{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.news-time{
+  color:#ff3c00;
+  font-size:14px;
+  font-weight:600;
+}
+
+.main-news h1{
+  margin:18px 0 25px;
+  font-size:38px;
+  line-height:1.3;
+  color:#111;
+}
+
+.main-news img{
+  width:100%;
+  border-radius:20px;
+  height:500px;
+  object-fit:cover;
+  margin-bottom:25px;
+}
+
+.main-news p{
+  color:#444;
+  line-height:1.9;
+  font-size:17px;
+}
+
+/* RIGHT SIDE */
+
+.sidebar-news{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.sidebar-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.sidebar-top h2{
+  color:#111;
+  font-size:30px;
+}
+
+.sidebar-top a{
+  color:#ff3c00;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.side-news-item{
+  display:flex;
+  gap:15px;
+  margin-bottom:22px;
+  padding-bottom:22px;
+  border-bottom:1px solid #eee;
+}
+
+.side-news-item img{
+  width:120px;
+  height:90px;
+  border-radius:14px;
+  object-fit:cover;
+}
+
+.side-news-item span{
+  color:#ff3c00;
+  font-size:13px;
+}
+
+.side-news-item h3{
+  color:#111;
+  font-size:16px;
+  line-height:1.5;
+  margin-top:8px;
+}
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+.breaking-news-section{
+grid-template-columns:1fr;
+}
+
+.main-news h1{
+font-size:30px;
+}
+
+.main-news img{
+height:350px;
+}
+
+}
+
+@media(max-width:600px){
+
+.main-news h1{
+font-size:24px;
+}
+
+.main-news img{
+height:250px;
+}
+
+.side-news-item{
+flex-direction:column;
+}
+
+.side-news-item img{
+width:100%;
+height:180px;
+}
+
+}
+
+</style>
