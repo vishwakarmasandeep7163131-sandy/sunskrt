@@ -482,3 +482,97 @@ body {
 
 </body>
 </html>
+<section class="my-contact-section">
+    <div class="contact-box">
+        <h2 class="contact-title">Contact <span class="orange-text">Details</span></h2>
+        
+        <div class="contact-info-item">
+            <span class="contact-label">Name:</span>
+            <span class="contact-value">Aapka Naam Here</span>
+        </div>
+        
+        <div class="contact-info-item">
+            <span class="contact-label">Email:</span>
+            <span class="contact-value">aapkaemail@example.com</span>
+        </div>
+        
+        <div class="contact-info-item">
+            <span class="contact-label">Phone:</span>
+            <span class="contact-value">+91 98765 43210</span>
+        </div>
+        
+        <div class="contact-info-item">
+            <span class="contact-label">Address:</span>
+            <span class="contact-value">Mumbai, Maharashtra, India</span>
+        </div>
+    </div>
+</section>
+
+<style>
+.my-contact-section {
+    padding: 40px 20px;
+    background: #131722; /* Same premium dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-box {
+    background: #1e222d; /* Lighter box for contrast */
+    border: 1px solid #2a2e39;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-title {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ff3c00;
+    padding-bottom: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.contact-title .orange-text {
+    color: #ff3c00;
+}
+
+.contact-info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    border-bottom: 1px solid #2a2e39;
+    padding-bottom: 8px;
+}
+
+.contact-info-item:last-child {
+    border-bottom: none;
+}
+
+.contact-label {
+    color: #848e9c; /* Grayish text for labels */
+    font-weight: bold;
+}
+
+.contact-value {
+    color: #ffffff; /* White text for your real data */
+    text-align: right;
+}
+
+@media (max-width: 480px) {
+    .contact-info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .contact-value {
+        text-align: left;
+    }
+}
+</style>
