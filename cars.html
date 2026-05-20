@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Car Banner Slider</title>
+<title>Car News Banner</title>
 
 <style>
 
@@ -15,23 +15,29 @@
 }
 
 body{
-  background:#f1f1f1;
+  background:#efefef;
   padding:20px;
+}
+
+/* MAIN */
+
+.container{
+  max-width:1150px;
+  margin:auto;
 }
 
 /* SLIDER */
 
-.banner-slider{
+.banner{
   width:100%;
-  max-width:1200px;
-  height:450px;
-  margin:auto;
+  height:500px;
   overflow:hidden;
-  border-radius:20px;
+  border-radius:18px;
   position:relative;
+  background:black;
 }
 
-.slider-track{
+.slides{
   display:flex;
   width:500%;
   height:100%;
@@ -42,70 +48,143 @@ body{
   width:20%;
   height:100%;
   position:relative;
+  flex-shrink:0;
 }
+
+/* IMPORTANT */
 
 .slide img{
   width:100%;
   height:100%;
-  object-fit:cover;
-  display:block;
+  object-fit:contain;
+  background:black;
 }
 
-/* BLACK OVERLAY */
+/* OVERLAY */
 
 .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
 }
 
 /* TEXT */
 
 .text{
   position:absolute;
-  left:40px;
-  bottom:40px;
+  left:25px;
+  bottom:25px;
+  z-index:10;
   color:white;
-  z-index:5;
-}
-
-.text span{
-  background:white;
-  color:black;
-  padding:6px 14px;
-  border-radius:5px;
-  font-size:14px;
-  font-weight:bold;
 }
 
 .text h1{
-  margin-top:15px;
   font-size:42px;
-  max-width:650px;
   line-height:1.2;
+  max-width:700px;
+}
+
+.tag{
+  background:white;
+  color:black;
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:5px;
+  margin-bottom:15px;
+  font-size:13px;
+  font-weight:bold;
 }
 
 /* DOTS */
 
-.navigation{
+.dots{
   position:absolute;
-  bottom:20px;
-  width:100%;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
   display:flex;
-  justify-content:center;
-  gap:10px;
-  z-index:10;
+  gap:8px;
+  z-index:20;
 }
 
-.navigation div{
-  width:12px;
-  height:12px;
+.dots span{
+  width:10px;
+  height:10px;
   background:white;
   border-radius:50%;
   opacity:0.5;
 }
 
-/* ANIMATION */
+/* SUGGESTED STORIES */
+
+.stories{
+  margin-top:25px;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+}
+
+.stories h2{
+  margin-bottom:20px;
+  font-size:28px;
+}
+
+.story-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.story{
+  background:#111;
+  border-radius:12px;
+  overflow:hidden;
+  color:white;
+  transition:0.3s;
+}
+
+.story:hover{
+  transform:translateY(-5px);
+}
+
+.story img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+}
+
+.story-text{
+  padding:12px;
+}
+
+.story-text h3{
+  font-size:18px;
+  line-height:1.4;
+}
+
+/* BUTTON */
+
+.more-btn{
+  margin-top:25px;
+  text-align:center;
+}
+
+.more-btn a{
+  display:inline-block;
+  padding:12px 30px;
+  border:2px solid black;
+  color:black;
+  text-decoration:none;
+  border-radius:50px;
+  transition:0.3s;
+}
+
+.more-btn a:hover{
+  background:black;
+  color:white;
+}
+
+/* SLIDER ANIMATION */
 
 @keyframes slider{
 
@@ -157,19 +236,26 @@ body{
 
 /* MOBILE */
 
-@media(max-width:768px){
+@media(max-width:900px){
 
-  .banner-slider{
-    height:300px;
-  }
-
-  .text{
-    left:20px;
-    bottom:20px;
+  .banner{
+    height:320px;
   }
 
   .text h1{
     font-size:24px;
+  }
+
+  .story-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:600px){
+
+  .story-grid{
+    grid-template-columns:1fr;
   }
 
 }
@@ -178,95 +264,157 @@ body{
 </head>
 <body>
 
-<div class="banner-slider">
+<div class="container">
 
-  <div class="slider-track">
+  <!-- BANNER -->
 
-    <!-- 1 -->
+  <div class="banner">
 
-    <div class="slide">
+    <div class="slides">
 
-      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop">
+      <!-- 1 -->
 
-      <div class="overlay"></div>
+      <div class="slide">
 
-      <div class="text">
-        <span>NEWS</span>
-        <h1>Mercedes AMG GT Coupe Revealed</h1>
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="overlay"></div>
+
+        <div class="text">
+          <div class="tag">NEWS</div>
+          <h1>2026 Mercedes-AMG GT 4-door Coupe revealed</h1>
+        </div>
+
+      </div>
+
+      <!-- 2 -->
+
+      <div class="slide">
+
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="overlay"></div>
+
+        <div class="text">
+          <div class="tag">SPORTS</div>
+          <h1>New Lamborghini Hybrid Supercar</h1>
+        </div>
+
+      </div>
+
+      <!-- 3 -->
+
+      <div class="slide">
+
+        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="overlay"></div>
+
+        <div class="text">
+          <div class="tag">REVIEW</div>
+          <h1>Porsche 911 Turbo 2026 Review</h1>
+        </div>
+
+      </div>
+
+      <!-- 4 -->
+
+      <div class="slide">
+
+        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="overlay"></div>
+
+        <div class="text">
+          <div class="tag">EV</div>
+          <h1>Electric Cars With AI Technology</h1>
+        </div>
+
+      </div>
+
+      <!-- 5 -->
+
+      <div class="slide">
+
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="overlay"></div>
+
+        <div class="text">
+          <div class="tag">TRENDING</div>
+          <h1>Ferrari Launches New Hypercar</h1>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- 2 -->
+    <!-- DOTS -->
 
-    <div class="slide">
-
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-      <div class="text">
-        <span>SPORTS</span>
-        <h1>Lamborghini New Hybrid Supercar</h1>
-      </div>
-
-    </div>
-
-    <!-- 3 -->
-
-    <div class="slide">
-
-      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1600&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-      <div class="text">
-        <span>EV</span>
-        <h1>Electric Cars With Future AI Tech</h1>
-      </div>
-
-    </div>
-
-    <!-- 4 -->
-
-    <div class="slide">
-
-      <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-      <div class="text">
-        <span>REVIEW</span>
-        <h1>Porsche 911 Turbo 2026 Review</h1>
-      </div>
-
-    </div>
-
-    <!-- 5 -->
-
-    <div class="slide">
-
-      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-      <div class="text">
-        <span>TRENDING</span>
-        <h1>Ferrari Launches New Hypercar</h1>
-      </div>
-
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
   </div>
 
-  <!-- DOTS -->
+  <!-- STORIES -->
 
-  <div class="navigation">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="stories">
+
+    <h2>Suggested Stories</h2>
+
+    <div class="story-grid">
+
+      <div class="story">
+
+        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="story-text">
+          <h3>Mercedes AMG GT 4-Door Coupe EV</h3>
+        </div>
+
+      </div>
+
+      <div class="story">
+
+        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="story-text">
+          <h3>Norton Manx R Quick Review</h3>
+        </div>
+
+      </div>
+
+      <div class="story">
+
+        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="story-text">
+          <h3>Skoda Epic EV Revealed</h3>
+        </div>
+
+      </div>
+
+      <div class="story">
+
+        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="story-text">
+          <h3>Honda NX500 E-Clutch In India</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="more-btn">
+      <a href="#">View More Stories</a>
+    </div>
+
   </div>
 
 </div>
