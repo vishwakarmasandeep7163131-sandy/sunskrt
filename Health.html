@@ -353,9 +353,9 @@ window.location.href =
 
 body{
     background:#f3f5fb;
-    padding:30px;
+    padding:15px;
+    overflow-x:hidden;
 }
-
 /* SECTION TITLE */
 
 .section-title{
@@ -368,11 +368,14 @@ body{
 /* GRID */
 
 .health-grid{
+    width:100%;
+    max-width:100%;
+    margin:auto;
+
     display:grid;
     grid-template-columns:2fr 1fr;
-    gap:30px;
-    max-width:1400px;
-    margin:auto;
+
+    gap:20px;
 }
 
 /* LEFT BIG CARD */
@@ -401,11 +404,10 @@ body{
 }
 
 .main-title{
-    font-size:42px;
-    line-height:1.3;
+    font-size:34px;
+    line-height:1.4;
     margin-bottom:20px;
 }
-
 .main-title a{
     text-decoration:none;
     color:#111;
@@ -525,6 +527,17 @@ body{
 
 @media(max-width:991px){
 
+  body{
+    padding:10px;
+}
+
+.section-title{
+    font-size:30px;
+}
+
+.main-title{
+    font-size:24px;
+}
 .health-grid{
     grid-template-columns:1fr;
 }
