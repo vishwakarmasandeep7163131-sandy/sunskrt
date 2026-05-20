@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoDrive News</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0f0f0f;
+      color:#fff;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#111;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      border-bottom:1px solid #222;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#ff3c00;
+    }
+
+    .menu{
+      display:flex;
+      gap:25px;
+    }
+
+    .menu a{
+      transition:0.3s;
+      font-size:15px;
+    }
+
+    .menu a:hover{
+      color:#ff3c00;
+    }
+
+    /* HERO */
+
+    .hero{
+      height:90vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      padding:0 8%;
+    }
+
+    .hero-content{
+      max-width:700px;
+    }
+
+    .hero h1{
+      font-size:60px;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      color:#ddd;
+      margin-bottom:30px;
+      font-size:18px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      background:#ff3c00;
+      border-radius:10px;
+      transition:0.3s;
+      font-weight:600;
+    }
+
+    .btn:hover{
+      background:#ff5722;
+      transform:translateY(-3px);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:80px 8%;
+    }
+
+    .section-title{
+      font-size:35px;
+      margin-bottom:40px;
+      position:relative;
+    }
+
+    .section-title::after{
+      content:'';
+      width:80px;
+      height:4px;
+      background:#ff3c00;
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      border-radius:10px;
+    }
+
+    /* NEWS CARDS */
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#181818;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      border:1px solid #222;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      font-size:22px;
+    }
+
+    .card p{
+      color:#bbb;
+      font-size:14px;
+      line-height:1.7;
+      margin-bottom:20px;
+    }
+
+    .read-btn{
+      color:#ff3c00;
+      font-weight:600;
+    }
+
+    /* BLOG */
+
+    .blog{
+      background:#141414;
+      border-radius:25px;
+      padding:50px;
+      text-align:center;
+    }
+
+    .blog h2{
+      font-size:40px;
+      margin-bottom:20px;
+    }
+
+    .blog p{
+      color:#ccc;
+      margin-bottom:30px;
+      line-height:1.8;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#080808;
+      padding:40px 8%;
+      text-align:center;
+      border-top:1px solid #222;
+    }
+
+    footer p{
+      color:#aaa;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:40px;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .hero{
+        height:75vh;
+      }
+
+      .blog{
+        padding:30px 20px;
+      }
+
+      .blog h2{
+        font-size:30px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="ticker-main-container">
+    <div class="stock-left-heading">
+        <span class="live-pulse-dot"></span>
+        <span class="heading-text">STOCK MARKET <span class="highlight-text">UPDATES</span></span>
+    </div>
+
+    <div class="top-ticker-wrapper">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Container to hold Heading and Ticker side by side */
+.ticker-main-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #131722; /* TradingView Theme Dark Color */
+    border-bottom: 1px solid #2a2e39;
+    position: relative;
+    z-index: 99999;
+    overflow: hidden;
+}
+
+/* Left Side Heading Style */
+.stock-left-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #1e222d; /* Slightly lighter dark for contrast */
+    padding: 10px 20px;
+    white-space: nowrap;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    z-index: 2; /* Ticker ke upar layer rakhne ke liye */
+}
+
+.stock-left-heading .heading-text {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.stock-left-heading .highlight-text {
+    color: #ff3c00; /* Neon Orange/Red Alert Color */
+}
+
+/* Green Live Blinking Dot */
+.live-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff66;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse-animation 1.5s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 255, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
+}
+
+/* Right Side Ticker Wrapper */
+.top-ticker-wrapper {
+    flex-grow: 1;
+    z-index: 1;
+}
+
+/* Mobile Screens Ke Liye Adjustments */
+@media (max-width: 768px) {
+    .stock-left-heading {
+        padding: 8px 10px;
+    }
+    .stock-left-heading .heading-text {
+        font-size: 11px;
+    }
+}
+</style>
+
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{
+  "symbols": [
+    { "proName": "INDEX:SENSEX", "title": "SENSEX" },
+    { "proName": "TVC:GOLD", "title": "GOLD (SONA)" },
+    { "proName": "TVC:SILVER", "title": "SILVER (CHANDI)" },
+    { "proName": "BSE:RELIANCE", "title": "RELIANCE" },
+    { "proName": "BSE:TCS", "title": "TCS" },
+    { "proName": "BSE:HDFCBANK", "title": "HDFC BANK" },
+    { "proName": "BSE:INFY", "title": "INFOSYS" },
+    { "proName": "FX_IDC:INRUSD", "title": "USD TO INR" }
+  ],
+  "showSymbolLogo": true,
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+</script>
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="logo">AutoDrive</div>
+    <!-- SEARCH BAR -->
+
+<div class="search-box">
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search latest news..."
+  >
+
+  <button onclick="searchNews()">
+    Search
+  </button>
+
+</div>
+
+<style>
+.search-box{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  padding:30px 8%;
+  background:#111;
+  flex-wrap:wrap;
+}
+
+.search-box input{
+  width:450px;
+  max-width:100%;
+  padding:10px 20px;
+  border:none;
+  outline:none;
+  border-radius:12px;
+  background:#1c1c1c;
+  color:#fff;
+  font-size:16px;
+  border:1px solid #333;
+}
+
+.search-box button{
+  padding:10px 14px;
+  border:none;
+  border-radius:12px;
+  background:#ff3c00;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.search-box button:hover{
+  background:#ff5722;
+  transform:translateY(-2px);
+}
+
+</style>
+
+<script>
+
+function searchNews(){
+
+const searchValue =
+document.getElementById("searchInput").value;
+
+if(searchValue.trim() !== ""){
+
+window.location.href =
+`https://www.google.com/search?q=${searchValue}+latest+news`;
+
+}
+
+}
+
+</script>
+
+    <div class="menu">
+      <a href="Home.html">Home</a>
+      <a href="Sports.html">Sports</a>
+      <a href="Health.html">Health</a>
+      <a href="cars.html">Cars</a>
+      <a href="News.html">News</a>
+      <a href="About.html">About</a>
+      <a href="Contect.html">Contect</a>
+    </div>
+  </nav>
+  <!-- HERO -->
+
+ <section class="hero" id="hero">
+
+  <div class="hero-content">
+
+    <span class="live-tag">🔴 LIVE NEWS</span>
+
+    <h1 id="title">
+      Loading Live News...
+    </h1>
+
+    <p id="desc">
+      Latest world and Indian news updates.
+    </p>
+
+    <a href="news.html" class="btn">
+      Explore News
+    </a>
+
+  </div>
+
+</section>
+
+<style>
+
+.live-tag{
+  display:inline-block;
+  background:red;
+  padding:10px 18px;
+  border-radius:50px;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:20px;
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+0%{opacity:1;}
+50%{opacity:0.5;}
+100%{opacity:1;}
+
+}
+
+</style>
+
+<script>
+
+const news = [
+
+{
+title:"Breaking World News Updates",
+desc:"Latest international headlines and politics updates.",
+image:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Indian Stock Market Surges",
+desc:"Sensex and Nifty gain strongly in today's market session.",
+image:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Tesla Launches AI Driving System",
+desc:"Tesla introduces advanced autonomous driving technology.",
+image:"https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Political Leaders Meet For Summit",
+desc:"World leaders gather for important global discussions.",
+image:"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=1600&auto=format&fit=crop"
+},
+
+{
+title:"Future EV Cars Coming In 2026",
+desc:"Automobile companies prepare futuristic electric vehicles.",
+image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop"
+}
+
+];
+
+let current = 0;
+
+const title = document.getElementById("title");
+const desc = document.getElementById("desc");
+const hero = document.getElementById("hero");
+
+function changeNews(){
+
+current++;
+
+if(current >= news.length){
+current = 0;
+}
+
+title.innerText = news[current].title;
+
+desc.innerText = news[current].desc;
+
+hero.style.background =
+`linear-gradient(rgba(0,0,0,0.6),
+rgba(0,0,0,0.7)),
+url('${news[current].image}')`;
+
+hero.style.backgroundSize = "cover";
+hero.style.backgroundPosition = "center";
+
+}
+
+setInterval(changeNews,4000);
+
+</script>
+
+  <!-- TRENDING NEWS -->
+
+  <section>
+
+    <h2 class="section-title">Trending News</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>New Lamborghini Revealed</h3>
+
+          <p>
+            Lamborghini unveils its latest V12 hybrid supercar with
+            futuristic design and incredible performance.
+          </p>
+
+          <a href="#" class="read-btn">Read More →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Future Electric SUVs</h3>
+
+          <p>
+            Top automobile companies are now focusing on next generation
+            electric SUVs with AI technology.
+          </p>
+
+          <a href="#" class="read-btn">Read More →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>BMW M Series Update</h3>
+
+          <p>
+            BMW launches new M performance lineup with upgraded engine,
+            luxury interiors and sporty design.
+          </p>
+
+          <a href="#" class="read-btn">Read More →</a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+<!-- MANUAL NEWS UPDATE SECTION -->
+
+<section class="manual-news">
+
+  <h2 class="news-heading">Latest News Updates</h2>
+
+  <div class="news-grid">
+
+    <!-- NEWS CARD 1 -->
+    <div class="news-card">
+
+      <!-- IMAGE URL YAHAN PASTE KARO -->
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-info">
+
+        <!-- NEWS TITLE -->
+        <h3>
+          Lamborghini Launches New Supercar
+        </h3>
+
+        <!-- NEWS DESCRIPTION -->
+        <p>
+          Lamborghini reveals futuristic hybrid technology
+          with premium performance and design.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- NEWS CARD 2 -->
+    <div class="news-card">
+
+      <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-info">
+
+        <h3>
+          Stock Market Hits Record High
+        </h3>
+
+        <p>
+          Sensex and Nifty surge strongly as investors
+          return to the market.
+        </p>
+
+      </div>
+
+    </div>
+
+   <!-- NEWS CARD 3 -->
+    <div class="news-card">
+
+      <!-- IMAGE URL YAHAN PASTE KARO -->
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-info">
+
+        <!-- NEWS TITLE -->
+        <h3>
+          Lamborghini Launches New Supercar
+        </h3>
+
+        <!-- NEWS DESCRIPTION -->
+        <p>
+          Lamborghini reveals futuristic hybrid technology
+          with premium performance and design.
+        </p>
+
+      </div>
+
+    </div>
+
+     <!-- NEWS CARD 4 -->
+    <div class="news-card">
+
+      <!-- IMAGE URL YAHAN PASTE KARO -->
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-info">
+
+        <!-- NEWS TITLE -->
+        <h3>
+          Lamborghini Launches New Supercar
+        </h3>
+
+        <!-- NEWS DESCRIPTION -->
+        <p>
+          Lamborghini reveals futuristic hybrid technology
+          with premium performance and design.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- NEWS CARD 5 -->
+    <div class="news-card">
+
+      <!-- IMAGE URL YAHAN PASTE KARO -->
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-info">
+
+        <!-- NEWS TITLE -->
+        <h3>
+          Lamborghini Launches New Supercar
+        </h3>
+
+        <!-- NEWS DESCRIPTION -->
+        <p>
+          Lamborghini reveals futuristic hybrid technology
+          with premium performance and design.
+        </p>
+
+      </div>
+
+    </div>
+    
+</section>
+
+<style>
+
+.manual-news{
+  padding:80px 8%;
+  background:#0f0f0f;
+}
+
+.news-heading{
+  font-size:38px;
+  margin-bottom:40px;
+  color:#fff;
+}
+
+.news-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:20px;
+}
+
+@media(max-width:1200px){
+
+.news-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+@media(max-width:768px){
+
+.news-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:500px){
+
+.news-grid{
+grid-template-columns:1fr;
+}
+
+}
+.news-card{
+  background:#181818;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid #222;
+  transition:0.3s;
+}
+
+.news-card:hover{
+  transform:translateY(-8px);
+}
+
+.news-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.news-info{
+  padding:20px;
+}
+
+.news-info h3{
+  color:#fff;
+  font-size:24px;
+  margin-bottom:15px;
+}
+
+.news-info p{
+  color:#bbb;
+  line-height:1.7;
+  font-size:15px;
+}
+
+@media(max-width:768px){
+
+.news-heading{
+font-size:28px;
+}
+
+.news-card img{
+height:180px;
+}
+
+}
+
+</style>
+  <!-- BLOG SECTION -->
+
+  <section>
+
+    <div class="blog">
+
+      <h2>Daily Car Blog & Reviews</h2>
+
+      <p>
+        Stay updated with the latest automotive industry trends,
+        EV technology, car launches, expert reviews and premium
+        automobile content every day.
+      </p>
+
+      <a href="#" class="btn">Visit Blog</a>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <!-- FOOTER -->
+
+<footer class="main-footer">
+
+  <div class="footer-container">
+
+    <!-- LOGO & ABOUT -->
+
+    <div class="footer-box">
+
+      <h2 class="footer-logo">
+        AutoDrive
+      </h2>
+
+      <p>
+        Latest automobile, stock market,
+        political and world news updates
+        every day with premium coverage.
+      </p>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+
+    <div class="footer-box">
+
+      <h3>Quick Links</h3>
+
+      <a href="index.html">Home</a>
+      <a href="cars.html">Cars</a>
+      <a href="News.html">News</a>
+      <a href="About.html">About</a>
+      <a href="Contect.html">Contact</a>
+
+    </div>
+
+    <!-- CATEGORIES -->
+
+    <div class="footer-box">
+
+      <h3>Categories</h3>
+
+      <a href="#">Automobile</a>
+      <a href="#">Politics</a>
+      <a href="#">Stock Market</a>
+      <a href="#">Technology</a>
+      <a href="#">World News</a>
+
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+
+    <div class="footer-box">
+
+      <h3>Follow Us</h3>
+
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">YouTube</a>
+
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT -->
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 AutoDrive News. All Rights Reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+<style>
+
+.main-footer{
+  background:#080808;
+  padding:70px 8% 20px;
+  border-top:1px solid #222;
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.footer-box h3{
+  margin-bottom:20px;
+  font-size:22px;
+  color:#fff;
+}
+
+.footer-logo{
+  font-size:30px;
+  color:#ff3c00;
+  margin-bottom:20px;
+}
+
+.footer-box p{
+  color:#aaa;
+  line-height:1.8;
+  font-size:15px;
+}
+
+.footer-box a{
+  display:block;
+  margin-bottom:12px;
+  color:#bbb;
+  transition:0.3s;
+  font-size:15px;
+}
+
+.footer-box a:hover{
+  color:#ff3c00;
+  padding-left:5px;
+}
+
+.footer-bottom{
+  margin-top:50px;
+  padding-top:20px;
+  border-top:1px solid #222;
+  text-align:center;
+}
+
+.footer-bottom p{
+  color:#777;
+  font-size:14px;
+}
+
+@media(max-width:768px){
+
+.footer-container{
+gap:30px;
+}
+
+.footer-logo{
+font-size:26px;
+}
+
+}
+
+</style>
