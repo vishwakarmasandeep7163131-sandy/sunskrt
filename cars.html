@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luxury Cars</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Cars</title>
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -14,138 +15,136 @@
     }
 
     body{
-      background:#0f0f0f;
+      background:#000;
       color:white;
     }
 
-    header{
-      background:#111;
-      padding:15px 8%;
+    .topbar{
+      width:100%;
+      padding:20px 8%;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      position:sticky;
-      top:0;
-      z-index:1000;
+      background:#111;
     }
 
     .logo{
-      font-size:28px;
+      font-size:32px;
       font-weight:bold;
-      color:#ff3c00;
+      color:#ff0000;
     }
 
-    nav a{
+    .menu a{
       color:white;
       text-decoration:none;
-      margin-left:25px;
+      margin-left:20px;
       transition:0.3s;
     }
 
-    nav a:hover{
-      color:#ff3c00;
+    .menu a:hover{
+      color:#ff0000;
     }
 
-    .hero{
-      height:90vh;
-      background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    .banner{
+      width:100%;
+      height:85vh;
+      background:url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1600&auto=format&fit=crop') no-repeat center center/cover;
       display:flex;
       align-items:center;
-      padding:0 8%;
+      padding-left:8%;
       position:relative;
     }
 
-    .hero::before{
+    .banner::before{
       content:'';
       position:absolute;
       inset:0;
-      background:rgba(0,0,0,0.55);
+      background:rgba(0,0,0,0.6);
     }
 
-    .hero-content{
+    .banner-text{
       position:relative;
-      max-width:600px;
       z-index:2;
+      max-width:600px;
     }
 
-    .hero h1{
-      font-size:60px;
+    .banner-text h1{
+      font-size:65px;
       margin-bottom:20px;
     }
 
-    .hero p{
+    .banner-text p{
       font-size:18px;
       line-height:1.7;
-      margin-bottom:30px;
       color:#ddd;
+      margin-bottom:25px;
     }
 
     .btn{
       display:inline-block;
       padding:14px 35px;
-      background:#ff3c00;
+      background:red;
       color:white;
       text-decoration:none;
-      border-radius:5px;
+      border-radius:50px;
       transition:0.3s;
     }
 
     .btn:hover{
       background:white;
-      color:#111;
+      color:black;
     }
 
-    .cars{
+    .section{
       padding:70px 8%;
     }
 
-    .section-title{
+    .title{
       text-align:center;
-      font-size:40px;
+      font-size:42px;
       margin-bottom:50px;
     }
 
-    .car-grid{
+    .cards{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:30px;
     }
 
-    .car-card{
-      background:#1b1b1b;
-      border-radius:15px;
+    .card{
+      background:#111;
+      border-radius:20px;
       overflow:hidden;
       transition:0.4s;
     }
 
-    .car-card:hover{
-      transform:translateY(-10px);
+    .card:hover{
+      transform:scale(1.03);
     }
 
-    .car-card img{
+    .card img{
       width:100%;
       height:220px;
       object-fit:cover;
     }
 
-    .car-info{
+    .content{
       padding:20px;
     }
 
-    .car-info h3{
+    .content h2{
       margin-bottom:10px;
-      font-size:24px;
     }
 
-    .car-info p{
+    .content p{
       color:#bbb;
       line-height:1.6;
       margin-bottom:15px;
     }
 
     .price{
-      color:#ff3c00;
-      font-size:22px;
+      color:red;
+      font-size:24px;
       font-weight:bold;
     }
 
@@ -153,99 +152,116 @@
       background:#111;
       text-align:center;
       padding:25px;
-      margin-top:60px;
       color:#aaa;
+      margin-top:50px;
     }
 
     @media(max-width:768px){
 
-      .hero h1{
-        font-size:40px;
+      .banner-text h1{
+        font-size:42px;
       }
 
-      nav{
+      .menu{
         display:none;
       }
 
     }
 
   </style>
+
 </head>
 <body>
 
-  <header>
-    <div class="logo">CARZONE</div>
+  <div class="topbar">
 
-    <nav>
+    <div class="logo">AUTO X</div>
+
+    <div class="menu">
       <a href="#">Home</a>
       <a href="#">Cars</a>
-      <a href="#">Sports</a>
-      <a href="#">Luxury</a>
+      <a href="#">Reviews</a>
+      <a href="#">News</a>
       <a href="#">Contact</a>
-    </nav>
-  </header>
+    </div>
 
-  <section class="hero">
+  </div>
 
-    <div class="hero-content">
-      <h1>Drive Your Dream Car</h1>
+  <section class="banner">
+
+    <div class="banner-text">
+
+      <h1>Future Of Speed</h1>
 
       <p>
-        Explore the latest luxury and sports cars with amazing speed,
-        premium design, and powerful performance.
+        Discover premium sports cars with powerful performance,
+        advanced technology, and stunning design.
       </p>
 
-      <a href="#" class="btn">Explore Cars</a>
+      <a href="#" class="btn">View Cars</a>
+
     </div>
 
   </section>
 
-  <section class="cars">
+  <section class="section">
 
-    <h2 class="section-title">Featured Cars</h2>
+    <h2 class="title">Popular Cars</h2>
 
-    <div class="car-grid">
+    <div class="cards">
 
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1200&auto=format&fit=crop" alt="BMW">
+      <div class="card">
 
-        <div class="car-info">
-          <h3>BMW M4</h3>
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="content">
+
+          <h2>Lamborghini</h2>
 
           <p>
-            Powerful engine with sporty design and luxury interior.
+            A luxury sports car with aggressive styling and powerful engine.
           </p>
 
-          <div class="price">₹1.5 Cr</div>
+          <div class="price">₹4.5 Cr</div>
+
         </div>
+
       </div>
 
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop" alt="Audi">
+      <div class="card">
 
-        <div class="car-info">
-          <h3>Audi R8</h3>
+        <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="content">
+
+          <h2>Ferrari</h2>
 
           <p>
-            High-performance supercar with stunning road presence.
+            Iconic Italian supercar with unmatched speed and elegance.
           </p>
 
-          <div class="price">₹2.3 Cr</div>
+          <div class="price">₹5.2 Cr</div>
+
         </div>
+
       </div>
 
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1200&auto=format&fit=crop" alt="Mercedes">
+      <div class="card">
 
-        <div class="car-info">
-          <h3>Mercedes AMG</h3>
+        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="content">
+
+          <h2>Porsche</h2>
 
           <p>
-            Elegant luxury combined with thrilling driving experience.
+            High-performance luxury car built for speed lovers.
           </p>
 
-          <div class="price">₹1.9 Cr</div>
+          <div class="price">₹2.1 Cr</div>
+
         </div>
+
       </div>
 
     </div>
@@ -253,7 +269,7 @@
   </section>
 
   <footer>
-    © 2026 CARZONE | All Rights Reserved
+    © 2026 AUTO X | Designed For Car Lovers
   </footer>
 
 </body>
