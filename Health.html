@@ -18,134 +18,131 @@
 }
 
 body{
-    background:#eef0f7;
-    padding:20px;
+    background:#f3f5fb;
+    padding:30px;
 }
 
-/* MAIN CONTAINER */
+/* SECTION TITLE */
 
-.container{
-    max-width:1300px;
-    margin:auto;
+.section-title{
+    font-size:40px;
+    color:#111;
+    margin-bottom:35px;
+    font-weight:700;
+}
+
+/* GRID */
+
+.health-grid{
     display:grid;
     grid-template-columns:2fr 1fr;
     gap:30px;
+    max-width:1400px;
+    margin:auto;
 }
 
-/* LEFT SIDE */
+/* LEFT BIG CARD */
 
-.left-health h2{
-    font-size:34px;
-    margin-bottom:25px;
-    color:#000;
-}
-
-.health-card{
-    display:flex;
-    gap:20px;
-    margin-bottom:25px;
+.main-health{
     background:#fff;
-    border-radius:15px;
+    border-radius:20px;
     overflow:hidden;
-    padding:15px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    transition:0.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
-.health-card:hover{
-    transform:translateY(-5px);
-}
-
-.health-image{
-    width:280px;
-    height:180px;
-    flex-shrink:0;
-}
-
-.health-image img{
+.main-health img{
     width:100%;
-    height:100%;
+    height:420px;
     object-fit:cover;
-    border-radius:10px;
 }
 
-.health-content{
-    flex:1;
+.main-content{
+    padding:30px;
 }
 
-.health-date{
+.main-date{
     color:#ff3c00;
-    font-size:13px;
-    margin-bottom:8px;
-}
-
-.health-title{
-    font-size:30px;
-    font-weight:700;
-    line-height:1.3;
+    font-size:14px;
     margin-bottom:12px;
 }
 
-.health-title a{
+.main-title{
+    font-size:42px;
+    line-height:1.3;
+    margin-bottom:20px;
+}
+
+.main-title a{
     text-decoration:none;
     color:#111;
 }
 
-.health-title a:hover{
-    color:#0d6efd;
+.main-desc{
+    color:#666;
+    line-height:1.8;
+    font-size:16px;
+    margin-bottom:20px;
 }
 
-.health-desc{
-    color:#555;
-    line-height:1.7;
-    font-size:15px;
+.read-btn{
+    display:inline-block;
+    padding:12px 30px;
+    background:#ff3c00;
+    color:#fff;
+    text-decoration:none;
+    border-radius:10px;
+    transition:0.3s;
+    font-weight:600;
 }
 
-.views{
-    margin-top:12px;
-    color:#777;
-    font-size:14px;
+.read-btn:hover{
+    background:#ff5722;
 }
 
 /* RIGHT SIDE */
 
-.right-health h2{
-    font-size:34px;
-    margin-bottom:25px;
-    color:#000;
+.side-news{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
-.small-health{
+.small-card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
     display:flex;
     gap:15px;
-    margin-bottom:20px;
-    background:#fff;
-    padding:10px;
-    border-radius:12px;
+    padding:12px;
     box-shadow:0 3px 10px rgba(0,0,0,0.06);
+    transition:0.3s;
 }
 
-.small-health img{
-    width:120px;
-    height:80px;
+.small-card:hover{
+    transform:translateY(-4px);
+}
+
+.small-card img{
+    width:140px;
+    height:100px;
     object-fit:cover;
-    border-radius:8px;
+    border-radius:10px;
 }
 
 .small-content{
     flex:1;
 }
 
-.small-time{
+.small-date{
     color:#ff3c00;
     font-size:13px;
-    margin-bottom:5px;
+    margin-bottom:8px;
 }
 
 .small-title{
-    font-size:15px;
-    font-weight:600;
+    font-size:18px;
     line-height:1.5;
+    margin-bottom:10px;
 }
 
 .small-title a{
@@ -153,12 +150,7 @@ body{
     color:#111;
 }
 
-.small-title a:hover{
-    color:#0d6efd;
-}
-
 .small-views{
-    margin-top:5px;
     color:#777;
     font-size:13px;
 }
@@ -168,9 +160,8 @@ body{
 .pagination{
     display:flex;
     justify-content:center;
-    align-items:center;
     gap:10px;
-    margin-top:40px;
+    margin-top:50px;
     flex-wrap:wrap;
 }
 
@@ -181,12 +172,11 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    text-decoration:none;
     background:#1e1e72;
     color:#fff;
+    text-decoration:none;
     border-radius:6px;
     font-weight:600;
-    transition:0.3s;
 }
 
 .pagination a:hover{
@@ -201,21 +191,25 @@ body{
 
 @media(max-width:991px){
 
-.container{
+.health-grid{
     grid-template-columns:1fr;
 }
 
-.health-card{
+.main-health img{
+    height:250px;
+}
+
+.main-title{
+    font-size:28px;
+}
+
+.small-card{
     flex-direction:column;
 }
 
-.health-image{
+.small-card img{
     width:100%;
-    height:220px;
-}
-
-.health-title{
-    font-size:24px;
+    height:200px;
 }
 
 }
@@ -225,111 +219,37 @@ body{
 
 <body>
 
-<div class="container">
+<h1 class="section-title">
+Health News
+</h1>
 
-    <!-- LEFT HEALTH NEWS -->
+<div class="health-grid">
 
-    <div class="left-health">
+    <!-- LEFT BIG NEWS -->
 
-        <h2>Health</h2>
+    <div class="main-health">
 
-        <!-- NEWS 1 -->
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1400&auto=format&fit=crop">
 
-        <div class="health-card">
+        <div class="main-content">
 
-            <div class="health-image">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop">
+            <div class="main-date">
+                May 20, 2026 • 8:00 AM
             </div>
 
-            <div class="health-content">
+            <h2 class="main-title">
+                <a href="#">
+                    WHO launches global campaign for better mental health awareness
+                </a>
+            </h2>
 
-                <div class="health-date">
-                    May 20, 2026 8:00 AM
-                </div>
+            <p class="main-desc">
+                Health experts from around the world are encouraging people to focus on stress management, sleep quality, and healthy lifestyles.
+            </p>
 
-                <div class="health-title">
-                    <a href="#">
-                        WHO warns against rising stress levels among youth
-                    </a>
-                </div>
-
-                <div class="health-desc">
-                    Health experts advised maintaining balanced lifestyle habits, sleep cycles and physical activity to reduce stress.
-                </div>
-
-                <div class="views">
-                    👁 425
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- NEWS 2 -->
-
-        <div class="health-card">
-
-            <div class="health-image">
-                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop">
-            </div>
-
-            <div class="health-content">
-
-                <div class="health-date">
-                    May 20, 2026 7:45 AM
-                </div>
-
-                <div class="health-title">
-                    <a href="#">
-                        Doctors recommend daily walking for heart health
-                    </a>
-                </div>
-
-                <div class="health-desc">
-                    Cardiologists say 30 minutes of walking every day can improve heart health and reduce disease risks.
-                </div>
-
-                <div class="views">
-                    👁 362
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- NEWS 3 -->
-
-        <div class="health-card">
-
-            <div class="health-image">
-                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop">
-            </div>
-
-            <div class="health-content">
-
-                <div class="health-date">
-                    May 20, 2026 7:10 AM
-                </div>
-
-                <div class="health-title">
-                    <a href="#">
-                        New nutrition campaign launched across India
-                    </a>
-                </div>
-
-                <div class="health-desc">
-                    Government launched awareness programs promoting healthy food habits and nutrition among children.
-                </div>
-
-                <div class="views">
-                    👁 298
-                </div>
-
-            </div>
+            <a href="#" class="read-btn">
+                Read Full Story
+            </a>
 
         </div>
 
@@ -337,25 +257,23 @@ body{
 
 
 
-    <!-- RIGHT SIDE -->
+    <!-- RIGHT SMALL NEWS -->
 
-    <div class="right-health">
+    <div class="side-news">
 
-        <h2>Trending Health</h2>
+        <div class="small-card">
 
-        <div class="small-health">
-
-            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop">
 
             <div class="small-content">
 
-                <div class="small-time">
+                <div class="small-date">
                     2 hours ago
                 </div>
 
                 <div class="small-title">
                     <a href="#">
-                        Yoga and meditation improve mental wellness
+                        Doctors recommend daily exercise for stronger immunity
                     </a>
                 </div>
 
@@ -369,19 +287,19 @@ body{
 
 
 
-        <div class="small-health">
+        <div class="small-card">
 
-            <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1200&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1200&auto=format&fit=crop">
 
             <div class="small-content">
 
-                <div class="small-time">
-                    1 hour ago
+                <div class="small-date">
+                    3 hours ago
                 </div>
 
                 <div class="small-title">
                     <a href="#">
-                        Experts suggest reducing sugar consumption
+                        Nutrition experts suggest reducing sugar intake
                     </a>
                 </div>
 
@@ -395,19 +313,19 @@ body{
 
 
 
-        <div class="small-health">
+        <div class="small-card">
 
-            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1200&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop">
 
             <div class="small-content">
 
-                <div class="small-time">
-                    3 hours ago
+                <div class="small-date">
+                    4 hours ago
                 </div>
 
                 <div class="small-title">
                     <a href="#">
-                        Healthy eating habits can boost immunity
+                        Yoga and meditation improve mental wellness
                     </a>
                 </div>
 
