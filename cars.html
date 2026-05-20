@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Car News Slider</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Banner Slider</title>
 
 <style>
 
@@ -11,48 +11,47 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 body{
-  background:#ececec;
+  background:#f1f1f1;
   padding:20px;
 }
 
-/* MAIN SLIDER */
+/* SLIDER */
 
-.slider{
+.banner-slider{
   width:100%;
   max-width:1200px;
-  height:500px;
+  height:450px;
   margin:auto;
   overflow:hidden;
-  border-radius:18px;
+  border-radius:20px;
   position:relative;
-  box-shadow:0 5px 20px rgba(0,0,0,0.2);
 }
 
-.slides{
+.slider-track{
+  display:flex;
   width:500%;
   height:100%;
-  display:flex;
-  animation:slide 20s infinite;
+  animation:slider 25s infinite;
 }
 
 .slide{
-  width:100%;
+  width:20%;
   height:100%;
   position:relative;
-  flex-shrink:0;
 }
 
 .slide img{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
 }
 
-/* DARK OVERLAY */
+/* BLACK OVERLAY */
 
 .overlay{
   position:absolute;
@@ -62,44 +61,43 @@ body{
 
 /* TEXT */
 
-.content{
+.text{
   position:absolute;
   left:40px;
   bottom:40px;
   color:white;
-  z-index:2;
+  z-index:5;
 }
 
-.tag{
+.text span{
   background:white;
   color:black;
-  display:inline-block;
-  padding:6px 12px;
+  padding:6px 14px;
   border-radius:5px;
-  font-size:13px;
+  font-size:14px;
   font-weight:bold;
-  margin-bottom:15px;
 }
 
-.content h1{
-  font-size:45px;
-  max-width:700px;
+.text h1{
+  margin-top:15px;
+  font-size:42px;
+  max-width:650px;
   line-height:1.2;
 }
 
 /* DOTS */
 
-.dots{
+.navigation{
   position:absolute;
   bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
+  width:100%;
   display:flex;
+  justify-content:center;
   gap:10px;
-  z-index:5;
+  z-index:10;
 }
 
-.dots span{
+.navigation div{
   width:12px;
   height:12px;
   background:white;
@@ -107,59 +105,84 @@ body{
   opacity:0.5;
 }
 
-/* AUTO SLIDE */
+/* ANIMATION */
 
-@keyframes slide{
+@keyframes slider{
 
-  0%{margin-left:0%;}
-  15%{margin-left:0%;}
+  0%{
+    transform:translateX(0%);
+  }
 
-  20%{margin-left:-100%;}
-  35%{margin-left:-100%;}
+  15%{
+    transform:translateX(0%);
+  }
 
-  40%{margin-left:-200%;}
-  55%{margin-left:-200%;}
+  20%{
+    transform:translateX(-20%);
+  }
 
-  60%{margin-left:-300%;}
-  75%{margin-left:-300%;}
+  35%{
+    transform:translateX(-20%);
+  }
 
-  80%{margin-left:-400%;}
-  95%{margin-left:-400%;}
+  40%{
+    transform:translateX(-40%);
+  }
 
-  100%{margin-left:0%;}
+  55%{
+    transform:translateX(-40%);
+  }
+
+  60%{
+    transform:translateX(-60%);
+  }
+
+  75%{
+    transform:translateX(-60%);
+  }
+
+  80%{
+    transform:translateX(-80%);
+  }
+
+  95%{
+    transform:translateX(-80%);
+  }
+
+  100%{
+    transform:translateX(0%);
+  }
+
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
-  .slider{
-    height:320px;
+  .banner-slider{
+    height:300px;
   }
 
-  .content{
+  .text{
     left:20px;
-    bottom:25px;
+    bottom:20px;
   }
 
-  .content h1{
-    font-size:26px;
+  .text h1{
+    font-size:24px;
   }
 
 }
 
 </style>
-
 </head>
 <body>
 
-<!-- SLIDER -->
+<div class="banner-slider">
 
-<div class="slider">
+  <div class="slider-track">
 
-  <div class="slides">
-
-    <!-- IMAGE 1 -->
+    <!-- 1 -->
 
     <div class="slide">
 
@@ -167,14 +190,14 @@ body{
 
       <div class="overlay"></div>
 
-      <div class="content">
-        <div class="tag">NEWS</div>
-        <h1>2026 Mercedes AMG Coupe Revealed</h1>
+      <div class="text">
+        <span>NEWS</span>
+        <h1>Mercedes AMG GT Coupe Revealed</h1>
       </div>
 
     </div>
 
-    <!-- IMAGE 2 -->
+    <!-- 2 -->
 
     <div class="slide">
 
@@ -182,14 +205,14 @@ body{
 
       <div class="overlay"></div>
 
-      <div class="content">
-        <div class="tag">SPORTS</div>
-        <h1>New Lamborghini Hybrid Supercar</h1>
+      <div class="text">
+        <span>SPORTS</span>
+        <h1>Lamborghini New Hybrid Supercar</h1>
       </div>
 
     </div>
 
-    <!-- IMAGE 3 -->
+    <!-- 3 -->
 
     <div class="slide">
 
@@ -197,14 +220,14 @@ body{
 
       <div class="overlay"></div>
 
-      <div class="content">
-        <div class="tag">EV</div>
-        <h1>Electric Cars With AI Technology</h1>
+      <div class="text">
+        <span>EV</span>
+        <h1>Electric Cars With Future AI Tech</h1>
       </div>
 
     </div>
 
-    <!-- IMAGE 4 -->
+    <!-- 4 -->
 
     <div class="slide">
 
@@ -212,14 +235,14 @@ body{
 
       <div class="overlay"></div>
 
-      <div class="content">
-        <div class="tag">REVIEW</div>
+      <div class="text">
+        <span>REVIEW</span>
         <h1>Porsche 911 Turbo 2026 Review</h1>
       </div>
 
     </div>
 
-    <!-- IMAGE 5 -->
+    <!-- 5 -->
 
     <div class="slide">
 
@@ -227,8 +250,8 @@ body{
 
       <div class="overlay"></div>
 
-      <div class="content">
-        <div class="tag">TRENDING</div>
+      <div class="text">
+        <span>TRENDING</span>
         <h1>Ferrari Launches New Hypercar</h1>
       </div>
 
@@ -238,12 +261,12 @@ body{
 
   <!-- DOTS -->
 
-  <div class="dots">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="navigation">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 
 </div>
