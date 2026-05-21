@@ -1,7 +1,8 @@
-body{
-    background:#eef0f7;
+<style>
+html,body{
+  width:100%;
+  overflow-x:hidden;
+  margin:0;
+  padding:0;
 }
-
-.news-title{
-    color:black;
-}
+</style>
