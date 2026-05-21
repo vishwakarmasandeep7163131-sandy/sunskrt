@@ -1,219 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AutoDrive News</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: #0f0f0f;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* ================= NAVBAR FIXED ================= */
-    nav {
-      width: 100%;
-      padding: 15px 30px;
-      background: #111;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #222;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      color: #ff3c00;
-      white-space: nowrap;
-    }
-
-    /* CENTER WRAPPER (IMPORTANT FIX) */
-    .center-area {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .search-box {
-      display: flex;
-      gap: 10px;
-    }
-
-    .search-box input {
-      width: 320px;
-      padding: 10px 15px;
-      border-radius: 10px;
-      border: 1px solid #333;
-      background: #1c1c1c;
-      color: #fff;
-      outline: none;
-    }
-
-    .search-box button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      background: #ff3c00;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .menu {
-      display: flex;
-      gap: 20px;
-      white-space: nowrap;
-    }
-
-    .menu a:hover {
-      color: #ff3c00;
-    }
-
-    /* ================= OTHER STYLES SAME ================= */
-    .container {
-      max-width: 1400px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 30px;
-      padding: 40px 20px;
-    }
-
-    .news-card {
-      display: flex;
-      gap: 20px;
-      background: #fff;
-      color: #000;
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
-    .news-image img {
-      width: 280px;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .small-news {
-      display: flex;
-      gap: 10px;
-      background: #fff;
-      color: #000;
-      padding: 10px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .small-news img {
-      width: 120px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    @media(max-width: 900px) {
-      nav {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .center-area {
-        order: 3;
-        width: 100%;
-      }
-
-      .search-box input {
-        width: 100%;
-      }
-
-      .container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-  </style>
-</head>
-
-<body>
-
-<!-- NAVBAR FIXED -->
-<nav>
-  <div class="logo">AutoDrive</div>
-
-  <!-- CENTER SEARCH (LOGO + MENU KE BEECH) -->
-  <div class="center-area">
-    <div class="search-box">
-      <input id="searchInput" type="text" placeholder="Search latest news...">
-      <button onclick="searchNews()">Search</button>
-    </div>
-  </div>
-
-   <div class="menu">
-      <a href="Home.html">Home</a>
-      <a href="Sports.html">Sports</a>
-      <a href="Health.html">Health</a>
-      <a href="Cars.html">Cars</a>
-      <a href="News.html">News</a>
-      <a href="About.html">About</a>
-      <a href="Contact.html">Contact</a>
-    </div>
-  </nav>
-  
-<!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto News</title>
+<title>AutoDrive News</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* ================= GLOBAL ================= */
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial,sans-serif;
+  font-family:'Poppins',sans-serif;
 }
 
 body{
-  background:#f3f3f3;
-  padding:20px;
+  background:#000;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* MAIN LAYOUT */
-  
-.container {
-  max-width: 1400px;
-  margin: 60px auto 0; /* '40px' upar se gap banayega, 'auto' center karega */
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 25px;
+a{
+  text-decoration:none;
+  color:inherit;
 }
 
-/* LEFT SLIDER */
+/* ================= NAVBAR ================= */
+
+nav{
+  width:100%;
+  padding:15px 30px;
+  background:#000;
+  border-bottom:1px solid #222;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:700;
+  color:#ff3c00;
+  white-space:nowrap;
+}
+
+/* CENTER SEARCH */
+
+.center-area{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.search-box{
+  display:flex;
+  gap:10px;
+}
+
+.search-box input{
+  width:320px;
+  padding:11px 15px;
+  border-radius:10px;
+  border:1px solid #333;
+  background:#111;
+  color:white;
+  outline:none;
+}
+
+.search-box button{
+  padding:11px 18px;
+  border:none;
+  border-radius:10px;
+  background:#ff3c00;
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* MENU */
+
+.menu{
+  display:flex;
+  gap:20px;
+  white-space:nowrap;
+}
+
+.menu a{
+  transition:0.3s;
+}
+
+.menu a:hover{
+  color:#ff3c00;
+}
+
+/* ================= MAIN LAYOUT ================= */
+
+.container{
+  max-width:1400px;
+  margin:50px auto 0;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:25px;
+  padding:0 20px;
+}
+
+/* ================= SLIDER ================= */
 
 .banner{
   width:100%;
@@ -221,7 +122,7 @@ body{
   border-radius:18px;
   overflow:hidden;
   position:relative;
-  background:#000;
+  background:#111;
 }
 
 .slides{
@@ -243,33 +144,22 @@ body{
   object-fit:cover;
 }
 
-/* OVERLAY */
-
 .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
 }
 
-/* TEXT */
-.text h1 {
-  font-size: 42px;
-  line-height: 1.3;
-  max-width: 700px;
-  color: ##000000; /* Yahan aap apna pasandida color code dal sakte hain */
-}
-  
 .text{
   position:absolute;
   left:30px;
   bottom:30px;
-  color:white;
   z-index:5;
 }
 
 .tag{
-  background:white;
-  color:black;
+  background:#ff3c00;
+  color:white;
   padding:6px 14px;
   border-radius:5px;
   font-size:13px;
@@ -282,10 +172,10 @@ body{
   font-size:42px;
   line-height:1.3;
   max-width:700px;
+  color:white;
 }
-  
 
-/* RIGHT SIDE */
+/* ================= SIDEBAR ================= */
 
 .sidebar{
   display:flex;
@@ -293,13 +183,11 @@ body{
   gap:20px;
 }
 
-/* SIDE CARD */
-
 .side-card{
-  background:white;
+  background:#111;
   border-radius:16px;
   overflow:hidden;
-  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+  border:1px solid #222;
   transition:0.3s;
 }
 
@@ -324,15 +212,16 @@ body{
 }
 
 .side-content p{
-  color:#666;
+  color:#aaa;
   line-height:1.6;
 }
 
-/* STORIES */
+/* ================= STORIES ================= */
 
 .stories{
   max-width:1200px;
-  margin:35px auto 0;
+  margin:40px auto;
+  padding:0 20px;
 }
 
 .stories h2{
@@ -340,20 +229,17 @@ body{
   margin-bottom:25px;
 }
 
-/* GRID */
-
 .story-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:20px;
 }
 
-/* CARD */
-
 .story{
-  background:white;
+  background:#111;
   border-radius:15px;
   overflow:hidden;
+  border:1px solid #222;
   transition:0.3s;
 }
 
@@ -386,17 +272,161 @@ body{
 .btn-box a{
   display:inline-block;
   padding:13px 32px;
-  border:2px solid #111;
   border-radius:50px;
-  text-decoration:none;
-  color:#111;
-  transition:0.3s;
+  background:#ff3c00;
+  color:white;
   font-weight:bold;
+  transition:0.3s;
 }
 
 .btn-box a:hover{
+  background:white;
+  color:black;
+}
+
+/* ================= ARTICLES ================= */
+
+.latest-section{
+  max-width:1200px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:25px;
+  padding:0 20px;
+}
+
+.section-title{
+  font-size:34px;
+  margin-bottom:25px;
+}
+
+.article-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.article-card{
   background:#111;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #222;
+  transition:0.3s;
+}
+
+.article-card:hover{
+  transform:translateY(-5px);
+}
+
+.article-image{
+  position:relative;
+  height:190px;
+}
+
+.article-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#ff3c00;
   color:white;
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:5px;
+  font-weight:bold;
+}
+
+.article-content{
+  padding:15px;
+}
+
+.article-content h3{
+  font-size:18px;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+
+.article-content p{
+  color:#aaa;
+  font-size:14px;
+}
+
+/* ================= SIDEBAR BOXES ================= */
+
+.latest-sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.poll-box,
+.trending-box{
+  background:#111;
+  border-radius:14px;
+  padding:20px;
+  border:1px solid #222;
+}
+
+.poll-box h3,
+.trending-box h3{
+  margin-bottom:15px;
+  font-size:24px;
+}
+
+.poll-box p{
+  margin-bottom:15px;
+  line-height:1.6;
+  color:#aaa;
+}
+
+.poll-box label{
+  display:block;
+  margin-bottom:10px;
+}
+
+.poll-box button{
+  width:100%;
+  padding:12px;
+  border:none;
+  background:#ff3c00;
+  color:white;
+  border-radius:8px;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+/* TRENDING */
+
+.trend-item{
+  display:flex;
+  gap:12px;
+  margin-bottom:18px;
+  align-items:center;
+  border-bottom:1px solid #222;
+  padding-bottom:10px;
+}
+
+.trend-item img{
+  width:90px;
+  height:70px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.trend-item h4{
+  font-size:15px;
+  line-height:1.4;
+  margin-bottom:5px;
+}
+
+.trend-item span{
+  font-size:13px;
+  color:#aaa;
 }
 
 /* DOTS */
@@ -441,15 +471,30 @@ body{
   100%{transform:translateX(0%);}
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:950px){
 
-  .container{
+  nav{
+    flex-wrap:wrap;
+    gap:15px;
+  }
+
+  .center-area{
+    width:100%;
+    order:3;
+  }
+
+  .container,
+  .latest-section{
     grid-template-columns:1fr;
   }
 
   .story-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .article-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
@@ -465,650 +510,55 @@ body{
     font-size:24px;
   }
 
-  .story-grid{
+  .story-grid,
+  .article-grid{
     grid-template-columns:1fr;
+  }
+
+  .search-box{
+    width:100%;
+  }
+
+  .search-box input{
+    width:100%;
   }
 
 }
 
 </style>
 </head>
- 
+
 <body>
 
-<!-- MAIN -->
+<!-- NAVBAR -->
 
-<div class="container">
+<nav>
 
-  <!-- LEFT -->
+  <div class="logo">AutoDrive</div>
 
-  <div class="banner">
+  <div class="center-area">
 
-    <div class="slides">
+    <div class="search-box">
 
-      <!-- 1 -->
- 
-      
-      <div class="slide">
- 
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop">
+      <input type="text" placeholder="Search latest news...">
 
-        <div class="overlay"></div>
-
-        <div class="text">
-          <div class="tag">NEWS</div>
-          <h1>2026 Mercedes AMG GT Coupe Revealed</h1>
-        </div>
-
-      </div>
-
-      <!-- 2 -->
-
-      <div class="slide">
-
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop">
-
-        <div class="overlay"></div>
-
-        <div class="text">
-          <div class="tag">SPORTS</div>
-          <h1>Lamborghini Hybrid Supercar Launch</h1>
-        </div>
-
-      </div>
-
-      <!-- 3 -->
-
-      <div class="slide">
-
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1600&auto=format&fit=crop">
-
-        <div class="overlay"></div>
-
-        <div class="text">
-          <div class="tag">EV</div>
-          <h1>Future Electric Cars With AI Tech</h1>
-        </div>
-
-      </div>
-
-      <!-- 4 -->
-
-      <div class="slide">
-
-        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop">
-
-        <div class="overlay"></div>
-
-        <div class="text">
-          <div class="tag">REVIEW</div>
-          <h1>Porsche 911 Turbo 2026 Review</h1>
-        </div>
-
-      </div>
-
-      <!-- 5 -->
-
-      <div class="slide">
-
-        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop">
-
-        <div class="overlay"></div>
-
-        <div class="text">
-          <div class="tag">TRENDING</div>
-          <h1>Ferrari Launches New Hypercar</h1>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- DOTS -->
-
-    <div class="dots">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-  </div>
-
-  <!-- RIGHT -->
-
-  <div class="sidebar">
-
-    <div class="side-card">
-
-      <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="side-content">
-        <h3>BMW M4 Competition Review</h3>
-        <p>New generation BMW sports coupe with upgraded power.</p>
-      </div>
-
-    </div>
-
-    <div class="side-card">
-
-      <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="side-content">
-        <h3>Audi RS7 New Features</h3>
-        <p>Luxury sports sedan with futuristic interior updates.</p>
-      </div>
+      <button>Search</button>
 
     </div>
 
   </div>
 
-</div>
-
-<!-- STORIES -->
-
-<section class="stories">
-
-  <h2>Suggested Stories</h2>
-
-  <div class="story-grid">
-
-    <div class="story">
-
-      <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="story-text">
-        <h3>Tesla Roadster Fastest EV</h3>
-      </div>
-
-    </div>
-
-    <div class="story">
-
-      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="story-text">
-        <h3>Ferrari Hybrid Hypercar Revealed</h3>
-      </div>
-
-    </div>
-
-    <div class="story">
-
-      <img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="story-text">
-        <h3>Range Rover Luxury SUV 2026</h3>
-      </div>
-
-    </div>
-
-    <div class="story">
-
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="story-text">
-        <h3>Lamborghini Future Concept</h3>
-      </div>
-
-    </div>
-
+  <div class="menu">
+    <a href="Home.html">Home</a>
+    <a href="Sports.html">Sports</a>
+    <a href="Health.html">Health</a>
+    <a href="Cars.html">Cars</a>
+    <a href="News.html">News</a>
+    <a href="About.html">About</a>
+    <a href="Contact.html">Contact</a>
   </div>
 
-  <div class="btn-box">
-    <a href="#">View More Stories</a>
-  </div>
+</nav>
 
-</section>
-<!-- LATEST ARTICLES SECTION START -->
-
-<section class="latest-section">
-
-  <div class="latest-left">
-
-    <h2 class="section-title">Latest Articles</h2>
-
-    <div class="article-grid">
-
-      <!-- CARD 1 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">News</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Tata reveals updated Tiago EV ahead of launch</h3>
-
-          <p>2 hrs ago • Dipsan Sur</p>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 2 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">Feature</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Top five CNG SUVs under Rs 12 lakh</h3>
-
-          <p>4 hrs ago • Saptarshi Mondal</p>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 3 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">Images</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Kimera K-39 image gallery</h3>
-
-          <p>5 hrs ago • Dhruv Dhaka</p>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 4 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">News</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Next-gen BMW 1 Series due in 2028</h3>
-
-          <p>7 hrs ago • Dhruv Dhaka</p>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 5 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">News</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Xiaomi YU7 GT becomes fastest SUV</h3>
-
-          <p>8 hrs ago • Suraj Viswanathan</p>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 6 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">Review</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Government notifies standards for petrol blends</h3>
-
-          <p>9 hrs ago • Autocar India</p>
-
-        </div>
-
-      </div>
-
-       <!-- CARD 7 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">News</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Xiaomi YU7 GT becomes fastest SUV</h3>
-
-          <p>8 hrs ago • Suraj Viswanathan</p>
-
-        </div>
-
-      </div>
-
-       <!-- CARD 8 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">News</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Xiaomi YU7 GT becomes fastest SUV</h3>
-
-          <p>8 hrs ago • Suraj Viswanathan</p>
-
-        </div>
-
-      </div>
-      
-       <!-- CARD 9 -->
-
-      <div class="article-card">
-
-        <div class="article-image">
-
-          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop">
-
-          <span class="badge">News</span>
-
-        </div>
-
-        <div class="article-content">
-
-          <h3>Xiaomi YU7 GT becomes fastest SUV</h3>
-
-          <p>8 hrs ago • Suraj Viswanathan</p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- RIGHT SIDEBAR -->
-
-  <div class="latest-sidebar">
-
-    <!-- POLL -->
-
-    <div class="poll-box">
-
-      <h3>Poll Of The Month</h3>
-
-      <p>What do you think about higher E20 petrol blends?</p>
-
-      <label><input type="radio"> Good move</label>
-      <label><input type="radio"> Not good</label>
-
-      <button>Submit Vote</button>
-
-    </div>
-
-    <!-- TRENDING -->
-
-    <div class="trending-box">
-
-      <h3>Trending Articles</h3>
-
-      <div class="trend-item">
-
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop">
-
-        <div>
-          <h4>Pre-delivery inspection checklist</h4>
-          <span>18 May 2026</span>
-        </div>
-
-      </div>
-
-      <div class="trend-item">
-
-        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1200&auto=format&fit=crop">
-
-        <div>
-          <h4>Top 10 affordable ICE cars</h4>
-          <span>27 Apr 2026</span>
-        </div>
-
-      </div>
-
-      <div class="trend-item">
-
-        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1200&auto=format&fit=crop">
-
-        <div>
-          <h4>Every car tested by Bharat NCAP</h4>
-          <span>20 Apr 2026</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- LATEST ARTICLES SECTION END -->
-<style>
-  /* LATEST ARTICLES */
-
-.latest-section{
-  max-width:1200px;
-  margin:40px auto;
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:25px;
-}
-
-.section-title{
-  font-size:34px;
-  margin-bottom:25px;
-}
-
-/* GRID */
-
-.article-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-/* CARD */
-
-.article-card{
-  background:white;
-  border-radius:14px;
-  overflow:hidden;
-  transition:0.3s;
-  box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
-
-.article-card:hover{
-  transform:translateY(-5px);
-}
-
-.article-image{
-  position:relative;
-  height:190px;
-}
-
-.article-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.badge{
-  position:absolute;
-  top:10px;
-  left:10px;
-  background:white;
-  color:black;
-  font-size:12px;
-  padding:5px 10px;
-  border-radius:5px;
-  font-weight:bold;
-}
-
-/* CONTENT */
-
-.article-content{
-  padding:15px;
-}
-
-.article-content h3{
-  font-size:18px;
-  line-height:1.4;
-  margin-bottom:10px;
-}
-
-.article-content p{
-  color:#777;
-  font-size:14px;
-}
-
-/* SIDEBAR */
-
-.latest-sidebar{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-/* POLL */
-
-.poll-box,
-.trending-box{
-  background:white;
-  border-radius:14px;
-  padding:20px;
-}
-
-.poll-box h3,
-.trending-box h3{
-  margin-bottom:15px;
-  font-size:24px;
-}
-
-.poll-box p{
-  margin-bottom:15px;
-  line-height:1.6;
-}
-
-.poll-box label{
-  display:block;
-  margin-bottom:10px;
-}
-
-.poll-box button{
-  width:100%;
-  padding:12px;
-  border:none;
-  background:#ff4d4d;
-  color:white;
-  border-radius:8px;
-  margin-top:15px;
-  cursor:pointer;
-}
-
-/* TRENDING */
-
-.trend-item{
-  display:flex;
-  gap:12px;
-  margin-bottom:18px;
-  align-items:center;
-}
-
-.trend-item img{
-  width:90px;
-  height:70px;
-  object-fit:cover;
-  border-radius:8px;
-}
-
-.trend-item h4{
-  font-size:15px;
-  line-height:1.4;
-  margin-bottom:5px;
-}
-
-.trend-item span{
-  font-size:13px;
-  color:#777;
-}
-
-/* MOBILE */
-
-@media(max-width:950px){
-
-  .latest-section{
-    grid-template-columns:1fr;
-  }
-
-  .article-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-}
-
-@media(max-width:650px){
-
-  .article-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-  </style>
-  
 </body>
 </html>
