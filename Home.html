@@ -819,7 +819,19 @@ height:180px;
 }
 
 </style>
-  <!-- ================= LIFESTYLE COLUMN SECTION ================= -->
+ <!-- ================= LIFESTYLE SECTION START ================= -->
+
+<!-- SECTION TITLE -->
+
+<div class="section-heading">
+
+  <h2>LIFESTYLE</h2>
+
+  <a href="#">View All ➜</a>
+
+</div>
+
+<!-- MAIN SECTION -->
 
 <section class="lifestyle-section">
 
@@ -840,11 +852,11 @@ height:180px;
 
   </div>
 
-  <!-- RIGHT SMALL NEWS -->
+  <!-- RIGHT SIDE NEWS -->
 
   <div class="life-right">
 
-    <!-- ITEM -->
+    <!-- CARD -->
 
     <div class="life-card">
 
@@ -858,7 +870,7 @@ height:180px;
 
     </div>
 
-    <!-- ITEM -->
+    <!-- CARD -->
 
     <div class="life-card">
 
@@ -872,7 +884,7 @@ height:180px;
 
     </div>
 
-    <!-- ITEM -->
+    <!-- CARD -->
 
     <div class="life-card">
 
@@ -886,7 +898,7 @@ height:180px;
 
     </div>
 
-    <!-- ITEM -->
+    <!-- CARD -->
 
     <div class="life-card">
 
@@ -908,23 +920,61 @@ height:180px;
 
 <style>
 
+/* SECTION TITLE */
+
+.section-heading{
+  max-width:1200px;
+  margin:50px auto 20px;
+  padding:0 20px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.section-heading h2{
+  color:white;
+  font-size:28px;
+  position:relative;
+  padding-left:18px;
+}
+
+.section-heading h2::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:8px;
+  height:28px;
+  background:#ff3c00;
+  border-radius:10px;
+}
+
+.section-heading a{
+  color:#ff3c00;
+  font-size:15px;
+  font-weight:600;
+}
+
+/* MAIN SECTION */
+
 .lifestyle-section{
   max-width:1200px;
-  margin:50px auto;
-  padding:0 20px;
+  margin:auto;
+  padding:0 20px 40px;
 
   display:grid;
   grid-template-columns:2fr 1fr;
   gap:25px;
 }
 
-/* LEFT */
+/* LEFT SIDE */
 
 .life-left{
   background:#111;
   border-radius:14px;
   overflow:hidden;
-  padding-bottom:20px;
   border:1px solid #222;
 }
 
@@ -952,10 +1002,10 @@ height:180px;
 .life-left p{
   color:#bdbdbd;
   line-height:1.8;
-  padding:0 20px;
+  padding:0 20px 25px;
 }
 
-/* RIGHT */
+/* RIGHT SIDE */
 
 .life-right{
   display:flex;
@@ -963,7 +1013,7 @@ height:180px;
   gap:18px;
 }
 
-/* CARD */
+/* SMALL CARD */
 
 .life-card{
   display:flex;
@@ -1020,6 +1070,8 @@ height:180px;
 }
 
 </style>
+
+<!-- ================= LIFESTYLE SECTION END ================= -->
   <!-- BLOG SECTION -->
 
   <section>
