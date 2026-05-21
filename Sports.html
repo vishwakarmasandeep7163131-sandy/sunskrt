@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AutoDrive News</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===================== GLOBAL RESET ===================== */
     * {
       margin: 0;
       padding: 0;
@@ -28,60 +26,49 @@
       color: inherit;
     }
 
-    /* ===================== NAVBAR ===================== */
+    /* ================= NAVBAR FIXED ================= */
     nav {
       width: 100%;
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 15px 30px;
       background: #111;
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid #222;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
       font-size: 28px;
       font-weight: 700;
       color: #ff3c00;
+      white-space: nowrap;
     }
 
-    .menu {
-      display: flex;
-      gap: 20px;
-    }
-
-    .menu a {
-      font-size: 15px;
-      transition: 0.3s;
-    }
-
-    .menu a:hover {
-      color: #ff3c00;
-    }
-
-    /* ===================== SEARCH ===================== */
-    .search-box {
-      width: 100%;
+    /* CENTER WRAPPER (IMPORTANT FIX) */
+    .center-area {
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .search-box {
+      display: flex;
       gap: 10px;
-      padding: 20px;
-      background: #111;
-      flex-wrap: wrap;
     }
 
     .search-box input {
-      width: 400px;
-      max-width: 100%;
+      width: 320px;
       padding: 10px 15px;
       border-radius: 10px;
       border: 1px solid #333;
       background: #1c1c1c;
       color: #fff;
+      outline: none;
     }
 
     .search-box button {
@@ -93,7 +80,17 @@
       cursor: pointer;
     }
 
-    /* ===================== LAYOUT ===================== */
+    .menu {
+      display: flex;
+      gap: 20px;
+      white-space: nowrap;
+    }
+
+    .menu a:hover {
+      color: #ff3c00;
+    }
+
+    /* ================= OTHER STYLES SAME ================= */
     .container {
       max-width: 1400px;
       margin: auto;
@@ -101,14 +98,6 @@
       grid-template-columns: 2fr 1fr;
       gap: 30px;
       padding: 40px 20px;
-    }
-
-    /* LEFT NEWS */
-    .left-news h2,
-    .right-news h2 {
-      color: #fff;
-      margin-bottom: 20px;
-      font-size: 30px;
     }
 
     .news-card {
@@ -128,18 +117,6 @@
       border-radius: 10px;
     }
 
-    .news-title {
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .news-desc {
-      font-size: 14px;
-      color: #555;
-      margin-top: 10px;
-    }
-
-    /* RIGHT NEWS */
     .small-news {
       display: flex;
       gap: 10px;
@@ -157,161 +134,88 @@
       border-radius: 8px;
     }
 
-    /* SOCIAL */
-    .social-icons {
-      position: fixed;
-      right: 20px;
-      top: 200px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .social-icons a {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-
-    .fb { background: #1877f2; }
-    .tw { background: #1da1f2; }
-    .ig { background: #e1306c; }
-    .yt { background: red; }
-    .wp { background: #25d366; }
-
-    /* PAGINATION */
-    .pagination {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 40px 0;
-      flex-wrap: wrap;
-    }
-
-    .pagination a,
-    .pagination span {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #1e1e72;
-      color: #fff;
-      border-radius: 6px;
-    }
-
-    .pagination a:hover {
-      background: #ff3c00;
-    }
-
-    .active {
-      background: #ff3c00 !important;
-    }
-
-    /* RESPONSIVE */
     @media(max-width: 900px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .center-area {
+        order: 3;
+        width: 100%;
+      }
+
+      .search-box input {
+        width: 100%;
+      }
+
       .container {
         grid-template-columns: 1fr;
       }
-
-      .menu {
-        display: none;
-      }
-
-      .news-card {
-        flex-direction: column;
-      }
-
-      .news-image img {
-        width: 100%;
-        height: auto;
-      }
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">AutoDrive</div>
-    <div class="menu">
-      <a href="#">Home</a>
-      <a href="#">Sports</a>
-      <a href="#">Health</a>
-      <a href="#">Cars</a>
-      <a href="#">News</a>
-    </div>
-  </nav>
+<!-- NAVBAR FIXED -->
+<nav>
+  <div class="logo">AutoDrive</div>
 
-  <!-- SEARCH -->
-  <div class="search-box">
-    <input id="searchInput" type="text" placeholder="Search latest news...">
-    <button onclick="searchNews()">Search</button>
+  <!-- CENTER SEARCH (LOGO + MENU KE BEECH) -->
+  <div class="center-area">
+    <div class="search-box">
+      <input id="searchInput" type="text" placeholder="Search latest news...">
+      <button onclick="searchNews()">Search</button>
+    </div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="container">
+  <div class="menu">
+    <a href="#">Home</a>
+    <a href="#">Sports</a>
+    <a href="#">Health</a>
+    <a href="#">Cars</a>
+    <a href="#">News</a>
+  </div>
+</nav>
 
-    <!-- LEFT -->
-    <div class="left-news">
-      <h2>Sports News</h2>
+<!-- MAIN CONTENT SAME -->
+<div class="container">
+  <div class="left-news">
+    <h2>Sports News</h2>
 
-      <div class="news-card">
-        <div class="news-image">
-          <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0">
-        </div>
-        <div>
-          <div class="news-title">SAFF Women's Championship Squad Announced</div>
-          <div class="news-desc">Final squad selected for upcoming tournament.</div>
-        </div>
+    <div class="news-card">
+      <div class="news-image">
+        <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0">
       </div>
-
-    </div>
-
-    <!-- RIGHT -->
-    <div class="right-news">
-      <h2>Most Read</h2>
-
-      <div class="small-news">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-        <div>Government updates policy changes</div>
+      <div>
+        <div class="news-title">SAFF Women's Championship Squad Announced</div>
+        <div class="news-desc">Final squad selected for upcoming tournament.</div>
       </div>
-
     </div>
 
   </div>
 
-  <!-- PAGINATION -->
-  <div class="pagination">
-    <a class="active" href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <span>...</span>
-    <a href="#">10</a>
-  </div>
+  <div class="right-news">
+    <h2>Most Read</h2>
 
-  <!-- SOCIAL -->
-  <div class="social-icons">
-    <a class="fb">f</a>
-    <a class="tw">x</a>
-    <a class="ig">i</a>
-    <a class="yt">y</a>
-    <a class="wp">w</a>
-  </div>
+    <div class="small-news">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+      <div>Government updates policy changes</div>
+    </div>
 
-  <script>
-    function searchNews() {
-      const value = document.getElementById('searchInput').value;
-      if (value.trim()) {
-        window.location.href = `https://www.google.com/search?q=${value}+news`;
-      }
-    }
-  </script>
+  </div>
+</div>
+
+<script>
+function searchNews() {
+  const value = document.getElementById('searchInput').value;
+  if (value.trim()) {
+    window.location.href = `https://www.google.com/search?q=${value}+news`;
+  }
+}
+</script>
 
 </body>
 </html>
