@@ -819,6 +819,207 @@ height:180px;
 }
 
 </style>
+  <!-- ================= LIFESTYLE COLUMN SECTION ================= -->
+
+<section class="lifestyle-section">
+
+  <!-- LEFT BIG NEWS -->
+
+  <div class="life-left">
+
+    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1400&auto=format&fit=crop">
+
+    <h2>प्रतिदिन 5 काजू खाने से क्या होगा स्वास्थ्य पर असर</h2>
+
+    <span>19 मई 2026</span>
+
+    <p>
+      काजू न केवल स्वाद में लाजवाब है, बल्कि स्वास्थ्य के लिए भी अत्यंत लाभदायक है।
+      यह एक पौष्टिक मेवा है जिसमें प्रोटीन, हेल्दी फैट, विटामिन और मिनरल भरपूर मात्रा में पाए जाते हैं।
+    </p>
+
+  </div>
+
+  <!-- RIGHT SMALL NEWS -->
+
+  <div class="life-right">
+
+    <!-- ITEM -->
+
+    <div class="life-card">
+
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop">
+
+      <div>
+
+        <h3>गर्मी में शरीर को रखें ठंडा, रोज करें ये 3 असरदार प्राणायाम</h3>
+
+      </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="life-card">
+
+      <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1200&auto=format&fit=crop">
+
+      <div>
+
+        <h3>भीषण गर्मी में हीट स्ट्रोक से बचने के 5 तरीके</h3>
+
+      </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="life-card">
+
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop">
+
+      <div>
+
+        <h3>शरीर का एक महत्वपूर्ण अंग ‘थाइमस’, जानिए इसका काम</h3>
+
+      </div>
+
+    </div>
+
+    <!-- ITEM -->
+
+    <div class="life-card">
+
+      <img src="https://images.unsplash.com/photo-1563114773-84221bd62daa?q=80&w=1200&auto=format&fit=crop">
+
+      <div>
+
+        <h3>Watermelon Granita: तरबूज के छिलकों से बनाएं शानदार डिश</h3>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= CSS ================= -->
+
+<style>
+
+.lifestyle-section{
+  max-width:1200px;
+  margin:50px auto;
+  padding:0 20px;
+
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:25px;
+}
+
+/* LEFT */
+
+.life-left{
+  background:#111;
+  border-radius:14px;
+  overflow:hidden;
+  padding-bottom:20px;
+  border:1px solid #222;
+}
+
+.life-left img{
+  width:100%;
+  height:380px;
+  object-fit:cover;
+}
+
+.life-left h2{
+  font-size:32px;
+  line-height:1.4;
+  padding:20px 20px 10px;
+  color:white;
+}
+
+.life-left span{
+  color:#aaa;
+  font-size:14px;
+  padding:0 20px;
+  display:block;
+  margin-bottom:15px;
+}
+
+.life-left p{
+  color:#bdbdbd;
+  line-height:1.8;
+  padding:0 20px;
+}
+
+/* RIGHT */
+
+.life-right{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* CARD */
+
+.life-card{
+  display:flex;
+  gap:15px;
+  background:#111;
+  padding:10px;
+  border-radius:12px;
+  border:1px solid #222;
+  transition:0.3s;
+}
+
+.life-card:hover{
+  transform:translateY(-4px);
+}
+
+.life-card img{
+  width:140px;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.life-card h3{
+  font-size:17px;
+  line-height:1.5;
+  color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .lifestyle-section{
+    grid-template-columns:1fr;
+  }
+
+  .life-left img{
+    height:250px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .life-card{
+    flex-direction:column;
+  }
+
+  .life-card img{
+    width:100%;
+    height:180px;
+  }
+
+}
+
+</style>
   <!-- BLOG SECTION -->
 
   <section>
