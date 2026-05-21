@@ -36,11 +36,9 @@ nav{
   padding:15px 30px;
   background:#000;
   border-bottom:1px solid #222;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   position:sticky;
   top:0;
   z-index:1000;
@@ -50,16 +48,14 @@ nav{
   font-size:28px;
   font-weight:700;
   color:#ff3c00;
-  white-space:nowrap;
 }
 
-/* CENTER SEARCH */
+/* SEARCH CENTER */
 
 .center-area{
   flex:1;
   display:flex;
   justify-content:center;
-  align-items:center;
 }
 
 .search-box{
@@ -92,10 +88,10 @@ nav{
 .menu{
   display:flex;
   gap:20px;
-  white-space:nowrap;
 }
 
 .menu a{
+  color:white;
   transition:0.3s;
 }
 
@@ -103,15 +99,15 @@ nav{
   color:#ff3c00;
 }
 
-/* ================= MAIN LAYOUT ================= */
+/* ================= MAIN ================= */
 
 .container{
   max-width:1400px;
-  margin:50px auto 0;
+  margin:50px auto;
+  padding:0 20px;
   display:grid;
   grid-template-columns:2fr 1fr;
   gap:25px;
-  padding:0 20px;
 }
 
 /* ================= SLIDER ================= */
@@ -122,7 +118,6 @@ nav{
   border-radius:18px;
   overflow:hidden;
   position:relative;
-  background:#111;
 }
 
 .slides{
@@ -134,7 +129,6 @@ nav{
 
 .slide{
   width:20%;
-  height:100%;
   position:relative;
 }
 
@@ -162,16 +156,15 @@ nav{
   color:white;
   padding:6px 14px;
   border-radius:5px;
-  font-size:13px;
   display:inline-block;
   margin-bottom:15px;
+  font-size:13px;
   font-weight:bold;
 }
 
 .text h1{
   font-size:42px;
   line-height:1.3;
-  max-width:700px;
   color:white;
 }
 
@@ -206,8 +199,7 @@ nav{
 }
 
 .side-content h3{
-  font-size:20px;
-  line-height:1.4;
+  color:white;
   margin-bottom:10px;
 }
 
@@ -227,6 +219,7 @@ nav{
 .stories h2{
   font-size:32px;
   margin-bottom:25px;
+  color:white;
 }
 
 .story-grid{
@@ -258,8 +251,8 @@ nav{
 }
 
 .story-text h3{
-  font-size:19px;
-  line-height:1.4;
+  color:white;
+  line-height:1.5;
 }
 
 /* BUTTON */
@@ -272,9 +265,9 @@ nav{
 .btn-box a{
   display:inline-block;
   padding:13px 32px;
-  border-radius:50px;
   background:#ff3c00;
   color:white;
+  border-radius:50px;
   font-weight:bold;
   transition:0.3s;
 }
@@ -289,15 +282,16 @@ nav{
 .latest-section{
   max-width:1200px;
   margin:40px auto;
+  padding:0 20px;
   display:grid;
   grid-template-columns:2fr 1fr;
   gap:25px;
-  padding:0 20px;
 }
 
 .section-title{
   font-size:34px;
   margin-bottom:25px;
+  color:white;
 }
 
 .article-grid{
@@ -335,9 +329,9 @@ nav{
   left:10px;
   background:#ff3c00;
   color:white;
-  font-size:12px;
   padding:5px 10px;
   border-radius:5px;
+  font-size:12px;
   font-weight:bold;
 }
 
@@ -346,17 +340,16 @@ nav{
 }
 
 .article-content h3{
-  font-size:18px;
-  line-height:1.4;
+  color:white;
+  line-height:1.5;
   margin-bottom:10px;
 }
 
 .article-content p{
   color:#aaa;
-  font-size:14px;
 }
 
-/* ================= SIDEBAR BOXES ================= */
+/* ================= SIDEBAR BOX ================= */
 
 .latest-sidebar{
   display:flex;
@@ -374,39 +367,32 @@ nav{
 
 .poll-box h3,
 .trending-box h3{
+  color:white;
   margin-bottom:15px;
-  font-size:24px;
 }
 
-.poll-box p{
-  margin-bottom:15px;
-  line-height:1.6;
-  color:#aaa;
-}
-
+.poll-box p,
 .poll-box label{
-  display:block;
-  margin-bottom:10px;
+  color:#aaa;
 }
 
 .poll-box button{
   width:100%;
   padding:12px;
   border:none;
+  border-radius:8px;
   background:#ff3c00;
   color:white;
-  border-radius:8px;
   margin-top:15px;
   cursor:pointer;
 }
 
-/* TRENDING */
+/* TREND */
 
 .trend-item{
   display:flex;
   gap:12px;
   margin-bottom:18px;
-  align-items:center;
   border-bottom:1px solid #222;
   padding-bottom:10px;
 }
@@ -419,14 +405,13 @@ nav{
 }
 
 .trend-item h4{
-  font-size:15px;
-  line-height:1.4;
+  color:white;
   margin-bottom:5px;
 }
 
 .trend-item span{
-  font-size:13px;
   color:#aaa;
+  font-size:13px;
 }
 
 /* DOTS */
@@ -438,7 +423,6 @@ nav{
   transform:translateX(-50%);
   display:flex;
   gap:8px;
-  z-index:10;
 }
 
 .dots span{
@@ -449,79 +433,80 @@ nav{
   opacity:0.6;
 }
 
-/* ANIMATION */
+/* SLIDER */
 
 @keyframes slider{
 
-  0%{transform:translateX(0%);}
-  15%{transform:translateX(0%);}
+0%{transform:translateX(0%);}
+15%{transform:translateX(0%);}
 
-  20%{transform:translateX(-20%);}
-  35%{transform:translateX(-20%);}
+20%{transform:translateX(-20%);}
+35%{transform:translateX(-20%);}
 
-  40%{transform:translateX(-40%);}
-  55%{transform:translateX(-40%);}
+40%{transform:translateX(-40%);}
+55%{transform:translateX(-40%);}
 
-  60%{transform:translateX(-60%);}
-  75%{transform:translateX(-60%);}
+60%{transform:translateX(-60%);}
+75%{transform:translateX(-60%);}
 
-  80%{transform:translateX(-80%);}
-  95%{transform:translateX(-80%);}
+80%{transform:translateX(-80%);}
+95%{transform:translateX(-80%);}
 
-  100%{transform:translateX(0%);}
+100%{transform:translateX(0%);}
+
 }
 
 /* ================= MOBILE ================= */
 
 @media(max-width:950px){
 
-  nav{
-    flex-wrap:wrap;
-    gap:15px;
-  }
+.container,
+.latest-section{
+  grid-template-columns:1fr;
+}
 
-  .center-area{
-    width:100%;
-    order:3;
-  }
+.story-grid{
+  grid-template-columns:repeat(2,1fr);
+}
 
-  .container,
-  .latest-section{
-    grid-template-columns:1fr;
-  }
+.article-grid{
+  grid-template-columns:repeat(2,1fr);
+}
 
-  .story-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+nav{
+  flex-wrap:wrap;
+  gap:15px;
+}
 
-  .article-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+.center-area{
+  width:100%;
+  order:3;
+}
 
 }
 
 @media(max-width:650px){
 
-  .banner{
-    height:320px;
-  }
+.banner{
+  height:320px;
+}
 
-  .text h1{
-    font-size:24px;
-  }
+.text h1{
+  font-size:24px;
+}
 
-  .story-grid,
-  .article-grid{
-    grid-template-columns:1fr;
-  }
+.story-grid,
+.article-grid{
+  grid-template-columns:1fr;
+}
 
-  .search-box{
-    width:100%;
-  }
+.search-box{
+  width:100%;
+}
 
-  .search-box input{
-    width:100%;
-  }
+.search-box input{
+  width:100%;
+}
 
 }
 
@@ -534,31 +519,91 @@ nav{
 
 <nav>
 
-  <div class="logo">AutoDrive</div>
+<div class="logo">AutoDrive</div>
 
-  <div class="center-area">
+<div class="center-area">
 
-    <div class="search-box">
+<div class="search-box">
 
-      <input type="text" placeholder="Search latest news...">
+<input type="text" placeholder="Search latest news...">
 
-      <button>Search</button>
+<button>Search</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
-  <div class="menu">
-    <a href="Home.html">Home</a>
-    <a href="Sports.html">Sports</a>
-    <a href="Health.html">Health</a>
-    <a href="Cars.html">Cars</a>
-    <a href="News.html">News</a>
-    <a href="About.html">About</a>
-    <a href="Contact.html">Contact</a>
-  </div>
+<div class="menu">
+<a href="#">Home</a>
+<a href="#">Sports</a>
+<a href="#">Health</a>
+<a href="#">Cars</a>
+<a href="#">News</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
 
 </nav>
+
+<!-- MAIN -->
+
+<div class="container">
+
+<!-- LEFT -->
+
+<div class="banner">
+
+<div class="slides">
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop">
+<div class="overlay"></div>
+<div class="text">
+<div class="tag">NEWS</div>
+<h1>2026 Mercedes AMG GT Coupe Revealed</h1>
+</div>
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop">
+<div class="overlay"></div>
+<div class="text">
+<div class="tag">SPORTS</div>
+<h1>Lamborghini Hybrid Supercar Launch</h1>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="sidebar">
+
+<div class="side-card">
+<img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="side-content">
+<h3>BMW M4 Competition Review</h3>
+<p>New generation BMW sports coupe with upgraded power.</p>
+</div>
+
+</div>
+
+<div class="side-card">
+<img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1200&auto=format&fit=crop">
+
+<div class="side-content">
+<h3>Audi RS7 New Features</h3>
+<p>Luxury sports sedan with futuristic interior updates.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>
