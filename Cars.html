@@ -1,189 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AutoDrive - Latest Cars News, EV Updates, Reviews & Comparisons">
-    <meta name="keywords" content="cars, electric vehicles, EV, auto news, car reviews, Tesla, Maruti, BMW">
-    <meta name="author" content="AutoDrive">
-    <meta name="robots" content="index, follow">
-    
-    <title>AutoDrive | Cars News - Latest Automobile Updates & EV Launches</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-    
-    <!-- Font Awesome -->
+    <title>AutoDrive - Cars News</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
-        /* ====== CSS VARIABLES ====== */
-        :root {
-            --primary: #ff4500;
-            --primary-dark: #e63e00;
-            --secondary: #22c55e;
-            --bg-dark: #0a0a0a;
-            --bg-card: #111;
-            --bg-hover: #1a1a1a;
-            --text-primary: #fff;
-            --text-secondary: #ccc;
-            --text-muted: #666;
-            --border: #222;
-            --gradient-primary: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
-            --shadow: 0 4px 20px rgba(0,0,0,0.3);
-            --transition: all 0.3s ease;
-        }
-
-        /* ====== RESET & BASE ====== */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
         }
 
         /* ====== HEADER ====== */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(17, 17, 17, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            padding: 0 60px;
-            height: 70px;
+        .header {
+            background: #111;
+            padding: 15px 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
         }
 
-        .brand-logo {
+        .logo {
             font-size: 28px;
             font-weight: 800;
-            color: var(--primary);
-            letter-spacing: -0.5px;
+            color: #ff4500;
+            text-decoration: none;
         }
 
-        .brand-logo span {
-            color: var(--text-primary);
-        }
-
-        .search-bar {
+        .search-box {
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .search-input {
+        .search-box input {
             width: 350px;
-            padding: 12px 18px;
-            border: 1px solid var(--border);
+            padding: 10px 18px;
+            border: 1px solid #333;
             border-radius: 8px;
-            background: var(--bg-hover);
-            color: var(--text-primary);
+            background: #1a1a1a;
+            color: #fff;
             font-size: 14px;
             outline: none;
-            transition: var(--transition);
         }
 
-        .search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.1);
+        .search-box input::placeholder {
+            color: #666;
         }
 
-        .search-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .search-button {
-            background: var(--primary);
+        .search-btn {
+            background: #ff4500;
             color: #fff;
             border: none;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 14px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: background 0.3s;
         }
 
-        .search-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
+        .search-btn:hover {
+            background: #e63e00;
         }
 
-        .main-nav {
+        .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 25px;
             list-style: none;
         }
 
-        .main-nav a {
-            color: var(--text-secondary);
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            position: relative;
-            padding: 5px 0;
+            transition: color 0.3s;
         }
 
-        .main-nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ff4500;
         }
 
-        .main-nav a:hover,
-        .main-nav a.active {
-            color: var(--primary);
-        }
-
-        .main-nav a:hover::after,
-        .main-nav a.active::after {
+        /* ====== LIVE NEWS TICKER ====== */
+        .live-ticker {
             width: 100%;
-        }
-
-        /* ====== LIVE TICKER ====== */
-        .news-ticker {
-            margin-top: 70px;
-            width: 100%;
-            background: var(--gradient-primary);
-            border-bottom: 2px solid var(--primary);
+            background: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-bottom: 2px solid #ff4500;
             overflow: hidden;
             position: relative;
             height: 50px;
@@ -191,108 +105,94 @@
             align-items: center;
         }
 
-        .ticker-badge {
+        .ticker-label {
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
-            background: var(--primary);
+            background: #ff4500;
             color: #fff;
             padding: 0 20px;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-weight: 700;
-            font-size: 12px;
+            font-weight: bold;
+            font-size: 13px;
             z-index: 10;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .ticker-content {
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.3); }
+        }
+
+        .ticker-track {
             display: flex;
             white-space: nowrap;
-            animation: scroll 45s linear infinite;
+            animation: tickerScroll 50s linear infinite;
             padding-left: 160px;
         }
 
-        .ticker-content:hover {
+        .ticker-track:hover {
             animation-play-state: paused;
         }
 
-        .ticker-news {
+        .ticker-item {
             display: inline-flex;
             align-items: center;
-            padding: 0 40px;
-            color: var(--text-secondary);
+            padding: 0 35px;
+            color: #e0e0e0;
             font-size: 14px;
             position: relative;
         }
 
-        .ticker-news::after {
-            content: "";
+        .ticker-item::after {
+            content: "🏎️";
             position: absolute;
             right: 0;
-            width: 4px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 50%;
+            font-size: 12px;
         }
 
-        .news-category-tag {
-            background: rgba(255, 69, 0, 0.15);
-            color: var(--primary);
-            padding: 2px 10px;
+        .ticker-tag {
+            background: rgba(255, 69, 0, 0.2);
+            color: #ff4500;
+            padding: 2px 8px;
             border-radius: 4px;
             font-size: 11px;
-            font-weight: 600;
+            margin-right: 10px;
             text-transform: uppercase;
-            margin-right: 12px;
+            font-weight: 600;
         }
 
-        @keyframes scroll {
+        @keyframes tickerScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* ====== PAGE HEADER ====== */
-        .page-header {
-            padding: 40px 60px 20px;
+        /* ====== PAGE TITLE ====== */
+        .page-title {
+            padding: 30px 60px 10px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .page-title {
-            font-size: 36px;
+        .page-title h1 {
+            font-size: 32px;
             font-weight: 800;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            color: #fff;
         }
 
-        .page-title::before {
-            content: '';
-            width: 5px;
-            height: 36px;
-            background: var(--primary);
-            border-radius: 3px;
-        }
-
-        .breadcrumb {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .breadcrumb a:hover {
-            color: var(--primary);
-        }
-
-        /* ====== HERO SECTION ====== */
-        .hero-section {
+        /* ====== CARS HERO ====== */
+        .cars-hero {
             padding: 20px 60px;
             max-width: 1400px;
             margin: 0 auto;
@@ -301,123 +201,115 @@
             gap: 25px;
         }
 
-        .hero-featured {
+        .featured-article {
             position: relative;
             border-radius: 16px;
             overflow: hidden;
             height: 450px;
             cursor: pointer;
-            box-shadow: var(--shadow);
         }
 
-        .hero-featured img {
+        .featured-article img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.5s;
         }
 
-        .hero-featured:hover img {
+        .featured-article:hover img {
             transform: scale(1.05);
         }
 
-        .hero-overlay {
+        .featured-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             padding: 40px;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
         }
 
-        .featured-label {
+        .featured-tag {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: var(--primary);
+            background: #ff4500;
             color: #fff;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: bold;
             text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .featured-headline {
-            font-size: 28px;
-            font-weight: 800;
-            line-height: 1.2;
             margin-bottom: 12px;
         }
 
-        .featured-summary {
+        .featured-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .featured-desc {
             font-size: 15px;
-            color: var(--text-secondary);
+            color: #aaa;
             line-height: 1.6;
         }
 
-        /* Side Articles */
-        .side-stories {
+        .side-articles {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        .story-card {
+        .side-article {
             display: flex;
             gap: 15px;
-            padding: 16px;
-            background: var(--bg-card);
+            padding: 15px;
+            background: #111;
             border-radius: 12px;
-            transition: var(--transition);
+            transition: all 0.3s;
             cursor: pointer;
-            border: 1px solid transparent;
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid #1a1a1a;
         }
 
-        .story-card:hover {
-            background: var(--bg-hover);
-            border-color: var(--border);
+        .side-article:hover {
+            background: #1a1a1a;
+            border-color: #333;
             transform: translateX(5px);
         }
 
-        .story-thumb {
+        .side-article-img {
             width: 100px;
-            height: 75px;
+            height: 80px;
             border-radius: 10px;
             overflow: hidden;
             flex-shrink: 0;
         }
 
-        .story-thumb img {
+        .side-article-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
         }
 
-        .story-card:hover .story-thumb img {
-            transform: scale(1.1);
-        }
-
-        .story-info {
+        .side-article-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
             flex: 1;
         }
 
-        .story-time {
-            color: var(--primary);
+        .side-article-time {
+            color: #ff4500;
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
-        .story-title {
+        .side-article-title {
             font-size: 14px;
             font-weight: 600;
             line-height: 1.4;
@@ -427,8 +319,8 @@
             overflow: hidden;
         }
 
-        .story-views {
-            color: var(--text-muted);
+        .side-article-views {
+            color: #666;
             font-size: 12px;
             margin-top: 6px;
             display: flex;
@@ -436,218 +328,104 @@
             gap: 5px;
         }
 
-        /* ====== EV SHOWCASE ====== */
-        .ev-showcase {
-            padding: 40px 60px;
-            max-width: 1400px;
-            margin: 30px auto;
-            background: var(--gradient-primary);
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ev-showcase::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), #3b82f6);
-        }
-
-        .ev-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .ev-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(34, 197, 94, 0.15);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .ev-heading {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .ev-subheading {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .ev-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .ev-card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .ev-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
-        }
-
-        .ev-image {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-        }
-
-        .ev-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .ev-card:hover .ev-image img {
-            transform: scale(1.1);
-        }
-
-        .ev-details {
-            padding: 20px;
-        }
-
-        .ev-range {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--secondary);
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .ev-name {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .ev-price {
-            color: var(--primary);
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .ev-specs {
-            display: flex;
-            gap: 15px;
-            margin-top: 12px;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* ====== SECTION COMMON ====== */
-        .content-section {
+        /* ====== CATEGORY SECTIONS ====== */
+        .category-section {
             padding: 30px 60px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .section-head {
+        .section-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 25px;
         }
 
-        .section-name {
+        .section-title {
             font-size: 20px;
             font-weight: 700;
-            color: var(--primary);
+            color: #ff4500;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .view-all {
-            color: var(--primary);
+        .section-title i {
+            font-size: 18px;
+        }
+
+        .see-all {
+            color: #ff4500;
+            text-decoration: none;
             font-size: 14px;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 5px;
-            transition: var(--transition);
+            transition: gap 0.3s;
         }
 
-        .view-all:hover {
+        .see-all:hover {
             gap: 10px;
         }
 
-        .cards-row {
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
         .news-card {
-            background: var(--bg-card);
+            background: #111;
             border-radius: 12px;
             overflow: hidden;
-            transition: var(--transition);
+            transition: transform 0.3s;
             cursor: pointer;
-            border: 1px solid transparent;
+            border: 1px solid #1a1a1a;
         }
 
         .news-card:hover {
             transform: translateY(-5px);
-            border-color: var(--border);
+            border-color: #333;
         }
 
-        .card-image {
+        .news-card-img {
             width: 100%;
             height: 160px;
             overflow: hidden;
             position: relative;
         }
 
-        .card-image img {
+        .news-card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
 
-        .news-card:hover .card-image img {
+        .news-card:hover .news-card-img img {
             transform: scale(1.1);
         }
 
-        .card-tag {
+        .news-tag {
             position: absolute;
             top: 10px;
             left: 10px;
-            background: var(--primary);
+            background: #ff4500;
             color: #fff;
             padding: 3px 10px;
             border-radius: 4px;
             font-size: 10px;
-            font-weight: 700;
+            font-weight: bold;
             text-transform: uppercase;
         }
 
-        .card-body {
+        .news-card-content {
             padding: 15px;
         }
 
-        .card-title {
+        .news-card-title {
             font-size: 14px;
             font-weight: 600;
             line-height: 1.4;
@@ -658,12 +436,130 @@
             overflow: hidden;
         }
 
-        .card-meta {
+        .news-card-meta {
             display: flex;
             align-items: center;
             gap: 15px;
             font-size: 12px;
-            color: var(--text-muted);
+            color: #666;
+        }
+
+        .news-card-meta i {
+            margin-right: 4px;
+        }
+
+        /* ====== EV SECTION HIGHLIGHT ====== */
+        .ev-highlight {
+            padding: 40px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 20px;
+            border: 1px solid #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ev-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #22c55e, #3b82f6);
+        }
+
+        .ev-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .ev-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(34, 197, 94, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .ev-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .ev-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .ev-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .ev-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .ev-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
+        }
+
+        .ev-card-img {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .ev-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ev-card-content {
+            padding: 20px;
+        }
+
+        .ev-range {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #22c55e;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .ev-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .ev-price {
+            color: #ff4500;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .ev-specs {
+            display: flex;
+            gap: 15px;
+            margin-top: 12px;
+            font-size: 12px;
+            color: #666;
         }
 
         /* ====== COMPARISON TABLE ====== */
@@ -673,66 +569,68 @@
             margin: 0 auto;
         }
 
-        .data-table {
+        .compare-table {
             width: 100%;
-            background: var(--bg-card);
+            background: #111;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid var(--border);
+            border: 1px solid #1a1a1a;
         }
 
-        .data-table th {
-            background: var(--bg-hover);
-            padding: 16px;
+        .compare-table th {
+            background: #1a1a1a;
+            padding: 15px;
             text-align: left;
-            font-size: 13px;
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .data-table td {
-            padding: 16px;
-            border-top: 1px solid var(--border);
             font-size: 14px;
-        }
-
-        .data-table tr:hover {
-            background: var(--bg-hover);
-        }
-
-        .car-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            color: #ff4500;
             font-weight: 600;
         }
 
-        .car-photo {
+        .compare-table td {
+            padding: 15px;
+            border-top: 1px solid #1a1a1a;
+            font-size: 14px;
+        }
+
+        .compare-table tr:hover {
+            background: #1a1a1a;
+        }
+
+        .car-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .car-thumb {
             width: 60px;
             height: 40px;
             border-radius: 6px;
             overflow: hidden;
         }
 
-        .car-photo img {
+        .car-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .highlight-good {
-            color: var(--secondary);
-            font-weight: 700;
+        .spec-good {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .spec-bad {
+            color: #ef4444;
         }
 
         /* ====== FOOTER ====== */
-        .site-footer {
-            background: var(--bg-card);
+        .footer {
+            background: #111;
             padding: 50px 60px 20px;
             margin-top: 50px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid #222;
         }
 
         .footer-grid {
@@ -743,422 +641,324 @@
             gap: 40px;
         }
 
-        .footer-brand h3 {
-            color: var(--primary);
-            font-size: 24px;
+        .footer-col h3 {
+            color: #ff4500;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 16px;
             margin-bottom: 15px;
         }
 
-        .footer-brand p {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .footer-title {
-            color: var(--text-primary);
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
-
-        .footer-links {
+        .footer-col ul {
             list-style: none;
         }
 
-        .footer-links li {
-            color: var(--text-muted);
+        .footer-col ul li {
+            color: #666;
             font-size: 14px;
-            line-height: 2.4;
+            line-height: 2.2;
             cursor: pointer;
-            transition: var(--transition);
+            transition: color 0.3s;
         }
 
-        .footer-links li:hover {
-            color: var(--primary);
+        .footer-col ul li:hover {
+            color: #ff4500;
         }
 
-        .social-row {
+        .social-icons {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--bg-hover);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 16px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .social-icon:hover {
-            background: var(--primary);
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        .newsletter-box {
-            display: flex;
-            gap: 10px;
             margin-top: 15px;
         }
 
-        .newsletter-input {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--bg-hover);
-            color: var(--text-primary);
-            font-size: 14px;
-            outline: none;
-        }
-
-        .newsletter-input:focus {
-            border-color: var(--primary);
-        }
-
-        .newsletter-btn {
-            padding: 12px 20px;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
+        .social-icons i {
+            color: #666;
+            font-size: 20px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: color 0.3s;
         }
 
-        .newsletter-btn:hover {
-            background: var(--primary-dark);
+        .social-icons i:hover {
+            color: #ff4500;
         }
 
         .footer-bottom {
             max-width: 1400px;
             margin: 30px auto 0;
             padding-top: 20px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid #222;
             text-align: center;
-            color: var(--text-muted);
+            color: #666;
             font-size: 13px;
         }
 
-        /* ====== SCROLL TO TOP ====== */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 999;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-
-        /* ====== MOBILE RESPONSIVE ====== */
+        /* ====== MOBILE ====== */
         @media (max-width: 1024px) {
-            .site-header { padding: 0 30px; }
-            .search-input { width: 250px; }
-            .hero-section { grid-template-columns: 1fr; padding: 20px 30px; }
-            .hero-featured { height: 350px; }
-            .cards-row { grid-template-columns: repeat(2, 1fr); }
+            .header { padding: 15px 30px; }
+            .search-box input { width: 250px; }
+            .cars-hero { grid-template-columns: 1fr; padding: 20px 30px; }
+            .featured-article { height: 350px; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
             .ev-grid { grid-template-columns: repeat(2, 1fr); }
-            .content-section { padding: 25px 30px; }
-            .page-header { padding: 25px 30px 15px; }
-            .ev-showcase { padding: 30px; margin: 20px 30px; }
+            .category-section { padding: 25px 30px; }
+            .page-title { padding: 25px 30px 10px; }
+            .ev-highlight { padding: 30px; margin: 0 30px; }
             .compare-section { padding: 25px 30px; }
-            .site-footer { padding: 40px 30px 20px; }
         }
 
         @media (max-width: 768px) {
-            .site-header { 
-                flex-direction: column; 
-                gap: 12px; 
-                padding: 12px 20px;
-                height: auto;
-                position: relative;
-            }
-            .main-nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .search-input { width: 200px; }
-            .news-ticker { margin-top: 0; }
-            .ticker-content { padding-left: 130px; animation-duration: 30s; }
-            .hero-featured { height: 280px; }
-            .featured-headline { font-size: 20px; }
-            .hero-overlay { padding: 25px; }
-            .story-card { padding: 12px; }
-            .story-thumb { width: 80px; height: 60px; }
-            .cards-row { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 15px; padding: 15px 20px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .search-box input { width: 200px; }
+            .ticker-track { padding-left: 130px; animation-duration: 30s; }
+            .featured-article { height: 280px; }
+            .featured-title { font-size: 20px; }
+            .featured-overlay { padding: 25px; }
+            .side-article { padding: 12px; }
+            .side-article-img { width: 80px; height: 65px; }
+            .cards-grid { grid-template-columns: 1fr; }
             .ev-grid { grid-template-columns: 1fr; }
-            .content-section { padding: 20px; }
-            .page-header { padding: 20px 20px 10px; }
-            .page-title { font-size: 24px; }
-            .ev-showcase { padding: 20px; margin: 15px 20px; }
+            .category-section { padding: 20px; }
+            .page-title { padding: 20px 20px 10px; }
+            .page-title h1 { font-size: 24px; }
+            .ev-highlight { padding: 20px; margin: 0 20px; }
             .compare-section { padding: 20px; }
-            .data-table { font-size: 12px; }
-            .data-table th, .data-table td { padding: 10px; }
+            .compare-table { font-size: 12px; }
+            .compare-table th, .compare-table td { padding: 10px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-            .site-footer { padding: 30px 20px 15px; }
+            .footer { padding: 30px 20px 15px; }
         }
     </style>
 </head>
 <body>
 
     <!-- ====== HEADER ====== -->
-    <header class="site-header">
-        <a href="#" class="brand-logo">Auto<span>Drive</span></a>
-        
-        <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Search cars, reviews, news...">
-            <button class="search-button">Search</button>
+    <header class="header">
+        <a href="#" class="logo">AutoDrive</a>
+        <div class="search-box">
+            <input type="text" placeholder="Search latest news...">
+            <button class="search-btn">Search</button>
         </div>
-        
-        <nav>
-            <ul class="main-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sports</a></li>
-                <li><a href="#">Health</a></li>
-                <li><a href="#" class="active">Cars</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Health</a></li>
+            <li><a href="#" class="active">Cars</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
     </header>
 
     <!-- ====== LIVE NEWS TICKER ====== -->
-    <div class="news-ticker">
-        <div class="ticker-badge">
+    <div class="live-ticker">
+        <div class="ticker-label">
             <span class="pulse-dot"></span>
-            Live Auto News
+            LIVE AUTO NEWS
         </div>
-        <div class="ticker-content">
-            <div class="ticker-news">
-                <span class="news-category-tag">EV</span>
+        <div class="ticker-track" id="tickerTrack">
+            <div class="ticker-item">
+                <span class="ticker-tag">EV</span>
                 Tesla Model 3 2026 launched in India — Starting ₹25 lakh
             </div>
-            <div class="ticker-news">
-                <span class="news-category-tag">Launch</span>
+            <div class="ticker-item">
+                <span class="ticker-tag">LAUNCH</span>
                 Maruti Suzuki eVX electric SUV revealed — 550km range
             </div>
-            <div class="ticker-news">
-                <span class="news-category-tag">Sales</span>
+            <div class="ticker-item">
+                <span class="ticker-tag">SALES</span>
                 Tata Motors EV sales cross 1 lakh units in 2026
             </div>
-            <div class="ticker-news">
-                <span class="news-category-tag">Policy</span>
+            <div class="ticker-item">
+                <span class="ticker-tag">POLICY</span>
                 Government extends EV subsidy till 2027 — ₹15,000 crore
             </div>
-            <div class="ticker-news">
-                <span class="news-category-tag">Tech</span>
+            <div class="ticker-item">
+                <span class="ticker-tag">TECH</span>
                 BYD launches Blade Battery 2.0 — 1000km range claimed
             </div>
-            <div class="ticker-news">
-                <span class="news-category-tag">Luxury</span>
+            <div class="ticker-item">
+                <span class="ticker-tag">LUXURY</span>
                 Mercedes EQS SUV launched — ₹1.5 crore, 680km range
             </div>
         </div>
     </div>
 
-    <!-- ====== PAGE HEADER ====== -->
-    <div class="page-header">
-        <h1 class="page-title">Cars News</h1>
-        <div class="breadcrumb">
-            <a href="#">Home</a>
-            <span>/</span>
-            <span>Cars</span>
-        </div>
+    <!-- ====== PAGE TITLE ====== -->
+    <div class="page-title">
+        <h1>Cars News</h1>
     </div>
 
-    <!-- ====== HERO SECTION ====== -->
-    <section class="hero-section">
-        <article class="hero-featured">
-            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1200" alt="Tesla Model 3 2026">
-            <div class="hero-overlay">
-                <div class="featured-label">🔥 Trending</div>
-                <h2 class="featured-headline">Tesla Model 3 2026 Launched in India: 600km Range, Autopilot, ₹25 Lakh</h2>
-                <p class="featured-summary">Elon Musk's most affordable EV yet hits Indian roads. Bookings open with ₹21,000 refundable amount. Delivery starts July 2026.</p>
-            </div>
-        </article>
-
-        <aside class="side-stories">
-            <a href="#" class="story-card">
-                <div class="story-thumb"><img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=200" alt="Maruti eVX"></div>
-                <div class="story-info">
-                    <div class="story-time"><i class="far fa-clock"></i> 2 hours ago</div>
-                    <h4 class="story-title">Maruti Suzuki eVX Electric SUV Revealed — 550km Range, Under ₹20 Lakh</h4>
-                    <div class="story-views"><i class="far fa-eye"></i> 18.5K views</div>
-                </div>
-            </a>
-            <a href="#" class="story-card">
-                <div class="story-thumb"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200" alt="EV Policy"></div>
-                <div class="story-info">
-                    <div class="story-time"><i class="far fa-clock"></i> 3 hours ago</div>
-                    <h4 class="story-title">Government Extends EV Subsidy Till 2027 — ₹15,000 Crore Allocated</h4>
-                    <div class="story-views"><i class="far fa-eye"></i> 12.3K views</div>
-                </div>
-            </a>
-            <a href="#" class="story-card">
-                <div class="story-thumb"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=200" alt="Hyundai Ioniq 7"></div>
-                <div class="story-info">
-                    <div class="story-time"><i class="far fa-clock"></i> 4 hours ago</div>
-                    <h4 class="story-title">Hyundai Ioniq 7: 800km Range Electric SUV India Launch Confirmed</h4>
-                    <div class="story-views"><i class="far fa-eye"></i> 9.7K views</div>
-                </div>
-            </a>
-            <a href="#" class="story-card">
-                <div class="story-thumb"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=200" alt="BMW i7"></div>
-                <div class="story-info">
-                    <div class="story-time"><i class="far fa-clock"></i> 5 hours ago</div>
-                    <h4 class="story-title">BMW i7 M70 xDrive: India's Fastest Electric Sedan at ₹2.5 Crore</h4>
-                    <div class="story-views"><i class="far fa-eye"></i> 15.1K views</div>
-                </div>
-            </a>
-        </aside>
-    </section>
-
-    <!-- ====== EV SHOWCASE ====== -->
-    <section class="ev-showcase">
-        <div class="ev-header">
-            <div class="ev-icon">⚡</div>
-            <div>
-                <div class="ev-heading">Electric Vehicles 2026</div>
-                <div class="ev-subheading">Best EVs launching in India this year</div>
+    <!-- ====== CARS HERO ====== -->
+    <section class="cars-hero">
+        <div class="featured-article">
+            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1200" alt="Tesla">
+            <div class="featured-overlay">
+                <div class="featured-tag">🔥 TRENDING</div>
+                <h2 class="featured-title">Tesla Model 3 2026 Launched in India: 600km Range, Autopilot, ₹25 Lakh</h2>
+                <p class="featured-desc">Elon Musk's most affordable EV yet hits Indian roads. Bookings open with ₹21,000 refundable amount. Delivery starts July 2026.</p>
             </div>
         </div>
-        <div class="ev-grid">
-            <article class="ev-card">
-                <div class="ev-image"><img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400" alt="Tesla Model 3"></div>
-                <div class="ev-details">
-                    <div class="ev-range"><i class="fas fa-bolt"></i> 600km range</div>
-                    <div class="ev-name">Tesla Model 3 2026</div>
-                    <div class="ev-price">₹25 Lakh</div>
-                    <div class="ev-specs">
-                        <span><i class="fas fa-clock"></i> 0-100 in 3.2s</span>
-                        <span><i class="fas fa-battery-full"></i> 82 kWh</span>
+        <div class="side-articles">
+            <a href="#" class="side-article">
+                <div class="side-article-img"><img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=200" alt="Maruti"></div>
+                <div class="side-article-content">
+                    <div class="side-article-time">2 hours ago</div>
+                    <h4 class="side-article-title">Maruti Suzuki eVX Electric SUV Revealed — 550km Range, Under ₹20 Lakh</h4>
+                    <div class="side-article-views"><i class="far fa-eye"></i> 18.5K</div>
+                </div>
+            </a>
+            <a href="#" class="side-article">
+                <div class="side-article-img"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200" alt="EV"></div>
+                <div class="side-article-content">
+                    <div class="side-article-time">3 hours ago</div>
+                    <h4 class="side-article-title">Government Extends EV Subsidy Till 2027 — ₹15,000 Crore Allocated</h4>
+                    <div class="side-article-views"><i class="far fa-eye"></i> 12.3K</div>
+                </div>
+            </a>
+            <a href="#" class="side-article">
+                <div class="side-article-img"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=200" alt="Hyundai"></div>
+                <div class="side-article-content">
+                    <div class="side-article-time">4 hours ago</div>
+                    <h4 class="side-article-title">Hyundai Ioniq 7: 800km Range Electric SUV India Launch Confirmed</h4>
+                    <div class="side-article-views"><i class="far fa-eye"></i> 9.7K</div>
+                </div>
+            </a>
+            <a href="#" class="side-article">
+                <div class="side-article-img"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=200" alt="BMW"></div>
+                <div class="side-article-content">
+                    <div class="side-article-time">5 hours ago</div>
+                    <h4 class="side-article-title">BMW i7 M70 xDrive: India's Fastest Electric Sedan at ₹2.5 Crore</h4>
+                    <div class="side-article-views"><i class="far fa-eye"></i> 15.1K</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ====== EV HIGHLIGHT SECTION ====== -->
+    <section class="category-section">
+        <div class="ev-highlight">
+            <div class="ev-header">
+                <div class="ev-icon">⚡</div>
+                <div>
+                    <div class="ev-title">Electric Vehicles 2026</div>
+                    <div class="ev-subtitle">Best EVs launching in India this year</div>
+                </div>
+            </div>
+            <div class="ev-grid">
+                <div class="ev-card">
+                    <div class="ev-card-img"><img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400" alt="Tesla"></div>
+                    <div class="ev-card-content">
+                        <div class="ev-range"><i class="fas fa-bolt"></i> 600km range</div>
+                        <div class="ev-card-title">Tesla Model 3 2026</div>
+                        <div class="ev-price">₹25 Lakh</div>
+                        <div class="ev-specs">
+                            <span><i class="fas fa-clock"></i> 0-100 in 3.2s</span>
+                            <span><i class="fas fa-battery-full"></i> 82 kWh</span>
+                        </div>
                     </div>
                 </div>
-            </article>
-            <article class="ev-card">
-                <div class="ev-image"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400" alt="BYD Seal"></div>
-                <div class="ev-details">
-                    <div class="ev-range"><i class="fas fa-bolt"></i> 520km range</div>
-                    <div class="ev-name">BYD Seal</div>
-                    <div class="ev-price">₹41 Lakh</div>
-                    <div class="ev-specs">
-                        <span><i class="fas fa-clock"></i> 0-100 in 3.8s</span>
-                        <span><i class="fas fa-battery-full"></i> 82.5 kWh</span>
+                <div class="ev-card">
+                    <div class="ev-card-img"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400" alt="BYD"></div>
+                    <div class="ev-card-content">
+                        <div class="ev-range"><i class="fas fa-bolt"></i> 520km range</div>
+                        <div class="ev-card-title">BYD Seal</div>
+                        <div class="ev-price">₹41 Lakh</div>
+                        <div class="ev-specs">
+                            <span><i class="fas fa-clock"></i> 0-100 in 3.8s</span>
+                            <span><i class="fas fa-battery-full"></i> 82.5 kWh</span>
+                        </div>
                     </div>
                 </div>
-            </article>
-            <article class="ev-card">
-                <div class="ev-image"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400" alt="Hyundai Ioniq 7"></div>
-                <div class="ev-details">
-                    <div class="ev-range"><i class="fas fa-bolt"></i> 800km range</div>
-                    <div class="ev-name">Hyundai Ioniq 7</div>
-                    <div class="ev-price">₹65 Lakh</div>
-                    <div class="ev-specs">
-                        <span><i class="fas fa-clock"></i> 0-100 in 5.2s</span>
-                        <span><i class="fas fa-battery-full"></i> 100 kWh</span>
+                <div class="ev-card">
+                    <div class="ev-card-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400" alt="Hyundai"></div>
+                    <div class="ev-card-content">
+                        <div class="ev-range"><i class="fas fa-bolt"></i> 800km range</div>
+                        <div class="ev-card-title">Hyundai Ioniq 7</div>
+                        <div class="ev-price">₹65 Lakh</div>
+                        <div class="ev-specs">
+                            <span><i class="fas fa-clock"></i> 0-100 in 5.2s</span>
+                            <span><i class="fas fa-battery-full"></i> 100 kWh</span>
+                        </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </div>
     </section>
 
     <!-- ====== LATEST LAUNCHES ====== -->
-    <section class="content-section">
-        <div class="section-head">
-            <h2 class="section-name"><i class="fas fa-rocket"></i> Latest Launches</h2>
-            <a href="#" class="view-all">See All <i class="fas fa-chevron-right"></i></a>
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Latest Launches</h2>
+            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
         </div>
-        <div class="cards-row">
-            <article class="news-card">
-                <div class="card-image">
+        <div class="cards-grid">
+            <div class="news-card">
+                <div class="news-card-img">
                     <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=400" alt="Tesla">
-                    <span class="card-tag">New</span>
+                    <div class="news-tag">NEW</div>
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title">Tesla Model 3 2026: India's Most Awaited EV Finally Launched</h4>
-                    <div class="card-meta">
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Tesla Model 3 2026: India's Most Awaited EV Finally Launched</h4>
+                    <div class="news-card-meta">
                         <span><i class="far fa-clock"></i> 1h ago</span>
                         <span><i class="far fa-eye"></i> 45.2K</span>
                     </div>
                 </div>
-            </article>
-            <article class="news-card">
-                <div class="card-image">
+            </div>
+            <div class="news-card">
+                <div class="news-card-img">
                     <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400" alt="BMW">
-                    <span class="card-tag">Luxury</span>
+                    <div class="news-tag">LUXURY</div>
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title">BMW i7 M70: 660hp Electric Beast Enters Indian Market</h4>
-                    <div class="card-meta">
+                <div class="news-card-content">
+                    <h4 class="news-card-title">BMW i7 M70: 660hp Electric Beast Enters Indian Market</h4>
+                    <div class="news-card-meta">
                         <span><i class="far fa-clock"></i> 3h ago</span>
                         <span><i class="far fa-eye"></i> 22.1K</span>
                     </div>
                 </div>
-            </article>
-            <article class="news-card">
-                <div class="card-image">
+            </div>
+            <div class="news-card">
+                <div class="news-card-img">
                     <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400" alt="Tata">
-                    <span class="card-tag">Made in India</span>
+                    <div class="news-tag">MADE IN INDIA</div>
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title">Tata Curvv EV: India's First Coupe SUV Under ₹20 Lakh</h4>
-                    <div class="card-meta">
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Tata Curvv EV: India's First Coupe SUV Under ₹20 Lakh</h4>
+                    <div class="news-card-meta">
                         <span><i class="far fa-clock"></i> 5h ago</span>
                         <span><i class="far fa-eye"></i> 31.5K</span>
                     </div>
                 </div>
-            </article>
-            <article class="news-card">
-                <div class="card-image">
+            </div>
+            <div class="news-card">
+                <div class="news-card-img">
                     <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400" alt="Mahindra">
-                    <span class="card-tag">Concept</span>
+                    <div class="news-tag">CONCEPT</div>
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title">Mahindra BE 6e: Born Electric SUV with 450km Range</h4>
-                    <div class="card-meta">
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Mahindra BE 6e: Born Electric SUV with 450km Range</h4>
+                    <div class="news-card-meta">
                         <span><i class="far fa-clock"></i> 7h ago</span>
                         <span><i class="far fa-eye"></i> 18.9K</span>
                     </div>
                 </div>
-            </article>
+            </div>
         </div>
     </section>
 
-    <!-- ====== COMPARISON TABLE ====== -->
+    <!-- ====== CAR COMPARISON ====== -->
     <section class="compare-section">
-        <div class="section-head">
-            <h2 class="section-name"><i class="fas fa-balance-scale"></i> EV Comparison</h2>
-            <a href="#" class="view-all">Full Comparison <i class="fas fa-chevron-right"></i></a>
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-balance-scale"></i> EV Comparison</h2>
+            <a href="#" class="see-all">Full Comparison <i class="fas fa-chevron-right"></i></a>
         </div>
-        <table class="data-table">
+        <table class="compare-table">
             <thead>
                 <tr>
                     <th>Car</th>
@@ -1172,21 +972,21 @@
             <tbody>
                 <tr>
                     <td>
-                        <div class="car-info">
-                            <div class="car-photo"><img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=100" alt="Tesla"></div>
+                        <div class="car-name">
+                            <div class="car-thumb"><img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=100" alt="Tesla"></div>
                             Tesla Model 3
                         </div>
                     </td>
-                    <td class="highlight-good">₹25 Lakh</td>
-                    <td class="highlight-good">600 km</td>
+                    <td class="spec-good">₹25 Lakh</td>
+                    <td class="spec-good">600 km</td>
                     <td>82 kWh</td>
-                    <td class="highlight-good">3.2 sec</td>
+                    <td class="spec-good">3.2 sec</td>
                     <td>15 min (10-80%)</td>
                 </tr>
                 <tr>
                     <td>
-                        <div class="car-info">
-                            <div class="car-photo"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=100" alt="BYD"></div>
+                        <div class="car-name">
+                            <div class="car-thumb"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=100" alt="BYD"></div>
                             BYD Seal
                         </div>
                     </td>
@@ -1198,25 +998,25 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="car-info">
-                            <div class="car-photo"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=100" alt="Hyundai"></div>
+                        <div class="car-name">
+                            <div class="car-thumb"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=100" alt="Hyundai"></div>
                             Hyundai Ioniq 7
                         </div>
                     </td>
                     <td>₹65 Lakh</td>
-                    <td class="highlight-good">800 km</td>
-                    <td class="highlight-good">100 kWh</td>
+                    <td class="spec-good">800 km</td>
+                    <td class="spec-good">100 kWh</td>
                     <td>5.2 sec</td>
                     <td>18 min (10-80%)</td>
                 </tr>
                 <tr>
                     <td>
-                        <div class="car-info">
-                            <div class="car-photo"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=100" alt="Tata"></div>
+                        <div class="car-name">
+                            <div class="car-thumb"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=100" alt="Tata"></div>
                             Tata Curvv EV
                         </div>
                     </td>
-                    <td class="highlight-good">₹19 Lakh</td>
+                    <td class="spec-good">₹19 Lakh</td>
                     <td>450 km</td>
                     <td>55 kWh</td>
                     <td>8.5 sec</td>
@@ -1227,71 +1027,59 @@
     </section>
 
     <!-- ====== UPCOMING CARS ====== -->
-    <section class="content-section">
-        <div class="section-head">
-            <h2 class="section-name"><i class="fas fa-calendar-alt"></i> Upcoming Cars 2026</h2>
-            <a href="#" class="view-all">Full List <i class="fas fa-chevron-right"></i></a>
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Upcoming Cars 2026</h2>
+            <a href="#" class="see-all">Full List <i class="fas fa-chevron-right"></i></a>
         </div>
-        <div class="cards-row">
-            <article class="news-card">
-                <div class="card-image"><img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=400" alt="Maruti eVX"></div>
-                <div class="card-body">
-                    <h4 class="card-title">Maruti Suzuki eVX: Affordable EV SUV Launching Diwali 2026</h4>
-                    <div class="card-meta">
-                        <span><i class="far fa-calendar"></i> Expected Oct 2026</span>
-                        <span><i class="far fa-eye"></i> 28.3K</span>
-                    </div>
+        <div class="cards-grid">
+            <div class="news-card">
+                <div class="news-card-img"><img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=400" alt="Maruti"></div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Maruti Suzuki eVX: Affordable EV SUV Launching Diwali 2026</h4>
+                    <div class="news-card-meta"><span><i class="far fa-clock"></i> Expected Oct 2026</span><span><i class="far fa-eye"></i> 28.3K</span></div>
                 </div>
-            </article>
-            <article class="news-card">
-                <div class="card-image"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400" alt="Mercedes EQS"></div>
-                <div class="card-body">
-                    <h4 class="card-title">Mercedes EQS SUV: Luxury EV with 680km Range Coming Soon</h4>
-                    <div class="card-meta">
-                        <span><i class="far fa-calendar"></i> Expected Aug 2026</span>
-                        <span><i class="far fa-eye"></i> 19.7K</span>
-                    </div>
+            </div>
+            <div class="news-card">
+                <div class="news-card-img"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400" alt="Mercedes"></div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Mercedes EQS SUV: Luxury EV with 680km Range Coming Soon</h4>
+                    <div class="news-card-meta"><span><i class="far fa-clock"></i> Expected Aug 2026</span><span><i class="far fa-eye"></i> 19.7K</span></div>
                 </div>
-            </article>
-            <article class="news-card">
-                <div class="card-image"><img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400" alt="Mahindra XUV.e9"></div>
-                <div class="card-body">
-                    <h4 class="card-title">Mahindra XUV.e9: 7-Seater Electric SUV with 500km Range</h4>
-                    <div class="card-meta">
-                        <span><i class="far fa-calendar"></i> Expected Sep 2026</span>
-                        <span><i class="far fa-eye"></i> 24.1K</span>
-                    </div>
+            </div>
+            <div class="news-card">
+                <div class="news-card-img"><img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400" alt="Mahindra"></div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Mahindra XUV.e9: 7-Seater Electric SUV with 500km Range</h4>
+                    <div class="news-card-meta"><span><i class="far fa-clock"></i> Expected Sep 2026</span><span><i class="far fa-eye"></i> 24.1K</span></div>
                 </div>
-            </article>
-            <article class="news-card">
-                <div class="card-image"><img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400" alt="MG Cyberster"></div>
-                <div class="card-body">
-                    <h4 class="card-title">MG Cyberster: India's First Electric Roadster Under ₹50 Lakh</h4>
-                    <div class="card-meta">
-                        <span><i class="far fa-calendar"></i> Expected Nov 2026</span>
-                        <span><i class="far fa-eye"></i> 33.8K</span>
-                    </div>
+            </div>
+            <div class="news-card">
+                <div class="news-card-img"><img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400" alt="MG"></div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">MG Cyberster: India's First Electric Roadster Under ₹50 Lakh</h4>
+                    <div class="news-card-meta"><span><i class="far fa-clock"></i> Expected Nov 2026</span><span><i class="far fa-eye"></i> 33.8K</span></div>
                 </div>
-            </article>
+            </div>
         </div>
     </section>
 
     <!-- ====== FOOTER ====== -->
-    <footer class="site-footer">
+    <footer class="footer">
         <div class="footer-grid">
-            <div class="footer-brand">
+            <div class="footer-col">
                 <h3>AutoDrive</h3>
-                <p>India's #1 destination for automobile news, reviews, and comparisons. Stay ahead with the latest in cars and EVs.</p>
-                <div class="social-row">
-                    <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
-                    <div class="social-icon"><i class="fab fa-twitter"></i></div>
-                    <div class="social-icon"><i class="fab fa-instagram"></i></div>
-                    <div class="social-icon"><i class="fab fa-youtube"></i></div>
+                <p style="color:#666;font-size:14px;line-height:1.6;">India's #1 destination for automobile news, reviews, and comparisons. Stay ahead with the latest in cars and EVs.</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
                 </div>
             </div>
-            <div>
-                <h4 class="footer-title">Car Categories</h4>
-                <ul class="footer-links">
+            <div class="footer-col">
+                <h4>Car Categories</h4>
+                <ul>
                     <li>Electric Vehicles</li>
                     <li>SUVs</li>
                     <li>Sedans</li>
@@ -1299,9 +1087,9 @@
                     <li>Luxury Cars</li>
                 </ul>
             </div>
-            <div>
-                <h4 class="footer-title">Quick Links</h4>
-                <ul class="footer-links">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
                     <li>Compare Cars</li>
                     <li>On-Road Price</li>
                     <li>Expert Reviews</li>
@@ -1309,41 +1097,17 @@
                     <li>Dealer Locator</li>
                 </ul>
             </div>
-            <div>
-                <h4 class="footer-title">Newsletter</h4>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Get weekly car news and launch alerts.</p>
-                <div class="newsletter-box">
-                    <input type="email" class="newsletter-input" placeholder="Your email address">
-                    <button class="newsletter-btn">Subscribe</button>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p style="color:#666;font-size:14px;margin-bottom:15px;">Get weekly car news and launch alerts.</p>
+                <div style="display:flex;gap:10px;">
+                    <input type="email" placeholder="Your email" style="padding:10px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#fff;outline:none;flex:1;">
+                    <button style="padding:10px 20px;background:#ff4500;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Subscribe</button>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">© 2026 AutoDrive Cars. All rights reserved.</div>
     </footer>
-
-    <!-- ====== SCROLL TO TOP ====== -->
-    <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- ====== JAVASCRIPT ====== -->
-    <script>
-        // Scroll to top button
-        const scrollBtn = document.getElementById('scrollTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollBtn.classList.add('visible');
-            } else {
-                scrollBtn.classList.remove('visible');
-            }
-        });
-
-        // Ticker auto-refresh (demo)
-        setInterval(() => {
-            console.log('🚗 Auto news ticker running...');
-        }, 30000);
-    </script>
 
 </body>
 </html>
