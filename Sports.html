@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoDrive - Real Live Scores</title>
+    <title>AutoDrive - Sports News</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -100,7 +100,7 @@
             border-bottom: 2px solid #ff4500;
             overflow: hidden;
             position: relative;
-            height: 55px;
+            height: 50px;
             display: flex;
             align-items: center;
         }
@@ -122,19 +122,6 @@
             text-transform: uppercase;
         }
 
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #fff;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(1.3); }
-        }
-
         .ticker-track {
             display: flex;
             white-space: nowrap;
@@ -149,7 +136,7 @@
         .ticker-item {
             display: inline-flex;
             align-items: center;
-            padding: 0 35px;
+            padding: 0 30px;
             color: #e0e0e0;
             font-size: 14px;
             position: relative;
@@ -160,26 +147,22 @@
             position: absolute;
             right: 0;
             color: #ff4500;
-            font-size: 12px;
         }
 
         .ticker-match {
-            font-weight: 700;
+            font-weight: 600;
             color: #fff;
-            margin-right: 8px;
         }
 
         .ticker-score {
-            color: #22c55e;
+            color: #ff4500;
             font-weight: bold;
             margin: 0 8px;
-            font-size: 15px;
         }
 
         .ticker-status {
-            color: #f59e0b;
+            color: #22c55e;
             font-size: 12px;
-            margin-left: 5px;
         }
 
         @keyframes tickerScroll {
@@ -187,44 +170,161 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ====== API STATUS ====== */
-        .api-status {
-            padding: 10px 60px;
+        /* ====== PAGE TITLE ====== */
+        .page-title {
+            padding: 30px 60px 10px;
             max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            gap: 15px;
-            align-items: center;
         }
 
-        .api-badge {
+        .page-title h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        /* ====== SPORTS HERO SECTION ====== */
+        .sports-hero {
+            padding: 20px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 25px;
+        }
+
+        /* Main Featured Article */
+        .featured-article {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 450px;
+            cursor: pointer;
+        }
+
+        .featured-article img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .featured-article:hover img {
+            transform: scale(1.05);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+        }
+
+        .featured-tag {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 14px;
+            background: #ff4500;
+            color: #fff;
+            padding: 5px 12px;
             border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .featured-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .featured-desc {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Side Articles List */
+        .side-articles {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .side-article {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #111;
+            border-radius: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid #1a1a1a;
+        }
+
+        .side-article:hover {
+            background: #1a1a1a;
+            border-color: #333;
+            transform: translateX(5px);
+        }
+
+        .side-article-img {
+            width: 100px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .side-article-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .side-article-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .side-article-time {
+            color: #ff4500;
             font-size: 12px;
             font-weight: 600;
+            margin-bottom: 6px;
         }
 
-        .api-badge.connected {
-            background: rgba(34, 197, 94, 0.2);
-            color: #22c55e;
+        .side-article-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .api-badge.error {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
+        .side-article-views {
+            color: #666;
+            font-size: 12px;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .api-badge.demo {
-            background: rgba(245, 158, 11, 0.2);
-            color: #f59e0b;
-        }
-
-        /* ====== LIVE MATCHES SECTION ====== */
-        .live-section {
-            padding: 20px 60px;
+        /* ====== CATEGORY SECTIONS ====== */
+        .category-section {
+            padding: 30px 60px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -245,18 +345,127 @@
             gap: 10px;
         }
 
-        .live-badge-main {
-            background: #22c55e;
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            animation: pulse 2s infinite;
+        .section-title i {
+            font-size: 18px;
         }
 
-        .matches-grid {
+        .see-all {
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+
+        .see-all:hover {
+            gap: 10px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .news-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: 1px solid #1a1a1a;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-color: #333;
+        }
+
+        .news-card-img {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .news-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .news-card:hover .news-card-img img {
+            transform: scale(1.1);
+        }
+
+        .live-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff4500;
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .live-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .news-card-content {
+            padding: 15px;
+        }
+
+        .news-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .news-card-meta i {
+            margin-right: 4px;
+        }
+
+        /* ====== MATCH SCHEDULE SECTION ====== */
+        .schedule-section {
+            padding: 30px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .schedule-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
@@ -264,12 +473,10 @@
 
         .match-card {
             background: #111;
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 12px;
+            padding: 20px;
             border: 1px solid #1a1a1a;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
         }
 
         .match-card:hover {
@@ -277,50 +484,47 @@
             transform: translateY(-3px);
         }
 
-        .match-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: #22c55e;
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
         .match-tournament {
+            color: #ff4500;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .match-time {
             color: #666;
             font-size: 12px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
         }
 
         .match-teams {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .team {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .team-flag {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: #222;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 20px;
-            border: 2px solid #333;
-            font-weight: 700;
-            color: #fff;
         }
 
         .team-name {
@@ -328,82 +532,135 @@
             font-size: 14px;
         }
 
-        .team-score {
-            font-size: 28px;
-            font-weight: 800;
-            color: #fff;
-        }
-
-        .vs-divider {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .vs-text {
+        .vs {
             color: #ff4500;
             font-weight: bold;
             font-size: 12px;
         }
 
-        .match-time {
-            color: #666;
-            font-size: 11px;
-        }
-
-        .match-status-bar {
+        .match-status {
+            text-align: center;
+            padding: 8px;
             background: #1a1a1a;
             border-radius: 8px;
-            padding: 10px;
-            text-align: center;
             font-size: 13px;
+        }
+
+        .match-status.live {
             color: #22c55e;
             font-weight: 600;
         }
 
-        .match-status-bar.upcoming {
+        .match-status.upcoming {
             color: #f59e0b;
         }
 
-        .match-status-bar.finished {
-            color: #666;
+        /* ====== FOOTER ====== */
+        .footer {
+            background: #111;
+            padding: 50px 60px 20px;
+            margin-top: 50px;
+            border-top: 1px solid #222;
         }
 
-        .loading-spinner {
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-col h3 {
+            color: #ff4500;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            color: #666;
+            font-size: 14px;
+            line-height: 2.2;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li:hover {
+            color: #ff4500;
+        }
+
+        .social-icons {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons i {
             color: #666;
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        .loading-spinner i {
-            animation: spin 1s linear infinite;
-            margin-right: 10px;
+        .social-icons i:hover {
+            color: #ff4500;
         }
 
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
         }
 
-        /* ====== MOBILE ====== */
+        /* ====== MOBILE RESPONSIVE ====== */
         @media (max-width: 1024px) {
             .header { padding: 15px 30px; }
             .search-box input { width: 250px; }
-            .matches-grid { grid-template-columns: repeat(2, 1fr); }
-            .live-section { padding: 20px 30px; }
-            .api-status { padding: 10px 30px; }
+            .sports-hero { grid-template-columns: 1fr; padding: 20px 30px; }
+            .featured-article { height: 350px; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .schedule-grid { grid-template-columns: repeat(2, 1fr); }
+            .category-section { padding: 25px 30px; }
+            .schedule-section { padding: 25px 30px; }
+            .page-title { padding: 25px 30px 10px; }
         }
 
         @media (max-width: 768px) {
-            .header { flex-direction: column; gap: 15px; padding: 15px 20px; }
+            .header { 
+                flex-direction: column; 
+                gap: 15px; 
+                padding: 15px 20px;
+            }
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
             .search-box input { width: 200px; }
-            .ticker-track { padding-left: 130px; animation-duration: 25s; }
-            .matches-grid { grid-template-columns: 1fr; }
-            .live-section { padding: 20px; }
-            .api-status { padding: 10px 20px; flex-wrap: wrap; }
+            .ticker-track { padding-left: 130px; }
+            .featured-article { height: 280px; }
+            .featured-title { font-size: 20px; }
+            .featured-overlay { padding: 25px; }
+            .side-article { padding: 12px; }
+            .side-article-img { width: 80px; height: 65px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .schedule-grid { grid-template-columns: 1fr; }
+            .category-section { padding: 20px; }
+            .schedule-section { padding: 20px; }
+            .page-title { padding: 20px 20px 10px; }
+            .page-title h1 { font-size: 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer { padding: 30px 20px 15px; }
         }
     </style>
 </head>
@@ -412,10 +669,12 @@
     <!-- ====== HEADER ====== -->
     <header class="header">
         <a href="#" class="logo">AutoDrive</a>
+        
         <div class="search-box">
             <input type="text" placeholder="Search latest news...">
             <button class="search-btn">Search</button>
         </div>
+        
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#" class="active">Sports</a></li>
@@ -430,320 +689,420 @@
     <!-- ====== LIVE SCORE TICKER ====== -->
     <div class="live-ticker">
         <div class="ticker-label">
-            <span class="pulse-dot"></span>
+            <span class="pulse-dot" style="width:8px;height:8px;background:#fff;border-radius:50%;animation:pulse 1.5s infinite;"></span>
             LIVE SCORES
         </div>
-        <div class="ticker-track" id="tickerTrack"></div>
+        <div class="ticker-track" id="tickerTrack">
+            <div class="ticker-item">
+                <span class="ticker-match">IND vs AUS</span>
+                <span class="ticker-score">287/4</span>
+                <span class="ticker-status">Day 2</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-match">MI vs CSK</span>
+                <span class="ticker-score">156/3</span>
+                <span class="ticker-status">15.2 Overs</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-match">Real Madrid vs Barcelona</span>
+                <span class="ticker-score">2-1</span>
+                <span class="ticker-status">78'</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-match">India vs Pakistan</span>
+                <span class="ticker-score">112/2</span>
+                <span class="ticker-status">T20 WC Final</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-match">Man City vs Arsenal</span>
+                <span class="ticker-score">0-0</span>
+                <span class="ticker-status">Kick Off</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-match">Djokovic vs Alcaraz</span>
+                <span class="ticker-score">6-4, 3-6</span>
+                <span class="ticker-status">Set 3</span>
+            </div>
+        </div>
     </div>
 
-    <!-- ====== API STATUS ====== -->
-    <div class="api-status">
-        <span class="api-badge demo" id="apiStatus">
-            <i class="fas fa-circle" style="font-size:8px;"></i>
-            DEMO MODE — Add API Key for Real Scores
-        </span>
-        <span style="color: #666; font-size: 12px;">
-            Get free API key from <a href="https://www.cricapi.com/" target="_blank" style="color: #ff4500;">cricapi.com</a>
-        </span>
+    <!-- ====== PAGE TITLE ====== -->
+    <div class="page-title">
+        <h1>Sports News</h1>
     </div>
 
-    <!-- ====== LIVE MATCHES ====== -->
-    <section class="live-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <i class="fas fa-circle" style="color: #22c55e; font-size: 10px;"></i>
-                Live Matches
-            </h2>
-            <span class="live-badge-main">● LIVE</span>
+    <!-- ====== SPORTS HERO SECTION ====== -->
+    <section class="sports-hero">
+        <!-- Main Featured -->
+        <div class="featured-article">
+            <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1200" alt="Cricket World Cup">
+            <div class="featured-overlay">
+                <div class="featured-tag">
+                    <span class="dot" style="width:6px;height:6px;background:#fff;border-radius:50%;display:inline-block;margin-right:4px;"></span>
+                    LIVE
+                </div>
+                <h2 class="featured-title">India Wins T20 World Cup 2026: Historic Victory Against Australia</h2>
+                <p class="featured-desc">Rohit Sharma's men create history with a stunning 8-wicket victory. Virat Kohli scores match-winning century.</p>
+            </div>
         </div>
-        
-        <div class="loading-spinner" id="loadingSpinner">
-            <i class="fas fa-spinner"></i> Loading live scores...
+
+        <!-- Side Articles -->
+        <div class="side-articles">
+            <a href="#" class="side-article">
+                <div class="side-article-img">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7f61d4dc18c5?w=200" alt="Football">
+                </div>
+                <div class="side-article-content">
+                    <div class="side-article-time">2 hours ago</div>
+                    <h4 class="side-article-title">FIFA World Cup 2026: India Qualifies for First Time in History</h4>
+                    <div class="side-article-views">
+                        <i class="far fa-eye"></i> 15.2K views
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="side-article">
+                <div class="side-article-img">
+                    <img src="https://images.unsplash.com/photo-1552674605-469523170d9e?w=200" alt="Badminton">
+                </div>
+                <div class="side-article-content">
+                    <div class="side-article-time">3 hours ago</div>
+                    <h4 class="side-article-title">PV Sindhu Wins All England Open Championship 2026</h4>
+                    <div class="side-article-views">
+                        <i class="far fa-eye"></i> 8.7K views
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="side-article">
+                <div class="side-article-img">
+                    <img src="https://images.unsplash.com/photo-1461896836934- voices?w=200" alt="Olympics">
+                </div>
+                <div class="side-article-content">
+                    <div class="side-article-time">4 hours ago</div>
+                    <h4 class="side-article-title">Olympics 2026: India Targets Record 15 Gold Medals</h4>
+                    <div class="side-article-views">
+                        <i class="far fa-eye"></i> 6.3K views
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="side-article">
+                <div class="side-article-img">
+                    <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=200" alt="Hockey">
+                </div>
+                <div class="side-article-content">
+                    <div class="side-article-time">5 hours ago</div>
+                    <h4 class="side-article-title">India Beats Pakistan 5-1 in Hockey World Cup Opener</h4>
+                    <div class="side-article-views">
+                        <i class="far fa-eye"></i> 11.1K views
+                    </div>
+                </div>
+            </a>
         </div>
-        
-        <div class="matches-grid" id="matchesGrid" style="display: none;"></div>
     </section>
 
-    <script>
-        // ====== API CONFIGURATION ======
-        // STEP 1: Sign up at https://www.cricapi.com/ (FREE)
-        // STEP 2: Get your API key
-        // STEP 3: Paste it below
-        const CRIC_API_KEY = 'YOUR_CRICAPI_KEY_HERE'; // <-- YAHAN API KEY DALEIN
+    <!-- ====== CRICKET NEWS ====== -->
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-baseball-ball"></i> Cricket</h2>
+            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+        </div>
         
-        // SportMonks API (Football) — https://www.sportmonks.com/
-        const SPORTMONKS_KEY = 'YOUR_SPORTMONKS_KEY_HERE'; // <-- YAHAN API KEY DALEIN
-
-        let liveMatches = [];
-        let isRealData = false;
-
-        // ====== FETCH REAL CRICKET SCORES ======
-        async function fetchCricketScores() {
-            if (CRIC_API_KEY === 'YOUR_CRICAPI_KEY_HERE') {
-                console.log('⚠️ No API key found. Using demo data.');
-                return null;
-            }
-
-            try {
-                const response = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${CRIC_API_KEY}&offset=0`);
-                const data = await response.json();
-                
-                if (data.status === 'success' && data.data) {
-                    return data.data.map(match => ({
-                        id: match.id,
-                        tournament: match.series,
-                        team1: {
-                            name: match.teams[0],
-                            flag: match.teams[0].substring(0, 2).toUpperCase(),
-                            score: match.score ? match.score[0]?.r || 0 : 0,
-                            wickets: match.score ? match.score[0]?.w || 0 : 0,
-                            overs: match.score ? match.score[0]?.o || 0 : 0
-                        },
-                        team2: {
-                            name: match.teams[1],
-                            flag: match.teams[1].substring(0, 2).toUpperCase(),
-                            score: match.score ? match.score[1]?.r || 0 : 0,
-                            wickets: match.score ? match.score[1]?.w || 0 : 0,
-                            overs: match.score ? match.score[1]?.o || 0 : 0
-                        },
-                        status: match.status,
-                        isLive: match.matchStarted && !match.matchEnded
-                    }));
-                }
-            } catch (error) {
-                console.error('❌ Cricket API Error:', error);
-            }
-            return null;
-        }
-
-        // ====== FETCH REAL FOOTBALL SCORES ======
-        async function fetchFootballScores() {
-            if (SPORTMONKS_KEY === 'YOUR_SPORTMONKS_KEY_HERE') {
-                return null;
-            }
-
-            try {
-                // Using free tier endpoint
-                const response = await fetch(`https://api.sportmonks.com/v3/football/livescores?api_token=${SPORTMONKS_KEY}`);
-                const data = await response.json();
-                
-                if (data.data) {
-                    return data.data.map(match => ({
-                        id: `fb-${match.id}`,
-                        tournament: match.league?.name || 'Football',
-                        team1: {
-                            name: match.participants?.[0]?.name || 'Team A',
-                            flag: match.participants?.[0]?.short_code || 'T1',
-                            score: match.scores?.find(s => s.description === 'CURRENT')?.score?.participant1 || 0,
-                            wickets: null,
-                            overs: null
-                        },
-                        team2: {
-                            name: match.participants?.[1]?.name || 'Team B',
-                            flag: match.participants?.[1]?.short_code || 'T2',
-                            score: match.scores?.find(s => s.description === 'CURRENT')?.score?.participant2 || 0,
-                            wickets: null,
-                            overs: null
-                        },
-                        status: `${match.minute || 0}' • ${match.state?.name || 'Live'}`,
-                        isLive: true
-                    }));
-                }
-            } catch (error) {
-                console.error('❌ Football API Error:', error);
-            }
-            return null;
-        }
-
-        // ====== DEMO DATA (Fallback) ======
-        function getDemoData() {
-            return [
-                {
-                    id: 1,
-                    tournament: "ICC World Test Championship",
-                    team1: { name: "India", flag: "IN", score: 287, wickets: 4, overs: 78.2 },
-                    team2: { name: "Australia", flag: "AU", score: 0, wickets: 0, overs: 0 },
-                    status: "Day 2 • India batting",
-                    isLive: true
-                },
-                {
-                    id: 2,
-                    tournament: "IPL 2026",
-                    team1: { name: "Mumbai Indians", flag: "MI", score: 156, wickets: 3, overs: 15.2 },
-                    team2: { name: "Chennai Super Kings", flag: "CSK", score: 0, wickets: 0, overs: 0 },
-                    status: "MI batting • 15.2 overs",
-                    isLive: true
-                },
-                {
-                    id: 3,
-                    tournament: "FIFA World Cup Qualifiers",
-                    team1: { name: "India", flag: "IN", score: 2, wickets: null, overs: null },
-                    team2: { name: "Qatar", flag: "QA", score: 1, wickets: null, overs: null },
-                    status: "78' • 2nd Half",
-                    isLive: true
-                },
-                {
-                    id: 4,
-                    tournament: "Wimbledon 2026",
-                    team1: { name: "Djokovic", flag: "DJ", score: 6, wickets: null, overs: null },
-                    team2: { name: "Alcaraz", flag: "AL", score: 4, wickets: null, overs: null },
-                    status: "Set 3 • 3-2",
-                    isLive: true
-                },
-                {
-                    id: 5,
-                    tournament: "Hockey World Cup",
-                    team1: { name: "India", flag: "IN", score: 3, wickets: null, overs: null },
-                    team2: { name: "Pakistan", flag: "PK", score: 1, wickets: null, overs: null },
-                    status: "Q3 • 12 minutes",
-                    isLive: true
-                },
-                {
-                    id: 6,
-                    tournament: "Pro Kabaddi League",
-                    team1: { name: "Patna Pirates", flag: "PP", score: 28, wickets: null, overs: null },
-                    team2: { name: "Bengaluru Bulls", flag: "BB", score: 24, wickets: null, overs: null },
-                    status: "2nd Half • 15 min left",
-                    isLive: true
-                }
-            ];
-        }
-
-        // ====== RENDER TICKER ======
-        function renderTicker() {
-            const track = document.getElementById('tickerTrack');
-            let html = '';
-            
-            liveMatches.forEach(match => {
-                const score1 = match.team1.score + (match.team1.wickets !== null ? '/' + match.team1.wickets : '');
-                const score2 = match.team2.score + (match.team2.wickets !== null ? '/' + match.team2.wickets : '');
-                
-                html += `
-                    <div class="ticker-item">
-                        <span class="ticker-match">${match.team1.name} vs ${match.team2.name}</span>
-                        <span class="ticker-score">${score1}</span>
-                        <span style="color:#666;margin:0 5px;">vs</span>
-                        <span class="ticker-score losing">${score2}</span>
-                        <span class="ticker-status">${match.status}</span>
+        <div class="cards-grid">
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=400" alt="IPL">
+                    <div class="live-badge"><span class="dot"></span> LIVE</div>
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">IPL 2026: Mumbai Indians Set New Record with 10th Consecutive Win</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 1h ago</span>
+                        <span><i class="far fa-eye"></i> 25.2K</span>
                     </div>
-                `;
-            });
-            
-            track.innerHTML = html + html;
-        }
+                </div>
+            </div>
 
-        // ====== RENDER MATCH CARDS ======
-        function renderMatches() {
-            const grid = document.getElementById('matchesGrid');
-            const spinner = document.getElementById('loadingSpinner');
-            
-            spinner.style.display = 'none';
-            grid.style.display = 'grid';
-            
-            grid.innerHTML = liveMatches.map(match => {
-                const score1 = match.team1.score + (match.team1.wickets !== null ? '/' + match.team1.wickets : '');
-                const score2 = match.team2.score + (match.team2.wickets !== null ? '/' + match.team2.wickets : '');
-                
-                return `
-                    <div class="match-card" id="match-${match.id}">
-                        <div class="match-tournament">${match.tournament}</div>
-                        <div class="match-teams">
-                            <div class="team">
-                                <div class="team-flag">${match.team1.flag}</div>
-                                <span class="team-name">${match.team1.name}</span>
-                                <span class="team-score" id="score1-${match.id}">${score1}</span>
-                            </div>
-                            <div class="vs-divider">
-                                <span class="vs-text">VS</span>
-                                <span class="match-time">${match.status}</span>
-                            </div>
-                            <div class="team">
-                                <div class="team-flag">${match.team2.flag}</div>
-                                <span class="team-name">${match.team2.name}</span>
-                                <span class="team-score" id="score2-${match.id}">${score2}</span>
-                            </div>
-                        </div>
-                        <div class="match-status-bar">● ${match.status}</div>
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1589801258579-18e091f4ca26?w=400" alt="Test">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Virat Kohli Surpasses Sachin's Record: 100th International Century</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 3h ago</span>
+                        <span><i class="far fa-eye"></i> 18.5K</span>
                     </div>
-                `;
-            }).join('');
-        }
+                </div>
+            </div>
 
-        // ====== UPDATE API STATUS ======
-        function updateApiStatus(status, message) {
-            const badge = document.getElementById('apiStatus');
-            badge.className = `api-badge ${status}`;
-            badge.innerHTML = `<i class="fas fa-circle" style="font-size:8px;"></i> ${message}`;
-        }
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1562077772-3bd9d55da25a?w=400" alt="BCCI">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">BCCI Announces New Women's IPL Team for 2027 Season</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 5h ago</span>
+                        <span><i class="far fa-eye"></i> 9.1K</span>
+                    </div>
+                </div>
+            </div>
 
-        // ====== INITIALIZE ======
-        async function init() {
-            // Try to fetch real data
-            const cricketData = await fetchCricketScores();
-            const footballData = await fetchFootballScores();
-            
-            if (cricketData || footballData) {
-                liveMatches = [
-                    ...(cricketData || []),
-                    ...(footballData || [])
-                ];
-                isRealData = true;
-                updateApiStatus('connected', '● REAL LIVE DATA CONNECTED');
-                console.log('✅ Real API data loaded!');
-            } else {
-                // Fallback to demo
-                liveMatches = getDemoData();
-                updateApiStatus('demo', '⚠ DEMO MODE — Add API Key for Real Scores');
-                console.log('⚠ Using demo data. Add API keys for real scores.');
-            }
-            
-            renderTicker();
-            renderMatches();
-        }
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1593766827228-8737b4534a2a?w=400" alt="Stadium">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">New Ahmedabad Stadium: World's Largest with 1.5 Lakh Capacity</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 7h ago</span>
+                        <span><i class="far fa-eye"></i> 12.3K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // ====== AUTO-REFRESH REAL DATA ======
-        setInterval(async () => {
-            if (isRealData) {
-                const cricketData = await fetchCricketScores();
-                const footballData = await fetchFootballScores();
-                
-                if (cricketData || footballData) {
-                    liveMatches = [
-                        ...(cricketData || []),
-                        ...(footballData || [])
-                    ];
-                    renderTicker();
-                    renderMatches();
-                    console.log('🔄 Real scores refreshed at:', new Date().toLocaleTimeString());
-                }
-            } else {
-                // Demo mode: random update
-                liveMatches.forEach(match => {
-                    if (!match.isLive) return;
-                    const increment = Math.floor(Math.random() * 3);
-                    
-                    if (match.tournament.includes("Cricket") || match.tournament.includes("IPL")) {
-                        match.team1.score += increment;
-                        if (Math.random() > 0.92 && match.team1.wickets < 10) {
-                            match.team1.wickets += 1;
-                        }
-                    } else if (match.tournament.includes("FIFA") || match.tournament.includes("Hockey")) {
-                        if (Math.random() > 0.95) match.team1.score += 1;
-                    } else if (match.tournament.includes("Tennis")) {
-                        match.team1.score += increment;
-                    } else {
-                        match.team1.score += increment;
-                        match.team2.score += Math.floor(Math.random() * 2);
-                    }
-                });
-                renderTicker();
-                renderMatches();
-            }
-        }, 60000); // Refresh every 60 seconds
+    <!-- ====== FOOTBALL NEWS ====== -->
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-futbol"></i> Football</h2>
+            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1522778119026-d647f0565c6a?w=400" alt="Messi">
+                    <div class="live-badge"><span class="dot"></span> LIVE</div>
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Messi Returns to Barcelona: Emotional Homecoming After 3 Years</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 30m ago</span>
+                        <span><i class="far fa-eye"></i> 32.1K</span>
+                    </div>
+                </div>
+            </div>
 
-        // Start
-        init();
-    </script>
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=400" alt="Premier League">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Premier League 2026: Manchester City Chasing Historic 5th Straight Title</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 2h ago</span>
+                        <span><i class="far fa-eye"></i> 14.7K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400" alt="Indian Football">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Indian Football Team Rises to FIFA Top 100 for First Time</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 4h ago</span>
+                        <span><i class="far fa-eye"></i> 8.9K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=400" alt="Champions League">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Champions League Final 2026: Real Madrid vs Bayern Munich Preview</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 6h ago</span>
+                        <span><i class="far fa-eye"></i> 11.4K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== UPCOMING MATCHES ====== -->
+    <section class="schedule-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Upcoming Matches</h2>
+            <a href="#" class="see-all">Full Schedule <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="schedule-grid">
+            <div class="match-card">
+                <div class="match-header">
+                    <span class="match-tournament">ICC World Test Championship</span>
+                    <span class="match-time">Tomorrow, 9:30 AM</span>
+                </div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-flag">🇮🇳</div>
+                        <span class="team-name">India</span>
+                    </div>
+                    <span class="vs">VS</span>
+                    <div class="team">
+                        <div class="team-flag">🇦🇺</div>
+                        <span class="team-name">Australia</span>
+                    </div>
+                </div>
+                <div class="match-status upcoming">⏰ Starting Tomorrow</div>
+            </div>
+
+            <div class="match-card">
+                <div class="match-header">
+                    <span class="match-tournament">FIFA World Cup Qualifiers</span>
+                    <span class="match-time">Jun 15, 7:00 PM</span>
+                </div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-flag">🇮🇳</div>
+                        <span class="team-name">India</span>
+                    </div>
+                    <span class="vs">VS</span>
+                    <div class="team">
+                        <div class="team-flag">🇶🇦</div>
+                        <span class="team-name">Qatar</span>
+                    </div>
+                </div>
+                <div class="match-status upcoming">⏰ Jun 15, 7:00 PM</div>
+            </div>
+
+            <div class="match-card">
+                <div class="match-header">
+                    <span class="match-tournament">Wimbledon 2026</span>
+                    <span class="match-time">Jun 20, 3:00 PM</span>
+                </div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-flag">🎾</div>
+                        <span class="team-name">Djokovic</span>
+                    </div>
+                    <span class="vs">VS</span>
+                    <div class="team">
+                        <div class="team-flag">🎾</div>
+                        <span class="team-name">Alcaraz</span>
+                    </div>
+                </div>
+                <div class="match-status upcoming">⏰ Jun 20, 3:00 PM</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== MORE SPORTS ====== -->
+    <section class="category-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> More Sports</h2>
+            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=400" alt="Hockey">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Hockey World Cup: India Defeats Netherlands in Thrilling Final</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 2h ago</span>
+                        <span><i class="far fa-eye"></i> 5.8K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400" alt="Tennis">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Wimbledon 2026: Sania Mirza Returns for Mixed Doubles Title</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 4h ago</span>
+                        <span><i class="far fa-eye"></i> 7.2K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1564415315949-7a0c4c73aab4?w=400" alt="Kabaddi">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Pro Kabaddi League: Patna Pirates Win 4th Championship Title</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 6h ago</span>
+                        <span><i class="far fa-eye"></i> 4.5K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400" alt="Athletics">
+                </div>
+                <div class="news-card-content">
+                    <h4 class="news-card-title">Neeraj Chopra Breaks Own Javelin Record at Diamond League</h4>
+                    <div class="news-card-meta">
+                        <span><i class="far fa-clock"></i> 8h ago</span>
+                        <span><i class="far fa-eye"></i> 9.1K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AutoDrive</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">Your trusted source for latest sports news across all categories. Stay updated with live scores and match highlights.</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Sports Categories</h4>
+                <ul>
+                    <li>Cricket</li>
+                    <li>Football</li>
+                    <li>Hockey</li>
+                    <li>Tennis</li>
+                    <li>Kabaddi</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li>Live Scores</li>
+                    <li>Match Schedule</li>
+                    <li>Points Table</li>
+                    <li>Player Stats</li>
+                    <li>Highlights</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p style="color: #666; font-size: 14px; margin-bottom: 15px;">Get daily sports updates in your inbox.</p>
+                <div style="display: flex; gap: 10px;">
+                    <input type="email" placeholder="Your email" style="padding: 10px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; outline: none; flex: 1;">
+                    <button style="padding: 10px 20px; background: #ff4500; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 AutoDrive Sports. All rights reserved.
+        </div>
+    </footer>
 
 </body>
 </html>
