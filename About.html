@@ -402,12 +402,12 @@ footer{
 </html>
 
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoDrive - All Live News Banner</title>
+    <title>AutoDrive - Auto Change Banner</title>
     <style>
         * {
             margin: 0;
@@ -416,165 +416,107 @@ footer{
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
             background: #0a0a0a;
         }
 
-        /* ====== ALL NEWS BANNER ====== */
-        .all-news-banner {
-            width: 100%;
-            background: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
-            border-bottom: 2px solid #ff4500;
-            overflow: hidden;
+        /* ====== AUTO CHANGE BANNER ====== */
+        .banner-container {
             position: relative;
-            height: 55px;
-            display: flex;
-            align-items: center;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
         }
 
-        .live-badge {
+        .banner-slide {
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 6s ease;
+            transform: scale(1.1);
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Dark Overlay */
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 2;
+        }
+
+        /* Banner Content */
+        .banner-content {
+            position: absolute;
+            bottom: 15%;
+            left: 80px;
+            z-index: 3;
+            color: #fff;
+            max-width: 600px;
+        }
+
+        .banner-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             background: #ff4500;
             color: #fff;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
-            font-size: 13px;
-            z-index: 10;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
+        .banner-tag .pulse {
+            width: 6px;
+            height: 6px;
             background: #fff;
             border-radius: 50%;
             animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
         }
 
-        .news-track {
-            display: flex;
-            white-space: nowrap;
-            animation: bannerScroll 100s linear infinite;
-            padding-left: 160px;
-        }
-
-        .news-track:hover {
-            animation-play-state: paused;
-        }
-
-        .news-item {
-            display: inline-flex;
-            align-items: center;
-            padding: 0 35px;
-            color: #e0e0e0;
-            font-size: 15px;
-            position: relative;
-        }
-
-        .news-item::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            width: 4px;
-            height: 4px;
-            background: #ff4500;
-            border-radius: 50%;
-        }
-
-        .news-item a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .news-item a:hover {
-            color: #ff4500;
-        }
-
-        /* Category Tags - Different Colors */
-        .tag-auto { background: rgba(255, 69, 0, 0.2); color: #ff4500; }
-        .tag-sports { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-        .tag-health { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
-        .tag-tech { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
-        .tag-politics { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
-        .tag-business { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
-        .tag-entertainment { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
-        .tag-world { background: rgba(6, 182, 212, 0.2); color: #06b6d4; }
-        .tag-science { background: rgba(132, 204, 22, 0.2); color: #84cc16; }
-        .tag-education { background: rgba(249, 115, 22, 0.2); color: #f97316; }
-
-        .news-tag {
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            margin-right: 10px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .news-time {
-            color: #666;
-            font-size: 12px;
-            margin-left: 10px;
-        }
-
-        @keyframes bannerScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .all-news-banner { height: 45px; }
-            .live-badge { font-size: 11px; padding: 0 12px; }
-            .news-track { padding-left: 120px; animation-duration: 60s; }
-            .news-item { padding: 0 22px; font-size: 13px; }
-            .news-tag { font-size: 10px; padding: 1px 6px; }
-        }
-
-        @media (max-width: 480px) {
-            .news-item { font-size: 12px; padding: 0 16px; }
-            .news-time { display: none; }
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920') center/cover;
-            display: flex;
-            align-items: center;
-            padding: 0 80px;
-        }
-
-        .hero-content h1 {
-            font-size: 56px;
-            color: #fff;
-            margin-bottom: 15px;
+        .banner-title {
+            font-size: 52px;
+            font-weight: 800;
             line-height: 1.2;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .hero-content p {
+        .banner-desc {
             font-size: 18px;
             color: #ccc;
             margin-bottom: 30px;
+            line-height: 1.6;
         }
 
-        .btn-explore {
+        .banner-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: #ff4500;
             color: #fff;
             padding: 14px 32px;
@@ -583,376 +525,326 @@ footer{
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            text-decoration: none;
         }
 
-        .btn-explore:hover {
+        .banner-btn:hover {
             background: #e63e00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,69,0,0.3);
+        }
+
+        /* Dots Navigation */
+        .banner-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 4;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .dot:hover {
+            background: rgba(255,255,255,0.8);
+        }
+
+        .dot.active {
+            background: #ff4500;
+            border-color: #fff;
+            transform: scale(1.3);
+        }
+
+        /* Arrows */
+        .banner-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 4;
+            transition: all 0.3s;
+        }
+
+        .banner-arrow:hover {
+            background: #ff4500;
+            border-color: #ff4500;
+        }
+
+        .banner-arrow.prev { left: 30px; }
+        .banner-arrow.next { right: 30px; }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #ff4500;
+            z-index: 5;
+            transition: width 0.1s linear;
+        }
+
+        /* ====== MOBILE ====== */
+        @media (max-width: 768px) {
+            .banner-container { height: 60vh; }
+            .banner-content { left: 20px; right: 20px; max-width: 100%; bottom: 20%; }
+            .banner-title { font-size: 28px; }
+            .banner-desc { font-size: 14px; }
+            .banner-btn { padding: 12px 24px; font-size: 14px; }
+            .banner-arrow { width: 40px; height: 40px; font-size: 16px; }
+            .banner-arrow.prev { left: 15px; }
+            .banner-arrow.next { right: 15px; }
+            .dot { width: 10px; height: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .banner-title { font-size: 22px; }
+            .banner-tag { font-size: 10px; padding: 4px 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ====== ALL LIVE NEWS BANNER ====== -->
-    <div class="all-news-banner">
-        <div class="live-badge">
-            <span class="pulse-dot"></span>
-            LIVE NEWS
+    <!-- ====== AUTO CHANGE BANNER ====== -->
+    <div class="banner-container" id="bannerContainer">
+        
+        <!-- Slide 1 -->
+        <div class="banner-slide active" data-index="0">
+            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1920" alt="EV Cars">
         </div>
-        <div class="news-track" id="newsTrack">
-            <div class="news-item">Loading all latest news...</div>
-        </div>
-    </div>
 
-    <!-- Hero Section -->
-    <div class="hero-section">
-        <div class="hero-content">
-            <h1>Future EV Cars<br>Coming In 2026</h1>
-            <p>Automobile companies prepare futuristic electric vehicles.</p>
-            <button class="btn-explore">Explore News</button>
+        <!-- Slide 2 -->
+        <div class="banner-slide" data-index="1">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1920" alt="Sports Car">
         </div>
+
+        <!-- Slide 3 -->
+        <div class="banner-slide" data-index="2">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920" alt="Luxury Car">
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="banner-slide" data-index="3">
+            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1920" alt="Car Showroom">
+        </div>
+
+        <!-- Overlay -->
+        <div class="banner-overlay"></div>
+
+        <!-- Content -->
+        <div class="banner-content">
+            <div class="banner-tag">
+                <span class="pulse"></span>
+                LIVE NEWS
+            </div>
+            <h1 class="banner-title" id="bannerTitle">Future EV Cars Coming In 2026</h1>
+            <p class="banner-desc" id="bannerDesc">Automobile companies prepare futuristic electric vehicles with 1000km range.</p>
+            <a href="#" class="banner-btn" id="bannerBtn">
+                Explore News →
+            </a>
+        </div>
+
+        <!-- Arrows -->
+        <div class="banner-arrow prev" onclick="prevSlide()">‹</div>
+        <div class="banner-arrow next" onclick="nextSlide()">›</div>
+
+        <!-- Dots -->
+        <div class="banner-dots" id="bannerDots"></div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar"></div>
     </div>
 
     <script>
-        // ====== ALL NEWS RSS SOURCES ======
-        const ALL_NEWS_SOURCES = [
-            // Auto
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/66949542.cms', category: 'AUTO', tagClass: 'tag-auto' },
-            
-            // Sports
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/4719148.cms', category: 'SPORTS', tagClass: 'tag-sports' },
-            
-            // Health
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/3908999.cms', category: 'HEALTH', tagClass: 'tag-health' },
-            
-            // Technology
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/5880659.cms', category: 'TECH', tagClass: 'tag-tech' },
-            
-            // Business
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/1898055.cms', category: 'BUSINESS', tagClass: 'tag-business' },
-            
-            // World
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/296589292.cms', category: 'WORLD', tagClass: 'tag-world' },
-            
-            // Entertainment
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms', category: 'ENTERTAINMENT', tagClass: 'tag-entertainment' },
-            
-            // Science
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms', category: 'SCIENCE', tagClass: 'tag-science' },
-            
-            // Education
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/913168846.cms', category: 'EDUCATION', tagClass: 'tag-education' },
-            
-            // Politics (National)
-            { url: 'https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms', category: 'POLITICS', tagClass: 'tag-politics' }
+        // ====== BANNER DATA — YAHAN AAP IMAGES & TEXT CHANGE KAR SAKTE HO ======
+        const bannerData = [
+            {
+                image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1920",
+                tag: "LIVE NEWS",
+                title: "Future EV Cars Coming In 2026",
+                desc: "Automobile companies prepare futuristic electric vehicles with 1000km range.",
+                btnText: "Explore News →",
+                btnLink: "#"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1920",
+                tag: "SPORTS",
+                title: "F1 Grand Prix 2026 Schedule Announced",
+                desc: "India returns to Formula 1 calendar after 10 years with new Mumbai street circuit.",
+                btnText: "Read More →",
+                btnLink: "#"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920",
+                tag: "TECH",
+                title: "Self-Driving Cars Get Green Signal",
+                desc: "Government approves autonomous vehicle testing on major highways from 2026.",
+                btnText: "Learn More →",
+                btnLink: "#"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1920",
+                tag: "BUSINESS",
+                title: "Tata Motors Becomes World's 3rd Largest",
+                desc: "Indian automaker surpasses Volkswagen in global EV sales this quarter.",
+                btnText: "View Details →",
+                btnLink: "#"
+            }
         ];
 
-        const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+        // ====== SETTINGS ======
+        const AUTO_CHANGE_TIME = 5000; // 5 seconds (change kar sakte ho)
+        
+        let currentSlide = 0;
+        let autoInterval;
+        let progressInterval;
+        let progress = 0;
 
-        let allNews = [];
+        // Initialize
+        function initBanner() {
+            // Create dots
+            const dotsContainer = document.getElementById('bannerDots');
+            bannerData.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (index === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(index);
+                dotsContainer.appendChild(dot);
+            });
 
-        async function fetchAllNews() {
-            let newNews = [];
+            // Start auto change
+            startAutoChange();
+        }
+
+        function updateSlide(index) {
+            const slides = document.querySelectorAll('.banner-slide');
+            const dots = document.querySelectorAll('.dot');
             
-            for (let source of ALL_NEWS_SOURCES) {
-                try {
-                    const response = await fetch(CORS_PROXY + encodeURIComponent(source.url));
-                    const data = await response.json();
-                    
-                    if (data.contents) {
-                        const parser = new DOMParser();
-                        const xml = parser.parseFromString(data.contents, 'text/xml');
-                        const items = xml.querySelectorAll('item');
-                        
-                        items.forEach((item, index) => {
-                            if (index < 3) { // Top 3 per category
-                                let title = item.querySelector('title')?.textContent || 'Breaking News';
-                                const link = item.querySelector('link')?.textContent || '#';
-                                const pubDate = item.querySelector('pubDate')?.textContent;
-                                
-                                title = title.replace(/<<!\[CDATA\[|\]\]>/g, '').trim();
-                                
-                                let timeStr = 'Just now';
-                                if (pubDate) {
-                                    const date = new Date(pubDate);
-                                    const now = new Date();
-                                    const diff = Math.floor((now - date) / 60000);
-                                    
-                                    if (diff < 1) timeStr = 'Just now';
-                                    else if (diff < 60) timeStr = `${diff}m ago`;
-                                    else if (diff < 1440) timeStr = `${Math.floor(diff/60)}h ago`;
-                                    else timeStr = `${Math.floor(diff/1440)}d ago`;
-                                }
-                                
-                                newNews.push({
-                                    title: title,
-                                    link: link,
-                                    time: timeStr,
-                                    category: source.category,
-                                    tagClass: source.tagClass
-                                });
-                            }
-                        });
-                    }
-                } catch (e) {
-                    console.log('Fetch error:', source.category, e);
-                }
-            }
-
-            if (newNews.length === 0) {
-                newNews = getDemoAllNews();
-            }
-
-            // Shuffle news for variety
-            allNews = newNews.sort(() => Math.random() - 0.5);
-            renderAllNews();
-            console.log('✅ All news loaded! Categories:', [...new Set(newNews.map(n => n.category))].join(', '));
-        }
-
-        function getDemoAllNews() {
-            return [
-                { title: "Tesla launches new Model 3 with 600km range", link: "#", time: "5m ago", category: "AUTO", tagClass: "tag-auto" },
-                { title: "India wins cricket match against Australia", link: "#", time: "12m ago", category: "SPORTS", tagClass: "tag-sports" },
-                { title: "New vaccine developed for rare disease", link: "#", time: "18m ago", category: "HEALTH", tagClass: "tag-health" },
-                { title: "Apple announces new AI features for iPhone", link: "#", time: "25m ago", category: "TECH", tagClass: "tag-tech" },
-                { title: "Sensex crosses 75,000 mark", link: "#", time: "32m ago", category: "BUSINESS", tagClass: "tag-business" },
-                { title: "UN meeting on climate change begins", link: "#", time: "45m ago", category: "WORLD", tagClass: "tag-world" },
-                { title: "Bollywood movie breaks box office record", link: "#", time: "1h ago", category: "ENTERTAINMENT", tagClass: "tag-entertainment" },
-                { title: "ISRO discovers new exoplanet", link: "#", time: "2h ago", category: "SCIENCE", tagClass: "tag-science" },
-                { title: "New education policy announced", link: "#", time: "3h ago", category: "EDUCATION", tagClass: "tag-education" },
-                { title: "Election results declared in 5 states", link: "#", time: "4h ago", category: "POLITICS", tagClass: "tag-politics" }
-            ];
-        }
-
-        function renderAllNews() {
-            const track = document.getElementById('newsTrack');
-            const displayNews = [...allNews, ...allNews, ...allNews, ...allNews];
+            // Remove active
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
             
-            track.innerHTML = displayNews.map(news => `
-                <div class="news-item">
-                    <span class="news-tag ${news.tagClass}">${news.category}</span>
-                    <a href="${news.link}" target="_blank">${news.title}</a>
-                    <span class="news-time">${news.time}</span>
-                </div>
-            `).join('');
+            // Add active to current
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            // Update content with animation
+            const title = document.getElementById('bannerTitle');
+            const desc = document.getElementById('bannerDesc');
+            const btn = document.getElementById('bannerBtn');
+            const tag = document.querySelector('.banner-tag');
+            
+            // Fade out
+            title.style.opacity = '0';
+            desc.style.opacity = '0';
+            btn.style.opacity = '0';
+            
+            setTimeout(() => {
+                // Change content
+                title.textContent = bannerData[index].title;
+                desc.textContent = bannerData[index].desc;
+                btn.textContent = bannerData[index].btnText;
+                btn.href = bannerData[index].btnLink;
+                tag.innerHTML = `<span class="pulse"></span> ${bannerData[index].tag}`;
+                
+                // Fade in
+                title.style.transition = 'opacity 0.5s';
+                desc.style.transition = 'opacity 0.5s';
+                btn.style.transition = 'opacity 0.5s';
+                title.style.opacity = '1';
+                desc.style.opacity = '1';
+                btn.style.opacity = '1';
+            }, 300);
+            
+            currentSlide = index;
+            resetProgress();
         }
 
-        // Load + Auto Update
-        fetchAllNews();
-        setInterval(fetchAllNews, 300000); // Every 5 minutes
+        function nextSlide() {
+            const next = (currentSlide + 1) % bannerData.length;
+            updateSlide(next);
+            resetAutoChange();
+        }
 
-        // Hover pause
-        document.querySelector('.all-news-banner').addEventListener('mouseenter', () => {
-            document.querySelector('.news-track').style.animationPlayState = 'paused';
+        function prevSlide() {
+            const prev = (currentSlide - 1 + bannerData.length) % bannerData.length;
+            updateSlide(prev);
+            resetAutoChange();
+        }
+
+        function goToSlide(index) {
+            updateSlide(index);
+            resetAutoChange();
+        }
+
+        function startAutoChange() {
+            autoInterval = setInterval(nextSlide, AUTO_CHANGE_TIME);
+            startProgress();
+        }
+
+        function resetAutoChange() {
+            clearInterval(autoInterval);
+            clearInterval(progressInterval);
+            startAutoChange();
+        }
+
+        function startProgress() {
+            progress = 0;
+            const bar = document.getElementById('progressBar');
+            const step = 100 / (AUTO_CHANGE_TIME / 100);
+            
+            progressInterval = setInterval(() => {
+                progress += step;
+                bar.style.width = progress + '%';
+                if (progress >= 100) progress = 0;
+            }, 100);
+        }
+
+        function resetProgress() {
+            progress = 0;
+            document.getElementById('progressBar').style.width = '0%';
+        }
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        const container = document.getElementById('bannerContainer');
+        
+        container.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
         });
-        document.querySelector('.all-news-banner').addEventListener('mouseleave', () => {
-            document.querySelector('.news-track').style.animationPlayState = 'running';
+        
+        container.addEventListener('touchend', (e) => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
         });
+
+        // Start
+        initBanner();
     </script>
 
 </body>
 </html>
-
-
-  <div class="all-news-banner">
-    <div class="live-badge">
-        <span class="pulse-dot"></span>
-        LIVE NEWS
-    </div>
-    <div class="news-track" id="newsTrack">
-        <div class="news-item">Loading all latest news...</div>
-    </div>
-</div>
-
-<style>
-.all-news-banner {
-    width: 100%;
-    background: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
-    border-bottom: 2px solid #ff4500;
-    overflow: hidden;
-    position: relative;
-    height: 55px;
-    display: flex;
-    align-items: center;
-}
-.live-badge {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: #ff4500;
-    color: #fff;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-    font-size: 13px;
-    z-index: 10;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-.pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border-radius: 50%;
-    animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-    0% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-    100% { opacity: 1; transform: scale(1); }
-}
-.news-track {
-    display: flex;
-    white-space: nowrap;
-    animation: bannerScroll 100s linear infinite;
-    padding-left: 160px;
-}
-.news-track:hover { animation-play-state: paused; }
-.news-item {
-    display: inline-flex;
-    align-items: center;
-    padding: 0 35px;
-    color: #e0e0e0;
-    font-size: 15px;
-    position: relative;
-}
-.news-item::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    width: 4px;
-    height: 4px;
-    background: #ff4500;
-    border-radius: 50%;
-}
-.news-item a {
-    color: #e0e0e0;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.news-item a:hover { color: #ff4500; }
-.tag-auto { background: rgba(255, 69, 0, 0.2); color: #ff4500; }
-.tag-sports { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-.tag-health { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
-.tag-tech { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
-.tag-politics { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
-.tag-business { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
-.tag-entertainment { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
-.tag-world { background: rgba(6, 182, 212, 0.2); color: #06b6d4; }
-.tag-science { background: rgba(132, 204, 22, 0.2); color: #84cc16; }
-.tag-education { background: rgba(249, 115, 22, 0.2); color: #f97316; }
-.news-tag {
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    margin-right: 10px;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-.news-time {
-    color: #666;
-    font-size: 12px;
-    margin-left: 10px;
-}
-@keyframes bannerScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-@media (max-width: 768px) {
-    .all-news-banner { height: 45px; }
-    .live-badge { font-size: 11px; padding: 0 12px; }
-    .news-track { padding-left: 120px; animation-duration: 60s; }
-    .news-item { padding: 0 22px; font-size: 13px; }
-    .news-tag { font-size: 10px; padding: 1px 6px; }
-}
-@media (max-width: 480px) {
-    .news-item { font-size: 12px; padding: 0 16px; }
-    .news-time { display: none; }
-}
-</style>
-
-<script>
-const ALL_NEWS_SOURCES = [
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/66949542.cms', category: 'AUTO', tagClass: 'tag-auto' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/4719148.cms', category: 'SPORTS', tagClass: 'tag-sports' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/3908999.cms', category: 'HEALTH', tagClass: 'tag-health' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/5880659.cms', category: 'TECH', tagClass: 'tag-tech' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/1898055.cms', category: 'BUSINESS', tagClass: 'tag-business' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/296589292.cms', category: 'WORLD', tagClass: 'tag-world' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms', category: 'ENTERTAINMENT', tagClass: 'tag-entertainment' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms', category: 'SCIENCE', tagClass: 'tag-science' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/913168846.cms', category: 'EDUCATION', tagClass: 'tag-education' },
-    { url: 'https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms', category: 'POLITICS', tagClass: 'tag-politics' }
-];
-const CORS_PROXY = 'https://api.allorigins.win/get?url=';
-
-async function fetchAllNews() {
-    let newNews = [];
-    for (let source of ALL_NEWS_SOURCES) {
-        try {
-            const response = await fetch(CORS_PROXY + encodeURIComponent(source.url));
-            const data = await response.json();
-            if (data.contents) {
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(data.contents, 'text/xml');
-                const items = xml.querySelectorAll('item');
-                items.forEach((item, index) => {
-                    if (index < 3) {
-                        let title = item.querySelector('title')?.textContent || 'Breaking News';
-                        const link = item.querySelector('link')?.textContent || '#';
-                        const pubDate = item.querySelector('pubDate')?.textContent;
-                        title = title.replace(/<<!\[CDATA\[|\]\]>/g, '').trim();
-                        let timeStr = 'Just now';
-                        if (pubDate) {
-                            const date = new Date(pubDate);
-                            const now = new Date();
-                            const diff = Math.floor((now - date) / 60000);
-                            if (diff < 1) timeStr = 'Just now';
-                            else if (diff < 60) timeStr = `${diff}m ago`;
-                            else if (diff < 1440) timeStr = `${Math.floor(diff/60)}h ago`;
-                            else timeStr = `${Math.floor(diff/1440)}d ago`;
-                        }
-                        newNews.push({ title, link, time: timeStr, category: source.category, tagClass: source.tagClass });
-                    }
-                });
-            }
-        } catch (e) { console.log('Error:', source.category, e); }
-    }
-    if (newNews.length === 0) {
-        newNews = [
-            { title: "Tesla launches new Model 3 with 600km range", link: "#", time: "5m ago", category: "AUTO", tagClass: "tag-auto" },
-            { title: "India wins cricket match against Australia", link: "#", time: "12m ago", category: "SPORTS", tagClass: "tag-sports" },
-            { title: "New vaccine developed for rare disease", link: "#", time: "18m ago", category: "HEALTH", tagClass: "tag-health" },
-            { title: "Apple announces new AI features", link: "#", time: "25m ago", category: "TECH", tagClass: "tag-tech" },
-            { title: "Sensex crosses 75,000 mark", link: "#", time: "32m ago", category: "BUSINESS", tagClass: "tag-business" },
-            { title: "UN meeting on climate change begins", link: "#", time: "45m ago", category: "WORLD", tagClass: "tag-world" },
-            { title: "Bollywood movie breaks box office record", link: "#", time: "1h ago", category: "ENTERTAINMENT", tagClass: "tag-entertainment" },
-            { title: "ISRO discovers new exoplanet", link: "#", time: "2h ago", category: "SCIENCE", tagClass: "tag-science" },
-            { title: "New education policy announced", link: "#", time: "3h ago", category: "EDUCATION", tagClass: "tag-education" },
-            { title: "Election results declared in 5 states", link: "#", time: "4h ago", category: "POLITICS", tagClass: "tag-politics" }
-        ];
-    }
-    const track = document.getElementById('newsTrack');
-    const displayNews = [...newNews, ...newNews, ...newNews, ...newNews];
-    track.innerHTML = displayNews.map(news => `
-        <div class="news-item">
-            <span class="news-tag ${news.tagClass}">${news.category}</span>
-            <a href="${news.link}" target="_blank">${news.title}</a>
-            <span class="news-time">${news.time}</span>
-        </div>
-    `).join('');
-}
-
-fetchAllNews();
-setInterval(fetchAllNews, 300000);
-
-document.querySelector('.all-news-banner').addEventListener('mouseenter', () => {
-    document.querySelector('.news-track').style.animationPlayState = 'paused';
-});
-document.querySelector('.all-news-banner').addEventListener('mouseleave', () => {
-    document.querySelector('.news-track').style.animationPlayState = 'running';
-});
-</script>
