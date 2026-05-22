@@ -752,3 +752,207 @@ footer{
 
 </body>
 </html>
+
+
+  <div class="all-news-banner">
+    <div class="live-badge">
+        <span class="pulse-dot"></span>
+        LIVE NEWS
+    </div>
+    <div class="news-track" id="newsTrack">
+        <div class="news-item">Loading all latest news...</div>
+    </div>
+</div>
+
+<style>
+.all-news-banner {
+    width: 100%;
+    background: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
+    border-bottom: 2px solid #ff4500;
+    overflow: hidden;
+    position: relative;
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+.live-badge {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #ff4500;
+    color: #fff;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.news-track {
+    display: flex;
+    white-space: nowrap;
+    animation: bannerScroll 100s linear infinite;
+    padding-left: 160px;
+}
+.news-track:hover { animation-play-state: paused; }
+.news-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 35px;
+    color: #e0e0e0;
+    font-size: 15px;
+    position: relative;
+}
+.news-item::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 4px;
+    height: 4px;
+    background: #ff4500;
+    border-radius: 50%;
+}
+.news-item a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.news-item a:hover { color: #ff4500; }
+.tag-auto { background: rgba(255, 69, 0, 0.2); color: #ff4500; }
+.tag-sports { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+.tag-health { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.tag-tech { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+.tag-politics { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+.tag-business { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+.tag-entertainment { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
+.tag-world { background: rgba(6, 182, 212, 0.2); color: #06b6d4; }
+.tag-science { background: rgba(132, 204, 22, 0.2); color: #84cc16; }
+.tag-education { background: rgba(249, 115, 22, 0.2); color: #f97316; }
+.news-tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.news-time {
+    color: #666;
+    font-size: 12px;
+    margin-left: 10px;
+}
+@keyframes bannerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+    .all-news-banner { height: 45px; }
+    .live-badge { font-size: 11px; padding: 0 12px; }
+    .news-track { padding-left: 120px; animation-duration: 60s; }
+    .news-item { padding: 0 22px; font-size: 13px; }
+    .news-tag { font-size: 10px; padding: 1px 6px; }
+}
+@media (max-width: 480px) {
+    .news-item { font-size: 12px; padding: 0 16px; }
+    .news-time { display: none; }
+}
+</style>
+
+<script>
+const ALL_NEWS_SOURCES = [
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/66949542.cms', category: 'AUTO', tagClass: 'tag-auto' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/4719148.cms', category: 'SPORTS', tagClass: 'tag-sports' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/3908999.cms', category: 'HEALTH', tagClass: 'tag-health' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/5880659.cms', category: 'TECH', tagClass: 'tag-tech' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/1898055.cms', category: 'BUSINESS', tagClass: 'tag-business' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/296589292.cms', category: 'WORLD', tagClass: 'tag-world' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms', category: 'ENTERTAINMENT', tagClass: 'tag-entertainment' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms', category: 'SCIENCE', tagClass: 'tag-science' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/913168846.cms', category: 'EDUCATION', tagClass: 'tag-education' },
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms', category: 'POLITICS', tagClass: 'tag-politics' }
+];
+const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+
+async function fetchAllNews() {
+    let newNews = [];
+    for (let source of ALL_NEWS_SOURCES) {
+        try {
+            const response = await fetch(CORS_PROXY + encodeURIComponent(source.url));
+            const data = await response.json();
+            if (data.contents) {
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, 'text/xml');
+                const items = xml.querySelectorAll('item');
+                items.forEach((item, index) => {
+                    if (index < 3) {
+                        let title = item.querySelector('title')?.textContent || 'Breaking News';
+                        const link = item.querySelector('link')?.textContent || '#';
+                        const pubDate = item.querySelector('pubDate')?.textContent;
+                        title = title.replace(/<<!\[CDATA\[|\]\]>/g, '').trim();
+                        let timeStr = 'Just now';
+                        if (pubDate) {
+                            const date = new Date(pubDate);
+                            const now = new Date();
+                            const diff = Math.floor((now - date) / 60000);
+                            if (diff < 1) timeStr = 'Just now';
+                            else if (diff < 60) timeStr = `${diff}m ago`;
+                            else if (diff < 1440) timeStr = `${Math.floor(diff/60)}h ago`;
+                            else timeStr = `${Math.floor(diff/1440)}d ago`;
+                        }
+                        newNews.push({ title, link, time: timeStr, category: source.category, tagClass: source.tagClass });
+                    }
+                });
+            }
+        } catch (e) { console.log('Error:', source.category, e); }
+    }
+    if (newNews.length === 0) {
+        newNews = [
+            { title: "Tesla launches new Model 3 with 600km range", link: "#", time: "5m ago", category: "AUTO", tagClass: "tag-auto" },
+            { title: "India wins cricket match against Australia", link: "#", time: "12m ago", category: "SPORTS", tagClass: "tag-sports" },
+            { title: "New vaccine developed for rare disease", link: "#", time: "18m ago", category: "HEALTH", tagClass: "tag-health" },
+            { title: "Apple announces new AI features", link: "#", time: "25m ago", category: "TECH", tagClass: "tag-tech" },
+            { title: "Sensex crosses 75,000 mark", link: "#", time: "32m ago", category: "BUSINESS", tagClass: "tag-business" },
+            { title: "UN meeting on climate change begins", link: "#", time: "45m ago", category: "WORLD", tagClass: "tag-world" },
+            { title: "Bollywood movie breaks box office record", link: "#", time: "1h ago", category: "ENTERTAINMENT", tagClass: "tag-entertainment" },
+            { title: "ISRO discovers new exoplanet", link: "#", time: "2h ago", category: "SCIENCE", tagClass: "tag-science" },
+            { title: "New education policy announced", link: "#", time: "3h ago", category: "EDUCATION", tagClass: "tag-education" },
+            { title: "Election results declared in 5 states", link: "#", time: "4h ago", category: "POLITICS", tagClass: "tag-politics" }
+        ];
+    }
+    const track = document.getElementById('newsTrack');
+    const displayNews = [...newNews, ...newNews, ...newNews, ...newNews];
+    track.innerHTML = displayNews.map(news => `
+        <div class="news-item">
+            <span class="news-tag ${news.tagClass}">${news.category}</span>
+            <a href="${news.link}" target="_blank">${news.title}</a>
+            <span class="news-time">${news.time}</span>
+        </div>
+    `).join('');
+}
+
+fetchAllNews();
+setInterval(fetchAllNews, 300000);
+
+document.querySelector('.all-news-banner').addEventListener('mouseenter', () => {
+    document.querySelector('.news-track').style.animationPlayState = 'paused';
+});
+document.querySelector('.all-news-banner').addEventListener('mouseleave', () => {
+    document.querySelector('.news-track').style.animationPlayState = 'running';
+});
+</script>
