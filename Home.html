@@ -460,118 +460,452 @@ window.location.href =
   </nav>
   <!-- HERO -->
 
- <section class="hero" id="hero">
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoDrive - Auto Change Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <div class="hero-content">
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #0a0a0a;
+        }
 
-    <span class="live-tag">🔴 LIVE NEWS</span>
+        /* ====== AUTO CHANGE BANNER ====== */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+        }
 
-    <h1 id="title">
-      Loading Live News...
-    </h1>
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 6s ease;
+            transform: scale(1.1);
+        }
 
-    <p id="desc">
-      Latest world and Indian news updates.
-    </p>
+        .banner-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
 
-    <a href="news.html" class="btn">
-      Explore News
-    </a>
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-  </div>
+        /* Dark Overlay */
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 2;
+        }
 
-</section>
+        /* Banner Content */
+        .banner-content {
+            position: absolute;
+            bottom: 15%;
+            left: 80px;
+            z-index: 3;
+            color: #fff;
+            max-width: 600px;
+        }
 
-<style>
+        .banner-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ff4500;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
 
-.live-tag{
-  display:inline-block;
-  background:red;
-  padding:10px 18px;
-  border-radius:50px;
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:20px;
-  animation:pulse 1s infinite;
-}
+        .banner-tag .pulse {
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
 
-@keyframes pulse{
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
 
-0%{opacity:1;}
-50%{opacity:0.5;}
-100%{opacity:1;}
+        .banner-title {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-}
+        .banner-desc {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
 
-</style>
+        .banner-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ff4500;
+            color: #fff;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
 
-<script>
+        .banner-btn:hover {
+            background: #e63e00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,69,0,0.3);
+        }
 
-const news = [
+        /* Dots Navigation */
+        .banner-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 4;
+        }
 
-{
-title:"Breaking World News Updates",
-desc:"Latest international headlines and politics updates.",
-image:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600&auto=format&fit=crop"
-},
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
 
-{
-title:"Indian Stock Market Surges",
-desc:"Sensex and Nifty gain strongly in today's market session.",
-image:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
-},
+        .dot:hover {
+            background: rgba(255,255,255,0.8);
+        }
 
-{
-title:"Tesla Launches AI Driving System",
-desc:"Tesla introduces advanced autonomous driving technology.",
-image:"https://images.unsplash.com/photo-1686730540270-93f2c33351b6?w=400&auto=format&fit=crop"
-},
+        .dot.active {
+            background: #ff4500;
+            border-color: #fff;
+            transform: scale(1.3);
+        }
 
-{
-title:"Political Leaders Meet For Summit",
-desc:"World leaders gather for important global discussions.",
-image:"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=1600&auto=format&fit=crop"
-},
+        /* Arrows */
+        .banner-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 4;
+            transition: all 0.3s;
+        }
 
-{
-title:"Future EV Cars Coming In 2026",
-desc:"Automobile companies prepare futuristic electric vehicles.",
-image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop"
-}
+        .banner-arrow:hover {
+            background: #ff4500;
+            border-color: #ff4500;
+        }
 
-];
+        .banner-arrow.prev { left: 30px; }
+        .banner-arrow.next { right: 30px; }
 
-let current = 0;
+        /* Progress Bar */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #ff4500;
+            z-index: 5;
+            transition: width 0.1s linear;
+        }
 
-const title = document.getElementById("title");
-const desc = document.getElementById("desc");
-const hero = document.getElementById("hero");
+        /* ====== MOBILE ====== */
+        @media (max-width: 768px) {
+            .banner-container { height: 60vh; }
+            .banner-content { left: 20px; right: 20px; max-width: 100%; bottom: 20%; }
+            .banner-title { font-size: 28px; }
+            .banner-desc { font-size: 14px; }
+            .banner-btn { padding: 12px 24px; font-size: 14px; }
+            .banner-arrow { width: 40px; height: 40px; font-size: 16px; }
+            .banner-arrow.prev { left: 15px; }
+            .banner-arrow.next { right: 15px; }
+            .dot { width: 10px; height: 10px; }
+        }
 
-function changeNews(){
+        @media (max-width: 480px) {
+            .banner-title { font-size: 22px; }
+            .banner-tag { font-size: 10px; padding: 4px 10px; }
+        }
+    </style>
+</head>
+<body>
 
-current++;
+    <!-- ====== AUTO CHANGE BANNER ====== -->
+    <div class="banner-container" id="bannerContainer">
+        
+        <!-- Slide 1 -->
+        <div class="banner-slide active" data-index="0">
+            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1920" alt="EV Cars">
+        </div>
 
-if(current >= news.length){
-current = 0;
-}
+        <!-- Slide 2 -->
+        <div class="banner-slide" data-index="1">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1920" alt="Sports Car">
+        </div>
 
-title.innerText = news[current].title;
+        <!-- Slide 3 -->
+        <div class="banner-slide" data-index="2">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920" alt="Luxury Car">
+        </div>
 
-desc.innerText = news[current].desc;
+        <!-- Slide 4 -->
+        <div class="banner-slide" data-index="3">
+            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1920" alt="Car Showroom">
+        </div>
 
-hero.style.background =
-`linear-gradient(rgba(0,0,0,0.6),
-rgba(0,0,0,0.7)),
-url('${news[current].image}')`;
+        <!-- Overlay -->
+        <div class="banner-overlay"></div>
 
-hero.style.backgroundSize = "cover";
-hero.style.backgroundPosition = "center";
+        <!-- Content -->
+        <div class="banner-content">
+            <div class="banner-tag">
+                <span class="pulse"></span>
+                LIVE NEWS
+            </div>
+            <h1 class="banner-title" id="bannerTitle">Future EV Cars Coming In 2026</h1>
+            <p class="banner-desc" id="bannerDesc">Automobile companies prepare futuristic electric vehicles with 1000km range.</p>
+            <a href="#" class="banner-btn" id="bannerBtn">
+                Explore News →
+            </a>
+        </div>
 
-}
+        <!-- Arrows -->
+        <div class="banner-arrow prev" onclick="prevSlide()">‹</div>
+        <div class="banner-arrow next" onclick="nextSlide()">›</div>
 
-setInterval(changeNews,4000);
+        <!-- Dots -->
+        <div class="banner-dots" id="bannerDots"></div>
 
-</script>
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <script>
+        // ====== BANNER DATA — YAHAN AAP IMAGES & TEXT CHANGE KAR SAKTE HO ======
+        const bannerData = [
+            {
+                image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1920",
+                tag: "LIVE NEWS",
+                title: "Future EV Cars Coming In 2026",
+                desc: "Automobile companies prepare futuristic electric vehicles with 1000km range.",
+                btnText: "Explore News →",
+                btnLink: "#"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1920",
+                tag: "SPORTS",
+                title: "F1 Grand Prix 2026 Schedule Announced",
+                desc: "India returns to Formula 1 calendar after 10 years with new Mumbai street circuit.",
+                btnText: "Read More →",
+                btnLink: "#"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920",
+                tag: "TECH",
+                title: "Self-Driving Cars Get Green Signal",
+                desc: "Government approves autonomous vehicle testing on major highways from 2026.",
+                btnText: "Learn More →",
+                btnLink: "#"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1920",
+                tag: "BUSINESS",
+                title: "Tata Motors Becomes World's 3rd Largest",
+                desc: "Indian automaker surpasses Volkswagen in global EV sales this quarter.",
+                btnText: "View Details →",
+                btnLink: "#"
+            }
+        ];
+
+        // ====== SETTINGS ======
+        const AUTO_CHANGE_TIME = 5000; // 5 seconds (change kar sakte ho)
+        
+        let currentSlide = 0;
+        let autoInterval;
+        let progressInterval;
+        let progress = 0;
+
+        // Initialize
+        function initBanner() {
+            // Create dots
+            const dotsContainer = document.getElementById('bannerDots');
+            bannerData.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (index === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(index);
+                dotsContainer.appendChild(dot);
+            });
+
+            // Start auto change
+            startAutoChange();
+        }
+
+        function updateSlide(index) {
+            const slides = document.querySelectorAll('.banner-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            // Remove active
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            // Add active to current
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            // Update content with animation
+            const title = document.getElementById('bannerTitle');
+            const desc = document.getElementById('bannerDesc');
+            const btn = document.getElementById('bannerBtn');
+            const tag = document.querySelector('.banner-tag');
+            
+            // Fade out
+            title.style.opacity = '0';
+            desc.style.opacity = '0';
+            btn.style.opacity = '0';
+            
+            setTimeout(() => {
+                // Change content
+                title.textContent = bannerData[index].title;
+                desc.textContent = bannerData[index].desc;
+                btn.textContent = bannerData[index].btnText;
+                btn.href = bannerData[index].btnLink;
+                tag.innerHTML = `<span class="pulse"></span> ${bannerData[index].tag}`;
+                
+                // Fade in
+                title.style.transition = 'opacity 0.5s';
+                desc.style.transition = 'opacity 0.5s';
+                btn.style.transition = 'opacity 0.5s';
+                title.style.opacity = '1';
+                desc.style.opacity = '1';
+                btn.style.opacity = '1';
+            }, 300);
+            
+            currentSlide = index;
+            resetProgress();
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % bannerData.length;
+            updateSlide(next);
+            resetAutoChange();
+        }
+
+        function prevSlide() {
+            const prev = (currentSlide - 1 + bannerData.length) % bannerData.length;
+            updateSlide(prev);
+            resetAutoChange();
+        }
+
+        function goToSlide(index) {
+            updateSlide(index);
+            resetAutoChange();
+        }
+
+        function startAutoChange() {
+            autoInterval = setInterval(nextSlide, AUTO_CHANGE_TIME);
+            startProgress();
+        }
+
+        function resetAutoChange() {
+            clearInterval(autoInterval);
+            clearInterval(progressInterval);
+            startAutoChange();
+        }
+
+        function startProgress() {
+            progress = 0;
+            const bar = document.getElementById('progressBar');
+            const step = 100 / (AUTO_CHANGE_TIME / 100);
+            
+            progressInterval = setInterval(() => {
+                progress += step;
+                bar.style.width = progress + '%';
+                if (progress >= 100) progress = 0;
+            }, 100);
+        }
+
+        function resetProgress() {
+            progress = 0;
+            document.getElementById('progressBar').style.width = '0%';
+        }
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        const container = document.getElementById('bannerContainer');
+        
+        container.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+        
+        container.addEventListener('touchend', (e) => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+        });
+
+        // Start
+        initBanner();
+    </script>
+
+</body>
+</html>
 
   <!-- TRENDING NEWS -->
 
