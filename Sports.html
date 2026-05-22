@@ -1,157 +1,131 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Ticker</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<div class="ticker-wrapper">
+    <div class="ticker-label">📈 LIVE</div>
+    <div class="ticker-track" id="tickerTrack"></div>
+</div>
 
-        .ticker-wrapper {
-            width: 100%;
-            background: #0f172a;
-            overflow: hidden;
-            position: relative;
-            height: 45px;
-            display: flex;
-            align-items: center;
-        }
+<style>
+.ticker-wrapper {
+    width: 100%;
+    background: #0f172a;
+    overflow: hidden;
+    position: relative;
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+.ticker-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #22c55e;
+    color: white;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 10;
+}
+.ticker-track {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 35s linear infinite;
+    padding-left: 100px;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 25px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+}
+.ticker-symbol {
+    color: #94a3b8;
+    font-weight: bold;
+    margin-right: 8px;
+}
+.ticker-price { margin-right: 8px; }
+.ticker-change {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+.up { color: #22c55e; }
+.down { color: #ef4444; }
+.crypto { color: #f59e0b !important; }
+.metal { color: #e2e8f0 !important; }
+.index { color: #38bdf8 !important; }
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+    .ticker-wrapper { height: 40px; }
+    .ticker-label { font-size: 11px; padding: 0 10px; }
+    .ticker-track { padding-left: 80px; animation-duration: 25s; }
+    .ticker-item { padding: 0 18px; font-size: 12px; }
+}
+</style>
 
-        .ticker-label {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            background: #22c55e;
-            color: white;
-            padding: 0 15px;
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            font-size: 13px;
-            z-index: 10;
-        }
+<script>
+const stocks = [
+    { s: "₿ BTC/USD", p: "97,450.00", c: "+2.35%", u: true, cat: "crypto" },
+    { s: "Ξ ETH/USD", p: "3,890.20", c: "+1.80%", u: true, cat: "crypto" },
+    { s: "🥇 GOLD", p: "78,450.00", c: "+0.45%", u: true, cat: "metal" },
+    { s: "🥈 SILVER", p: "92,180.00", c: "-0.20%", u: false, cat: "metal" },
+    { s: "NIFTY 50", p: "22,450.30", c: "+0.85%", u: true, cat: "index" },
+    { s: "SENSEX", p: "73,890.15", c: "+0.72%", u: true, cat: "index" },
+    { s: "BANK NIFTY", p: "47,120.50", c: "-0.25%", u: false, cat: "index" },
+    { s: "RELIANCE", p: "2,890.40", c: "+1.20%", u: true, cat: "stock" },
+    { s: "TCS", p: "3,450.60", c: "-0.45%", u: false, cat: "stock" },
+    { s: "HDFC BANK", p: "1,520.30", c: "+0.90%", u: true, cat: "stock" },
+    { s: "INFY", p: "1,680.25", c: "+0.35%", u: true, cat: "stock" },
+    { s: "ICICI BANK", p: "1,120.80", c: "+1.50%", u: true, cat: "stock" },
+    { s: "SBIN", p: "780.45", c: "-0.80%", u: false, cat: "stock" },
+    { s: "ADANI ENT", p: "2,340.00", c: "+2.10%", u: true, cat: "stock" },
+    { s: "TATA MOTORS", p: "950.20", c: "+0.65%", u: true, cat: "stock" },
+    { s: "BAJAJ FIN", p: "6,780.90", c: "-0.30%", u: false, cat: "stock" },
+    { s: "LT", p: "3,120.50", c: "+0.95%", u: true, cat: "stock" },
+    { s: "AXIS BANK", p: "1,050.30", c: "+0.40%", u: true, cat: "stock" }
+];
 
-        .ticker-track {
-            display: flex;
-            white-space: nowrap;
-            animation: scroll 30s linear infinite;
-            padding-left: 100px;
-        }
+const track = document.getElementById('tickerTrack');
+const allStocks = [...stocks, ...stocks];
 
-        .ticker-track:hover {
-            animation-play-state: paused;
-        }
+function getCatClass(cat) {
+    if (cat === 'crypto') return 'crypto';
+    if (cat === 'metal') return 'metal';
+    if (cat === 'index') return 'index';
+    return '';
+}
 
-        .ticker-item {
-            display: inline-flex;
-            align-items: center;
-            padding: 0 25px;
-            color: white;
-            font-size: 14px;
-            font-family: 'Segoe UI', sans-serif;
-        }
+function render() {
+    track.innerHTML = allStocks.map(stock => `
+        <div class="ticker-item">
+            <span class="ticker-symbol ${getCatClass(stock.cat)}">${stock.s}</span>
+            <span class="ticker-price">₹${stock.p}</span>
+            <span class="ticker-change ${stock.u ? 'up' : 'down'}">
+                ${stock.u ? '▲' : '▼'} ${stock.c}
+            </span>
+        </div>
+    `).join('');
+}
 
-        .ticker-symbol {
-            color: #94a3b8;
-            font-weight: bold;
-            margin-right: 8px;
-        }
+render();
 
-        .ticker-price {
-            margin-right: 8px;
-        }
-
-        .ticker-change {
-            font-size: 12px;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-weight: 600;
-        }
-
-        .up {
-            color: #22c55e;
-        }
-
-        .down {
-            color: #ef4444;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .ticker-wrapper { height: 40px; }
-            .ticker-label { font-size: 11px; padding: 0 10px; }
-            .ticker-track { padding-left: 80px; animation-duration: 20s; }
-            .ticker-item { padding: 0 18px; font-size: 12px; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="ticker-wrapper">
-        <div class="ticker-label">📈 LIVE</div>
-        <div class="ticker-track" id="tickerTrack"></div>
-    </div>
-
-    <script>
-        const stocks = [
-            { s: "NIFTY 50", p: "22,450.30", c: "+0.85%", u: true },
-            { s: "SENSEX", p: "73,890.15", c: "+0.72%", u: true },
-            { s: "BANK NIFTY", p: "47,120.50", c: "-0.25%", u: false },
-            { s: "RELIANCE", p: "2,890.40", c: "+1.20%", u: true },
-            { s: "TCS", p: "3,450.60", c: "-0.45%", u: false },
-            { s: "HDFC BANK", p: "1,520.30", c: "+0.90%", u: true },
-            { s: "INFY", p: "1,680.25", c: "+0.35%", u: true },
-            { s: "ICICI BANK", p: "1,120.80", c: "+1.50%", u: true },
-            { s: "SBIN", p: "780.45", c: "-0.80%", u: false },
-            { s: "ADANI ENT", p: "2,340.00", c: "+2.10%", u: true },
-            { s: "TATA MOTORS", p: "950.20", c: "+0.65%", u: true },
-            { s: "BAJAJ FIN", p: "6,780.90", c: "-0.30%", u: false },
-            { s: "LT", p: "3,120.50", c: "+0.95%", u: true },
-            { s: "AXIS BANK", p: "1,050.30", c: "+0.40%", u: true }
-        ];
-
-        const track = document.getElementById('tickerTrack');
-        const allStocks = [...stocks, ...stocks]; // Duplicate for seamless loop
-
-        track.innerHTML = allStocks.map(stock => `
-            <div class="ticker-item">
-                <span class="ticker-symbol">${stock.s}</span>
-                <span class="ticker-price">₹${stock.p}</span>
-                <span class="ticker-change ${stock.u ? 'up' : 'down'}">
-                    ${stock.u ? '▲' : '▼'} ${stock.c}
-                </span>
-            </div>
-        `).join('');
-
-        // Auto update every 5 seconds
-        setInterval(() => {
-            stocks.forEach(st => {
-                const change = (Math.random() - 0.5) * 2;
-                st.u = change > 0;
-                st.c = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
-            });
-            // Refresh display
-            const items = document.querySelectorAll('.ticker-item');
-            items.forEach((item, i) => {
-                const stock = allStocks[i];
-                item.querySelector('.ticker-change').className = `ticker-change ${stock.u ? 'up' : 'down'}`;
-                item.querySelector('.ticker-change').innerHTML = `${stock.u ? '▲' : '▼'} ${stock.c}`;
-            });
-        }, 5000);
-    </script>
-
-</body>
-</html>
+setInterval(() => {
+    stocks.forEach(st => {
+        const change = (Math.random() - 0.5) * 3;
+        st.u = change > 0;
+        st.c = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
+    });
+    render();
+}, 5000);
+</script>
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
