@@ -402,388 +402,179 @@ footer{
 </html>
 
 
-  <!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoDrive - Live News Banner</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-        }
-
-        /* ====== LIVE NEWS BANNER (AutoDrive Style) ====== */
-        .live-news-banner {
-            width: 100%;
-            background: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
-            border-bottom: 2px solid #ff4500;
-            overflow: hidden;
-            position: relative;
-            height: 55px;
-            display: flex;
-            align-items: center;
-        }
-
-        /* LIVE Badge */
-        .live-badge {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            background: #ff4500;
-            color: #fff;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: bold;
-            font-size: 13px;
-            z-index: 10;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Pulsing Dot */
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #fff;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* News Track */
-        .news-track {
-            display: flex;
-            white-space: nowrap;
-            animation: bannerScroll 80s linear infinite;
-            padding-left: 160px;
-        }
-
-        .news-track:hover {
-            animation-play-state: paused;
-        }
-
-        /* Individual News Item */
-        .news-item {
-            display: inline-flex;
-            align-items: center;
-            padding: 0 40px;
-            color: #e0e0e0;
-            font-size: 15px;
-            position: relative;
-        }
-
-        .news-item::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            width: 4px;
-            height: 4px;
-            background: #ff4500;
-            border-radius: 50%;
-        }
-
-        .news-item a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .news-item a:hover {
-            color: #ff4500;
-        }
-
-        /* Category Tag */
-        .news-tag {
-            background: rgba(255, 69, 0, 0.2);
-            color: #ff4500;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            margin-right: 10px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* Time Stamp */
-        .news-time {
-            color: #666;
-            font-size: 12px;
-            margin-left: 10px;
-        }
-
-        @keyframes bannerScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* ====== MOBILE RESPONSIVE ====== */
-        @media (max-width: 768px) {
-            .live-news-banner { height: 45px; }
-            .live-badge { font-size: 11px; padding: 0 12px; gap: 6px; }
-            .news-track { padding-left: 120px; animation-duration: 50s; }
-            .news-item { padding: 0 25px; font-size: 13px; }
-            .news-tag { font-size: 10px; padding: 1px 6px; }
-        }
-
-        @media (max-width: 480px) {
-            .news-item { font-size: 12px; padding: 0 18px; }
-            .news-time { display: none; }
-        }
-
-        /* ====== DEMO WEBSITE CONTENT (Aapki AutoDrive Style) ====== */
-        .hero-section {
-            position: relative;
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920') center/cover;
-            display: flex;
-            align-items: center;
-            padding: 0 80px;
-        }
-
-        .hero-content h1 {
-            font-size: 56px;
-            color: #fff;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-size: 18px;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-
-        .btn-explore {
-            background: #ff4500;
-            color: #fff;
-            padding: 14px 32px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-explore:hover {
-            background: #e63e00;
-        }
-
-        .live-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 0, 0, 0.2);
-            color: #ff3333;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .live-tag .dot {
-            width: 6px;
-            height: 6px;
-            background: #ff3333;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section { padding: 0 20px; height: 60vh; }
-            .hero-content h1 { font-size: 32px; }
-            .hero-content p { font-size: 14px; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- ====== 🔴 LIVE NEWS BANNER (Auto-Update) ====== -->
-    <div class="live-news-banner">
-        <div class="live-badge">
-            <span class="pulse-dot"></span>
-            LIVE NEWS
-        </div>
-        <div class="news-track" id="newsTrack">
-            <div class="news-item">Loading latest automobile news...</div>
-        </div>
+  <!-- ====== LIVE NEWS BANNER ====== -->
+<div class="live-news-banner">
+    <div class="live-badge">
+        <span class="pulse-dot"></span>
+        LIVE NEWS
     </div>
-
-    <!-- ====== HERO SECTION (Demo - Aapki AutoDrive Style) ====== -->
-    <div class="hero-section">
-        <div class="hero-content">
-            <div class="live-tag">
-                <span class="dot"></span>
-                LIVE NEWS
-            </div>
-            <h1>Future EV Cars<br>Coming In 2026</h1>
-            <p>Automobile companies prepare futuristic electric vehicles.</p>
-            <button class="btn-explore">Explore News</button>
-        </div>
+    <div class="news-track" id="newsTrack">
+        <div class="news-item">Loading latest automobile news...</div>
     </div>
+</div>
 
-    <script>
-        // ====== RSS NEWS SOURCES (FREE - Auto Update) ======
-        const RSS_SOURCES = [
-            {
-                url: 'https://timesofindia.indiatimes.com/rssfeeds/66949542.cms', // Auto News
-                category: 'AUTO'
-            },
-            {
-                url: 'https://www.thehindu.com/news/national/?service=rss', // National
-                category: 'INDIA'
-            },
-            {
-                url: 'https://feeds.feedburner.com/ndtvnews-top-stories', // Top Stories
-                category: 'TOP'
-            }
-        ];
+<style>
+.live-news-banner {
+    width: 100%;
+    background: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
+    border-bottom: 2px solid #ff4500;
+    overflow: hidden;
+    position: relative;
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+.live-badge {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #ff4500;
+    color: #fff;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.news-track {
+    display: flex;
+    white-space: nowrap;
+    animation: bannerScroll 80s linear infinite;
+    padding-left: 160px;
+}
+.news-track:hover { animation-play-state: paused; }
+.news-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 40px;
+    color: #e0e0e0;
+    font-size: 15px;
+    position: relative;
+}
+.news-item::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 4px;
+    height: 4px;
+    background: #ff4500;
+    border-radius: 50%;
+}
+.news-item a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.news-item a:hover { color: #ff4500; }
+.news-tag {
+    background: rgba(255, 69, 0, 0.2);
+    color: #ff4500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.news-time {
+    color: #666;
+    font-size: 12px;
+    margin-left: 10px;
+}
+@keyframes bannerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+    .live-news-banner { height: 45px; }
+    .live-badge { font-size: 11px; padding: 0 12px; }
+    .news-track { padding-left: 120px; animation-duration: 50s; }
+    .news-item { padding: 0 25px; font-size: 13px; }
+    .news-tag { font-size: 10px; padding: 1px 6px; }
+}
+@media (max-width: 480px) {
+    .news-item { font-size: 12px; padding: 0 18px; }
+    .news-time { display: none; }
+}
+</style>
 
-        // Free CORS Proxy
-        const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+<script>
+const RSS_SOURCES = [
+    { url: 'https://timesofindia.indiatimes.com/rssfeeds/66949542.cms', category: 'AUTO' },
+    { url: 'https://www.thehindu.com/news/national/?service=rss', category: 'INDIA' },
+    { url: 'https://feeds.feedburner.com/ndtvnews-top-stories', category: 'TOP' }
+];
+const CORS_PROXY = 'https://api.allorigins.win/get?url=';
 
-        let allNews = [];
-        let isFirstLoad = true;
-
-        // ====== FETCH NEWS FUNCTION ======
-        async function fetchLiveNews() {
-            let newNews = [];
-            
-            for (let source of RSS_SOURCES) {
-                try {
-                    const response = await fetch(CORS_PROXY + encodeURIComponent(source.url));
-                    const data = await response.json();
-                    
-                    if (data.contents) {
-                        const parser = new DOMParser();
-                        const xml = parser.parseFromString(data.contents, 'text/xml');
-                        const items = xml.querySelectorAll('item');
-                        
-                        items.forEach((item, index) => {
-                            if (index < 5) { // Top 5 per source
-                                let title = item.querySelector('title')?.textContent || 'Breaking News';
-                                const link = item.querySelector('link')?.textContent || '#';
-                                const pubDate = item.querySelector('pubDate')?.textContent;
-                                
-                                // Clean CDATA
-                                title = title.replace(/<<!\[CDATA\[|\]\]>/g, '').trim();
-                                
-                                // Format time
-                                let timeStr = 'Just now';
-                                if (pubDate) {
-                                    const date = new Date(pubDate);
-                                    const now = new Date();
-                                    const diff = Math.floor((now - date) / 60000); // minutes
-                                    
-                                    if (diff < 1) timeStr = 'Just now';
-                                    else if (diff < 60) timeStr = `${diff}m ago`;
-                                    else if (diff < 1440) timeStr = `${Math.floor(diff/60)}h ago`;
-                                    else timeStr = `${Math.floor(diff/1440)}d ago`;
-                                }
-                                
-                                newNews.push({
-                                    title: title,
-                                    link: link,
-                                    time: timeStr,
-                                    category: source.category
-                                });
-                            }
-                        });
+async function fetchLiveNews() {
+    let newNews = [];
+    for (let source of RSS_SOURCES) {
+        try {
+            const response = await fetch(CORS_PROXY + encodeURIComponent(source.url));
+            const data = await response.json();
+            if (data.contents) {
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, 'text/xml');
+                const items = xml.querySelectorAll('item');
+                items.forEach((item, index) => {
+                    if (index < 5) {
+                        let title = item.querySelector('title')?.textContent || 'Breaking News';
+                        const link = item.querySelector('link')?.textContent || '#';
+                        const pubDate = item.querySelector('pubDate')?.textContent;
+                        title = title.replace(/<<!\[CDATA\[|\]\]>/g, '').trim();
+                        let timeStr = 'Just now';
+                        if (pubDate) {
+                            const date = new Date(pubDate);
+                            const now = new Date();
+                            const diff = Math.floor((now - date) / 60000);
+                            if (diff < 1) timeStr = 'Just now';
+                            else if (diff < 60) timeStr = `${diff}m ago`;
+                            else if (diff < 1440) timeStr = `${Math.floor(diff/60)}h ago`;
+                            else timeStr = `${Math.floor(diff/1440)}d ago`;
+                        }
+                        newNews.push({ title, link, time: timeStr, category: source.category });
                     }
-                } catch (e) {
-                    console.log('Fetch error:', e);
-                }
+                });
             }
+        } catch (e) { console.log('Error:', e); }
+    }
+    if (newNews.length === 0) {
+        newNews = [
+            { title: "Tesla launches new Model 3 with 600km range in India", link: "#", time: "5m ago", category: "AUTO" },
+            { title: "Maruti Suzuki announces electric SUV for 2026", link: "#", time: "12m ago", category: "AUTO" },
+            { title: "Government reduces EV tax to boost sales", link: "#", time: "28m ago", category: "INDIA" },
+            { title: "BMW reveals futuristic concept car", link: "#", time: "1h ago", category: "AUTO" },
+            { title: "India becomes 3rd largest car market", link: "#", time: "4h ago", category: "INDIA" }
+        ];
+    }
+    const track = document.getElementById('newsTrack');
+    const displayNews = [...newNews, ...newNews, ...newNews, ...newNews];
+    track.innerHTML = displayNews.map(news => `
+        <div class="news-item">
+            <span class="news-tag">${news.category}</span>
+            <a href="${news.link}" target="_blank">${news.title}</a>
+            <span class="news-time">${news.time}</span>
+        </div>
+    `).join('');
+}
 
-            // If no news fetched, use demo data
-            if (newNews.length === 0) {
-                newNews = getDemoNews();
-            }
-
-            // Update only if different (smooth transition)
-            allNews = newNews;
-            renderNews();
-            
-            if (isFirstLoad) {
-                isFirstLoad = false;
-                console.log('✅ Live news banner loaded!');
-            } else {
-                console.log('🔄 News updated at:', new Date().toLocaleTimeString());
-            }
-        }
-
-        // ====== DEMO NEWS (Fallback) ======
-        function getDemoNews() {
-            return [
-                { title: "Tesla launches new Model 3 with 600km range in India", link: "#", time: "5m ago", category: "AUTO" },
-                { title: "Maruti Suzuki announces electric SUV for 2026 launch", link: "#", time: "12m ago", category: "AUTO" },
-                { title: "Government reduces EV tax to boost electric vehicle sales", link: "#", time: "28m ago", category: "INDIA" },
-                { title: "BMW reveals futuristic concept car with autonomous driving", link: "#", time: "1h ago", category: "AUTO" },
-                { title: "Ola Electric plans new factory with 10 lakh capacity", link: "#", time: "2h ago", category: "AUTO" },
-                { title: "Hyundai launches Ioniq 6 with 800km range globally", link: "#", time: "3h ago", category: "AUTO" },
-                { title: "India becomes 3rd largest car market in the world", link: "#", time: "4h ago", category: "INDIA" },
-                { title: "Tata Motors unveils Avinya concept EV for 2026", link: "#", time: "5h ago", category: "AUTO" }
-            ];
-        }
-
-        // ====== RENDER NEWS ======
-        function renderNews() {
-            const track = document.getElementById('newsTrack');
-            
-            // Duplicate for seamless infinite scroll
-            const displayNews = [...allNews, ...allNews, ...allNews, ...allNews];
-            
-            track.innerHTML = displayNews.map(news => `
-                <div class="news-item">
-                    <span class="news-tag">${news.category}</span>
-                    <a href="${news.link}" target="_blank">${news.title}</a>
-                    <span class="news-time">${news.time}</span>
-                </div>
-            `).join('');
-        }
-
-        // ====== AUTO UPDATE SETUP ======
-        // Pehli baar load
-        fetchLiveNews();
-
-        // Har 5 minute mein auto update (300,000 ms)
-        setInterval(fetchLiveNews, 300000);
-
-        // Optional: Har 30 second mein "Just now" time update
-        setInterval(() => {
-            if (allNews.length > 0) {
-                renderNews(); // Re-render to update relative times
-            }
-        }, 30000);
-
-        // ====== PAUSE ON HOVER (Optional UX) ======
-        document.querySelector('.live-news-banner').addEventListener('mouseenter', () => {
-            document.querySelector('.news-track').style.animationPlayState = 'paused';
-        });
-
-        document.querySelector('.live-news-banner').addEventListener('mouseleave', () => {
-            document.querySelector('.news-track').style.animationPlayState = 'running';
-        });
-    </script>
-
-</body>
-</html>
+fetchLiveNews();
+setInterval(fetchLiveNews, 300000); // Auto update every 5 minutes
+</script>
