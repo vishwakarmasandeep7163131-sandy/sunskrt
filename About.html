@@ -848,3 +848,829 @@ footer{
 
 </body>
 </html>
+
+  <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoDrive - Latest News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* ====== HEADER / NAVBAR ====== */
+        .header {
+            background: #111;
+            padding: 15px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff4500;
+            text-decoration: none;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-box input {
+            width: 350px;
+            padding: 10px 18px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: #666;
+        }
+
+        .search-btn {
+            background: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #e63e00;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ff4500;
+        }
+
+        /* ====== HERO BANNER ====== */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 20%;
+            left: 80px;
+            z-index: 3;
+            max-width: 550px;
+        }
+
+        .live-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #c41e3a;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .live-tag .dot {
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.3); }
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .explore-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ff4500;
+            color: #fff;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .explore-btn:hover {
+            background: #e63e00;
+            transform: translateY(-2px);
+        }
+
+        /* Banner Dots */
+        .banner-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 4;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #ff4500;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* ====== NEWS SECTIONS ====== */
+        .news-section {
+            padding: 40px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #ff4500;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: #ff4500;
+            border-radius: 2px;
+        }
+
+        .see-all {
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+
+        .see-all:hover {
+            gap: 10px;
+        }
+
+        /* News Grid Layout */
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .main-news {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .main-news img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .main-news:hover img {
+            transform: scale(1.05);
+        }
+
+        .main-news-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+        }
+
+        .main-news-title {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .main-news-desc {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* Side News List */
+        .side-news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .side-news-item {
+            display: flex;
+            gap: 15px;
+            padding: 12px;
+            background: #111;
+            border-radius: 10px;
+            transition: background 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .side-news-item:hover {
+            background: #1a1a1a;
+        }
+
+        .side-news-img {
+            width: 100px;
+            height: 75px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .side-news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .side-news-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .side-news-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .side-news-time {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* ====== CATEGORY SECTIONS (Religion, Sports, etc.) ====== */
+        .category-section {
+            padding: 30px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .category-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-name i {
+            font-size: 14px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-card-img {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .category-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover .category-card-img img {
+            transform: scale(1.1);
+        }
+
+        .category-card-content {
+            padding: 15px;
+        }
+
+        .category-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .category-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* ====== MOBILE RESPONSIVE ====== */
+        @media (max-width: 1024px) {
+            .header { padding: 15px 30px; }
+            .search-box input { width: 250px; }
+            .hero-content { left: 40px; max-width: 450px; }
+            .hero-title { font-size: 40px; }
+            .news-section, .category-section { padding: 30px; }
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .header { 
+                flex-direction: column; 
+                gap: 15px; 
+                padding: 15px 20px;
+            }
+            .nav-links { gap: 15px; }
+            .search-box input { width: 200px; }
+            .hero-banner { height: 60vh; }
+            .hero-content { left: 20px; right: 20px; max-width: 100%; bottom: 15%; }
+            .hero-title { font-size: 28px; }
+            .hero-desc { font-size: 14px; }
+            .news-grid { grid-template-columns: 1fr; }
+            .main-news { height: 250px; }
+            .category-grid { grid-template-columns: 1fr; }
+            .news-section, .category-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== HEADER ====== -->
+    <header class="header">
+        <a href="#" class="logo">AutoDrive</a>
+        
+        <div class="search-box">
+            <input type="text" placeholder="Search latest news...">
+            <button class="search-btn">Search</button>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Health</a></li>
+            <li><a href="#">Cars</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- ====== HERO BANNER (Auto Change) ====== -->
+    <section class="hero-banner" id="heroBanner">
+        <div class="hero-slide active">
+            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1920" alt="EV Cars">
+        </div>
+        <div class="hero-slide">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1920" alt="Sports Car">
+        </div>
+        <div class="hero-slide">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920" alt="Luxury Car">
+        </div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="live-tag">
+                <span class="dot"></span>
+                LIVE NEWS
+            </div>
+            <h1 class="hero-title">Future EV Cars Coming In 2026</h1>
+            <p class="hero-desc">Automobile companies prepare futuristic electric vehicles with advanced AI technology.</p>
+            <a href="#" class="explore-btn">Explore News →</a>
+        </div>
+        
+        <div class="banner-dots">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- ====== TOP NEWS SECTION ====== -->
+    <section class="news-section">
+        <div class="section-header">
+            <h2 class="section-title">Top Stories</h2>
+            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="news-grid">
+            <!-- Main Big News -->
+            <div class="main-news">
+                <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800" alt="Tesla">
+                <div class="main-news-overlay">
+                    <h3 class="main-news-title">Tesla Launches Affordable EV Model for Indian Market</h3>
+                    <p class="main-news-desc">Starting at ₹20 lakh, the new Model 2 promises 500km range and autopilot features.</p>
+                </div>
+            </div>
+            
+            <!-- Side News List -->
+            <div class="side-news-list">
+                <a href="#" class="side-news-item">
+                    <div class="side-news-img">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=200" alt="Car">
+                    </div>
+                    <div class="side-news-content">
+                        <h4 class="side-news-title">Maruti Suzuki Unveils First Electric SUV Concept</h4>
+                        <span class="side-news-time">2 hours ago</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="side-news-item">
+                    <div class="side-news-img">
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200" alt="Car">
+                    </div>
+                    <div class="side-news-content">
+                        <h4 class="side-news-title">Government Announces New EV Subsidy Scheme 2026</h4>
+                        <span class="side-news-time">4 hours ago</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="side-news-item">
+                    <div class="side-news-img">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=200" alt="Car">
+                    </div>
+                    <div class="side-news-content">
+                        <h4 class="side-news-title">Hyundai Ioniq 7: 800km Range Electric SUV Revealed</h4>
+                        <span class="side-news-time">6 hours ago</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="side-news-item">
+                    <div class="side-news-img">
+                        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=200" alt="Car">
+                    </div>
+                    <div class="side-news-content">
+                        <h4 class="side-news-title">BMW's New Hydrogen Car: Future of Green Driving</h4>
+                        <span class="side-news-time">8 hours ago</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== RELIGION SECTION (Aapki Image Jaisa) ====== -->
+    <section class="category-section">
+        <div class="category-header">
+            <h3 class="category-name"><i class="fas fa-om"></i> Religion</h3>
+            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=400" alt="Temple">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">3rd Bada Mangal 2026: Zodiac-Wise Hanuman Puja Remedies</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 2h ago</span>
+                        <span><i class="far fa-eye"></i> 5.2k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=400" alt="God">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">Adhik Maas 2026: Why It's Auspicious & How to Worship</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 4h ago</span>
+                        <span><i class="far fa-eye"></i> 3.8k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1572949791660-6626e0e8d482?w=400" alt="Puja">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">Adhik Maas 2026: Significance, Rules & 5 Vishnu Mantras</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 6h ago</span>
+                        <span><i class="far fa-eye"></i> 2.1k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1606293926075-69a00febf780?w=400" alt="Shani">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">Shani Jayanti 2026: The Untold Story of Lord Shani</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 8h ago</span>
+                        <span><i class="far fa-eye"></i> 4.5k</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SPORTS SECTION ====== -->
+    <section class="category-section">
+        <div class="category-header">
+            <h3 class="category-name"><i class="fas fa-running"></i> Sports</h3>
+            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=400" alt="Cricket">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">India vs Australia T20 World Cup Final Live Updates</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 1h ago</span>
+                        <span><i class="far fa-eye"></i> 12.5k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400" alt="Football">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">FIFA World Cup 2026: India Qualifies for First Time</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 3h ago</span>
+                        <span><i class="far fa-eye"></i> 8.2k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1461896836934- voices?w=400" alt="Olympics">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">Olympics 2026: India Targets 15 Gold Medals</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 5h ago</span>
+                        <span><i class="far fa-eye"></i> 6.7k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1552674605-469523170d9e?w=400" alt="Badminton">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">PV Sindhu Wins All England Open Championship</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 7h ago</span>
+                        <span><i class="far fa-eye"></i> 9.1k</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== TECHNOLOGY SECTION ====== -->
+    <section class="category-section">
+        <div class="category-header">
+            <h3 class="category-name"><i class="fas fa-microchip"></i> Technology</h3>
+            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400" alt="AI">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">ChatGPT 5.0 Launched: What's New in AI</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 30m ago</span>
+                        <span><i class="far fa-eye"></i> 15.2k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400" alt="Chip">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">India's First 3nm Chip: Made in Bangalore</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 2h ago</span>
+                        <span><i class="far fa-eye"></i> 7.8k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400" alt="Space">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">ISRO's Mars Mission 2026: All You Need to Know</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 4h ago</span>
+                        <span><i class="far fa-eye"></i> 11.3k</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-card-img">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400" alt="Cyber">
+                </div>
+                <div class="category-card-content">
+                    <h4 class="category-card-title">Cyber Security Alert: New Virus Targets Banks</h4>
+                    <div class="category-card-meta">
+                        <span><i class="far fa-clock"></i> 6h ago</span>
+                        <span><i class="far fa-eye"></i> 5.6k</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ====== HERO BANNER AUTO SLIDE ======
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.banner-dots .dot');
+
+        function goToSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+        }
+
+        // Auto change every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
+
+</body>
+</html>
