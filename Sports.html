@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian Stock Market Live Ticker</title>
+    <title>Stock Ticker</title>
     <style>
         * {
             margin: 0;
@@ -14,19 +11,14 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-        }
-
-        /* ====== STOCK TICKER STRIP ====== */
         .ticker-wrapper {
             width: 100%;
-            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
-            border-bottom: 3px solid #22c55e;
+            background: #0f172a;
             overflow: hidden;
             position: relative;
-            z-index: 1000;
+            height: 45px;
+            display: flex;
+            align-items: center;
         }
 
         .ticker-label {
@@ -35,250 +27,126 @@
             top: 0;
             height: 100%;
             background: #22c55e;
-            color: #fff;
+            color: white;
             padding: 0 15px;
             display: flex;
             align-items: center;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             z-index: 10;
-            white-space: nowrap;
         }
 
-        .ticker-container {
+        .ticker-track {
             display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
-            padding-left: 120px; /* Space for label */
+            white-space: nowrap;
+            animation: scroll 30s linear infinite;
+            padding-left: 100px;
         }
 
-        .ticker-container:hover {
+        .ticker-track:hover {
             animation-play-state: paused;
         }
 
         .ticker-item {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            padding: 12px 25px;
-            color: #fff;
+            padding: 0 25px;
+            color: white;
             font-size: 14px;
-            white-space: nowrap;
-            border-right: 1px solid rgba(255,255,255,0.1);
+            font-family: 'Segoe UI', sans-serif;
         }
 
         .ticker-symbol {
-            font-weight: bold;
             color: #94a3b8;
+            font-weight: bold;
             margin-right: 8px;
         }
 
         .ticker-price {
-            font-weight: 600;
             margin-right: 8px;
         }
 
         .ticker-change {
             font-size: 12px;
             padding: 2px 6px;
-            border-radius: 4px;
+            border-radius: 3px;
             font-weight: 600;
         }
 
-        .ticker-change.up {
-            background: rgba(34, 197, 94, 0.2);
+        .up {
             color: #22c55e;
         }
 
-        .ticker-change.down {
-            background: rgba(239, 68, 68, 0.2);
+        .down {
             color: #ef4444;
         }
 
-        /* Animation */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* ====== MOBILE RESPONSIVE ====== */
+        /* Mobile */
         @media (max-width: 768px) {
-            .ticker-label {
-                font-size: 12px;
-                padding: 0 10px;
-            }
-            
-            .ticker-container {
-                padding-left: 100px;
-                animation: scroll 25s linear infinite;
-            }
-            
-            .ticker-item {
-                padding: 10px 18px;
-                font-size: 13px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .ticker-item {
-                padding: 8px 14px;
-                font-size: 12px;
-            }
-            
-            .ticker-change {
-                font-size: 11px;
-            }
-        }
-
-        /* ====== DEMO CONTENT ====== */
-        .content {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            color: #1e293b;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-
-        p {
-            color: #64748b;
-            line-height: 1.6;
+            .ticker-wrapper { height: 40px; }
+            .ticker-label { font-size: 11px; padding: 0 10px; }
+            .ticker-track { padding-left: 80px; animation-duration: 20s; }
+            .ticker-item { padding: 0 18px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ====== LIVE STOCK TICKER ====== -->
     <div class="ticker-wrapper">
         <div class="ticker-label">📈 LIVE</div>
-        <div class="ticker-container" id="tickerContainer">
-            <!-- Items will be inserted by JavaScript -->
-        </div>
-    </div>
-
-    <!-- ====== TRADINGVIEW WIDGET (OPTIONAL - Detailed View) ====== -->
-    <div class="tradingview-widget-container" style="margin: 20px auto; max-width: 1200px; padding: 0 20px;">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-        {
-            "width": "100%",
-            "height": 400,
-            "symbolsGroups": [
-                {
-                    "name": "Indian Indices",
-                    "originalName": "Indian Indices",
-                    "symbols": [
-                        {"name": "NSE:NIFTY", "displayName": "Nifty 50"},
-                        {"name": "BSE:SENSEX", "displayName": "Sensex"},
-                        {"name": "NSE:BANKNIFTY", "displayName": "Bank Nifty"},
-                        {"name": "NSE:FINNIFTY", "displayName": "Fin Nifty"}
-                    ]
-                },
-                {
-                    "name": "Top Stocks",
-                    "originalName": "Top Stocks",
-                    "symbols": [
-                        {"name": "NSE:RELIANCE", "displayName": "Reliance"},
-                        {"name": "NSE:TCS", "displayName": "TCS"},
-                        {"name": "NSE:HDFCBANK", "displayName": "HDFC Bank"},
-                        {"name": "NSE:INFY", "displayName": "Infosys"},
-                        {"name": "NSE:ICICIBANK", "displayName": "ICICI Bank"},
-                        {"name": "NSE:SBIN", "displayName": "SBI"},
-                        {"name": "NSE:ADANIENT", "displayName": "Adani Ent"},
-                        {"name": "NSE:TATAMOTORS", "displayName": "Tata Motors"}
-                    ]
-                }
-            ],
-            "showSymbolLogo": true,
-            "colorTheme": "light",
-            "isTransparent": false,
-            "locale": "in",
-            "largeChartUrl": ""
-        }
-        </script>
-    </div>
-
-    <!-- ====== DEMO WEBSITE CONTENT ====== -->
-    <div class="content">
-        <div class="card">
-            <h1>Welcome to Our Website</h1>
-            <p>Yeh ticker aapki website ke top par live Indian stock market data dikhayega. Mobile, tablet, aur desktop sab par perfect chalega!</p>
-        </div>
-        <div class="card">
-            <h1>Features</h1>
-            <p>✅ Fully Responsive (Mobile Friendly)<br>
-               ✅ Real-time Data from TradingView<br>
-               ✅ Auto-scrolling Ticker Strip<br>
-               ✅ Green/Red color for Profit/Loss<br>
-               ✅ Hover par pause hota hai</p>
-        </div>
+        <div class="ticker-track" id="tickerTrack"></div>
     </div>
 
     <script>
-        // ====== LIVE TICKER DATA ======
-        // Yeh demo data hai - asal mein TradingView widget real-time data deta hai
         const stocks = [
-            { symbol: "NIFTY 50", price: "22,450.30", change: "+0.85%", up: true },
-            { symbol: "SENSEX", price: "73,890.15", change: "+0.72%", up: true },
-            { symbol: "BANK NIFTY", price: "47,120.50", change: "-0.25%", up: false },
-            { symbol: "RELIANCE", price: "2,890.40", change: "+1.20%", up: true },
-            { symbol: "TCS", price: "3,450.60", change: "-0.45%", up: false },
-            { symbol: "HDFC BANK", price: "1,520.30", change: "+0.90%", up: true },
-            { symbol: "INFY", price: "1,680.25", change: "+0.35%", up: true },
-            { symbol: "ICICI BANK", price: "1,120.80", change: "+1.50%", up: true },
-            { symbol: "SBIN", price: "780.45", change: "-0.80%", up: false },
-            { symbol: "ADANI ENT", price: "2,340.00", change: "+2.10%", up: true },
-            { symbol: "TATA MOTORS", price: "950.20", change: "+0.65%", up: true },
-            { symbol: "BAJAJ FIN", price: "6,780.90", change: "-0.30%", up: false },
-            { symbol: "LT", price: "3,120.50", change: "+0.95%", up: true },
-            { symbol: "AXIS BANK", price: "1,050.30", change: "+0.40%", up: true }
+            { s: "NIFTY 50", p: "22,450.30", c: "+0.85%", u: true },
+            { s: "SENSEX", p: "73,890.15", c: "+0.72%", u: true },
+            { s: "BANK NIFTY", p: "47,120.50", c: "-0.25%", u: false },
+            { s: "RELIANCE", p: "2,890.40", c: "+1.20%", u: true },
+            { s: "TCS", p: "3,450.60", c: "-0.45%", u: false },
+            { s: "HDFC BANK", p: "1,520.30", c: "+0.90%", u: true },
+            { s: "INFY", p: "1,680.25", c: "+0.35%", u: true },
+            { s: "ICICI BANK", p: "1,120.80", c: "+1.50%", u: true },
+            { s: "SBIN", p: "780.45", c: "-0.80%", u: false },
+            { s: "ADANI ENT", p: "2,340.00", c: "+2.10%", u: true },
+            { s: "TATA MOTORS", p: "950.20", c: "+0.65%", u: true },
+            { s: "BAJAJ FIN", p: "6,780.90", c: "-0.30%", u: false },
+            { s: "LT", p: "3,120.50", c: "+0.95%", u: true },
+            { s: "AXIS BANK", p: "1,050.30", c: "+0.40%", u: true }
         ];
 
-        function createTicker() {
-            const container = document.getElementById('tickerContainer');
-            let html = '';
-            
-            // Double the items for seamless loop
-            const allStocks = [...stocks, ...stocks];
-            
-            allStocks.forEach(stock => {
-                const changeClass = stock.up ? 'up' : 'down';
-                const arrow = stock.up ? '▲' : '▼';
-                
-                html += `
-                    <div class="ticker-item">
-                        <span class="ticker-symbol">${stock.symbol}</span>
-                        <span class="ticker-price">₹${stock.price}</span>
-                        <span class="ticker-change ${changeClass}">${arrow} ${stock.change}</span>
-                    </div>
-                `;
-            });
-            
-            container.innerHTML = html;
-        }
+        const track = document.getElementById('tickerTrack');
+        const allStocks = [...stocks, ...stocks]; // Duplicate for seamless loop
 
-        // Initialize ticker
-        createTicker();
+        track.innerHTML = allStocks.map(stock => `
+            <div class="ticker-item">
+                <span class="ticker-symbol">${stock.s}</span>
+                <span class="ticker-price">₹${stock.p}</span>
+                <span class="ticker-change ${stock.u ? 'up' : 'down'}">
+                    ${stock.u ? '▲' : '▼'} ${stock.c}
+                </span>
+            </div>
+        `).join('');
 
-        // Optional: Real-time update simulation (har 5 second mein)
+        // Auto update every 5 seconds
         setInterval(() => {
-            stocks.forEach(stock => {
-                // Random small fluctuation
-                const fluctuation = (Math.random() - 0.5) * 2;
-                stock.up = fluctuation > 0;
-                stock.change = (fluctuation > 0 ? '+' : '') + fluctuation.toFixed(2) + '%';
+            stocks.forEach(st => {
+                const change = (Math.random() - 0.5) * 2;
+                st.u = change > 0;
+                st.c = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
             });
-            createTicker();
+            // Refresh display
+            const items = document.querySelectorAll('.ticker-item');
+            items.forEach((item, i) => {
+                const stock = allStocks[i];
+                item.querySelector('.ticker-change').className = `ticker-change ${stock.u ? 'up' : 'down'}`;
+                item.querySelector('.ticker-change').innerHTML = `${stock.u ? '▲' : '▼'} ${stock.c}`;
+            });
         }, 5000);
     </script>
 
