@@ -182,141 +182,213 @@
     </div>
   </nav>
 
-  <div class="news-ticker-wrapper">
-    <div class="news-label">🔴 BREAKING</div>
-    <div class="news-track" id="newsTrack">
-        <div class="news-item">Loading latest news...</div>
-    </div>
-</div>
+  <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live News Ticker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-.news-ticker-wrapper {
-    width: 100%;
-    background: linear-gradient(90deg, #1e3a5f 0%, #0f172a 100%);
-    overflow: hidden;
-    position: relative;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-bottom: 2px solid #f59e0b;
-}
-.news-label {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: #f59e0b;
-    color: #0f172a;
-    padding: 0 18px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 14px;
-    z-index: 10;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-.news-track {
-    display: flex;
-    white-space: nowrap;
-    animation: newsScroll 50s linear infinite;
-    padding-left: 130px;
-}
-.news-track:hover { animation-play-state: paused; }
-.news-item {
-    display: inline-flex;
-    align-items: center;
-    padding: 0 35px;
-    color: #e2e8f0;
-    font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    position: relative;
-}
-.news-item::after {
-    content: "•";
-    position: absolute;
-    right: 0;
-    color: #f59e0b;
-    font-size: 20px;
-}
-.news-item a {
-    color: #e2e8f0;
-    text-decoration: none;
-}
-.news-item a:hover { color: #f59e0b; }
-.news-time {
-    color: #94a3b8;
-    font-size: 12px;
-    margin-left: 8px;
-}
-@keyframes newsScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-@media (max-width: 768px) {
-    .news-ticker-wrapper { height: 42px; }
-    .news-label { font-size: 12px; padding: 0 12px; }
-    .news-track { padding-left: 100px; animation-duration: 80s; }
-    .news-item { padding: 0 22px; font-size: 13px; }
-}
-@media (max-width: 480px) {
-    .news-item { font-size: 12px; padding: 0 18px; }
-}
-</style>
+        /* ====== NEWS TICKER ====== */
+        .news-ticker-wrapper {
+            width: 100%;
+            background: linear-gradient(90deg, #1e3a5f 0%, #0f172a 100%);
+            overflow: hidden;
+            position: relative;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #f59e0b;
+        }
 
-<script>
-const RSS_URLS = [
-    'https://timesofindia.indiatimes.com/rssfeedstopstories.cms',
-    'https://www.indiatvnews.com/rssfeed/topstory.xml',
-    'https://feeds.feedburner.com/ndtvnews-top-stories'
-];
-const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+        .news-label {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #f59e0b;
+            color: #0f172a;
+            padding: 0 18px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-async function fetchRSS() {
-    let allNews = [];
-    for (let url of RSS_URLS) {
-        try {
-            const response = await fetch(CORS_PROXY + encodeURIComponent(url));
-            const data = await response.json();
-            if (data.contents) {
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(data.contents, 'text/xml');
-                const items = xml.querySelectorAll('item');
-                items.forEach((item, index) => {
-                    if (index < 8) {
-                        const title = item.querySelector('title')?.textContent || 'No Title';
-                        const link = item.querySelector('link')?.textContent || '#';
-                        const pubDate = item.querySelector('pubDate')?.textContent;
-                        let timeStr = '';
-                        if (pubDate) {
-                            const date = new Date(pubDate);
-                            timeStr = `${date.getHours()}:${date.getMinutes() < 10 ? '0' : ''}${date.getMinutes()}`;
-                        }
-                        allNews.push({ title: title.replace(/<<!\[CDATA\[|\]\]>/g, '').trim(), link: link, time: timeStr });
-                    }
-                });
-            }
-        } catch (e) { console.log('Error:', e); }
-    }
-    if (allNews.length === 0) {
-        allNews = [
-            { title: "Market Update: Sensex crosses 74,000 mark", link: "#", time: "10:30" },
-            { title: "Cricket: India wins T20 series", link: "#", time: "09:15" },
-            { title: "ISRO launches new satellite", link: "#", time: "08:45" }
-        ];
-    }
-    const track = document.getElementById('newsTrack');
-    const displayNews = [...allNews, ...allNews, ...allNews];
-    track.innerHTML = displayNews.map(news => `
-        <div class="news-item">
-            <a href="${news.link}" target="_blank">${news.title}</a>
-            ${news.time ? `<span class="news-time">${news.time}</span>` : ''}
+        .news-track {
+            display: flex;
+            white-space: nowrap;
+            animation: newsScroll 50s linear infinite;
+            padding-left: 130px;
+        }
+
+        .news-track:hover {
+            animation-play-state: paused;
+        }
+
+        .news-item {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 35px;
+            color: #e2e8f0;
+            font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            position: relative;
+        }
+
+        .news-item::after {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #f59e0b;
+            font-size: 20px;
+        }
+
+        .news-item a {
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .news-item a:hover {
+            color: #f59e0b;
+        }
+
+        .news-time {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        @keyframes newsScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ====== MOBILE ====== */
+        @media (max-width: 768px) {
+            .news-ticker-wrapper { height: 42px; }
+            .news-label { font-size: 12px; padding: 0 12px; }
+            .news-track { padding-left: 100px; animation-duration: 35s; }
+            .news-item { padding: 0 22px; font-size: 13px; }
+        }
+
+        @media (max-width: 480px) {
+            .news-item { font-size: 12px; padding: 0 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== LIVE NEWS TICKER ====== -->
+    <div class="news-ticker-wrapper">
+        <div class="news-label">🔴 BREAKING</div>
+        <div class="news-track" id="newsTrack">
+            <div class="news-item">Loading latest news...</div>
         </div>
-    `).join('');
-}
-fetchRSS();
-setInterval(fetchRSS, 600000);
-</script>
+    </div>
+
+    <script>
+        // ====== RSS FEED SOURCES (FREE) ======
+        const RSS_URLS = [
+            'https://timesofindia.indiatimes.com/rssfeedstopstories.cms',  // Times of India - Top Stories citeweb_search:4#4
+            'https://www.indiatvnews.com/rssfeed/topstory.xml',             // India TV - Top Stories citeweb_search:4#2
+            'https://feeds.feedburner.com/ndtvnews-top-stories'             // NDTV - Top Stories
+        ];
+
+        // CORS proxy (free) - RSS ko directly browser se nahi padh sakte
+        const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+
+        let allNews = [];
+        let newsIndex = 0;
+
+        async function fetchRSS() {
+            allNews = [];
+            
+            for (let url of RSS_URLS) {
+                try {
+                    const response = await fetch(CORS_PROXY + encodeURIComponent(url));
+                    const data = await response.json();
+                    
+                    if (data.contents) {
+                        const parser = new DOMParser();
+                        const xml = parser.parseFromString(data.contents, 'text/xml');
+                        const items = xml.querySelectorAll('item');
+                        
+                        items.forEach((item, index) => {
+                            if (index < 8) { // Sirf top 8 news per source
+                                const title = item.querySelector('title')?.textContent || 'No Title';
+                                const link = item.querySelector('link')?.textContent || '#';
+                                const pubDate = item.querySelector('pubDate')?.textContent;
+                                
+                                // Time format
+                                let timeStr = '';
+                                if (pubDate) {
+                                    const date = new Date(pubDate);
+                                    const hours = date.getHours();
+                                    const mins = date.getMinutes();
+                                    timeStr = `${hours}:${mins < 10 ? '0' : ''}${mins}`;
+                                }
+                                
+                                allNews.push({
+                                    title: title.replace(/<<!\[CDATA\[|\]\]>/g, '').trim(),
+                                    link: link,
+                                    time: timeStr
+                                });
+                            }
+                        });
+                    }
+                } catch (e) {
+                    console.log('RSS fetch error:', e);
+                }
+            }
+            
+            // Agar kuch bhi na mile toh demo news dikhaye
+            if (allNews.length === 0) {
+                allNews = [
+                    { title: "Market Update: Sensex crosses 74,000 mark in early trade", link: "#", time: "10:30" },
+                    { title: "Cricket: India wins T20 series against Australia", link: "#", time: "09:15" },
+                    { title: "Technology: ISRO launches new satellite successfully", link: "#", time: "08:45" },
+                    { title: "Politics: New education policy announced by government", link: "#", time: "08:00" },
+                    { title: "Business: Reliance announces new green energy project", link: "#", time: "07:30" }
+                ];
+            }
+            
+            renderNews();
+        }
+
+        function renderNews() {
+            const track = document.getElementById('newsTrack');
+            
+            // News ko duplicate karein taaki seamless scroll ho
+            const displayNews = [...allNews, ...allNews, ...allNews];
+            
+            track.innerHTML = displayNews.map(news => `
+                <div class="news-item">
+                    <a href="${news.link}" target="_blank">${news.title}</a>
+                    ${news.time ? `<span class="news-time">${news.time}</span>` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Pehli baar fetch karein
+        fetchRSS();
+
+        // Har 10 minute mein refresh karein
+        setInterval(fetchRSS, 600000);
+    </script>
+
+</body>
+</html>
   
 <!DOCTYPE html>
 <html lang="en">
