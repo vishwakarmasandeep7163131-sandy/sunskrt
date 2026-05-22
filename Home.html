@@ -238,112 +238,133 @@
 </head>
 
 <body>
-<div class="ticker-main-container">
-    <div class="stock-left-heading">
-        <span class="live-pulse-dot"></span>
-        <span class="heading-text">STOCK MARKET <span class="highlight-text">UPDATES</span></span>
-    </div>
-
-    <div class="top-ticker-wrapper">
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-        </div>
-    </div>
+<div class="ticker-wrapper">
+    <div class="ticker-label">📈 LIVE</div>
+    <div class="ticker-track" id="tickerTrack"></div>
 </div>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* Main Container to hold Heading and Ticker side by side */
-.ticker-main-container {
-    display: flex;
-    align-items: center;
+.ticker-wrapper {
     width: 100%;
-    background: #131722; /* TradingView Theme Dark Color */
-    border-bottom: 1px solid #2a2e39;
-    position: relative;
-    z-index: 99999;
+    background: #0f172a;
     overflow: hidden;
-}
-
-/* Left Side Heading Style */
-.stock-left-heading {
+    position: relative;
+    height: 45px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: #1e222d; /* Slightly lighter dark for contrast */
-    padding: 10px 20px;
+}
+.ticker-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #22c55e;
+    color: white;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 10;
+}
+.ticker-track {
+    display: flex;
     white-space: nowrap;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
-    z-index: 2; /* Ticker ke upar layer rakhne ke liye */
+    animation: scroll 35s linear infinite;
+    padding-left: 100px;
 }
-
-.stock-left-heading .heading-text {
-    color: #ffffff;
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 25px;
+    color: white;
     font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    font-family: 'Segoe UI', sans-serif;
 }
-
-.stock-left-heading .highlight-text {
-    color: #ff3c00; /* Neon Orange/Red Alert Color */
+.ticker-symbol {
+    color: #94a3b8;
+    font-weight: bold;
+    margin-right: 8px;
 }
-
-/* Green Live Blinking Dot */
-.live-pulse-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #00ff66;
-    border-radius: 50%;
-    display: inline-block;
-    animation: pulse-animation 1.5s infinite;
+.ticker-price { margin-right: 8px; }
+.ticker-change {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
 }
-
-@keyframes pulse-animation {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 255, 102, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
+.up { color: #22c55e; }
+.down { color: #ef4444; }
+.crypto { color: #f59e0b !important; }
+.metal { color: #e2e8f0 !important; }
+.index { color: #38bdf8 !important; }
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
-
-/* Right Side Ticker Wrapper */
-.top-ticker-wrapper {
-    flex-grow: 1;
-    z-index: 1;
-}
-
-/* Mobile Screens Ke Liye Adjustments */
 @media (max-width: 768px) {
-    .stock-left-heading {
-        padding: 8px 10px;
-    }
-    .stock-left-heading .heading-text {
-        font-size: 11px;
-    }
+    .ticker-wrapper { height: 40px; }
+    .ticker-label { font-size: 11px; padding: 0 10px; }
+    .ticker-track { padding-left: 80px; animation-duration: 25s; }
+    .ticker-item { padding: 0 18px; font-size: 12px; }
 }
 </style>
 
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-{
-  "symbols": [
-    { "proName": "INDEX:SENSEX", "title": "SENSEX" },
-    { "proName": "TVC:GOLD", "title": "GOLD (SONA)" },
-    { "proName": "TVC:SILVER", "title": "SILVER (CHANDI)" },
-    { "proName": "BSE:RELIANCE", "title": "RELIANCE" },
-    { "proName": "BSE:TCS", "title": "TCS" },
-    { "proName": "BSE:HDFCBANK", "title": "HDFC BANK" },
-    { "proName": "BSE:INFY", "title": "INFOSYS" },
-    { "proName": "FX_IDC:INRUSD", "title": "USD TO INR" }
-  ],
-  "showSymbolLogo": true,
-  "colorTheme": "dark",
-  "isTransparent": false,
-  "displayMode": "adaptive",
-  "locale": "en"
+<script>
+const stocks = [
+    { s: "₿ BTC/USD", p: "97,450.00", c: "+2.35%", u: true, cat: "crypto" },
+    { s: "Ξ ETH/USD", p: "3,890.20", c: "+1.80%", u: true, cat: "crypto" },
+    { s: "🥇 GOLD", p: "78,450.00", c: "+0.45%", u: true, cat: "metal" },
+    { s: "🥈 SILVER", p: "92,180.00", c: "-0.20%", u: false, cat: "metal" },
+    { s: "NIFTY 50", p: "22,450.30", c: "+0.85%", u: true, cat: "index" },
+    { s: "SENSEX", p: "73,890.15", c: "+0.72%", u: true, cat: "index" },
+    { s: "BANK NIFTY", p: "47,120.50", c: "-0.25%", u: false, cat: "index" },
+    { s: "RELIANCE", p: "2,890.40", c: "+1.20%", u: true, cat: "stock" },
+    { s: "TCS", p: "3,450.60", c: "-0.45%", u: false, cat: "stock" },
+    { s: "HDFC BANK", p: "1,520.30", c: "+0.90%", u: true, cat: "stock" },
+    { s: "INFY", p: "1,680.25", c: "+0.35%", u: true, cat: "stock" },
+    { s: "ICICI BANK", p: "1,120.80", c: "+1.50%", u: true, cat: "stock" },
+    { s: "SBIN", p: "780.45", c: "-0.80%", u: false, cat: "stock" },
+    { s: "ADANI ENT", p: "2,340.00", c: "+2.10%", u: true, cat: "stock" },
+    { s: "TATA MOTORS", p: "950.20", c: "+0.65%", u: true, cat: "stock" },
+    { s: "BAJAJ FIN", p: "6,780.90", c: "-0.30%", u: false, cat: "stock" },
+    { s: "LT", p: "3,120.50", c: "+0.95%", u: true, cat: "stock" },
+    { s: "AXIS BANK", p: "1,050.30", c: "+0.40%", u: true, cat: "stock" }
+];
+
+const track = document.getElementById('tickerTrack');
+const allStocks = [...stocks, ...stocks];
+
+function getCatClass(cat) {
+    if (cat === 'crypto') return 'crypto';
+    if (cat === 'metal') return 'metal';
+    if (cat === 'index') return 'index';
+    return '';
 }
+
+function render() {
+    track.innerHTML = allStocks.map(stock => `
+        <div class="ticker-item">
+            <span class="ticker-symbol ${getCatClass(stock.cat)}">${stock.s}</span>
+            <span class="ticker-price">₹${stock.p}</span>
+            <span class="ticker-change ${stock.u ? 'up' : 'down'}">
+                ${stock.u ? '▲' : '▼'} ${stock.c}
+            </span>
+        </div>
+    `).join('');
+}
+
+render();
+
+setInterval(() => {
+    stocks.forEach(st => {
+        const change = (Math.random() - 0.5) * 3;
+        st.u = change > 0;
+        st.c = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
+    });
+    render();
+}, 5000);
 </script>
   <!-- NAVBAR -->
 
