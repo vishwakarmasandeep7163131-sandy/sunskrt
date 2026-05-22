@@ -891,3 +891,139 @@ height:180px;
 
 </body>
 </html>
+
+  <div class="news-ticker-wrapper">
+    <div class="news-label">🔴 BREAKING</div>
+    <div class="news-track" id="newsTrack">
+        <div class="news-item">Loading latest news...</div>
+    </div>
+</div>
+
+<style>
+.news-ticker-wrapper {
+    width: 100%;
+    background: linear-gradient(90deg, #1e3a5f 0%, #0f172a 100%);
+    overflow: hidden;
+    position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #f59e0b;
+}
+.news-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #f59e0b;
+    color: #0f172a;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.news-track {
+    display: flex;
+    white-space: nowrap;
+    animation: newsScroll 50s linear infinite;
+    padding-left: 130px;
+}
+.news-track:hover { animation-play-state: paused; }
+.news-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 35px;
+    color: #e2e8f0;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    position: relative;
+}
+.news-item::after {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: #f59e0b;
+    font-size: 20px;
+}
+.news-item a {
+    color: #e2e8f0;
+    text-decoration: none;
+}
+.news-item a:hover { color: #f59e0b; }
+.news-time {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-left: 8px;
+}
+@keyframes newsScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+    .news-ticker-wrapper { height: 42px; }
+    .news-label { font-size: 12px; padding: 0 12px; }
+    .news-track { padding-left: 100px; animation-duration: 35s; }
+    .news-item { padding: 0 22px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+    .news-item { font-size: 12px; padding: 0 18px; }
+}
+</style>
+
+<script>
+const RSS_URLS = [
+    'https://timesofindia.indiatimes.com/rssfeedstopstories.cms',
+    'https://www.indiatvnews.com/rssfeed/topstory.xml',
+    'https://feeds.feedburner.com/ndtvnews-top-stories'
+];
+const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+
+async function fetchRSS() {
+    let allNews = [];
+    for (let url of RSS_URLS) {
+        try {
+            const response = await fetch(CORS_PROXY + encodeURIComponent(url));
+            const data = await response.json();
+            if (data.contents) {
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, 'text/xml');
+                const items = xml.querySelectorAll('item');
+                items.forEach((item, index) => {
+                    if (index < 8) {
+                        const title = item.querySelector('title')?.textContent || 'No Title';
+                        const link = item.querySelector('link')?.textContent || '#';
+                        const pubDate = item.querySelector('pubDate')?.textContent;
+                        let timeStr = '';
+                        if (pubDate) {
+                            const date = new Date(pubDate);
+                            timeStr = `${date.getHours()}:${date.getMinutes() < 10 ? '0' : ''}${date.getMinutes()}`;
+                        }
+                        allNews.push({ title: title.replace(/<<!\[CDATA\[|\]\]>/g, '').trim(), link: link, time: timeStr });
+                    }
+                });
+            }
+        } catch (e) { console.log('Error:', e); }
+    }
+    if (allNews.length === 0) {
+        allNews = [
+            { title: "Market Update: Sensex crosses 74,000 mark", link: "#", time: "10:30" },
+            { title: "Cricket: India wins T20 series", link: "#", time: "09:15" },
+            { title: "ISRO launches new satellite", link: "#", time: "08:45" }
+        ];
+    }
+    const track = document.getElementById('newsTrack');
+    const displayNews = [...allNews, ...allNews, ...allNews];
+    track.innerHTML = displayNews.map(news => `
+        <div class="news-item">
+            <a href="${news.link}" target="_blank">${news.title}</a>
+            ${news.time ? `<span class="news-time">${news.time}</span>` : ''}
+        </div>
+    `).join('');
+}
+fetchRSS();
+setInterval(fetchRSS, 600000);
+</script>
