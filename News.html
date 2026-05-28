@@ -14,7 +14,7 @@ html_code = '''<!DOCTYPE html>
     a { text-decoration: none; color: white; }
     img { max-width: 100%; display: block; }
 
-    /* ========== LIVE NEWS TICKER (Exact Match) ========== */
+    /* ========== LIVE NEWS TICKER ========== */
     .live-ticker-wrapper {
       width: 100%;
       background: #111;
@@ -109,36 +109,55 @@ html_code = '''<!DOCTYPE html>
 
     /* ========== NAVBAR ========== */
     nav {
-      width: 100%; padding: 18px 8%;
+      width: 100%; padding: 14px 8%;
       display: flex; justify-content: space-between; align-items: center;
       background: #111; position: sticky; top: 0; z-index: 1000;
       border-bottom: 1px solid #222;
     }
-    .logo { font-size: 28px; font-weight: 700; color: #ff3c00; }
-    .menu { display: flex; gap: 25px; }
-    .menu a { transition: 0.3s; font-size: 15px; }
+    .logo { font-size: 28px; font-weight: 700; color: #ff3c00; flex-shrink: 0; }
+    
+    /* SEARCH BAR - CENTER */
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      max-width: 450px;
+      margin: 0 30px;
+    }
+    .nav-search input {
+      flex: 1;
+      padding: 10px 18px;
+      border: none; outline: none;
+      border-radius: 10px;
+      background: #1c1c1c;
+      color: #fff;
+      font-size: 14px;
+      border: 1px solid #333;
+      transition: border-color 0.3s;
+    }
+    .nav-search input:focus { border-color: #ff3c00; }
+    .nav-search input::placeholder { color: #666; }
+    .nav-search button {
+      padding: 10px 22px;
+      border: none; border-radius: 10px;
+      background: #ff3c00;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    .nav-search button:hover { background: #ff5722; }
+    
+    .menu { display: flex; gap: 22px; flex-shrink: 0; }
+    .menu a { transition: 0.3s; font-size: 14px; color: #ccc; }
     .menu a:hover, .menu a.active { color: #ff3c00; }
     .mobile-menu-btn {
       display: none; background: none; border: none;
       color: #fff; font-size: 24px; cursor: pointer;
     }
-
-    /* ========== SEARCH BAR ========== */
-    .search-box {
-      width: 100%; display: flex; justify-content: center; align-items: center;
-      gap: 10px; padding: 30px 8%; background: #111; flex-wrap: wrap;
-    }
-    .search-box input {
-      width: 450px; max-width: 100%; padding: 10px 20px; border: none; outline: none;
-      border-radius: 12px; background: #1c1c1c; color: #fff; font-size: 16px;
-      border: 1px solid #333;
-    }
-    .search-box button {
-      padding: 10px 24px; border: none; border-radius: 12px;
-      background: #ff3c00; color: #fff; font-size: 16px; font-weight: 600;
-      cursor: pointer; transition: 0.3s;
-    }
-    .search-box button:hover { background: #ff5722; transform: translateY(-2px); }
 
     /* ========== PAGE HEADER ========== */
     .page-header {
@@ -362,20 +381,17 @@ html_code = '''<!DOCTYPE html>
     .news-card, .side-card, .featured-main {
       animation: fadeInUp 0.6s ease forwards;
     }
-    .news-card:nth-child(1) { animation-delay: 0.05s; }
-    .news-card:nth-child(2) { animation-delay: 0.1s; }
-    .news-card:nth-child(3) { animation-delay: 0.15s; }
-    .news-card:nth-child(4) { animation-delay: 0.2s; }
-    .news-card:nth-child(5) { animation-delay: 0.25s; }
-    .news-card:nth-child(6) { animation-delay: 0.3s; }
 
     /* ========== RESPONSIVE ========== */
     @media (max-width: 1024px) {
+      .nav-search { max-width: 300px; margin: 0 20px; }
       .news-grid { grid-template-columns: repeat(2, 1fr); }
       .featured-grid { grid-template-columns: 1fr; }
       .featured-main { height: 350px; }
     }
     @media (max-width: 768px) {
+      nav { flex-wrap: wrap; padding: 12px 5%; }
+      .nav-search { order: 3; width: 100%; max-width: 100%; margin: 12px 0 0 0; }
       .menu { display: none; }
       .mobile-menu-btn { display: block; }
       .page-header h1 { font-size: 30px; }
@@ -390,17 +406,22 @@ html_code = '''<!DOCTYPE html>
 </head>
 <body>
 
-  <!-- ========== LIVE NEWS TICKER (Screenshot Match) ========== -->
+  <!-- ========== LIVE NEWS TICKER ========== -->
   <div class="live-ticker-wrapper">
     <div class="live-ticker-label">Live Auto News</div>
-    <div class="live-ticker-track" id="liveTickerTrack">
-      <!-- Items rendered by JS -->
-    </div>
+    <div class="live-ticker-track" id="liveTickerTrack"></div>
   </div>
 
-  <!-- ========== NAVBAR ========== -->
+  <!-- ========== NAVBAR (Search in Center) ========== -->
   <nav>
     <div class="logo">AutoDrive</div>
+    
+    <!-- SEARCH BAR - CENTER -->
+    <div class="nav-search">
+      <input type="text" id="searchInput" placeholder="Search latest news...">
+      <button onclick="searchNews()">Search</button>
+    </div>
+    
     <div class="menu">
       <a href="Home.html">Home</a>
       <a href="Sports.html">Sports</a>
@@ -412,12 +433,6 @@ html_code = '''<!DOCTYPE html>
     </div>
     <button class="mobile-menu-btn" onclick="alert('Mobile menu open!')">☰</button>
   </nav>
-
-  <!-- ========== SEARCH BAR ========== -->
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search latest news...">
-    <button onclick="searchNews()">Search</button>
-  </div>
 
   <!-- ========== PAGE HEADER ========== -->
   <div class="page-header">
@@ -554,7 +569,7 @@ html_code = '''<!DOCTYPE html>
   </footer>
 
   <script>
-    // ========== LIVE TICKER DATA ==========
+    // ========== LIVE TICKER ==========
     const tickerItems = [
       { tag: "LAUNCH", tagClass: "tag-launch", text: "Mahindra XEV 9e launched in India — Starting ₹25 lakh" },
       { tag: "SALES", tagClass: "tag-sales", text: "Tata Motors EV sales cross 1 lakh units in 2026" },
@@ -648,5 +663,5 @@ html_code = '''<!DOCTYPE html>
 with open('/mnt/agents/output/News.html', 'w', encoding='utf-8') as f:
     f.write(html_code)
 
-print("✅ News.html updated with LIVE TICKER!")
+print("✅ Search bar moved to center (between logo and menu)!")
 print(f"📄 File size: {len(html_code)} characters")
