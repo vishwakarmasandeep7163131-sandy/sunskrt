@@ -1,240 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AutoDrive News</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>गर्मी में शरीर को रखें ठंडा, रोज करें ये 3 असरदार प्राणायाम</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+body{
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    line-height: 1.8;
+}
 
-    body {
-      background: #0f0f0f;
-      color: #fff;
-      overflow-x: hidden;
-    }
+.article-image{
+    width:100%;
+    border-radius:10px;
+    margin:20px 0;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+h1{
+    font-size:36px;
+    margin-bottom:15px;
+}
 
-    /* ================= NAVBAR FIXED ================= */
-    nav {
-      width: 100%;
-      padding: 15px 30px;
-      background: #111;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #222;
+h2{
+    margin-top:30px;
+    color:#222;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+ul{
+    margin-left:25px;
+}
 
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      color: #ff3c00;
-      white-space: nowrap;
-    }
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:10px 20px;
+    background:#000;
+    color:#fff;
+    text-decoration:none;
+    border-radius:5px;
+}
+</style>
 
-    /* CENTER WRAPPER (IMPORTANT FIX) */
-    .center-area {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .search-box {
-      display: flex;
-      gap: 10px;
-    }
-
-    .search-box input {
-      width: 320px;
-      padding: 10px 15px;
-      border-radius: 10px;
-      border: 1px solid #333;
-      background: #1c1c1c;
-      color: #fff;
-      outline: none;
-    }
-
-    .search-box button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      background: #ff3c00;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .menu {
-      display: flex;
-      gap: 20px;
-      white-space: nowrap;
-    }
-
-    .menu a:hover {
-      color: #ff3c00;
-    }
-
-    /* ================= OTHER STYLES SAME ================= */
-    .container {
-      max-width: 1400px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 30px;
-      padding: 40px 20px;
-    }
-
-    .news-card {
-      display: flex;
-      gap: 20px;
-      background: #fff;
-      color: #000;
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
-    .news-image img {
-      width: 280px;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .small-news {
-      display: flex;
-      gap: 10px;
-      background: #fff;
-      color: #000;
-      padding: 10px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .small-news img {
-      width: 120px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    @media(max-width: 900px) {
-      nav {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .center-area {
-        order: 3;
-        width: 100%;
-      }
-
-      .search-box input {
-        width: 100%;
-      }
-
-      .container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-  </style>
 </head>
-
 <body>
 
-<!-- NAVBAR FIXED -->
-<nav>
-  <div class="logo">AutoDrive</div>
+<a href="../index.html" class="back-btn">← Home</a>
 
-  <!-- CENTER SEARCH (LOGO + MENU KE BEECH) -->
-  <div class="center-area">
-    <div class="search-box">
-      <input id="searchInput" type="text" placeholder="Search latest news...">
-      <button onclick="searchNews()">Search</button>
-    </div>
-  </div>
+<h1>गर्मी में शरीर को रखें ठंडा, रोज करें ये 3 असरदार प्राणायाम</h1>
 
-   <div class="menu">
-      <a href="../Home.html">Home</a>
-      <a href="../Sports.html">Sports</a>
-      <a href="../Health.html">Health</a>
-      <a href="../Cars.html">Cars</a>
-      <a href="../News.html">News</a>
-      <a href="../About.html">About</a>
-      <a href="../Contact.html">Contact</a>
-    </div>
-  </nav>
-    
-
-<h1>PM Modi Meets World Leaders in Rome</h1>
-
-<img src="../images/julien-tromeur-V2G1YnMHZwk-unsplash.jpg" alt="News">
+<img src="../images/pranayam.jpg" alt="Pranayam" class="article-image">
 
 <p>
-# गर्मी में शरीर को रखें ठंडा, रोज करें ये 3 असरदार प्राणायाम
-
-गर्मियों के मौसम में तेज धूप और बढ़ते तापमान के कारण शरीर में थकान, डिहाइड्रेशन और बेचैनी जैसी समस्याएं आम हो जाती हैं। ऐसे में योग और प्राणायाम शरीर को अंदर से ठंडक पहुंचाने का प्राकृतिक तरीका हैं। कुछ विशेष प्राणायाम शरीर के तापमान को संतुलित रखने के साथ-साथ मानसिक शांति भी प्रदान करते हैं।
-
-## 1. शीतली प्राणायाम
-
-शीतली प्राणायाम को शरीर को ठंडक देने वाला सबसे प्रभावी प्राणायाम माना जाता है। इसमें जीभ को मोड़कर नली के आकार में बाहर निकालते हुए धीरे-धीरे सांस अंदर ली जाती है और नाक से बाहर छोड़ी जाती है।
-
-### लाभ:
-
-* शरीर की गर्मी कम करने में मदद करता है।
-* तनाव और चिंता को कम करता है।
-* मन को शांत रखता है।
-
-## 2. शीतकारी प्राणायाम
-
-इस प्राणायाम में दांतों को हल्का खोलकर सांस अंदर ली जाती है और नाक से बाहर छोड़ी जाती है। यह शरीर को ठंडा रखने का आसान और प्रभावी तरीका है।
-
-### लाभ:
-
-* शरीर में ताजगी बनाए रखता है।
-* अधिक प्यास और गर्मी की परेशानी को कम करता है।
-* मानसिक एकाग्रता बढ़ाने में सहायक है।
-
-## 3. चंद्र भेदन प्राणायाम
-
-चंद्र भेदन प्राणायाम में बाईं नासिका से सांस अंदर ली जाती है और दाईं नासिका से बाहर छोड़ी जाती है। योग शास्त्र में इसे शीतलता प्रदान करने वाला प्राणायाम माना गया है।
-
-### लाभ:
-
-* शरीर और मन को ठंडक प्रदान करता है।
-* रक्तचाप को संतुलित रखने में मदद कर सकता है।
-* अच्छी नींद और मानसिक शांति में सहायक है।
-
-## ध्यान रखने योग्य बातें
-
-* प्राणायाम हमेशा खाली पेट या भोजन के 3-4 घंटे बाद करें।
-* सुबह या शाम के समय अभ्यास करना बेहतर होता है।
-* किसी गंभीर स्वास्थ्य समस्या की स्थिति में विशेषज्ञ की सलाह अवश्य लें।
-
-## निष्कर्ष
-
-गर्मियों में शरीर को स्वस्थ और ठंडा रखने के लिए शीतली, शीतकारी और चंद्र भेदन प्राणायाम बेहद लाभकारी माने जाते हैं। नियमित अभ्यास से न केवल शरीर को ठंडक मिलती है, बल्कि मानसिक शांति और ऊर्जा भी बनी रहती है।
-
+गर्मियों के मौसम में तेज धूप और बढ़ते तापमान के कारण शरीर में थकान, डिहाइड्रेशन और बेचैनी जैसी समस्याएं आम हो जाती हैं। ऐसे में योग और प्राणायाम शरीर को अंदर से ठंडक पहुंचाने का प्राकृतिक तरीका हैं।
 </p>
 
-<a href="Home.html">← Back Home</a>
+<p>
+कुछ विशेष प्राणायाम शरीर के तापमान को संतुलित रखने के साथ-साथ मानसिक शांति भी प्रदान करते हैं। आइए जानते हैं ऐसे तीन असरदार प्राणायाम के बारे में।
+</p>
+
+<h2>1. शीतली प्राणायाम</h2>
+
+<p>
+शीतली प्राणायाम को शरीर को ठंडक देने वाला सबसे प्रभावी प्राणायाम माना जाता है। इसमें जीभ को मोड़कर नली के आकार में बाहर निकालते हुए धीरे-धीरे सांस अंदर ली जाती है और नाक से बाहर छोड़ी जाती है।
+</p>
+
+<strong>लाभ:</strong>
+
+<ul>
+<li>शरीर की गर्मी कम करने में मदद करता है।</li>
+<li>तनाव और चिंता को कम करता है।</li>
+<li>मन को शांत रखता है।</li>
+</ul>
+
+<h2>2. शीतकारी प्राणायाम</h2>
+
+<p>
+इस प्राणायाम में दांतों को हल्का खोलकर सांस अंदर ली जाती है और नाक से बाहर छोड़ी जाती है। यह शरीर को ठंडा रखने का आसान और प्रभावी तरीका है।
+</p>
+
+<strong>लाभ:</strong>
+
+<ul>
+<li>शरीर में ताजगी बनाए रखता है।</li>
+<li>अधिक प्यास और गर्मी की परेशानी को कम करता है।</li>
+<li>मानसिक एकाग्रता बढ़ाने में सहायक है।</li>
+</ul>
+
+<h2>3. चंद्र भेदन प्राणायाम</h2>
+
+<p>
+चंद्र भेदन प्राणायाम में बाईं नासिका से सांस अंदर ली जाती है और दाईं नासिका से बाहर छोड़ी जाती है। योग शास्त्र में इसे शीतलता प्रदान करने वाला प्राणायाम माना गया है।
+</p>
+
+<strong>लाभ:</strong>
+
+<ul>
+<li>शरीर और मन को ठंडक प्रदान करता है।</li>
+<li>रक्तचाप को संतुलित रखने में मदद कर सकता है।</li>
+<li>अच्छी नींद और मानसिक शांति में सहायक है।</li>
+</ul>
+
+<h2>निष्कर्ष</h2>
+
+<p>
+गर्मियों में शरीर को स्वस्थ और ठंडा रखने के लिए शीतली, शीतकारी और चंद्र भेदन प्राणायाम बेहद लाभकारी माने जाते हैं। नियमित अभ्यास से न केवल शरीर को ठंडक मिलती है, बल्कि मानसिक शांति और ऊर्जा भी बनी रहती है।
+</p>
 
 </body>
 </html>
