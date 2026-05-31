@@ -1,1 +1,458 @@
 
+html_code = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champions League News</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        /* ======== MAIN PAGE (Home) ======== */
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .see-all-btn {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .see-all-btn:hover {
+            color: #004499;
+            text-decoration: underline;
+        }
+        
+        /* Hero Article */
+        .hero-article {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            padding: 20px;
+        }
+        
+        .hero-title {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        
+        .hero-meta {
+            font-size: 12px;
+            color: #888;
+            text-align: right;
+        }
+        
+        /* Small Articles */
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .article-card {
+            display: flex;
+            gap: 15px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .article-thumb {
+            width: 100px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .article-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .article-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #333;
+        }
+        
+        /* ======== SEE ALL PAGE ======== */
+        .see-all-page {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            background: #f5f5f5;
+        }
+        
+        .see-all-page.active {
+            display: block;
+        }
+        
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .back-btn {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn:hover {
+            background: #004499;
+        }
+        
+        .page-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        /* Grid Layout for See All */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .grid-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .grid-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .grid-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .grid-content {
+            padding: 15px;
+        }
+        
+        .grid-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        
+        .grid-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .grid-meta {
+            font-size: 11px;
+            color: #999;
+            margin-top: 10px;
+        }
+        
+        /* Category Filter */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #0066cc;
+            color: white;
+            border-color: #0066cc;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-image { height: 220px; }
+            .hero-title { font-size: 18px; }
+            .news-grid { grid-template-columns: 1fr; }
+            .page-title { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======== MAIN PAGE ======== -->
+    <div class="main-container" id="mainPage">
+        <div class="header">
+            <h2>🏆 Champions League</h2>
+            <a class="see-all-btn" onclick="openSeeAll()">See all →</a>
+        </div>
+        
+        <!-- Hero Article -->
+        <div class="hero-article">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800" alt="PSG Champions">
+            <div class="hero-content">
+                <h1 class="hero-title">PSG retains Champions League title after edging past Arsenal on penalties</h1>
+                <p class="hero-meta">Odd Andersen/AFP/Getty Images</p>
+            </div>
+        </div>
+        
+        <!-- Small Articles -->
+        <div class="articles-list">
+            <div class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=200" alt="Arsenal">
+                <div class="article-text">
+                    <p class="article-title">As the Arsenal party bus pulls into Budapest, PSG lies in wait</p>
+                </div>
+            </div>
+            
+            <div class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200" alt="David Raya">
+                <div class="article-text">
+                    <p class="article-title">'I never lost faith': David Raya's incredible journey from non-league to Champions League finalist</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== SEE ALL PAGE ======== -->
+    <div class="see-all-page" id="seeAllPage">
+        <div class="page-header">
+            <button class="back-btn" onclick="goBack()">
+                ← Back
+            </button>
+            <h1 class="page-title">All Champions League News</h1>
+        </div>
+        
+        <!-- Filter Buttons -->
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterNews('all')">All</button>
+            <button class="filter-btn" onclick="filterNews('match')">Match Reports</button>
+            <button class="filter-btn" onclick="filterNews('player')">Player Stories</button>
+            <button class="filter-btn" onclick="filterNews('preview')">Previews</button>
+            <button class="filter-btn" onclick="filterNews('analysis')">Analysis</button>
+        </div>
+        
+        <!-- News Grid -->
+        <div class="news-grid" id="newsGrid">
+            <!-- Article 1 -->
+            <div class="grid-card" data-category="match">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=400" alt="PSG vs Arsenal">
+                <div class="grid-content">
+                    <h3 class="grid-title">PSG retains Champions League title after edging past Arsenal on penalties</h3>
+                    <p class="grid-desc">Paris Saint-Germain defended their European crown in dramatic fashion, winning a tense penalty shootout against Arsenal in Budapest.</p>
+                    <p class="grid-meta">2 hours ago • Match Report</p>
+                </div>
+            </div>
+            
+            <!-- Article 2 -->
+            <div class="grid-card" data-category="preview">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400" alt="Arsenal Bus">
+                <div class="grid-content">
+                    <h3 class="grid-title">As the Arsenal party bus pulls into Budapest, PSG lies in wait</h3>
+                    <p class="grid-desc">The Gunners arrived in Hungary full of confidence, but the defending champions were ready to spoil the party.</p>
+                    <p class="grid-meta">1 day ago • Preview</p>
+                </div>
+            </div>
+            
+            <!-- Article 3 -->
+            <div class="grid-card" data-category="player">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400" alt="David Raya">
+                <div class="grid-content">
+                    <h3 class="grid-title">'I never lost faith': David Raya's incredible journey from non-league to Champions League finalist</h3>
+                    <p class="grid-desc">From playing in the seventh tier of English football to starring in Europe's biggest final, Raya's story is one of pure determination.</p>
+                    <p class="grid-meta">5 hours ago • Player Story</p>
+                </div>
+            </div>
+            
+            <!-- Article 4 -->
+            <div class="grid-card" data-category="analysis">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1522778119026-d647f0565c6a?w=400" alt="Tactics">
+                <div class="grid-content">
+                    <h3 class="grid-title">Tactical Breakdown: How PSG's high press dismantled Arsenal's build-up</h3>
+                    <p class="grid-desc">An in-depth look at the tactical battle that defined the Champions League final in Budapest.</p>
+                    <p class="grid-meta">3 hours ago • Analysis</p>
+                </div>
+            </div>
+            
+            <!-- Article 5 -->
+            <div class="grid-card" data-category="match">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=400" alt="Celebration">
+                <div class="grid-content">
+                    <h3 class="grid-title">Mbappe double sends PSG through to semi-finals with stunning display</h3>
+                    <p class="grid-desc">Kylian Mbappe was in scintillating form as PSG booked their place in the last four with a dominant performance.</p>
+                    <p class="grid-meta">2 weeks ago • Match Report</p>
+                </div>
+            </div>
+            
+            <!-- Article 6 -->
+            <div class="grid-card" data-category="player">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400" alt="Young Star">
+                <div class="grid-content">
+                    <h3 class="grid-title">17-year-old wonderkid becomes youngest Champions League scorer in history</h3>
+                    <p class="grid-desc">A new record was set as the teenage sensation found the net on the biggest stage in club football.</p>
+                    <p class="grid-meta">1 week ago • Player Story</p>
+                </div>
+            </div>
+            
+            <!-- Article 7 -->
+            <div class="grid-card" data-category="preview">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=400" alt="Stadium">
+                <div class="grid-content">
+                    <h3 class="grid-title">Budapest ready to host biggest final in Champions League history</h3>
+                    <p class="grid-desc">The Hungarian capital prepared to welcome 65,000 fans for the showpiece event of the European season.</p>
+                    <p class="grid-meta">3 days ago • Preview</p>
+                </div>
+            </div>
+            
+            <!-- Article 8 -->
+            <div class="grid-card" data-category="analysis">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=400" alt="Stats">
+                <div class="grid-content">
+                    <h3 class="grid-title">By the numbers: Champions League 2025/26 season in statistics</h3>
+                    <p class="grid-desc">From most goals to highest pass completion, we break down the key numbers from this season's competition.</p>
+                    <p class="grid-meta">6 hours ago • Analysis</p>
+                </div>
+            </div>
+            
+            <!-- Article 9 -->
+            <div class="grid-card" data-category="match">
+                <img class="grid-image" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400" alt="Goal">
+                <div class="grid-content">
+                    <h3 class="grid-title">Arsenal stun Bayern with late comeback to reach first final in 18 years</h3>
+                    <p class="grid-desc">Two goals in the final 10 minutes sealed a remarkable turnaround and sent the Gunners to Budapest.</p>
+                    <p class="grid-meta">1 week ago • Match Report</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Open See All Page
+        function openSeeAll() {
+            document.getElementById('mainPage').style.display = 'none';
+            document.getElementById('seeAllPage').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        
+        // Go Back to Main Page
+        function goBack() {
+            document.getElementById('seeAllPage').classList.remove('active');
+            document.getElementById('mainPage').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        
+        // Filter News by Category
+        function filterNews(category) {
+            const cards = document.querySelectorAll('.grid-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>'''
+
+with open('/mnt/agents/output/champions_league_news.html', 'w', encoding='utf-8') as f:
+    f.write(html_code)
+
+print("File saved successfully!")
+
