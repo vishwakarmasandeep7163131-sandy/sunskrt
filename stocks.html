@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0e1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Top Indices Bar */
+        .indices-bar {
+            display: flex;
+            gap: 8px;
+            padding: 10px;
+            background: #0d1117;
+            border-bottom: 1px solid #1a1f2e;
+            overflow-x: auto;
+        }
+
+        .index-card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 6px;
+            padding: 8px 16px;
+            min-width: 160px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .index-card:hover {
+            border-color: #10b981;
+            background: #1a2332;
+        }
+
+        .index-info h4 {
+            font-size: 11px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .index-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 2px;
+        }
+
+        .index-change {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .change-percent {
+            font-size: 13px;
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .change-value {
+            font-size: 11px;
+            color: #10b981;
+        }
+
+        .arrow-up::before {
+            content: "▲ ";
+            font-size: 10px;
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 70px);
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 320px;
+            background: #0d1117;
+            border-right: 1px solid #1a1f2e;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .scanner-section {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .scanner-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: #111827;
+            border-bottom: 1px solid #1f2937;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .scanner-header h3 {
+            font-size: 13px;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .refresh-icon {
+            color: #10b981;
+            font-size: 12px;
+            cursor: pointer;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .bot-status {
+            padding: 8px 16px;
+            background: #1a2332;
+            border-bottom: 1px solid #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bot-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .bot-status span {
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        /* Scanner Table */
+        .scanner-table {
+            width: 100%;
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 60px 1fr 80px;
+            padding: 8px 16px;
+            background: #111827;
+            border-bottom: 1px solid #1f2937;
+            font-size: 10px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 37px;
+        }
+
+        .scanner-row {
+            display: grid;
+            grid-template-columns: 60px 1fr 80px;
+            padding: 8px 16px;
+            border-bottom: 1px solid #1a1f2e;
+            align-items: center;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .scanner-row:hover {
+            background: #1a2332;
+        }
+
+        .time-cell {
+            font-size: 11px;
+            color: #6b7280;
+            font-family: monospace;
+        }
+
+        .activity-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stock-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stock-icon.blue { background: #3b82f6; }
+        .stock-icon.red { background: #ef4444; }
+        .stock-icon.orange { background: #f97316; }
+        .stock-icon.green { background: #10b981; }
+
+        .activity-text {
+            font-size: 12px;
+            color: #d1d5db;
+        }
+
+        .activity-text .stock-name {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .activity-text .highlight {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .activity-text .highlight-red {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .arrow-indicator {
+            font-size: 11px;
+        }
+
+        .arrow-up { color: #10b981; }
+        .arrow-down { color: #ef4444; }
+
+        /* Chart Area */
+        .chart-area {
+            flex: 1;
+            background: #0a0e1a;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: #111827;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .chart-title-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chart-title-section h3 {
+            font-size: 13px;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #1f2937;
+            border-radius: 4px;
+            padding: 6px 12px;
+            gap: 8px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: #e0e0e0;
+            font-size: 12px;
+            outline: none;
+            width: 120px;
+        }
+
+        .search-box input::placeholder {
+            color: #6b7280;
+        }
+
+        .timeframe-buttons {
+            display: flex;
+            gap: 4px;
+        }
+
+        .tf-btn {
+            background: #1f2937;
+            border: none;
+            color: #6b7280;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tf-btn:hover, .tf-btn.active {
+            background: #374151;
+            color: #fff;
+        }
+
+        .chart-tools {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tool-btn {
+            background: transparent;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .tool-btn:hover {
+            color: #fff;
+            background: #1f2937;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            flex: 1;
+            position: relative;
+            padding: 20px;
+        }
+
+        .chart-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #0d1117;
+            border-radius: 8px;
+            border: 1px solid #1f2937;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Candlestick Chart Simulation */
+        .candlestick-chart {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 40px 60px 40px 20px;
+        }
+
+        .chart-grid {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            right: 60px;
+            bottom: 40px;
+        }
+
+        .grid-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            border-top: 1px dashed #1f2937;
+        }
+
+        .y-axis-labels {
+            position: absolute;
+            right: 10px;
+            top: 40px;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #6b7280;
+            font-family: monospace;
+        }
+
+        .chart-info-bar {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .chart-info-bar span {
+            font-family: monospace;
+        }
+
+        .chart-info-bar .label {
+            color: #6b7280;
+        }
+
+        .chart-info-bar .value {
+            color: #fff;
+        }
+
+        .chart-info-bar .positive {
+            color: #10b981;
+        }
+
+        /* Simulated Candlesticks */
+        .candles-container {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            right: 60px;
+            bottom: 40px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 0 20px;
+        }
+
+        .candle {
+            width: 8px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .candle-wick {
+            width: 1px;
+            background: #6b7280;
+        }
+
+        .candle-body {
+            width: 100%;
+            border-radius: 1px;
+        }
+
+        .candle.green .candle-body {
+            background: #10b981;
+        }
+
+        .candle.red .candle-body {
+            background: #ef4444;
+        }
+
+        .candle.green .candle-wick {
+            background: #10b981;
+        }
+
+        .candle.red .candle-wick {
+            background: #ef4444;
+        }
+
+        /* TradingView Logo */
+        .tv-logo {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            font-size: 14px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .tv-logo span {
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Indices Bar -->
+    <div class="indices-bar">
+        <div class="index-card">
+            <div class="index-info">
+                <h4>NIFTY</h4>
+                <div class="index-value">₹23,631.45</div>
+            </div>
+            <div class="index-change">
+                <div class="change-percent arrow-up">469.85</div>
+                <div class="change-value">2.03%</div>
+            </div>
+        </div>
+        
+        <div class="index-card">
+            <div class="index-info">
+                <h4>BANKNIFTY</h4>
+                <div class="index-value">₹56,804.85</div>
+            </div>
+            <div class="index-change">
+                <div class="change-percent arrow-up">1628.1</div>
+                <div class="change-value">2.95%</div>
+            </div>
+        </div>
+        
+        <div class="index-card">
+            <div class="index-info">
+                <h4>FINNIFTY</h4>
+                <div class="index-value">₹25,945.10</div>
+            </div>
+            <div class="index-change">
+                <div class="change-percent arrow-up">793.1</div>
+                <div class="change-value">3.15%</div>
+            </div>
+        </div>
+        
+        <div class="index-card">
+            <div class="index-info">
+                <h4>MIDCAPNIFTY</h4>
+                <div class="index-value">₹14,303.00</div>
+            </div>
+            <div class="index-change">
+                <div class="change-percent arrow-up">378.65</div>
+                <div class="change-value">2.72%</div>
+            </div>
+        </div>
+        
+        <div class="index-card">
+            <div class="index-info">
+                <h4>SENSEX</h4>
+                <div class="index-value">₹75,526.50</div>
+            </div>
+            <div class="index-change">
+                <div class="change-percent arrow-up">1693.95</div>
+                <div class="change-value">2.29%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <!-- F&O Scanner -->
+            <div class="scanner-section">
+                <div class="scanner-header">
+                    <span class="refresh-icon">⟳</span>
+                    <h3>F&O Live Scanner</h3>
+                </div>
+                <div class="bot-status">
+                    <div class="bot-icon">🤖</div>
+                    <span>GOC bot will resume in live market...</span>
+                </div>
+                
+                <div class="table-header">
+                    <div>Time</div>
+                    <div>Activity</div>
+                    <div></div>
+                </div>
+                
+                <div class="scanner-table">
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:59</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon blue">I</div>
+                            <div class="activity-text">
+                                <span class="stock-name">ITC</span> made High of <span class="highlight">285.85</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:51</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon blue">I</div>
+                            <div class="activity-text">
+                                <span class="stock-name">ITC</span> made High of <span class="highlight">285.80</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:43</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon blue">I</div>
+                            <div class="activity-text">
+                                <span class="stock-name">ITC</span> made High of <span class="highlight">285.75</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:34</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon blue">I</div>
+                            <div class="activity-text">
+                                <span class="stock-name">ITC</span> made High of <span class="highlight">285.55</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:29</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon red">I</div>
+                            <div class="activity-text">
+                                <span class="stock-name">IDFCFIRSTB</span> made High of <span class="highlight">77.39</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:25</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon red">E</div>
+                            <div class="activity-text">
+                                <span class="stock-name">ETERNAL</span> made High of <span class="highlight">244.50</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:16</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon red">I</div>
+                            <div class="activity-text">
+                                <span class="stock-name">IDFCFIRSTB</span> made High of <span class="highlight">77.10</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:06</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon orange">A</div>
+                            <div class="activity-text">
+                                <span class="stock-name">AUBANK</span> made High of <span class="highlight">1019.45</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cash Scanner -->
+            <div class="scanner-section">
+                <div class="scanner-header">
+                    <span class="refresh-icon">⟳</span>
+                    <h3>Cash Live Scanner</h3>
+                </div>
+                <div class="bot-status">
+                    <div class="bot-icon">🤖</div>
+                    <span>GOC bot will resume in live market...</span>
+                </div>
+                
+                <div class="table-header">
+                    <div>Time</div>
+                    <div>Activity</div>
+                    <div></div>
+                </div>
+                
+                <div class="scanner-table">
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:56</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon blue">A</div>
+                            <div class="activity-text">
+                                <span class="stock-name">AKENS</span> made Low of <span class="highlight-red">4290.50</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-down">↓</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:53</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon green">A</div>
+                            <div class="activity-text">
+                                <span class="stock-name">AVANTIFEED</span> made High of <span class="highlight">1064.00</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:57</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon blue">O</div>
+                            <div class="activity-text">
+                                <span class="stock-name">OLECTRA</span> made High of <span class="highlight">1300.00</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-up">↑</div>
+                    </div>
+                    
+                    <div class="scanner-row">
+                        <div class="time-cell">03:29:48</div>
+                        <div class="activity-cell">
+                            <div class="stock-icon orange">B</div>
+                            <div class="activity-text">
+                                <span class="stock-name">BALRAMCHIN</span> made Low of <span class="highlight-red">556.00</span>
+                            </div>
+                        </div>
+                        <div class="arrow-indicator arrow-down">↓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Area -->
+        <div class="chart-area">
+            <div class="chart-header">
+                <div class="chart-title-section">
+                    <h3>TradingView Charts</h3>
+                    <span style="color: #10b981; font-size: 12px;">⟳</span>
+                </div>
+                
+                <div class="chart-controls">
+                    <div class="search-box">
+                        <span style="color: #6b7280;">🔍</span>
+                        <input type="text" value="NIFTY 50" placeholder="Search...">
+                        <span style="color: #6b7280; cursor: pointer;">✕</span>
+                    </div>
+                    
+                    <div class="timeframe-buttons">
+                        <button class="tf-btn">D</button>
+                        <button class="tf-btn active">1D</button>
+                        <button class="tf-btn">W</button>
+                        <button class="tf-btn">M</button>
+                    </div>
+                    
+                    <div class="chart-tools">
+                        <button class="tool-btn">📊</button>
+                        <button class="tool-btn">📈</button>
+                        <button class="tool-btn">✏️</button>
+                        <button class="tool-btn">🔍</button>
+                        <button class="tool-btn">⚙️</button>
+                        <button class="tool-btn">📷</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-placeholder">
+                    <div class="chart-info-bar">
+                        <div><span class="label">NIFTY INDEX</span> <span class="value">1D</span></div>
+                        <div><span class="label">O</span> <span class="value">23,412.55</span></div>
+                        <div><span class="label">H</span> <span class="value">23,645.35</span></div>
+                        <div><span class="label">L</span> <span class="value">23,313.90</span></div>
+                        <div><span class="label">C</span> <span class="value">23,631.75</span></div>
+                        <div><span class="value positive">+445.20 (+1.92%)</span></div>
+                    </div>
+                    
+                    <div class="candlestick-chart">
+                        <div class="chart-grid">
+                            <div class="grid-line" style="top: 0%"></div>
+                            <div class="grid-line" style="top: 20%"></div>
+                            <div class="grid-line" style="top: 40%"></div>
+                            <div class="grid-line" style="top: 60%"></div>
+                            <div class="grid-line" style="top: 80%"></div>
+                            <div class="grid-line" style="top: 100%"></div>
+                        </div>
+                        
+                        <div class="y-axis-labels">
+                            <span>26,800.00</span>
+                            <span>26,400.00</span>
+                            <span>26,000.00</span>
+                            <span>25,600.00</span>
+                            <span>25,200.00</span>
+                            <span>24,800.00</span>
+                            <span>24,400.00</span>
+                            <span>24,000.00</span>
+                            <span>23,600.00</span>
+                            <span>23,200.00</span>
+                            <span>22,800.00</span>
+                            <span>22,400.00</span>
+                            <span>22,000.00</span>
+                        </div>
+                        
+                        <div class="candles-container" id="candlesContainer">
+                            <!-- Candles will be generated by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="tv-logo">Trading<span>View</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate random candlesticks
+        function generateCandles() {
+            const container = document.getElementById('candlesContainer');
+            const candleCount = 40;
+            
+            for (let i = 0; i < candleCount; i++) {
+                const candle = document.createElement('div');
+                candle.className = 'candle';
+                
+                // Random green or red
+                const isGreen = Math.random() > 0.4;
+                candle.classList.add(isGreen ? 'green' : 'red');
+                
+                // Random heights
+                const bodyHeight = Math.random() * 60 + 10;
+                const wickTop = Math.random() * 20 + 5;
+                const wickBottom = Math.random() * 20 + 5;
+                
+                const totalHeight = bodyHeight + wickTop + wickBottom;
+                const bottomPosition = Math.random() * 30;
+                
+                candle.style.height = totalHeight + 'px';
+                candle.style.marginBottom = bottomPosition + '%';
+                
+                candle.innerHTML = `
+                    <div class="candle-wick" style="height: ${wickTop}px;"></div>
+                    <div class="candle-body" style="height: ${bodyHeight}px;"></div>
+                    <div class="candle-wick" style="height: ${wickBottom}px;"></div>
+                `;
+                
+                container.appendChild(candle);
+            }
+        }
+
+        // Simulate live scanner updates
+        function updateScanner() {
+            const rows = document.querySelectorAll('.scanner-row');
+            rows.forEach(row => {
+                if (Math.random() > 0.7) {
+                    row.style.background = '#1a2332';
+                    setTimeout(() => {
+                        row.style.background = '';
+                    }, 500);
+                }
+            });
+        }
+
+        // Live clock for indices
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-IN', { 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            // You can add live time display if needed
+        }
+
+        // Initialize
+        generateCandles();
+        setInterval(updateScanner, 2000);
+        setInterval(updateTime, 1000);
+
+        // Add click handlers for timeframe buttons
+        document.querySelectorAll('.tf-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Simulate live price updates
+        setInterval(() => {
+            const indexValues = document.querySelectorAll('.index-value');
+            indexValues.forEach(val => {
+                const current = parseFloat(val.textContent.replace(/[₹,]/g, ''));
+                const change = (Math.random() - 0.5) * 10;
+                const newVal = current + change;
+                val.textContent = '₹' + newVal.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
