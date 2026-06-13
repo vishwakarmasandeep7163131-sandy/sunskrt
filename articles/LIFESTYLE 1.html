@@ -1,1 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>एयर इंडिया क्रैश के एक साल बाद भी इंतजार</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        /* ====== NAVBAR ====== */
+        .navbar {
+            background: #1a1a1a;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff4500;
+            text-decoration: none;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-input {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            width: 280px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-input::placeholder {
+            color: #888;
+        }
+        
+        .search-btn {
+            background: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff4500;
+        }
+        
+        .nav-links a.active {
+            color: #ff4500;
+        }
+        
+        /* ====== MAIN CONTAINER ====== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* ====== SECTION TITLE ====== */
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+        
+        /* ====== HERO ARTICLE ====== */
+        .hero-main {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-caption {
+            text-align: right;
+            font-size: 11px;
+            color: #666;
+            padding: 8px 20px 0 0;
+            font-style: italic;
+        }
+        
+        .hero-content {
+            padding: 20px 25px 25px 25px;
+        }
+        
+        .hero-date {
+            color: #ff4500;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .hero-desc {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        /* ====== FULL DESCRIPTION ====== */
+        .full-description {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .full-description p {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+        
+        .full-description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .see-all {
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .see-all:hover {
+            text-decoration: underline;
+        }
+        
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .article-card {
+            display: flex;
+            gap: 15px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-3px);
+            background: #222;
+            border-color: #ff4500;
+        }
+        
+        .article-thumb {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .article-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #eee;
+            line-height: 1.4;
+        }
+        
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
+            .search-input { width: 200px; }
+            .nav-links { display: none; }
+            .hero-image { height: 280px; }
+            .hero-title { font-size: 22px; }
+            .hero-desc { font-size: 14px; }
+            .full-description { padding: 20px; }
+            .article-thumb { width: 90px; height: 60px; }
+            .article-title { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
 
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar">
+        <a href="#" class="logo">AutoDrive</a>
+        
+        </div>
+        
+        <ul class="nav-links">
+             <li><a href="../Home.html">Home</a></li>
+            <li><a href="../Sports.html">Sports</a></li>
+            <li><a href="../Health.html">Health</a></li>
+            <li><a href="../Cars.html">Cars</a></li>
+            <li><a href="../News.html">News</a></li>
+            <li><a href="../About.html">About</a></li>
+            <li><a href="../Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <div class="container">
+        
+        <h2 class="section-title">एयर इंडिया क्रैश के एक साल बाद भी इंतजार </h2>
+        
+        <!-- ====== BADI IMAGE (UPAR) ====== -->
+        <div class="hero-main">
+           <img src="../images/plan crase a.jpg" alt="News">
+            
+            <div class="hero-content">
+                <div class="hero-date">📅 May 31, 2026 • 11:00 PM</div>
+                <h1 class="hero-title">"एयर इंडिया क्रैश में 260 मौतों के एक साल बाद भी सवाल बाकी: आखिर क्या हुआ था?"</h1>
+                <p class="hero-desc">"हादसे के पीड़ितों के परिवार अभी भी पिछले साल अहमदाबाद में दुर्घटनाग्रस्त हुए बोइंग 787 ड्रीमलाइनर की अंतिम रिपोर्ट का इंतजार कर रहे हैं।".</p>
+            </div>
+        </div>
+        
+        <!-- ====== DESCRIPTION (IMAGE KE NICHE) ====== -->
+        <article>
+
+<h1>एयर इंडिया बोइंग विमान हादसे के एक साल बाद भी जवाब का इंतजार</h1>
+
+<p>
+शुक्रवार को एयर इंडिया के बोइंग विमान हादसे को एक साल पूरा हो गया, जिसमें भारत के 
+पश्चिमी राज्य गुजरात के शहर अहमदाबाद के घनी आबादी वाले इलाके में 260 लोगों की मौत हो गई थी।
+</p>
+
+<p>
+मारे गए लोगों के परिवार शुक्रवार को हादसे की बरसी मनाने के लिए घटनास्थल पर इकट्ठा हुए, 
+लेकिन वे अब भी इस सवाल के जवाब का इंतजार कर रहे हैं कि पास के हवाई अड्डे से उड़ान भरने 
+के कुछ ही समय बाद विमान दुर्घटनाग्रस्त क्यों हुआ।
+</p>
+
+
+<h2>अंतरिम रिपोर्ट का इंतजार</h2>
+
+<p>
+भारतीय अधिकारियों से आने वाले दिनों में एक अंतरिम रिपोर्ट जारी करने की उम्मीद है। 
+हालांकि पीड़ित परिवार अंतिम जांच रिपोर्ट और दुर्घटना के असली कारणों की जानकारी का इंतजार कर रहे हैं।
+</p>
+
+<p>
+मीडिया रिपोर्ट्स के अनुसार, जांचकर्ता विमान के इंजनों के विश्लेषण को पूरा करने के लिए 
+अंतिम रिपोर्ट जारी करने में देरी कर सकते हैं।
+</p>
+
+
+<h2>अंतरराष्ट्रीय नियम क्या कहते हैं?</h2>
+
+<p>
+अंतरराष्ट्रीय विमानन नियमों के अनुसार, किसी विमान दुर्घटना की अंतिम रिपोर्ट संभव होने पर 
+एक साल के अंदर जारी की जानी चाहिए। अगर जांच में ज्यादा समय लगता है तो हर साल हादसे की 
+बरसी पर अंतरिम बयान जारी किया जाना चाहिए।
+</p>
+
+
+<h2>एयर इंडिया विमान के साथ क्या हुआ था?</h2>
+
+<p>
+एयर इंडिया की फ्लाइट AI171 एक बोइंग 787 ड्रीमलाइनर विमान थी, जिसने अहमदाबाद से 
+लंदन गैटविक के लिए उड़ान भरी थी।
+</p>
+
+<p>
+उड़ान भरने के कुछ ही समय बाद विमान भारत के गुजरात राज्य के अहमदाबाद शहर के 
+मेघानी नगर इलाके में एक मेडिकल कॉलेज हॉस्टल से जा टकराया।
+</p>
+
+<p>
+फ्लाइट ट्रैकिंग वेबसाइट के अनुसार, विमान का आखिरी सिग्नल उड़ान भरने के कुछ सेकंड बाद मिला था। 
+विमान लगभग 625 फीट (190 मीटर) की ऊंचाई तक पहुंचा और फिर वापस जमीन पर गिर गया।
+</p>
+
+
+<h2>हादसे में कितने लोगों की मौत हुई?</h2>
+
+<p>
+विमान में सवार 242 लोगों में से एक यात्री को छोड़कर बाकी सभी की मौत हो गई। 
+इनमें 169 भारतीय नागरिक और 52 ब्रिटिश नागरिक शामिल थे।
+</p>
+
+<p>
+हादसे के कारण जमीन पर मौजूद 19 लोगों की भी जान चली गई, जिससे कुल मृतकों की संख्या 
+260 हो गई। इसके अलावा 67 लोग घायल भी हुए।
+</p>
+
+
+<h2>एकमात्र जीवित यात्री</h2>
+
+<p>
+विमान में बचने वाले एकमात्र यात्री विश्वास कुमार रमेश हैं, जो ब्रिटिश नागरिक हैं। 
+इस हादसे में उनके भाई की भी मौत हो गई थी।
+</p>
+
+<p>
+उनके प्रतिनिधि के अनुसार, एयर इंडिया ने रमेश को उनकी पत्नी और पांच साल के बेटे की मदद के लिए 
+मुआवजा दिया है। हालांकि यह स्पष्ट नहीं है कि अन्य परिवारों को भी इसी तरह का मुआवजा मिला है या नहीं।
+</p>
+
+
+<h2>पीड़ित परिवारों को अब भी उम्मीद</h2>
+
+<p>
+हादसे को एक साल बीत जाने के बाद भी पीड़ित परिवार अंतिम रिपोर्ट और सच्चाई सामने आने का इंतजार कर रहे हैं।
+</p>
+
+<p>
+उनकी मांग है कि दुर्घटना के कारणों की पूरी जानकारी सार्वजनिक की जाए ताकि भविष्य में ऐसी घटनाओं को रोका जा सके।
+</p>
+
+
+</article>
+        
