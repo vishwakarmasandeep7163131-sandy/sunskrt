@@ -1075,3 +1075,10 @@ print(f"📄 File size: {len(css_code)} characters")
 print(f"📁 Location: /mnt/agents/output/style.css")
 
 
+.category-card {
+    display: block;           /* 👈 Yeh add karein */
+    text-decoration: none;
+    color: inherit;
+    /* Baaki aapki pehli wali styling same rakhein */
+}
+
