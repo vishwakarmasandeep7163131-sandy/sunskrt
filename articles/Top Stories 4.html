@@ -1,1 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पीएम मोदी की यूरोप यात्रा की शुरुआत Nice से, टेक्नोलॉजी और द्विपक्षीय संबंधों पर रहेगा फोकस</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        /* ====== NAVBAR ====== */
+        .navbar {
+            background: #1a1a1a;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff4500;
+            text-decoration: none;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-input {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            width: 280px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-input::placeholder {
+            color: #888;
+        }
+        
+        .search-btn {
+            background: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff4500;
+        }
+        
+        .nav-links a.active {
+            color: #ff4500;
+        }
+        
+        /* ====== MAIN CONTAINER ====== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* ====== SECTION TITLE ====== */
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+        
+        /* ====== HERO ARTICLE ====== */
+        .hero-main {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-caption {
+            text-align: right;
+            font-size: 11px;
+            color: #666;
+            padding: 8px 20px 0 0;
+            font-style: italic;
+        }
+        
+        .hero-content {
+            padding: 20px 25px 25px 25px;
+        }
+        
+        .hero-date {
+            color: #ff4500;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .hero-desc {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        /* ====== FULL DESCRIPTION ====== */
+        .full-description {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .full-description p {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+        
+        .full-description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .see-all {
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .see-all:hover {
+            text-decoration: underline;
+        }
+        
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .article-card {
+            display: flex;
+            gap: 15px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-3px);
+            background: #222;
+            border-color: #ff4500;
+        }
+        
+        .article-thumb {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .article-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #eee;
+            line-height: 1.4;
+        }
+        
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
+            .search-input { width: 200px; }
+            .nav-links { display: none; }
+            .hero-image { height: 280px; }
+            .hero-title { font-size: 22px; }
+            .hero-desc { font-size: 14px; }
+            .full-description { padding: 20px; }
+            .article-thumb { width: 90px; height: 60px; }
+            .article-title { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
 
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar">
+        <a href="#" class="logo">AutoDrive</a>
+        
+        </div>
+        
+        <ul class="nav-links">
+             <li><a href="../Home.html">Home</a></li>
+            <li><a href="../Sports.html">Sports</a></li>
+            <li><a href="../Health.html">Health</a></li>
+            <li><a href="../Cars.html">Cars</a></li>
+            <li><a href="../News.html">News</a></li>
+            <li><a href="../About.html">About</a></li>
+            <li><a href="../Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <div class="container">
+        
+        <h2 class="section-title">पीएम मोदी की यूरोप यात्रा की शुरुआत Nice से, टेक्नोलॉजी और द्विपक्षीय संबंधों पर रहेगा फोकस </h2>
+        
+        <!-- ====== BADI IMAGE (UPAR) ====== -->
+        <div class="hero-main">
+           <img src="../images/pm modi.avif" alt="News">
+            
+            <div class="hero-content">
+                <div class="hero-date">📅 june 15, 2026 • 11:00 PM</div>
+                <h1 class="hero-title">"पीएम मोदी की यूरोप यात्रा की शुरुआत Nice से, टेक्नोलॉजी और द्विपक्षीय संबंधों पर रहेगा फोकस"</h1>
+                <p class="hero-desc">"Nice के अलावा फ्रांस दौरे में Evian और Paris भी जाएंगे पीएम मोदी, ट्रंप से द्विपक्षीय मुलाकात की संभावना.</p>
+            </div>
+        </div>
+        
+        <!-- ====== DESCRIPTION (IMAGE KE NICHE) ====== -->
+       </head>
+
+<body>
+
+<div class="article">
+
+<h1>पीएम मोदी की फ्रांस यात्रा की शुरुआत Nice से, टेक्नोलॉजी और सहयोग पर फोकस</h1>
+
+<p>
+प्रधानमंत्री नरेंद्र मोदी शनिवार (13 जून 2026) की शाम फ्रांस के Nice पहुंचे। 
+यह उनकी छह दिवसीय फ्रांस और स्लोवाकिया यात्रा का पहला पड़ाव है।
+</p>
+
+<p>
+प्रधानमंत्री की फ्रांस यात्रा का मुख्य आकर्षण फ्रेंच रिवेरा में आयोजित होने वाला 
+टेक समिट <b>‘Bharat Innovates 2026’</b> है, जिसका उद्घाटन वह रविवार (14 जून 2026) 
+को फ्रांस के राष्ट्रपति इमैनुएल मैक्रों के साथ करेंगे।
+</p>
+
+<p>
+सरकार के अनुसार इस टेक कार्यक्रम का उद्देश्य भारत के डीप-टेक स्टार्टअप, 
+उच्च शिक्षा संस्थानों और अन्य क्षेत्रों को एक साथ लाना है, ताकि रिसर्च, 
+टेक्नोलॉजी विकास, निवेश और तकनीकी साझेदारी को बढ़ावा दिया जा सके।
+</p>
+
+<p>
+कार्यक्रम के बाद प्रधानमंत्री मोदी और राष्ट्रपति मैक्रों दोनों देशों के बीच 
+द्विपक्षीय बातचीत का नेतृत्व करेंगे। इस चर्चा में रक्षा, टेक्नोलॉजी, 
+क्षेत्रीय और वैश्विक मुद्दों सहित कई महत्वपूर्ण विषयों पर बात होने की उम्मीद है।
+</p>
+
+<p>
+इसके अलावा अमेरिका और इजरायल के ईरान के साथ चल रहे तनाव जैसे अंतरराष्ट्रीय 
+मुद्दों पर भी चर्चा हो सकती है। अमेरिकी राष्ट्रपति डोनाल्ड ट्रंप ने कहा है कि 
+एक समझौते पर रविवार को हस्ताक्षर होने की संभावना है।
+</p>
+
+</div>
+
+</body>
+</html>
