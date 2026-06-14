@@ -1075,8 +1075,3 @@ print(f"📄 File size: {len(css_code)} characters")
 print(f"📁 Location: /mnt/agents/output/style.css")
 
 
-a.category-card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-}
