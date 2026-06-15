@@ -1082,3 +1082,33 @@ print(f"📁 Location: /mnt/agents/output/style.css")
     /* Baaki aapki pehli wali styling same rakhein */
 }
 
+
+
+/* Image Container */
+.image-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 8px; /* Aapke design ke hisaab se */
+}
+
+/* Image itself */
+.image-container img {
+    width: 100%;
+    height: auto;        /* Aspect ratio maintain karega */
+    display: block;      /* Extra space remove karega */
+    object-fit: cover;   /* Container mein fit karega */
+    max-width: 100%;     /* Container se bahar nahi jayegi */
+}
+
+/* Agar fixed height chahiye toh */
+.image-container.fixed-height img {
+    height: 300px;       /* Apni height set karein */
+    object-fit: cover;   /* Crop karke fit karega */
+}
+
+/* Agar poori image dikhani hai without crop */
+.image-container.contain img {
+    object-fit: contain; /* Poori image dikhegi, khali space ho sakti hai */
+    background: #000;    /* Black bars ke liye */
+}
