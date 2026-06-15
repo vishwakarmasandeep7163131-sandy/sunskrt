@@ -1,21 +1,31 @@
 /* ============================================
-   GUARANTEED IMAGE FIT - NO BLACK SPACE
+   HERO IMAGE FIX - GUARANTEED
    ============================================ */
 
-/* Remove max-width restriction */
+/* Remove any max-width restriction */
+* {
+    box-sizing: border-box;
+}
+
 img {
     max-width: none !important;
 }
 
-/* Hero image container */
+/* Hero main container */
+.hero-main {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Hero image wrapper */
 .hero-image {
     width: 100%;
-    height: 400px; /* Aapki marzi se change karein */
+    height: 400px;
     overflow: hidden;
     position: relative;
 }
 
-/* Image - FORCE to fill completely */
+/* Image - fills container completely */
 .hero-image img {
     position: absolute;
     top: 0;
@@ -24,13 +34,6 @@ img {
     height: 100%;
     object-fit: cover;
     object-position: center;
-}
-
-/* If image is direct child (no container) */
-.hero-main > img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
 }
 
 /* Mobile */
