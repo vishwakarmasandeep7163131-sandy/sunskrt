@@ -1871,59 +1871,7 @@ height:180px;
             .side-story-img { width: 80px; height: 60px; }
         }
     </style>
-  
-  <style>
-   /* FORCE ALL IMAGES TO FIT */
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-        display: block !important;
-    }
-    
-    .card img, .news-card img {
-        width: 100% !important;
-        height: 220px !important;
-        object-fit: cover !important;
-    }
-    
-    .banner-slide img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-    
-    .life-left img {
-        width: 100% !important;
-        height: 380px !important;
-        object-fit: cover !important;
-    }
-    
-    .life-card img {
-        width: 140px !important;
-        height: 90px !important;
-        object-fit: cover !important;
-    }
-    
-    .category-card-img img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-    
-    .main-story img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-    
-    .side-story-img img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-</style>
-  
-</head>
+  </head>
 <body>
 
     <!-- ====== TOP STORIES ====== -->
@@ -2582,4 +2530,82 @@ font-size:26px;
 
 }
 
+  /* ============================================
+   IMAGE FIX - OVERRIDE EVERYTHING
+   ============================================ */
+
+/* Sabhi images ko container mein fit karein */
+img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+/* News cards */
+.news-card img,
+.card img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+}
+
+/* Banner */
+.banner-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Lifestyle left big image */
+.life-left img {
+    width: 100% !important;
+    height: 380px !important;
+    object-fit: cover !important;
+}
+
+/* Lifestyle small cards */
+.life-card img {
+    width: 140px !important;
+    height: 90px !important;
+    object-fit: cover !important;
+}
+
+/* Category cards */
+.category-card-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Top stories main */
+.main-story img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Side stories */
+.side-story-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Mobile fix */
+@media(max-width:768px) {
+    .news-card img,
+    .card img { height: 180px !important; }
+    
+    .life-left img { height: 250px !important; }
+    
+    .life-card img {
+        width: 100% !important;
+        height: 180px !important;
+    }
+    
+    .main-story { height: 250px !important; }
+}
+
 </style>
+
+ 
