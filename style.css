@@ -1095,3 +1095,33 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
+
+/* ============================================
+   FIX FOR YOUR EXACT HTML STRUCTURE
+   ============================================ */
+
+/* News card - ensure full width */
+.news-card {
+    width: 100%;
+    background: #181818;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #222;
+}
+
+/* Direct image inside news-card */
+.news-card > img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* If image is wrapped in any div inside news-card */
+.news-card div:first-child > img,
+.news-card img:first-child {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    display: block !important;
+}
