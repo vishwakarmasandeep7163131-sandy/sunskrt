@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesla Full Self-Driving ने यूरोप में बढ़ाया कदम, चौथे देश में मिली मंजूरी</title>
+    <title>Time-of-Flight (ToF) कैमरों में temporal filters</title>
     <link rel="stylesheet" href="../hero-fix.css">
     <style>
         
@@ -290,7 +290,7 @@
     <!-- ====== MAIN CONTENT ====== -->
     <div class="container">
         
-        <h2 class="section-title">Tesla Full Self-Driving ने यूरोप में बढ़ाया कदम, चौथे देश में मिली मंजूरी </h2>
+        <h2 class="section-title">Time-of-Flight (ToF) कैमरों में temporal filters (समय आधारित फिल्टर) की भूमिका को समझना।” </h2>
         
         <!-- ====== BADI IMAGE (UPAR) ====== -->
         <div class="hero-main">
@@ -299,9 +299,10 @@
                 </div>
             
             <div class="hero-content">
-                <div class="hero-date">📅 june 9, 2026 • 5:34 PM</div>
-                <h1 class="hero-title">"Tesla Full Self-Driving ने यूरोप में बढ़ाया कदम, चौथे देश में मिली मंजूरी"</h1>
-                <p class="hero-desc">"Tesla की Full Self-Driving (FSD) तकनीक ने यूरोप में अपनी मौजूदगी और मजबूत कर ली है। ा.</p>
+                <div class="hero-date">📅 june 16, 2026 • 12:14 PM</div>
+                <h1 class="hero-title">"Time-of-Flight (ToF) कैमरों में temporal filters (समय आधारित फिल्टर) की भूमिका को समझना।”"</h1>
+                <p class="hero-desc">"ToF कैमरा एक ऐसी तकनीक है जो प्रकाश (आमतौर पर infrared light) को किसी वस्तु तक भेजकर और
+                    वापस आने में लगे समय को मापकर depth (दूरी) पता करता है।</p>
             </div>
         </div>
         
@@ -310,66 +311,205 @@
 
 <body>
 
-<article>
+<div class="article">
 
-<h1>Tesla Full Self-Driving को डेनमार्क में मंजूरी, यूरोप में बढ़ा विस्तार</h1>
+
+<h1>Understanding the Role of Temporal Filters in Time-of-Flight Cameras</h1>
+
+
+<div class="box">
+
+Time-of-Flight (ToF) cameras measure depth for every pixel by transmitting modulated infrared light and calculating how long reflections take to return to the sensor.
+
+</div>
+
 
 
 <p>
-Tesla ने अपनी Full Self-Driving (Supervised) तकनीक के लिए यूरोप में एक और बड़ी उपलब्धि हासिल की है। कंपनी के इस एडवांस ड्राइविंग सिस्टम को डेनमार्क में नियामकीय मंजूरी मिल गई है।
+ToF cameras provide powerful 3D vision capabilities for robotics, industrial automation, drones, and many other applications.
+However, raw signals from ToF sensors often contain noise caused by ambient light, surface reflectivity, integration limits, and sensor design.
 </p>
 
 
-<h2>डेनमार्क बना चौथा यूरोपीय देश</h2>
-
 <p>
-9 जून को घोषित मंजूरी के बाद डेनमार्क Tesla FSD Supervised को मंजूरी देने वाला यूरोप का चौथा देश बन गया है। इससे पहले नीदरलैंड, लिथुआनिया और एस्टोनिया में इस तकनीक को अनुमति मिल चुकी है।
+Without correction, these fluctuations create unstable depth maps and jitter in point clouds.
+Temporal filters solve this problem by smoothing depth values across multiple frames.
 </p>
 
 
-<h2>Tesla FSD की शुरुआत जल्द</h2>
+
+<h2>What are the fundamentals of Time-of-Flight imaging?</h2>
+
 
 <p>
-कंपनी के अनुसार डेनमार्क में Tesla वाहन मालिकों के लिए Full Self-Driving (Supervised) सिस्टम का रोलआउट जल्द शुरू किया जा सकता है।
+Continuous-wave ToF cameras emit modulated infrared light. Each pixel measures the phase difference between emitted and reflected signals.
+Using the speed of light as a constant, this phase information is converted into depth.
 </p>
 
 
-<h2>कैसे मिली मंजूरी?</h2>
-
 <p>
-डेनमार्क रोड ट्रैफिक अथॉरिटी ने इस सिस्टम को अस्थायी मंजूरी दी है। यह मंजूरी डच वाहन प्राधिकरण RDW द्वारा 10 अप्रैल 2026 को जारी किए गए मूल टाइप अप्रूवल की समीक्षा के बाद दी गई।
+Along with depth data, ToF cameras also generate amplitude maps that indicate signal strength and measurement confidence.
 </p>
 
 
-<h2>Tesla Full Self-Driving क्या है?</h2>
-
 <p>
-Tesla Full Self-Driving एक एडवांस ड्राइवर असिस्टेंस सिस्टम है, जो गाड़ी चलाने के दौरान कई कार्यों में सहायता करता है। हालांकि इसका इस्तेमाल करते समय ड्राइवर को हमेशा सतर्क रहना जरूरी होता है।
+Depth maps can then be converted into 3D point clouds where each pixel becomes a real-world coordinate.
 </p>
 
 
-<h2>यूरोप में बढ़ रही AI ड्राइविंग तकनीक</h2>
+
+
+<h2>Why is temporal filtering needed?</h2>
+
 
 <p>
-Tesla लगातार अपनी आर्टिफिशियल इंटेलिजेंस आधारित ड्राइविंग तकनीक को अलग-अलग देशों में विस्तार दे रही है। यूरोप में मंजूरी मिलने से स्मार्ट कार टेक्नोलॉजी को बढ़ावा मिल सकता है।
+Noise remains present even after optimizing exposure and illumination settings.
+Longer integration times can reduce random noise, but limitations from sensors and environments still create depth fluctuations.
 </p>
 
 
-<h2>भविष्य में क्या उम्मीद है?</h2>
-
 <p>
-डेनमार्क में मंजूरी मिलने के बाद Tesla आने वाले समय में यूरोप के अन्य देशों में भी FSD तकनीक को उपलब्ध कराने की दिशा में आगे बढ़ सकती है।
+Temporal filters compare depth values across multiple frames to reduce random variations and improve stability.
 </p>
 
 
-<h2>निष्कर्ष</h2>
+
+<div class="card">
+
+<h3>Example:</h3>
 
 <p>
-Tesla Full Self-Driving को डेनमार्क में मिली मंजूरी कंपनी के लिए एक महत्वपूर्ण कदम है। इससे यूरोप में AI आधारित ऑटोमोबाइल तकनीक के विस्तार को नई गति मिल सकती है।
+Raw depth values of a dark object may fluctuate between 892 mm and 896 mm.
+After temporal filtering, values become more stable around 893.3 mm to 893.6 mm.
+</p>
+
+</div>
+
+
+
+<h2>Types of Temporal Filters</h2>
+
+
+
+<h3>1. Infinite Impulse Response (IIR) Filter</h3>
+
+
+<p>
+The IIR filter updates every pixel using previous frame information.
+A small alpha value reduces noise strongly but creates delay, while a larger alpha value reacts faster but allows more noise.
 </p>
 
 
-</article>
+<ul>
+<li>Low processing requirement</li>
+<li>Suitable for embedded systems</li>
+<li>May introduce motion lag</li>
+</ul>
+
+
+
+
+<h3>2. Median-Average Filter</h3>
+
+
+<p>
+This filter stores multiple frames, sorts pixel values, and selects the median or average value.
+It removes abnormal measurements and provides strong noise rejection.
+</p>
+
+
+<ul>
+<li>Better resistance against random errors</li>
+<li>Needs more memory and processing power</li>
+</ul>
+
+
+
+
+<h3>3. Adaptive Mean Filter</h3>
+
+
+<p>
+Adaptive Mean filtering calculates temporal variation and applies smoothing only when the scene is stable.
+During fast movement, filtering strength is reduced.
+</p>
+
+
+<ul>
+<li>Preserves edges</li>
+<li>Handles motion better</li>
+<li>Reduces noise in static areas</li>
+</ul>
+
+
+
+
+<h2>Trade-offs in Temporal Filtering</h2>
+
+
+<p>
+The biggest challenge is motion blur.
+Because frames are averaged together, fast-moving objects may appear blurred or delayed.
+</p>
+
+
+<p>
+Adaptive filters solve this issue by applying stronger filtering to stable regions and weaker filtering to moving objects.
+</p>
+
+
+
+<h2>Temporal Filtering in ToF Pipelines</h2>
+
+
+<p>
+A ToF processing pipeline starts by tuning illumination, modulation frequency, and exposure settings.
+After that, temporal filtering improves frame-to-frame stability.
+</p>
+
+
+
+<div class="card">
+
+
+<h3>Which filter to choose?</h3>
+
+
+<ul>
+
+<li><b>IIR:</b> Best for real-time systems with limited resources</li>
+
+<li><b>Median-Average:</b> Better noise reduction with higher processing cost</li>
+
+<li><b>Adaptive Mean:</b> Best balance between stability and motion preservation</li>
+
+</ul>
+
+
+</div>
+
+
+
+<h2>Conclusion</h2>
+
+
+<p>
+Temporal filters are essential for reliable ToF camera performance.
+They improve depth accuracy, stabilize point clouds, and make 3D vision systems more practical for real-world applications.
+</p>
+
+
+
+<footer>
+
+Time-of-Flight Cameras | 3D Vision Technology | Temporal Filtering
+
+</footer>
+
+
+
+</div>
+
 
 </body>
 
