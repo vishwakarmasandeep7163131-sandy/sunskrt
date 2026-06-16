@@ -314,96 +314,103 @@
 <div class="article">
 
 
-<h1>Understanding the Role of Temporal Filters in Time-of-Flight Cameras</h1>
+<h1>Time-of-Flight कैमरों में Temporal Filters की भूमिका</h1>
 
 
 <div class="box">
 
-Time-of-Flight (ToF) cameras measure depth for every pixel by transmitting modulated infrared light and calculating how long reflections take to return to the sensor.
+Time-of-Flight (ToF) कैमरे हर pixel की दूरी मापने के लिए infrared light भेजते हैं और उसके वापस आने में लगे समय की गणना करते हैं।
 
 </div>
 
 
 
 <p>
-ToF cameras provide powerful 3D vision capabilities for robotics, industrial automation, drones, and many other applications.
-However, raw signals from ToF sensors often contain noise caused by ambient light, surface reflectivity, integration limits, and sensor design.
+ToF कैमरे robotics, industrial automation, drones और 3D vision applications में बहुत उपयोगी होते हैं।
+लेकिन sensor से मिलने वाला raw data हमेशा साफ नहीं होता।
 </p>
 
 
 <p>
-Without correction, these fluctuations create unstable depth maps and jitter in point clouds.
-Temporal filters solve this problem by smoothing depth values across multiple frames.
-</p>
-
-
-
-<h2>What are the fundamentals of Time-of-Flight imaging?</h2>
-
-
-<p>
-Continuous-wave ToF cameras emit modulated infrared light. Each pixel measures the phase difference between emitted and reflected signals.
-Using the speed of light as a constant, this phase information is converted into depth.
+Ambient light, surface reflectivity, integration time और sensor limitations की वजह से depth measurement में उतार-चढ़ाव आ सकता है।
+इससे point cloud में jitter और depth map में instability दिखाई देती है।
 </p>
 
 
 <p>
-Along with depth data, ToF cameras also generate amplitude maps that indicate signal strength and measurement confidence.
-</p>
-
-
-<p>
-Depth maps can then be converted into 3D point clouds where each pixel becomes a real-world coordinate.
+Temporal filters अलग-अलग frames की जानकारी लेकर इन गलतियों को कम करते हैं और depth data को ज्यादा stable बनाते हैं।
 </p>
 
 
 
 
-<h2>Why is temporal filtering needed?</h2>
+<h2>Time-of-Flight imaging कैसे काम करता है?</h2>
 
 
 <p>
-Noise remains present even after optimizing exposure and illumination settings.
-Longer integration times can reduce random noise, but limitations from sensors and environments still create depth fluctuations.
+CW ToF कैमरा लगातार modulated infrared signal भेजता है।
+Sensor emitted और वापस आने वाली light के बीच phase difference को मापता है।
 </p>
 
 
 <p>
-Temporal filters compare depth values across multiple frames to reduce random variations and improve stability.
+Light की speed को आधार बनाकर इस phase information को distance यानी depth में बदला जाता है।
+</p>
+
+
+<p>
+इसके बाद depth map को 3D point cloud में बदला जा सकता है, जिसमें हर pixel एक वास्तविक 3D coordinate बन जाता है।
+</p>
+
+
+
+
+<h2>Temporal Filtering की जरूरत क्यों होती है?</h2>
+
+
+<p>
+ToF cameras में exposure और illumination को optimize करने के बाद भी कुछ noise बचा रहता है।
+</p>
+
+
+<p>
+Temporal filter कई frames के depth values को compare करके random changes को कम करता है।
+इससे image smooth होती है और point cloud ज्यादा reliable बनता है।
 </p>
 
 
 
 <div class="card">
 
-<h3>Example:</h3>
+<h3>उदाहरण:</h3>
 
 <p>
-Raw depth values of a dark object may fluctuate between 892 mm and 896 mm.
-After temporal filtering, values become more stable around 893.3 mm to 893.6 mm.
+बिना filter के किसी object की दूरी 892 mm से 896 mm तक बदल सकती है।
+Filter लगाने के बाद measurement लगभग 893.3 mm से 893.6 mm तक stable हो सकती है।
 </p>
 
 </div>
 
 
 
-<h2>Types of Temporal Filters</h2>
+
+<h2>Temporal Filters के प्रकार</h2>
 
 
 
-<h3>1. Infinite Impulse Response (IIR) Filter</h3>
+<h3>1. IIR (Infinite Impulse Response) Filter</h3>
 
 
 <p>
-The IIR filter updates every pixel using previous frame information.
-A small alpha value reduces noise strongly but creates delay, while a larger alpha value reacts faster but allows more noise.
+IIR filter पिछले frames की जानकारी का उपयोग करके हर pixel को update करता है।
 </p>
 
 
 <ul>
-<li>Low processing requirement</li>
-<li>Suitable for embedded systems</li>
-<li>May introduce motion lag</li>
+<li>Noise कम करता है</li>
+<li>कम processing power चाहिए</li>
+<li>Embedded systems के लिए अच्छा है</li>
+<li>Moving objects में थोड़ी delay आ सकती है</li>
 </ul>
 
 
@@ -413,14 +420,13 @@ A small alpha value reduces noise strongly but creates delay, while a larger alp
 
 
 <p>
-This filter stores multiple frames, sorts pixel values, and selects the median or average value.
-It removes abnormal measurements and provides strong noise rejection.
+यह filter कई frames को store करके गलत values को हटाता है और बीच की सही value चुनता है।
 </p>
 
 
 <ul>
-<li>Better resistance against random errors</li>
-<li>Needs more memory and processing power</li>
+<li>Random errors को अच्छी तरह हटाता है</li>
+<li>ज्यादा memory और processing चाहिए</li>
 </ul>
 
 
@@ -430,82 +436,80 @@ It removes abnormal measurements and provides strong noise rejection.
 
 
 <p>
-Adaptive Mean filtering calculates temporal variation and applies smoothing only when the scene is stable.
-During fast movement, filtering strength is reduced.
+यह filter scene के हिसाब से smoothing करता है।
+Static area में ज्यादा filtering और moving objects में कम filtering करता है।
 </p>
 
 
 <ul>
-<li>Preserves edges</li>
-<li>Handles motion better</li>
-<li>Reduces noise in static areas</li>
+<li>Object edges को बेहतर बचाता है</li>
+<li>Motion blur कम करता है</li>
+<li>Noise reduction अच्छा देता है</li>
 </ul>
 
 
 
 
-<h2>Trade-offs in Temporal Filtering</h2>
+<h2>Temporal Filtering की चुनौतियां</h2>
 
 
 <p>
-The biggest challenge is motion blur.
-Because frames are averaged together, fast-moving objects may appear blurred or delayed.
+सबसे बड़ी समस्या fast moving objects में motion blur है।
+क्योंकि कई frames को मिलाया जाता है, तेज गति वाले objects थोड़े blurred दिख सकते हैं।
 </p>
 
 
 <p>
-Adaptive filters solve this issue by applying stronger filtering to stable regions and weaker filtering to moving objects.
+Adaptive filters इस समस्या को कम करते हैं क्योंकि वे movement के अनुसार filtering बदलते हैं।
 </p>
 
 
 
-<h2>Temporal Filtering in ToF Pipelines</h2>
+
+<h2>ToF Pipeline में Temporal Filter का उपयोग</h2>
 
 
 <p>
-A ToF processing pipeline starts by tuning illumination, modulation frequency, and exposure settings.
-After that, temporal filtering improves frame-to-frame stability.
+पहले camera की illumination, modulation frequency और exposure settings को सही किया जाता है।
+इसके बाद temporal filtering depth stability को बेहतर बनाती है।
 </p>
 
 
 
 <div class="card">
 
-
-<h3>Which filter to choose?</h3>
-
+<h3>कौन सा Filter कब इस्तेमाल करें?</h3>
 
 <ul>
 
-<li><b>IIR:</b> Best for real-time systems with limited resources</li>
+<li><b>IIR:</b> कम resources वाले real-time systems के लिए</li>
 
-<li><b>Median-Average:</b> Better noise reduction with higher processing cost</li>
+<li><b>Median-Average:</b> ज्यादा noise वाले environments के लिए</li>
 
-<li><b>Adaptive Mean:</b> Best balance between stability and motion preservation</li>
+<li><b>Adaptive Mean:</b> बेहतर quality और motion handling के लिए</li>
 
 </ul>
-
 
 </div>
 
 
 
-<h2>Conclusion</h2>
+
+<h2>निष्कर्ष</h2>
 
 
 <p>
-Temporal filters are essential for reliable ToF camera performance.
-They improve depth accuracy, stabilize point clouds, and make 3D vision systems more practical for real-world applications.
+Temporal filters ToF cameras की accuracy और reliability बढ़ाने में महत्वपूर्ण भूमिका निभाते हैं।
+ये noise कम करते हैं, depth maps को stable बनाते हैं और 3D vision systems को बेहतर बनाते हैं।
 </p>
 
 
 
 <footer>
 
-Time-of-Flight Cameras | 3D Vision Technology | Temporal Filtering
+ToF Camera Technology | 3D Vision | Temporal Filtering
 
 </footer>
-
 
 
 </div>
