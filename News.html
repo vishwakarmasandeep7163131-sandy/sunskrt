@@ -123,6 +123,9 @@
             overflow: hidden;
             height: 450px;
             cursor: pointer;
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
 
         .featured-article img {
@@ -296,6 +299,9 @@
             transition: transform 0.3s;
             cursor: pointer;
             border: 1px solid #1a1a1a;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .news-card:hover {
@@ -333,6 +339,7 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            color: #fff;
         }
 
         .news-card-meta {
@@ -450,18 +457,19 @@
             .footer { padding: 30px 20px 15px; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
     <!-- ====== HEADER ====== -->
     <header class="header">
         <a href="#" class="logo">AutoDrive</a>
-        
+
         <div class="search-box">
             <input type="text" placeholder="Search latest news...">
             <button class="search-btn">Search</button>
         </div>
-        
+
         <ul class="nav-links">
             <li><a href="Home.html">Home</a></li>
             <li><a href="Sports.html">Sports</a></li>
@@ -475,27 +483,26 @@
 
     <!-- ====== PAGE TITLE ====== -->
     <div class="page-title">
-        <h1> News</h1>
+        <h1>News</h1>
     </div>
 
     <!-- ====== HEALTH HERO SECTION ====== -->
-     <a href="articles/Latest News Updates1.html" class="Main-Featured">
     <section class="health-hero">
         <!-- Main Featured -->
-        <div class="featured-article">
-             <img src="../images/MODI TRUMP.webp" alt="WHO Health">
+        <a href="articles/Latest-News-Updates1.html" class="featured-article">
+            <img src="../images/MODI-TRUMP.webp" alt="WHO Health">
             <div class="featured-overlay">
                 <div class="featured-date">
-                    <i class="far fa-calendar-alt"></i> june 16 20, 2026 • 9:00 AM
+                    <i class="far fa-calendar-alt"></i> June 16, 2026 • 9:00 AM
                 </div>
-                <h2 class="featured-title"></h2>
-                <p class="featured-desc">PM मोदी-ट्रंप मुलाकात LIVE: ट्रंप बोले- ‘हम इससे ज्यादा करीब नहीं हो सकते’, भारत पर हमले की स्थिति में साथ देने का किया वादा"</p>
+                <h2 class="featured-title">PM मोदी-ट्रंप मुलाकात LIVE</h2>
+                <p class="featured-desc">ट्रंप बोले- 'हम इससे ज्यादा करीब नहीं हो सकते', भारत पर हमले की स्थिति में साथ देने का किया वादा</p>
             </div>
-             </div>
+        </a>
 
         <!-- Side Articles -->
         <div class="side-articles">
-            <a href="articles/Latest News Updates2.html" class="side-article">
+            <a href="articles/Latest-News-Updates2.html" class="side-article">
                 <div class="side-article-img">
                     <img src="../images/TELIGRAM.jfif" alt="Exercise">
                 </div>
@@ -508,7 +515,7 @@
                 </div>
             </a>
 
-            <a href="articles/Latest News Updates3.html" class="side-article">
+            <a href="articles/Latest-News-Updates3.html" class="side-article">
                 <div class="side-article-img">
                     <img src="../images/RAUT.avif" alt="Nutrition">
                 </div>
@@ -521,7 +528,7 @@
                 </div>
             </a>
 
-            <a href="articles/Latest News Updates4.html" class="side-article">
+            <a href="articles/Latest-News-Updates4.html" class="side-article">
                 <div class="side-article-img">
                     <img src="../images/BJP-Member.webp" alt="Yoga">
                 </div>
@@ -534,13 +541,13 @@
                 </div>
             </a>
 
-            <a href="articles/Latest News Updates5.html" class="side-article">
+            <a href="articles/Latest-News-Updates5.html" class="side-article">
                 <div class="side-article-img">
                     <img src="../images/RUSSIA-UKRAINE.avif" alt="Hospital">
                 </div>
                 <div class="side-article-content">
                     <div class="side-article-time">4 hours ago</div>
-                    <h4 class="side-article-title">यूक्रेन ने मॉस्को की ऑयल रिफाइनरी पर इस हफ्ते दूसरी बार हमला किया, जेलेंस्की ने बताया 'जायज जवाब</h4>
+                    <h4 class="side-article-title">यूक्रेन ने मॉस्को की ऑयल रिफाइनरी पर इस हफ्ते दूसरी बार हमला किया, जेलेंस्की ने बताया 'जायज जवाब'</h4>
                     <div class="side-article-views">
                         <i class="far fa-eye"></i> 3.1K views
                     </div>
@@ -549,7 +556,7 @@
         </div>
     </section>
 
-     <!-- ====== LATEST NEWS (All 12 Cards in One Section) ====== -->
+    <!-- ====== LATEST NEWS (All 12 Cards in One Section) ====== -->
     <section class="category-section">
         <div class="section-header">
             <h2 class="section-title"><i class="fas fa-heartbeat"></i> Latest News</h2>
@@ -769,7 +776,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 AutoDrive. All rights reserved.
+            &copy; 2026 AutoDrive. All rights reserved.
         </div>
     </footer>
 
