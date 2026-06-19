@@ -1,1 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>यूक्रेन ने मॉस्को की ऑयल रिफाइनरी पर इस हफ्ते दूसरी बार हमला किया, जेलेंस्की ने बताया 'जायज जवाब'"</title>
+    <link rel="stylesheet" href="../hero-fix.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        /* ====== NAVBAR ====== */
+        .navbar {
+            background: #1a1a1a;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff4500;
+            text-decoration: none;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-input {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            width: 280px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-input::placeholder {
+            color: #888;
+        }
+        
+        .search-btn {
+            background: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff4500;
+        }
+        
+        .nav-links a.active {
+            color: #ff4500;
+        }
+        
+        /* ====== MAIN CONTAINER ====== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* ====== SECTION TITLE ====== */
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+        
+        /* ====== HERO ARTICLE ====== */
+        .hero-main {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-caption {
+            text-align: right;
+            font-size: 11px;
+            color: #666;
+            padding: 8px 20px 0 0;
+            font-style: italic;
+        }
+        
+        .hero-content {
+            padding: 20px 25px 25px 25px;
+        }
+        
+        .hero-date {
+            color: #ff4500;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .hero-desc {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        /* ====== FULL DESCRIPTION ====== */
+        .full-description {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .full-description p {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+        
+        .full-description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .see-all {
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .see-all:hover {
+            text-decoration: underline;
+        }
+        
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .article-card {
+            display: flex;
+            gap: 15px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-3px);
+            background: #222;
+            border-color: #ff4500;
+        }
+        
+        .article-thumb {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .article-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #eee;
+            line-height: 1.4;
+        }
+        
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
+            .search-input { width: 200px; }
+            .nav-links { display: none; }
+            .hero-image { height: 280px; }
+            .hero-title { font-size: 22px; }
+            .hero-desc { font-size: 14px; }
+            .full-description { padding: 20px; }
+            .article-thumb { width: 90px; height: 60px; }
+            .article-title { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
 
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar">
+        <a href="#" class="logo">AutoDrive</a>
+        
+        </div>
+        
+        <ul class="nav-links">
+             <li><a href="../Home.html">Home</a></li>
+            <li><a href="../Sports.html">Sports</a></li>
+            <li><a href="../Health.html">Health</a></li>
+            <li><a href="../Cars.html">Cars</a></li>
+            <li><a href="../News.html">News</a></li>
+            <li><a href="../About.html">About</a></li>
+            <li><a href="../Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <div class="container">
+        
+        <h2 class="section-title">यूक्रेन ने मॉस्को की ऑयल रिफाइनरी पर इस हफ्ते दूसरी बार हमला किया, जेलेंस्की ने बताया 'जायज जवाब'</h2>
+        
+        <!-- ====== BADI IMAGE (UPAR) ====== -->
+        <div class="hero-main">
+            <div class="hero-image">
+           <img src="../images/RUSSIA-UKRAINE.avif" alt="News">
+                </div>
+            
+            <p class="image-caption"></p>
+            <div class="hero-content">
+                <div class="hero-date">📅 june 18, 2026 • 8:15 AM</div>
+                <h1 class="hero-title">"यूक्रेन ने मॉस्को की ऑयल रिफाइनरी पर इस हफ्ते दूसरी बार हमला किया, जेलेंस्की ने बताया 'जायज जवाब'</h1>
+                <p class="hero-desc">"हमले के वीडियो सोशल मीडिया पर तेजी से वायरल होने के बाद, जेलेंस्की ने कहा कि यह हमला मॉस्को द्वारा कीव पर किए गए हालिया हमलों का “जायज जवाब” था।</p>
+            </div>
+        </div>
+        
+        <!-- ====== DESCRIPTION (IMAGE KE NICHE) ====== -->
+        <div class="full-description">
+           <body>
+
+<div class="article">
+
+<h1>यूक्रेन ने मॉस्को ऑयल रिफाइनरी पर किया हमला, जेलेंस्की ने बताया 'जायज जवाब'</h1>
+
+<p>
+मॉस्को में गुरुवार को धुआं और आग की लपटें दिखाई दीं, जब यूक्रेन ने इस हफ्ते दूसरी बार मॉस्को की एक ऑयल रिफाइनरी को निशाना बनाया। हमले के वीडियो सोशल मीडिया पर तेजी से वायरल होने के बाद यूक्रेनी राष्ट्रपति वोलोडिमिर जेलेंस्की ने इसे रूस के हालिया हमलों का “जायज जवाब” बताया।
+</p>
+
+<p>
+बताया गया कि हमला मॉस्को के दक्षिण-पूर्वी इलाके में स्थित रूसी तेल कंपनी गजप्रोम नेफ्ट की ऑयल रिफाइनरी पर हुआ।
+</p>
+
+<h2>कीव पर रूसी हमलों के जवाब में कार्रवाई</h2>
+
+<p>
+यूक्रेनी अधिकारियों के अनुसार यह हमला रूस द्वारा कीव पर किए गए हालिया हवाई हमलों के जवाब में किया गया।
+</p>
+
+<p>
+इससे पहले रूस के मिसाइल और ड्रोन हमले में कम से कम 11 लोगों की मौत हुई थी। यह हमला कीव की ऐतिहासिक और नागरिक सुविधाओं को निशाना बनाने वाले सबसे गंभीर हमलों में से एक बताया गया।
+</p>
+
+<div class="highlight">
+जेलेंस्की ने कहा कि यह हमला यूक्रेन के शहरों और समुदायों पर रूसी हमलों का पूरी तरह जायज जवाब है।
+</div>
+
+<h2>जेलेंस्की ने युद्ध खत्म करने की अपील की</h2>
+
+<p>
+जेलेंस्की ने कहा कि अब समय आ गया है कि रूस के साथ युद्ध समाप्त हो और रूसी राष्ट्रपति व्लादिमीर पुतिन बातचीत और कूटनीति के रास्ते पर लौटें।
+</p>
+
+<h2>रूस ने ड्रोन हमले का दावा किया</h2>
+
+<p>
+रूसी अधिकारियों ने दावा किया कि कई क्षेत्रों में 555 यूक्रेनी ड्रोन को मार गिराया गया, जबकि करीब 200 ड्रोन को मॉस्को की ओर बढ़ने से पहले रोक दिया गया।
+</p>
+
+<p>
+हमले के बाद रूस के परिवहन मंत्रालय ने मॉस्को के सभी प्रमुख हवाई अड्डों — शेरेमेत्येवो, डोमोडेदोवो, वनुकोवो और झुकोव्स्की — से उड़ानों को अस्थायी रूप से रोक दिया।
+</p>
+
+<h2>पुतिन की बैठक से पहले हुआ हमला</h2>
+
+<p>
+रिपोर्ट के अनुसार यह ड्रोन हमला रूस के राष्ट्रपति व्लादिमीर पुतिन की ASEAN नेताओं के साथ होने वाली बैठक से कुछ घंटे पहले हुआ।
+</p>
+
+<p>
+कजान में आयोजित इस बैठक में थाईलैंड, वियतनाम, कंबोडिया, लाओस, मलेशिया और सिंगापुर के नेताओं ने हिस्सा लिया।
+</p>
+
+<p>
+रूस और यूक्रेन के बीच जारी युद्ध के बीच दोनों देशों के बीच तनाव लगातार बढ़ता जा रहा है।
+</p>
+
+</div>
+
+</body>
+</html>
