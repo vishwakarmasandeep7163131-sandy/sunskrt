@@ -1,1 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitamin D की कमी के लक्षण और बचाव</title>
+    <link rel="stylesheet" href="../hero-fix.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        /* ====== NAVBAR ====== */
+        .navbar {
+            background: #1a1a1a;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff4500;
+            text-decoration: none;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-input {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            width: 280px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-input::placeholder {
+            color: #888;
+        }
+        
+        .search-btn {
+            background: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff4500;
+        }
+        
+        .nav-links a.active {
+            color: #ff4500;
+        }
+        
+        /* ====== MAIN CONTAINER ====== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* ====== SECTION TITLE ====== */
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+        
+        /* ====== HERO ARTICLE ====== */
+        .hero-main {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-caption {
+            text-align: right;
+            font-size: 11px;
+            color: #666;
+            padding: 8px 20px 0 0;
+            font-style: italic;
+        }
+        
+        .hero-content {
+            padding: 20px 25px 25px 25px;
+        }
+        
+        .hero-date {
+            color: #ff4500;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .hero-desc {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        /* ====== FULL DESCRIPTION ====== */
+        .full-description {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .full-description p {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+        
+        .full-description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .see-all {
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .see-all:hover {
+            text-decoration: underline;
+        }
+        
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .article-card {
+            display: flex;
+            gap: 15px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-3px);
+            background: #222;
+            border-color: #ff4500;
+        }
+        
+        .article-thumb {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .article-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #eee;
+            line-height: 1.4;
+        }
+        
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
+            .search-input { width: 200px; }
+            .nav-links { display: none; }
+            .hero-image { height: 280px; }
+            .hero-title { font-size: 22px; }
+            .hero-desc { font-size: 14px; }
+            .full-description { padding: 20px; }
+            .article-thumb { width: 90px; height: 60px; }
+            .article-title { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
 
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar">
+        <a href="#" class="logo">AutoDrive</a>
+        
+        </div>
+        
+        <ul class="nav-links">
+             <li><a href="../Home.html">Home</a></li>
+            <li><a href="../Sports.html">Sports</a></li>
+            <li><a href="../Health.html">Health</a></li>
+            <li><a href="../Cars.html">Cars</a></li>
+            <li><a href="../News.html">News</a></li>
+            <li><a href="../About.html">About</a></li>
+            <li><a href="../Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <div class="container">
+        
+        <h2 class="section-title">Vitamin D की कमी के लक्षण और बचाव </h2>
+        
+        <!-- ====== BADI IMAGE (UPAR) ====== -->
+        <div class="hero-main">
+            <div class="hero-image">
+           <img src="../images/VITAMIN D.png" alt="News">
+                </div>
+            
+            <div class="hero-content">
+                <div class="hero-date">📅 june 16, 2026 • 3:46 PM</div>
+                <h1 class="hero-title">"Vitamin D की कमी के लक्षण और बचाव"</h1>
+                <p class="hero-desc"></p>
+            </div>
+        </div>
+        
+        <!-- ====== DESCRIPTION (IMAGE KE NICHE) ====== -->
+       </head>
+
+<body>
+
+<body>
+    <div class="container">
+        <h1>☀️ Vitamin D की कमी के लक्षण और बचाव</h1>
+        <p class="subtitle">सूरज विटामिन से शरीर को मजबूती — एक संपूर्ण गाइड</p>
+
+        <h2>1. Vitamin D क्या है और क्यों जरूरी है?</h2>
+        <p><strong>Vitamin D</strong> एक फैट-सॉल्युबल विटामिन है जो हमारे शरीर में <strong>कैल्शियम और फॉस्फोरस</strong> के अवशोषण के लिए जरूरी है। इसे <strong>"सनशाइन विटामिन"</strong> भी कहते हैं क्योंकि हमारी त्वचा सूरज की UV किरणों से इसे बनाती है।</p>
+
+        <div class="highlight-box">
+            <strong>💡 रोचक तथ्य:</strong> भारत में लगभग <strong>70-90% लोगों</strong> में Vitamin D की कमी पाई जाती है। यह एक "साइलेंट एपिडेमिक" बन चुकी है क्योंकि इसके लक्षण शुरुआत में बहुत हल्के होते हैं।
+        </div>
+
+        <p>Vitamin D के मुख्य कार्य:</p>
+        <ul>
+            <li><strong>हड्डियों को मजबूत बनाना:</strong> कैल्शियम को हड्डियों तक पहुंचाता है, ऑस्टियोपोरोसिस और रिकेट्स रोकता है।</li>
+            <li><strong>इम्यून सिस्टम मजबूत करना:</strong> संक्रमणों से लड़ने की क्षमता बढ़ाता है।</li>
+            <li><strong>मांसपेशियों की सेहत:</strong> मसल फंक्शन और बैलेंस सुधारता है।</li>
+            <li><strong>मानसिक स्वास्थ्य:</strong> डिप्रेशन और चिंता को कम करने में मदद करता है।</li>
+            <li><strong>हृदय स्वास्थ्य:</strong> ब्लड प्रेशर और हार्ट डिजीज के जोखिम को कम करता है।</li>
+        </ul>
+
+        <h2>2. Vitamin D की कमी के मुख्य लक्षण</h2>
+        <p>ये लक्षण अक्सर धीरे-धीरे दिखते हैं और लोग इन्हें अनदेखा कर देते हैं:</p>
+
+        <div class="symptom-list">
+            <div class="symptom-card">
+                <div class="emoji">🦴</div>
+                <h4>हड्डियों और जोड़ों का दर्द</h4>
+                <p>पीठ, कमर, घुटनों और हिप्स में दर्द</p>
+            </div>
+            <div class="symptom-card">
+                <div class="emoji">😴</div>
+                <h4>अत्यधिक थकान</h4>
+                <p>पूरा दिन सोने के बाद भी थकान महसूस होना</p>
+            </div>
+            <div class="symptom-card">
+                <div class="emoji">😔</div>
+                <h4>मूड स्विंग्स और डिप्रेशन</h4>
+                <p>उदासी, चिड़चिड़ापन और चिंता बढ़ना</p>
+            </div>
+            <div class="symptom-card">
+                <div class="emoji">💪</div>
+                <h4>मांसपेशियों में कमजोरी</h4>
+                <p>सीढ़ियां चढ़ने में तकलीफ, मसल क्रैम्प्स</p>
+            </div>
+            <div class="symptom-card">
+                <div class="emoji">🤧</div>
+                <h4>बार-बार बीमार पड़ना</h4>
+                <p>इम्यूनिटी कमजोर, सर्दी-जुकाम बार-बार</p>
+            </div>
+            <div class="symptom-card">
+                <div class="emoji">🦷</div>
+                <h4>दांतों की समस्याएं</h4>
+                <p>दांत कमजोर, कैविटी, मसूड़ों से खून</p>
+            </div>
+            <div class="symptom-card">
+                <div class="emoji">🩹</div>
+                <h4>घाव धीरे भरना</h4>
+                <p>चोट या कट लगने पर जल्दी ठीक न होना</p>
+            </div>
+            <div class="symptom-card">
+                <div class="emoji">🧠</div>
+                <h4>मेमोरी और फोकस की समस्या</h4>
+                <p>भूलना, ध्यान केंद्रित करने में कठिनाई</p>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ गंभीर लक्षण (तुरंत डॉक्टर दिखाएं):</strong>
+            <ul style="margin-top: 10px;">
+                <li>हड्डियों में तेज दर्द जो चलने-फिरने में बाधा डाले</li>
+                <li>बच्चों में पैरों का टेढ़ापन या रिकेट्स</li>
+                <li>गिरने से हड्डी टूट जाना (फ्रैक्चर)</li>
+                <li>सांस लेने में तकलीफ या सीने में दर्द</li>
+                <li>गर्भवती महिलाओं में बार-बार गिरावट</li>
+            </ul>
+        </div>
+
+        <h2>3. Vitamin D की कमी किन्हें ज्यादा होती है?</h2>
+        <table>
+            <tr>
+                <th>वर्ग</th>
+                <th>कारण</th>
+            </tr>
+            <tr>
+                <td>🧓 50+ उम्र के लोग</td>
+                <td>त्वचा Vitamin D बनाने की क्षमता कम हो जाती है</td>
+            </tr>
+            <tr>
+                <td>🧕 गहरे रंग वाले लोग</td>
+                <td>मेलेनिन ज्यादा होने से UV किरणें कम सोखी जाती हैं</td>
+            </tr>
+            <tr>
+                <td>🧕‍♀️ गर्भवती और स्तनपान कराने वाली महिलाएं</td>
+                <td>बच्चे के विकास के लिए ज्यादा Vitamin D चाहिए</td>
+            </tr>
+            <tr>
+                <td>🏠 घर में रहने वाले लोग</td>
+                <td>धूप कम मिलने से शरीर में Vitamin D नहीं बनता</td>
+            </tr>
+            <tr>
+                <td>🧴 sunscreen ज्यादा लगाने वाले</td>
+                <td>Sunscreen UV किरणों को रोक देता है</td>
+            </tr>
+            <tr>
+                <td>🥗 शाकाहारी/वीगन</td>
+                <td>Vitamin D युक्त मछली, अंडे, दूध न खाना</td>
+            </tr>
+            <tr>
+                <td>⚖️ मोटापे से ग्रस्त</td>
+                <td>विटामिन फैट में घुलकर शरीर में जमा हो जाता है</td>
+            </tr>
+            <tr>
+                <td>🏥 किडनी/लिवर रोगी</td>
+                <td>Vitamin D को सक्रिय रूप में बदलने की क्षमता कम</td>
+            </tr>
+        </table>
+
+        <h2>4. Vitamin D के Natural Sources</h2>
+        <p>तीन तरीकों से Vitamin D मिल सकता है:</p>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="icon">☀️</div>
+                <h4>सूरज की धूप (सबसे बेहतर)</h4>
+                <p>सुबह 10-11 बजे तक की धूप सबसे अच्छी। रोजाना 15-30 मिनट बिना sunscreen के हाथ, पैर और चेहरा धूप में रखें।</p>
+            </div>
+            <div class="tip-card">
+                <div class="icon">🐟</div>
+                <h4>मछली और समुद्री खाना</h4>
+                <p>सैलमन, सार्डिन, टूना, मैकेरल, फिश लिवर ऑयल — सबसे ज्यादा Vitamin D वाले फूड्स।</p>
+            </div>
+            <div class="tip-card">
+                <div class="icon">🥚</div>
+                <h4>अंडे और डेयरी</h4>
+                <p>अंडे की जर्दी, फोर्टिफाइड दूध, पनीर, दही, और मक्खन में अच्छी मात्रा में Vitamin D होता है।</p>
+            </div>
+            <div class="tip-card">
+                <div class="icon">🍄</div>
+                <h4>मशरूम</h4>
+                <p>धूप में रखे मशरूम (UV-exposed) में Vitamin D2 अच्छी मात्रा में होता है।</p>
+            </div>
+            <div class="tip-card">
+                <div class="icon">🥣</div>
+                <h4>फोर्टिफाइड फूड्स</h4>
+                <p>फोर्टिफाइड अनाज, जूस, सोया मिल्क, और ओट्स में Vitamin D मिलाया जाता है।</p>
+            </div>
+            <div class="tip-card">
+                <div class="icon">💊</div>
+                <h4>सप्लीमेंट्स</h4>
+                <p>Vitamin D3 (cholecalciferol) सप्लीमेंट्स — डॉक्टर की सलाह से लें।</p>
+            </div>
+        </div>
+
+        <div class="food-list">
+            <span class="food-tag">☀️ सुबह की धूप</span>
+            <span class="food-tag">🐟 सैलमन मछली</span>
+            <span class="food-tag">🥚 अंडे की जर्दी</span>
+            <span class="food-tag">🥛 फोर्टिफाइड दूध</span>
+            <span class="food-tag">🍄 मशरूम</span>
+            <span class="food-tag">🧈 मक्खन</span>
+            <span class="food-tag">🐟 फिश लिवर ऑयल</span>
+            <span class="food-tag">🥣 फोर्टिफाइड अनाज</span>
+            <span class="food-tag">🧀 पनीर</span>
+            <span class="food-tag">🥛 दही</span>
+        </div>
+
+        <h2>5. Vitamin D की कमी से बचाव — 10 आसान उपाय</h2>
+
+        <h3>☀️ धूप का सही इस्तेमाल</h3>
+        <ul>
+            <li>सुबह 10-11 बजे तक 15-30 मिनट धूप में रहें</li>
+            <li>हाथ, पैर, चेहरा और बाजू खुले रखें</li>
+            <li>कांच की खिड़की से धूप नहीं मिलती — UV किरणें कांच को नहीं पार करतीं</li>
+            <li>धूप के बाद sunscreen लगा लें ताकि स्किन डैमेज न हो</li>
+        </ul>
+
+        <h3>🍽️ डाइट में बदलाव</h3>
+        <ul>
+            <li>रोज 1-2 अंडे खाएं (जर्दी जरूर खाएं)</li>
+            <li>हफ्ते में 2-3 बार मछली खाएं</li>
+            <li>फोर्टिफाइड दूध और दही का सेवन करें</li>
+            <li>मशरूम को धूप में रखकर फिर खाएं</li>
+            <li>फोर्टिफाइड अनाज और जूस पिएं</li>
+        </ul>
+
+        <h3>💊 सप्लीमेंट्स (डॉक्टर की सलाह से)</h3>
+        <ul>
+            <li>वयस्क: 600-800 IU प्रतिदिन</li>
+            <li>50+ उम्र: 800-1000 IU प्रतिदिन</li>
+            <li>गर्भवती महिलाएं: 1000-2000 IU प्रतिदिन</li>
+            <li>बच्चे: 400-600 IU प्रतिदिन</li>
+            <li>गंभीर कमी: डॉक्टर 60,000 IU सप्ताह में एक बार दे सकते हैं</li>
+        </ul>
+
+        <div class="success-box">
+            <strong>✅ Vitamin D लेवल चेक करवाएं:</strong>
+            <p style="margin-top: 10px;">रोजमर्रा के लक्षणों को अनदेखा न करें। <strong>25(OH)D ब्लड टेस्ट</strong> से Vitamin D का स्तर पता चलता है।</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>30-50 ng/mL:</strong> सामान्य (स्वस्थ)</li>
+                <li><strong>20-30 ng/mL:</strong> कम (insufficient)</li>
+                <li><strong>20 ng/mL से कम:</strong> गंभीर कमी (deficient)</li>
+            </ul>
+        </div>
+
+        <h2>6. रोजमर्रा की Healthy Routine</h2>
+        <ul>
+            <li><strong>सुबह 7-8 बजे:</strong> 15-20 मिनट धूप में योग/टहलना</li>
+            <li><strong>नाश्ते में:</strong> फोर्टिफाइड दूध + अंडे/दही</li>
+            <li><strong>दोपहर में:</strong> मशरूम/पनीर वाली सब्जी</li>
+            <li><strong>शाम को:</strong> मछली (हफ्ते में 2-3 बार) या फोर्टिफाइड जूस</li>
+            <li><strong>रात में:</strong> Vitamin D सप्लीमेंट (अगर डॉक्टर ने दिया हो)</li>
+            <li><strong>नियमित:</strong> हर 6 महीने में Vitamin D टेस्ट</li>
+        </ul>
+
+        <h2>7. गलतफहमियां (Myths vs Facts)</h2>
+        <table>
+            <tr>
+                <th>❌ गलतफहमी</th>
+                <th>✅ सच</th>
+            </tr>
+            <tr>
+                <td>धूप से स्किन कैंसर होता है, इसलिए बिल्कुल न जाएं</td>
+                <td>सुबह की धूप सुरक्षित है। 15-30 मिनट बिना sunscreen के ठीक है</td>
+            </tr>
+            <tr>
+                <td>दूध पीने से ही Vitamin D मिल जाता है</td>
+                <td>साधारण दूध में Vitamin D कम होता है। फोर्टिफाइड दूध चुनें</td>
+            </tr>
+            <tr>
+                <td>सप्लीमेंट्स लेने से किडनी खराब होती है</td>
+                <td>अति मात्रा में ही नुकसान। डॉक्टर की सलाह से सही खुराक सुरक्षित है</td>
+            </tr>
+            <tr>
+                <td>गर्मियों में धूप से Vitamin D मिलता है, सर्दियों में नहीं</td>
+                <td>सर्दियों में भी सुबह की धूप मिलती है, बस समय थोड़ा बढ़ा दें</td>
+            </tr>
+        </table>
+
+        <h2>निष्कर्ष</h2>
+        <p>Vitamin D की कमी एक आम समस्या है जो धीरे-धीरे शरीर को कमजोर बनाती है। लेकिन इसका इलाज बहुत आसान है — <strong>रोजाना थोड़ी धूप, संतुलित खाना, और जरूरत पड़ने पर सप्लीमेंट्स।</strong> अपने Vitamin D लेवल का समय-समय पर चेकअप करवाएं और स्वस्थ रहें। याद रखें, <strong>"सूरज की एक किरण, हड्डियों को मजबूती देती है!"</strong></p>
+
+        <div class="meta">
+            <p>📝 लेखक: हेल्थ एक्सपर्ट टीम | 📅 अपडेटेड: जून 2026</p>
+            <p>⚠️ डिस्क्लेमर: यह लेख सामान्य जानकारी के लिए है। किसी भी गंभीर समस्या या सप्लीमेंट लेने से पहले डॉक्टर से परामर्श करें।</p>
+        </div>
+    </div>
+</body>
+</html>
