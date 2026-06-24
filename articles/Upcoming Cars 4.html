@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citroen e-C3X</title>
+    <link rel="stylesheet" href="../hero-fix.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        /* ====== NAVBAR ====== */
+        .navbar {
+            background: #1a1a1a;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff4500;
+            text-decoration: none;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-input {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            width: 280px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-input::placeholder {
+            color: #888;
+        }
+        
+        .search-btn {
+            background: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff4500;
+        }
+        
+        .nav-links a.active {
+            color: #ff4500;
+        }
+        
+        /* ====== MAIN CONTAINER ====== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* ====== SECTION TITLE ====== */
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+        
+        /* ====== HERO ARTICLE ====== */
+        .hero-main {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-caption {
+            text-align: right;
+            font-size: 11px;
+            color: #666;
+            padding: 8px 20px 0 0;
+            font-style: italic;
+        }
+        
+        .hero-content {
+            padding: 20px 25px 25px 25px;
+        }
+        
+        .hero-date {
+            color: #ff4500;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .hero-desc {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        /* ====== FULL DESCRIPTION ====== */
+        .full-description {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .full-description p {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+        
+        .full-description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .see-all {
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .see-all:hover {
+            text-decoration: underline;
+        }
+        
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .article-card {
+            display: flex;
+            gap: 15px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-3px);
+            background: #222;
+            border-color: #ff4500;
+        }
+        
+        .article-thumb {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .article-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #eee;
+            line-height: 1.4;
+        }
+        
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
+            .search-input { width: 200px; }
+            .nav-links { display: none; }
+            .hero-image { height: 280px; }
+            .hero-title { font-size: 22px; }
+            .hero-desc { font-size: 14px; }
+            .full-description { padding: 20px; }
+            .article-thumb { width: 90px; height: 60px; }
+            .article-title { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar">
+        <a href="#" class="logo">AutoDrive</a>
+        
+        </div>
+        
+        <ul class="nav-links">
+             <li><a href="../Home.html">Home</a></li>
+            <li><a href="../Sports.html">Sports</a></li>
+            <li><a href="../Health.html">Health</a></li>
+            <li><a href="../Cars.html">Cars</a></li>
+            <li><a href="../News.html">News</a></li>
+            <li><a href="../About.html">About</a></li>
+            <li><a href="../Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <div class="container">
+        
+        <h2 class="section-title">Citroen e-C3X Specifications</h2>
+        
+        <!-- ====== BADI IMAGE (UPAR) ====== -->
+        <div class="hero-main">
+            <div class="hero-image">
+           <img src="../images/citrus.jpg" alt="News">
+                </div>
+            
+            <div class="hero-content">
+                <div class="hero-date">📅 june 23, 2026 • 8:34 PM</div>
+                <h1 class="hero-title">"Citroen e-C3X Specifications"</h1>
+                <p class="hero-desc">"The Citroen e-C3X has 1 Electric Engine on offer. It is available with the Automatic transmission.
+                    The e-C3X is a 5 seater and has length of 3981 mm, width of 1733 mm .</p>
+            </div>
+        </div>
+        
+        <!-- ====== DESCRIPTION (IMAGE KE NICHE) ====== -->
+       </head>
+
+<body>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div cla <div class="article-content">
+            <p>
+                <strong>Citroen e-C3X</strong> भारत की सबसे किफायती इलेक्ट्रिक हैचबैक में से एक है, जो फ्रेंच ऑटोमेकर Citroen की तरफ से लॉन्च की गई है। 
+                यह कार Citroen C3 का प्योर इलेक्ट्रिक वर्जन है और इसे खासतौर पर भारतीय बाजार को ध्यान में रखकर डिजाइन किया गया है। 
+                अगर आप एक बजट-फ्रेंडली इलेक्ट्रिक कार खरीदने की सोच रहे हैं, तो e-C3X एक बेहतरीन ऑप्शन हो सकती है।
+            </p>
+
+            <div class="highlight-box">
+                <p><i class="fas fa-bolt" style="color: #ff4500; margin-right: 8px;"></i>
+                <strong>Quick Fact:</strong> Citroen e-C3X एक बार फुल चार्ज होने पर <strong>325 km</strong> की रेंज देती है और इसकी कीमत लगभग <strong>₹12-14 लाख</strong> (एक्स-शोरूम) के बीच है।</p>
+            </div>
+
+            <h2>🔋 Citroen e-C3X Battery & Motor Specifications</h2>
+            <p>
+                Citroen e-C3X में <strong>29.2 kWh</strong> की Lithium-Ion बैटरी पैक लगी है, जो <strong>Permanent Magnet Synchronous Motor</strong> से जुड़ी हुई है। 
+                यह मोटर <strong>56.22 bhp</strong> की मैक्स पावर और <strong>143 Nm</strong> का पीक टॉर्क जनरेट करती है। 
+                यह कार <strong>Front Wheel Drive (FWD)</strong> कॉन्फ़िगरेशन में आती है और इसमें <strong>1-Speed Automatic</strong> गियरबॉक्स है।
+            </p>
+
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Specification</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Battery Capacity</td>
+                        <td class="spec-value">29.2 kWh (Lithium-Ion)</td>
+                    </tr>
+                    <tr>
+                        <td>Motor Type</td>
+                        <td class="spec-value">Permanent Magnet Synchronous Motor</td>
+                    </tr>
+                    <tr>
+                        <td>Motor Power</td>
+                        <td class="spec-value">41.92 kW</td>
+                    </tr>
+                    <tr>
+                        <td>Max Power</td>
+                        <td class="spec-value">56.22 bhp</td>
+                    </tr>
+                    <tr>
+                        <td>Max Torque</td>
+                        <td class="spec-value">143 Nm</td>
+                    </tr>
+                    <tr>
+                        <td>Range (ARAI Certified)</td>
+                        <td class="spec-value">325 km</td>
+                    </tr>
+                    <tr>
+                        <td>Transmission</td>
+                        <td class="spec-value">1-Speed Automatic</td>
+                    </tr>
+                    <tr>
+                        <td>Drive Type</td>
+                        <td class="spec-value">Front Wheel Drive (FWD)</td>
+                    </tr>
+                    <tr>
+                        <td>Seating Capacity</td>
+                        <td class="spec-value">5 Persons</td>
+                    </tr>
+                    <tr>
+                        <td>Boot Space</td>
+                        <td class="spec-value">315 Litres</td>
+                    </tr>
+                    <tr>
+                        <td>Body Type</td>
+                        <td class="spec-value">Hatchback</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>⚡ Charging Details</h2>
+            <p>
+                Citroen e-C3X में <strong>CCS-II</strong> चार्जिंग पोर्ट दिया गया है। अगर आप <strong>DC Fast Charging</strong> का इस्तेमाल करते हैं, 
+                तो यह कार सिर्फ <strong>57 मिनट</strong> में <strong>10% से 80%</strong> तक चार्ज हो जाती है। 
+                वहीं, अगर आप घर पर सामान्य <strong>15 Ampere Plug Point</strong> से चार्ज करते हैं, तो यह <strong>10 घंटे 30 मिनट</strong> में 10% से 100% तक चार्ज होगी।
+            </p>
+
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Charging Type</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DC Fast Charging (10% - 80%)</td>
+                        <td class="spec-value">57 Minutes</td>
+                    </tr>
+                    <tr>
+                        <td>15A Plug Point (10% - 100%)</td>
+                        <td class="spec-value">10 Hours 30 Minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Charging Port Type</td>
+                        <td class="spec-value">CCS-II</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>✨ Key Features of Citroen e-C3X</h2>
+            <p>
+                Citroen e-C3X में कई मॉडर्न फीचर्स दिए गए हैं जो इसे बजट EV सेगमेंट में एक प्रीमियम फील देते हैं।
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Power Steering</span></div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Anti-lock Braking System (ABS)</span></div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Air Conditioner</span></div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Driver Airbag</span></div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Passenger Airbag</span></div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Alloy Wheels</span></div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Multi-function Steering Wheel</span></div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Wheel Covers</span></div>
+            </div>
+
+            <h2>👍 Pros & Cons</h2>
+            <div class="pros-cons">
+                <div class="pros">
+                    <h3><i class="fas fa-thumbs-up"></i> Pros</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 325 km की डीसेंट रेंज</li>
+                        <li><i class="fas fa-check"></i> 57 मिनट में Fast Charging</li>
+                        <li><i class="fas fa-check"></i> बजट-फ्रेंडली प्राइस</li>
+                        <li><i class="fas fa-check"></i> 315L बड़ा Boot Space</li>
+                        <li><i class="fas fa-check"></i> 5-Seater Practical Design</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h3><i class="fas fa-thumbs-down"></i> Cons</h3>
+                    <ul>
+                        <li><i class="fas fa-times"></i> 56 bhp पावर थोड़ी कम है</li>
+                        <li><i class="fas fa-times"></i> No Sunroof Option</li>
+                        <li><i class="fas fa-times"></i> Limited Fast Charging Network</li>
+                        <li><i class="fas fa-times"></i> No Rear AC Vents</li>
+                        <li><i class="fas fa-times"></i> Basic Interior Quality</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>💰 Citroen e-C3X Price in India</h2>
+            <p>
+                Citroen e-C3X को भारत में किफायती EV सेगमेंट में लॉन्च किया गया है। इसकी एक्स-शोरूम कीमत लगभग <strong>₹12.76 लाख</strong> से शुरू होती है। 
+                टॉप वेरिएंट की कीमत लगभग <strong>₹13.50 लाख</strong> के आसपास है। 
+                यह कीमत Tata Tiago EV और MG Comet EV के बीच में रखी गई है, जिससे यह एक वैल्यू-फॉर-मनी ऑप्शन बनती है।
+            </p>
+
+            <div class="price-tag">
+                <div class="label">Starting Ex-Showroom Price</div>
+                <div class="price">₹12.76 Lakh*</div>
+            </div>
+
+            <h2>🏆 Final Verdict</h2>
+            <p>
+                <strong>Citroen e-C3X</strong> उन खरीदारों के लिए एक शानदार विकल्प है जो एक <strong>बजट-फ्रेंडली, प्रैक्टिकल और रिलायबल इलेक्ट्रिक कार</strong> 
+                खोज रहे हैं। 325 km की रेंज, 57 मिनट की Fast Charging, और 315L boot space इसे डेली कम्यूट और छोटी फैमिली के लिए परफेक्ट बनाते हैं। 
+                हालांकि, अगर आपको ज्यादा पावर और प्रीमियम फीचर्स चाहिए, तो आप Tata Punch EV या MG Comet EV भी देख सकते हैं।
+            </p>
+
+            <div class="cta-box">
+                <h3><i class="fas fa-car" style="color: #ff4500;"></i> Compare with Other EVs</h3>
+                <p>Citroen e-C3X को Tata Tiago EV, MG Comet EV और Citroen eC3 से कंपेयर करें।</p>
+                <a href="compare-evs.html" class="cta-btn">Compare Now</a>
+            </div>
+
+            <div class="tags">
+                <span class="tag">Citroen e-C3X</span>
+                <span class="tag">Electric Car</span>
+                <span class="tag">EV Under 15 Lakh</span>
+                <span class="tag">325 km Range</span>
+                <span class="tag">Citroen India</span>
+                <span class="tag">Budget EV</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>"""
