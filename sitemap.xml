@@ -1,10 +1,5 @@
-
-# Complete sitemap.xml with ALL pages
-
-sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- ====== MAIN PAGES (16) ====== -->
   <url>
     <loc>https://sunkrt.in/</loc>
     <lastmod>2026-06-29</lastmod>
@@ -101,8 +96,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- ====== BUSINESS ARTICLES (4) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Business%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -127,8 +120,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== CARS NEWS ARTICLES (5) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Cars%20News%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -159,8 +150,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== ENTERTAINMENT ARTICLES (4) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Entertainment%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -185,8 +174,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== FOOD ARTICLES (4) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Food%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -211,8 +198,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== HEALTH ARTICLES (4) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Health%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -237,8 +222,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== LIFESTYLE ARTICLES (5) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/LIFESTYLE%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -269,8 +252,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== LATEST NEWS ARTICLES (12) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Latest%20News%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -343,8 +324,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== LATEST NEWS UPDATES (5) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Latest%20News%20Updates1.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -375,8 +354,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== LATEST SPORTS NEWS (8) - Empty files but include them ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Latest%20sports%20news%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -425,8 +402,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  <!-- ====== RELIGION ARTICLES (4) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Religion%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -451,8 +426,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== SPORTS ARTICLES (4) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Sports%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -477,16 +450,12 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== SPORTS NEWS SEE ALL ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Sports%20news%20see%20all.html</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  <!-- ====== TECHNOLOGY ARTICLES (4) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Technology%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -511,8 +480,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== TOP STORIES ARTICLES (5) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Top%20Stories%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -543,8 +510,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== TRENDING NEWS ARTICLES (3) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Trending%20News%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -563,8 +528,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== UPCOMING CARS ARTICLES (4) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/Upcoming%20Cars%201.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -589,8 +552,6 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- ====== SPECIAL PAGES (2) ====== -->
   <url>
     <loc>https://sunkrt.in/articles/garmi.html</loc>
     <lastmod>2026-06-29</lastmod>
@@ -603,6 +564,4 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-</urlset>'''
-
+</urlset>
