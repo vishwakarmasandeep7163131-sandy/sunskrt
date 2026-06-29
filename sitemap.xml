@@ -606,9 +606,3 @@ sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
   
 </urlset>'''
 
-# Save to file
-with open('/mnt/agents/output/sitemap.xml', 'w', encoding='utf-8') as f:
-    f.write(sitemap)
-
-print("✅ sitemap.xml saved successfully!")
-print(f"📊 Total URLs: 16 (main) + 78 (articles) = 94 pages")
