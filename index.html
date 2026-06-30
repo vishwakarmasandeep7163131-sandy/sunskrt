@@ -55,7 +55,12 @@
       border-bottom:1px solid #222;
     }
 
-    .logo{
+    .logo
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div> {
       font-size:28px;
       font-weight:700;
       color:#ff3c00;
@@ -472,6 +477,22 @@ window.location.href =
       <a href="Contact.html">Contact</a>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+  <a href="Home.html">Home</a>
+  <a href="Sports.html">Sports</a>
+  <a href="Health.html">Health</a>
+  <a href="Cars.html">Cars</a>
+  <a href="News.html">News</a>
+  <a href="About.html">About</a>
+  <a href="Contact.html">Contact</a>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('active');
+    document.getElementById('mobileMenu').classList.toggle('active');
+  }
+</script>
   <!-- HERO -->
 
 <!DOCTYPE html>
