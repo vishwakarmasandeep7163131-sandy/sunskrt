@@ -1456,4 +1456,19 @@ footer p {
 with open('/mnt/agents/output/style.css', 'w', encoding='utf-8') as f:
     f.write(css_code)
 
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 9999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body{
+    padding-top: 80px;
+}
+
 print("style.css saved successfully!")
