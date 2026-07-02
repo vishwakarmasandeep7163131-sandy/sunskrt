@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Champions League Final - PSG vs Arsenal</title>
+    <title>बिजनेस - शेयर बाजार, स्टार्टअप, अर्थव्यवस्था और फाइनेंस न्यूज | AutoDrive</title>
+    <meta name="description" content="शेयर बाजार, स्टॉक मार्केट, स्टार्टअप, बिजनेस आइडियाज, म्यूचुअल फंड, क्रिप्टोकरेंसी और भारतीय अर्थव्यवस्था की ताज़ा खबरें।">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #0f0f0f;
             color: #ffffff;
             line-height: 1.6;
         }
-        
+
         /* ====== NAVBAR ====== */
         .navbar {
             background: #1a1a1a;
@@ -27,20 +28,20 @@
             justify-content: space-between;
             border-bottom: 1px solid #2a2a2a;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: 800;
             color: #ff4500;
             text-decoration: none;
         }
-        
+
         .search-box {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .search-input {
             background: #2a2a2a;
             border: 1px solid #3a3a3a;
@@ -51,11 +52,11 @@
             font-size: 14px;
             outline: none;
         }
-        
+
         .search-input::placeholder {
             color: #888;
         }
-        
+
         .search-btn {
             background: #ff4500;
             color: #fff;
@@ -66,13 +67,13 @@
             cursor: pointer;
             font-size: 14px;
         }
-        
+
         .nav-links {
             display: flex;
             gap: 25px;
             list-style: none;
         }
-        
+
         .nav-links a {
             color: #ccc;
             text-decoration: none;
@@ -80,22 +81,22 @@
             font-weight: 500;
             transition: color 0.3s;
         }
-        
+
         .nav-links a:hover {
             color: #ff4500;
         }
-        
+
         .nav-links a.active {
             color: #ff4500;
         }
-        
+
         /* ====== MAIN CONTAINER ====== */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 30px 20px;
         }
-        
+
         /* ====== SECTION TITLE ====== */
         .section-title {
             font-size: 28px;
@@ -103,7 +104,7 @@
             margin-bottom: 25px;
             color: #ffffff;
         }
-        
+
         /* ====== HERO ARTICLE ====== */
         .hero-main {
             background: #1a1a1a;
@@ -112,14 +113,14 @@
             margin-bottom: 30px;
             border: 1px solid #2a2a2a;
         }
-        
+
         .hero-image {
             width: 100%;
             height: 450px;
             object-fit: cover;
             display: block;
         }
-        
+
         .image-caption {
             text-align: right;
             font-size: 11px;
@@ -127,11 +128,11 @@
             padding: 8px 20px 0 0;
             font-style: italic;
         }
-        
+
         .hero-content {
             padding: 20px 25px 25px 25px;
         }
-        
+
         .hero-date {
             color: #ff4500;
             font-size: 13px;
@@ -141,7 +142,7 @@
             align-items: center;
             gap: 6px;
         }
-        
+
         .hero-title {
             font-size: 28px;
             font-weight: 700;
@@ -149,13 +150,13 @@
             margin-bottom: 15px;
             color: #ffffff;
         }
-        
+
         .hero-desc {
             font-size: 16px;
             color: #aaa;
             line-height: 1.7;
         }
-        
+
         /* ====== FULL DESCRIPTION ====== */
         .full-description {
             background: #1a1a1a;
@@ -164,35 +165,145 @@
             margin-bottom: 35px;
             border: 1px solid #2a2a2a;
         }
-        
+
         .full-description p {
             font-size: 16px;
             color: #ccc;
             line-height: 1.9;
             margin-bottom: 15px;
         }
-        
+
         .full-description p:last-child {
             margin-bottom: 0;
         }
-        
-        /* ====== MORE ARTICLES ====== */
-        .more-header {
+
+        /* ====== PAGE NAVIGATION LINKS ====== */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 40px 0;
+            padding: 20px 0;
+            border-top: 2px solid #2a2a2a;
+            border-bottom: 2px solid #2a2a2a;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #fff;
+            background: #1a1a1a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+            flex: 1;
+            max-width: 48%;
+        }
+
+        .nav-link:hover {
+            border-color: #ff4500;
+            background: #222;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.prev {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .nav-link.next {
+            justify-content: flex-end;
+            text-align: right;
+            flex-direction: row-reverse;
+        }
+
+        .nav-link .arrow {
+            font-size: 24px;
+            color: #ff4500;
+            font-weight: 700;
+        }
+
+        .nav-link .nav-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link .nav-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .nav-link .nav-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        /* ====== TAGS ====== */
+        .tags-section {
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .tags-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #2a2a2a;
+            color: #ccc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #333;
+        }
+
+        .tag:hover {
+            background: #ff4500;
+            color: #fff;
+            border-color: #ff4500;
+        }
+
+        /* ====== RELATED ARTICLES GRID ====== */
+        .related-section {
+            margin: 40px 0;
+        }
+
+        .related-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
-        .more-title {
-            font-size: 20px;
+
+        .related-title {
+            font-size: 22px;
             font-weight: 700;
             color: #ff4500;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
+
         .see-all {
             color: #ff4500;
             text-decoration: none;
@@ -203,17 +314,83 @@
             gap: 4px;
             cursor: pointer;
         }
-        
+
         .see-all:hover {
             text-decoration: underline;
         }
-        
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff4500;
+        }
+
+        .related-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .related-card-content {
+            padding: 15px;
+        }
+
+        .related-card-category {
+            font-size: 11px;
+            color: #ff4500;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .related-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #eee;
+        }
+
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .articles-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-        
+
         .article-card {
             display: flex;
             gap: 15px;
@@ -223,14 +400,16 @@
             cursor: pointer;
             transition: transform 0.2s, background 0.2s;
             border: 1px solid #2a2a2a;
+            text-decoration: none;
+            color: #fff;
         }
-        
+
         .article-card:hover {
             transform: translateY(-3px);
             background: #222;
             border-color: #ff4500;
         }
-        
+
         .article-thumb {
             width: 120px;
             height: 80px;
@@ -238,20 +417,128 @@
             border-radius: 8px;
             flex-shrink: 0;
         }
-        
+
         .article-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        
+
         .article-title {
             font-size: 16px;
             font-weight: 600;
             color: #eee;
             line-height: 1.4;
         }
-        
+
+        /* ====== BUSINESS BADGES ====== */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .badge-stock {
+            background: #00C853;
+            color: white;
+        }
+
+        .badge-startup {
+            background: #2962FF;
+            color: white;
+        }
+
+        .badge-economy {
+            background: #FF6D00;
+            color: white;
+        }
+
+        .badge-crypto {
+            background: #FFD600;
+            color: black;
+        }
+
+        .badge-mutual {
+            background: #AA00FF;
+            color: white;
+        }
+
+        .badge-business {
+            background: #00BFA5;
+            color: white;
+        }
+
+        /* ====== MARKET TICKER ====== */
+        .market-ticker {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .ticker-item {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .ticker-name {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .ticker-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00C853;
+        }
+
+        .ticker-change {
+            font-size: 13px;
+            color: #00C853;
+        }
+
+        .ticker-down {
+            color: #FF1744;
+        }
+
+        /* ====== TRAILER BUTTON ====== */
+        .trailer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #00C853;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .trailer-btn:hover {
+            background: #00E676;
+            transform: scale(1.05);
+        }
+
+        /* ====== STAR RATING ====== */
+        .star-rating {
+            color: #FFD600;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
         /* ====== RESPONSIVE ====== */
         @media (max-width: 768px) {
             .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
@@ -263,21 +550,41 @@
             .full-description { padding: 20px; }
             .article-thumb { width: 90px; height: 60px; }
             .article-title { font-size: 14px; }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+            .nav-link {
+                max-width: 100%;
+                width: 100%;
+            }
+            .nav-link.next {
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            .market-ticker {
+                flex-direction: column;
+            }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
     <!-- ====== NAVBAR ====== -->
     <nav class="navbar">
-        <a href="#" class="logo">AutoDrive</a>
-        
-        </div>
-        
+        <a href="index.html" class="logo">AutoDrive</a>
+
         <ul class="nav-links">
-             <li><a href="Home.html">Home</a></li>
+            <li><a href="Home.html">Home</a></li>
             <li><a href="Sports.html">Sports</a></li>
-            <li><a href="Health.html" class="active">Health</a></li>
+            <li><a href="Entertainment.html">Entertainment</a></li>
+            <li><a href="Business.html" class="active">Business</a></li>
+            <li><a href="Health.html">Health</a></li>
             <li><a href="Cars.html">Cars</a></li>
             <li><a href="News.html">News</a></li>
             <li><a href="About.html">About</a></li>
@@ -287,73 +594,207 @@
 
     <!-- ====== MAIN CONTENT ====== -->
     <div class="container">
-        
-        <h2 class="section-title">Champions League News</h2>
-        
-        <!-- ====== BADI IMAGE (UPAR) ====== -->
-        <div class="hero-main">
-            <img class="hero-image" src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=900" alt="PSG Champions League Trophy">
-            <p class="image-caption">Odd Andersen/AFP/Getty Images</p>
-            <div class="hero-content">
-                <div class="hero-date">📅 May 31, 2026 • 11:00 PM</div>
-                <h1 class="hero-title">PSG retains Champions League title after edging past Arsenal on penalties</h1>
-                <p class="hero-desc">Paris Saint-Germain defended their European crown in dramatic fashion at the Puskás Aréna in Budapest.</p>
+
+        <h2 class="section-title">📈 बिजनेस - शेयर बाजार, स्टार्टअप और अर्थव्यवस्था</h2>
+
+        <!-- ====== MARKET TICKER ====== -->
+        <div class="market-ticker">
+            <div class="ticker-item">
+                <div class="ticker-name">NIFTY 50</div>
+                <div class="ticker-value">24,350.45</div>
+                <div class="ticker-change">▲ +185.30 (+0.77%)</div>
+            </div>
+            <div class="ticker-item">
+                <div class="ticker-name">SENSEX</div>
+                <div class="ticker-value">80,123.85</div>
+                <div class="ticker-change">▲ +520.15 (+0.65%)</div>
+            </div>
+            <div class="ticker-item">
+                <div class="ticker-name">BANK NIFTY</div>
+                <div class="ticker-value">52,890.20</div>
+                <div class="ticker-change ticker-down">▼ -125.40 (-0.24%)</div>
+            </div>
+            <div class="ticker-item">
+                <div class="ticker-name">USD/INR</div>
+                <div class="ticker-value">₹83.45</div>
+                <div class="ticker-change">▲ +0.12 (+0.14%)</div>
             </div>
         </div>
-        
-        <!-- ====== DESCRIPTION (IMAGE KE NICHE) ====== -->
-        <div class="full-description">
-            <p>Paris Saint-Germain successfully defended their European crown in a dramatic Champions League final at the Puskás Aréna in Budapest. After a tense 1-1 draw through 120 minutes of football, the French champions held their nerve to win 4-3 on penalties against a resilient Arsenal side.</p>
-            
-            <p>The victory marks PSG's second consecutive Champions League triumph and cements their status as the dominant force in European football. Kylian Mbappé once again proved decisive, scoring the crucial penalty in the shootout after a man-of-the-match performance during regulation time.</p>
-            
-            <p>Arsenal, appearing in their first final since 2006, pushed the defending champions all the way. Bukayo Saka gave the Gunners a first-half lead before Mbappé equalized in the 67th minute. Despite creating several chances in extra time, neither side could find a winner, setting up the dramatic penalty shootout.</p>
-            
-            <p>For Arsenal, it was a case of so near yet so far. Mikel Arteta's young side had defied expectations to reach the final, knocking out Real Madrid and Bayern Munich along the way. Goalkeeper David Raya, whose journey from non-league football to the biggest stage in club football has captured hearts worldwide, saved two penalties but could not prevent PSG from lifting the trophy.</p>
+
+        <!-- ====== HERO ARTICLE ====== -->
+        <div class="hero-main">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900" alt="Stock Market">
+            <div class="image-caption">Indian Stock Market - BSE & NSE</div>
+            <div class="hero-content">
+                <div class="hero-date">📊 MARKET HIGHLIGHT</div>
+                <h1 class="hero-title">Sensex 80,000 के पार: भारतीय शेयर बाजार में नया इतिहास, Nifty भी रिकॉर्ड ऊंचाई पर</h1>
+                <p class="hero-desc">भारतीय शेयर बाजार ने 2026 में नया मील का पत्थर हासिल किया। Sensex पहली बार 80,000 के पार पहुंचा और Nifty 50 ने 24,300 का स्तर छुआ। FIIs की तेजी, GDP growth और corporate earnings ने बाजार को नई ऊंचाइयों पर पहुंचाया। पूरी डिटेल्स जानें...</p>
+                <a href="#" class="trailer-btn">📈 Live Market Data</a>
+            </div>
         </div>
-        
+
+        <!-- ====== FULL DESCRIPTION ====== -->
+        <div class="full-description">
+            <p><span class="badge badge-stock">STOCK MARKET</span> <span class="badge badge-economy">ECONOMY</span></p>
+            <p>भारतीय शेयर बाजार 2026 में दुनिया के सबसे तेजी से बढ़ते बाजारों में से एक बन गया है। Sensex ने 80,000 का स्तर पार करके नया इतिहास रच दिया है। इस रैली में IT, Banking और FMCG सेक्टर ने अहम योगदान दिया है।</p>
+            <p>विदेशी संस्थागत निवेशक (FIIs) ने जनवरी-जून 2026 में ₹1.5 लाख करोड़ से ज्यादा का निवेश किया है। RBI की stable monetary policy, GST collection में रिकॉर्ड और manufacturing PMI में तेजी ने निवेशकों का भरोसा बढ़ाया है।</p>
+            <div class="star-rating">⭐⭐⭐⭐⭐ (बुलिश ट्रेंड)</div>
+        </div>
+
+        <!-- ====== PAGE NAVIGATION ====== -->
+        <div class="page-navigation">
+            <a href="#" class="nav-link prev">
+                <span class="arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Previous</span>
+                    <span class="nav-title">Paytm का Q1 Results: Revenue 25% बढ़ा</span>
+                </span>
+            </a>
+            <a href="#" class="nav-link next">
+                <span class="arrow">→</span>
+                <span class="nav-text">
+                    <span class="nav-label">Next</span>
+                    <span class="nav-title">RBI Repo Rate Cut: EMI सस्ती होगी?</span>
+                </span>
+            </a>
+        </div>
+
+        <!-- ====== TAGS ====== -->
+        <div class="tags-section">
+            <div class="tags-label">Tags:</div>
+            <div class="tags-list">
+                <a href="#" class="tag">Sensex</a>
+                <a href="#" class="tag">Nifty</a>
+                <a href="#" class="tag">Stock Market</a>
+                <a href="#" class="tag">FIIs</a>
+                <a href="#" class="tag">RBI</a>
+                <a href="#" class="tag">GDP Growth</a>
+                <a href="#" class="tag">Indian Economy</a>
+                <a href="#" class="tag">BSE</a>
+                <a href="#" class="tag">NSE</a>
+            </div>
+        </div>
+
+        <!-- ====== RELATED ARTICLES ====== -->
+        <div class="related-section">
+            <div class="related-header">
+                <h3 class="related-title">🔥 Trending in Business</h3>
+                <a href="#" class="see-all">See All →</a>
+            </div>
+
+            <div class="related-grid">
+                <a href="#" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1553729459-afe8f2fd2e7e?w=400" alt="Mutual Funds">
+                    <div class="related-card-content">
+                        <div class="related-card-category">MUTUAL FUNDS</div>
+                        <div class="related-card-title">SIP Returns: 10 साल में ₹5000 SIP से कितना मिला?</div>
+                    </div>
+                </a>
+
+                <a href="#" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400" alt="Crypto">
+                    <div class="related-card-content">
+                        <div class="related-card-category">CRYPTO</div>
+                        <div class="related-card-title">Bitcoin $100,000: क्रिप्टो बुल रन शुरू, Altcoins में तेजी</div>
+                    </div>
+                </a>
+
+                <a href="#" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400" alt="Startup">
+                    <div class="related-card-content">
+                        <div class="related-card-category">STARTUP</div>
+                        <div class="related-card-title">Unicorn 2026: 5 नए भारतीय Startups $1B क्लब में</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
         <!-- ====== MORE ARTICLES (SABSE NICHE) ====== -->
         <div class="more-header">
-            <h3 class="more-title">❤ Latest Champions League News</h3>
-            
+            <h3 class="more-title">📰 Latest Business News</h3>
+            <a href="Business.html" class="see-all">See All →</a>
         </div>
-        
+
         <div class="articles-list">
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=200" alt="Arsenal">
+            <a href="articles/Business 1.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=200" alt="Stock Market">
                 <div class="article-text">
-                    <p class="article-title">As the Arsenal party bus pulls into Budapest, PSG lies in wait</p>
+                    <p class="article-title"><span class="badge badge-stock">STOCK MARKET</span> Adani Group Shares: Hindenburg Report के बाद 2 साल में 300% रिटर्न</p>
                 </div>
-            </div>
-            
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200" alt="David Raya">
+            </a>
+
+            <a href="articles/Business 2.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1553729459-afe8f2fd2e7e?w=200" alt="Mutual Funds">
                 <div class="article-text">
-                    <p class="article-title">'I never lost faith': David Raya's incredible journey from non-league to Champions League finalist</p>
+                    <p class="article-title"><span class="badge badge-mutual">MUTUAL FUNDS</span> Best SIP Plans 2026: ₹1000 से शुरू, 5 साल में ₹1 लाख से ज्यादा</p>
                 </div>
-            </div>
-            
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1522778119026-d647f0565c6a?w=200" alt="Tactics">
+            </a>
+
+            <a href="articles/Business 3.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=200" alt="Crypto">
                 <div class="article-text">
-                    <p class="article-title">Tactical Breakdown: How PSG's high press dismantled Arsenal's build-up play</p>
+                    <p class="article-title"><span class="badge badge-crypto">CRYPTO</span> Ethereum ETF India: SEBI का Green Signal, अब भारत में भी Crypto ETF</p>
                 </div>
-            </div>
-            
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=200" alt="Stadium">
+            </a>
+
+            <a href="articles/Business 4.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200" alt="Startup">
                 <div class="article-text">
-                    <p class="article-title">Budapest ready to host biggest final in Champions League history</p>
+                    <p class="article-title"><span class="badge badge-startup">STARTUP</span> Ola Electric IPO: ₹5000 करोड़ का Issue, Retail Investors के लिए 35% Quota</p>
                 </div>
-            </div>
+            </a>
+
+            <a href="articles/Business 5.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200" alt="Economy">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-economy">ECONOMY</span> India GDP Growth 2026: 7.2% रहने का अनुमान, IMF ने बढ़ाया Estimate</p>
+                </div>
+            </a>
+
+            <a href="articles/Business 6.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=200" alt="Banking">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-business">BANKING</span> SBI FD Rates July 2026: 7.5% तक ब्याज, Senior Citizens को Extra 0.5%</p>
+                </div>
+            </a>
+
+            <a href="articles/Business 7.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200" alt="Tax">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-economy">TAX</span> New Tax Regime 2026: ₹7.5 लाख तक Zero Tax, स्लैब में बदलाव</p>
+                </div>
+            </a>
+
+            <a href="articles/Business 8.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=200" alt="Real Estate">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-business">REAL ESTATE</span> Property Rates Delhi NCR: 2026 में 15% बढ़े, कहां Invest करें?</p>
+                </div>
+            </a>
+
+            <a href="articles/Business 9.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=200" alt="Gold">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-stock">GOLD</span> Gold Price Today: ₹75,000 प्रति 10 ग्राम, अभी खरीदें या इंतजार करें?</p>
+                </div>
+            </a>
+
+            <a href="articles/Business 10.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200" alt="Insurance">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-mutual">INSURANCE</span> LIC New Policy 2026: ₹500/Month में ₹10 लाख का जीवन बीमा</p>
+                </div>
+            </a>
+
+            <a href="articles/Business 11.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200" alt="Business Ideas">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-startup">BUSINESS IDEAS</span> ₹50,000 से शुरू करें ये 10 Business, महीने में ₹1 लाख कमाई</p>
+                </div>
+            </a>
         </div>
-        
+
     </div>
 
 </body>
-</html>'''
-
-with open('/mnt/agents/output/news_page.html', 'w', encoding='utf-8') as f:
-    f.write(html_code)
-
-print("File saved successfully!")
+</html>
