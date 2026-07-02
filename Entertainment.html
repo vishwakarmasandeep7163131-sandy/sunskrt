@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Champions League Final - PSG vs Arsenal</title>
+    <title>मनोरंजन - Bollywood, Movies, Web Series, Celebrity News | AutoDrive</title>
+    <meta name="description" content="बॉलीवुड, हॉलीवुड, वेब सीरीज, सेलिब्रिटी न्यूज़, मूवी रिव्यू, गॉसिप और एंटरटेनमेंट की ताज़ा खबरें।">
     <style>
         * {
             margin: 0;
@@ -176,16 +177,126 @@
             margin-bottom: 0;
         }
         
-        /* ====== MORE ARTICLES ====== */
-        .more-header {
+        /* ====== PAGE NAVIGATION LINKS ====== */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 40px 0;
+            padding: 20px 0;
+            border-top: 2px solid #2a2a2a;
+            border-bottom: 2px solid #2a2a2a;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #fff;
+            background: #1a1a1a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+            flex: 1;
+            max-width: 48%;
+        }
+        
+        .nav-link:hover {
+            border-color: #ff4500;
+            background: #222;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.prev {
+            justify-content: flex-start;
+            text-align: left;
+        }
+        
+        .nav-link.next {
+            justify-content: flex-end;
+            text-align: right;
+            flex-direction: row-reverse;
+        }
+        
+        .nav-link .arrow {
+            font-size: 24px;
+            color: #ff4500;
+            font-weight: 700;
+        }
+        
+        .nav-link .nav-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-link .nav-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        
+        .nav-link .nav-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.4;
+        }
+        
+        /* ====== TAGS ====== */
+        .tags-section {
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #2a2a2a;
+        }
+        
+        .tags-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: #2a2a2a;
+            color: #ccc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #333;
+        }
+        
+        .tag:hover {
+            background: #ff4500;
+            color: #fff;
+            border-color: #ff4500;
+        }
+        
+        /* ====== RELATED ARTICLES GRID ====== */
+        .related-section {
+            margin: 40px 0;
+        }
+        
+        .related-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
         
-        .more-title {
-            font-size: 20px;
+        .related-title {
+            font-size: 22px;
             font-weight: 700;
             color: #ff4500;
             display: flex;
@@ -208,6 +319,72 @@
             text-decoration: underline;
         }
         
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .related-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff4500;
+        }
+        
+        .related-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .related-card-content {
+            padding: 15px;
+        }
+        
+        .related-card-category {
+            font-size: 11px;
+            color: #ff4500;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .related-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #eee;
+        }
+        
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+        
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
         .articles-list {
             display: flex;
             flex-direction: column;
@@ -223,6 +400,8 @@
             cursor: pointer;
             transition: transform 0.2s, background 0.2s;
             border: 1px solid #2a2a2a;
+            text-decoration: none;
+            color: #fff;
         }
         
         .article-card:hover {
@@ -252,6 +431,74 @@
             line-height: 1.4;
         }
         
+        /* ====== ENTERTAINMENT BADGES ====== */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .badge-bollywood {
+            background: #e50914;
+            color: white;
+        }
+        
+        .badge-hollywood {
+            background: #f5c518;
+            color: black;
+        }
+        
+        .badge-webseries {
+            background: #e50914;
+            color: white;
+        }
+        
+        .badge-music {
+            background: #1db954;
+            color: white;
+        }
+        
+        .badge-gossip {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .badge-review {
+            background: #4ecdc4;
+            color: black;
+        }
+        
+        /* ====== TRAILER BUTTON ====== */
+        .trailer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e50914;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .trailer-btn:hover {
+            background: #ff0a16;
+            transform: scale(1.05);
+        }
+        
+        /* ====== STAR RATING ====== */
+        .star-rating {
+            color: #f5c518;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        
         /* ====== RESPONSIVE ====== */
         @media (max-width: 768px) {
             .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
@@ -263,6 +510,22 @@
             .full-description { padding: 20px; }
             .article-thumb { width: 90px; height: 60px; }
             .article-title { font-size: 14px; }
+            
+            .page-navigation {
+                flex-direction: column;
+            }
+            .nav-link {
+                max-width: 100%;
+                width: 100%;
+            }
+            .nav-link.next {
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -270,14 +533,13 @@
 
     <!-- ====== NAVBAR ====== -->
     <nav class="navbar">
-        <a href="#" class="logo">AutoDrive</a>
-        
-        </div>
+        <a href="index.html" class="logo">AutoDrive</a>
         
         <ul class="nav-links">
-             <li><a href="Home.html">Home</a></li>
+            <li><a href="Home.html">Home</a></li>
             <li><a href="Sports.html">Sports</a></li>
-            <li><a href="Health.html" class="active">Health</a></li>
+            <li><a href="Entertainment.html" class="active">Entertainment</a></li>
+            <li><a href="Health.html">Health</a></li>
             <li><a href="Cars.html">Cars</a></li>
             <li><a href="News.html">News</a></li>
             <li><a href="About.html">About</a></li>
@@ -288,72 +550,181 @@
     <!-- ====== MAIN CONTENT ====== -->
     <div class="container">
         
-        <h2 class="section-title">Champions League News</h2>
+        <h2 class="section-title">🎬 मनोरंजन - Bollywood, Movies & Web Series</h2>
         
-        <!-- ====== BADI IMAGE (UPAR) ====== -->
+        <!-- ====== HERO ARTICLE ====== -->
         <div class="hero-main">
-            <img class="hero-image" src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=900" alt="PSG Champions League Trophy">
-            <p class="image-caption">Odd Andersen/AFP/Getty Images</p>
+            <img class="hero-image" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=900" alt="Bollywood">
+            <div class="image-caption">Bollywood Cinema</div>
             <div class="hero-content">
-                <div class="hero-date">📅 May 31, 2026 • 11:00 PM</div>
-                <h1 class="hero-title">PSG retains Champions League title after edging past Arsenal on penalties</h1>
-                <p class="hero-desc">Paris Saint-Germain defended their European crown in dramatic fashion at the Puskás Aréna in Budapest.</p>
+                <div class="hero-date">🔥 ट्रेंडिंग</div>
+                <h1 class="hero-title">Shah Rukh Khan की 'Pathaan 2' की शूटिंग शुरू, Deepika Padukone भी होंगी वापसी</h1>
+                <p class="hero-desc">YRF की स्पाई यूनिवर्स की सबसे बड़ी फिल्म 'Pathaan 2' की शूटिंग जनवरी 2026 से शुरू होगी। Salman Khan का भी कैमियो होगा। पूरी डिटेल्स जानें...</p>
+                <a href="#" class="trailer-btn">▶ Watch Trailer</a>
             </div>
         </div>
         
-        <!-- ====== DESCRIPTION (IMAGE KE NICHE) ====== -->
+        <!-- ====== FULL DESCRIPTION ====== -->
         <div class="full-description">
-            <p>Paris Saint-Germain successfully defended their European crown in a dramatic Champions League final at the Puskás Aréna in Budapest. After a tense 1-1 draw through 120 minutes of football, the French champions held their nerve to win 4-3 on penalties against a resilient Arsenal side.</p>
+            <p><span class="badge badge-bollywood">BOLLYWOOD</span> <span class="badge badge-gossip">GOSSIP</span></p>
+            <p>Shah Rukh Khan की 'Pathaan' ने 2023 में बॉक्स ऑफिस पर धमाल मचा दिया था। अब इसके सीक्वल 'Pathaan 2' की तैयारियां जोरों पर हैं। Siddharth Anand के निर्देशन में बन रही इस फिल्म में Deepika Padukone अपनी भूमिका में वापसी करेंगी।</p>
+            <p>फिल्म में Salman Khan का Tiger कैमियो भी होगा, जो YRF स्पाई यूनिवर्स को और मजबूत करेगा। John Abraham के विलेन किरदार पर अभी संशय है।</p>
+            <div class="star-rating">⭐⭐⭐⭐⭐ (4.5/5)</div>
+        </div>
+        
+        <!-- ====== PAGE NAVIGATION ====== -->
+        <div class="page-navigation">
+            <a href="#" class="nav-link prev">
+                <span class="arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Previous</span>
+                    <span class="nav-title">Kalki 2898 AD Box Office Collection Day 15</span>
+                </span>
+            </a>
+            <a href="#" class="nav-link next">
+                <span class="arrow">→</span>
+                <span class="nav-text">
+                    <span class="nav-label">Next</span>
+                    <span class="nav-title">Stree 2: Shraddha Kapoor की हॉरर कॉमेडी</span>
+                </span>
+            </a>
+        </div>
+        
+        <!-- ====== TAGS ====== -->
+        <div class="tags-section">
+            <div class="tags-label">Tags:</div>
+            <div class="tags-list">
+                <a href="#" class="tag">Shah Rukh Khan</a>
+                <a href="#" class="tag">Pathaan 2</a>
+                <a href="#" class="tag">Deepika Padukone</a>
+                <a href="#" class="tag">YRF</a>
+                <a href="#" class="tag">Spy Universe</a>
+                <a href="#" class="tag">Salman Khan</a>
+                <a href="#" class="tag">Bollywood</a>
+                <a href="#" class="tag">Upcoming Movies</a>
+            </div>
+        </div>
+        
+        <!-- ====== RELATED ARTICLES ====== -->
+        <div class="related-section">
+            <div class="related-header">
+                <h3 class="related-title">🔥 Trending Now</h3>
+                <a href="#" class="see-all">See All →</a>
+            </div>
             
-            <p>The victory marks PSG's second consecutive Champions League triumph and cements their status as the dominant force in European football. Kylian Mbappé once again proved decisive, scoring the crucial penalty in the shootout after a man-of-the-match performance during regulation time.</p>
-            
-            <p>Arsenal, appearing in their first final since 2006, pushed the defending champions all the way. Bukayo Saka gave the Gunners a first-half lead before Mbappé equalized in the 67th minute. Despite creating several chances in extra time, neither side could find a winner, setting up the dramatic penalty shootout.</p>
-            
-            <p>For Arsenal, it was a case of so near yet so far. Mikel Arteta's young side had defied expectations to reach the final, knocking out Real Madrid and Bayern Munich along the way. Goalkeeper David Raya, whose journey from non-league football to the biggest stage in club football has captured hearts worldwide, saved two penalties but could not prevent PSG from lifting the trophy.</p>
+            <div class="related-grid">
+                <a href="#" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400" alt="Movies">
+                    <div class="related-card-content">
+                        <div class="related-card-category">MOVIES</div>
+                        <div class="related-card-title">Pushpa 2: The Rule - Allu Arjun की धमाकेदार वापसी</div>
+                    </div>
+                </a>
+                
+                <a href="#" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=400" alt="Web Series">
+                    <div class="related-card-content">
+                        <div class="related-card-category">WEB SERIES</div>
+                        <div class="related-card-title">Mirzapur Season 3: Kaleen Bhaiya का बदला</div>
+                    </div>
+                </a>
+                
+                <a href="#" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400" alt="Music">
+                    <div class="related-card-content">
+                        <div class="related-card-category">MUSIC</div>
+                        <div class="related-card-title">Arijit Singh का नया गाना 'Tum Hi Ho 2' रिलीज</div>
+                    </div>
+                </a>
+            </div>
         </div>
         
         <!-- ====== MORE ARTICLES (SABSE NICHE) ====== -->
         <div class="more-header">
-            <h3 class="more-title">❤ Latest Champions League News</h3>
-            
+            <h3 class="more-title">📰 Latest Entertainment News</h3>
+            <a href="Entertainment.html" class="see-all">See All →</a>
         </div>
         
         <div class="articles-list">
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=200" alt="Arsenal">
+            <a href="articles/Entertainment 1.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=200" alt="Bollywood">
                 <div class="article-text">
-                    <p class="article-title">As the Arsenal party bus pulls into Budapest, PSG lies in wait</p>
+                    <p class="article-title"><span class="badge badge-bollywood">BOLLYWOOD</span> Kalki 2898 AD: Prabhas और Deepika की Sci-Fi एपिक का धमाकेदार कलेक्शन</p>
                 </div>
-            </div>
+            </a>
             
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200" alt="David Raya">
+            <a href="articles/Entertainment 2.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=200" alt="Web Series">
                 <div class="article-text">
-                    <p class="article-title">'I never lost faith': David Raya's incredible journey from non-league to Champions League finalist</p>
+                    <p class="article-title"><span class="badge badge-webseries">WEB SERIES</span> Sacred Games 3: Netflix पर Nawazuddin Siddiquी की वापसी कब?</p>
                 </div>
-            </div>
+            </a>
             
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1522778119026-d647f0565c6a?w=200" alt="Tactics">
+            <a href="articles/Entertainment 3.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=200" alt="Music">
                 <div class="article-text">
-                    <p class="article-title">Tactical Breakdown: How PSG's high press dismantled Arsenal's build-up play</p>
+                    <p class="article-title"><span class="badge badge-music">MUSIC</span> BTS India Tour 2026: K-Pop सनामी भारत में, टिकट्स कब बिकेंगे?</p>
                 </div>
-            </div>
+            </a>
             
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=200" alt="Stadium">
+            <a href="articles/Entertainment 4.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=200" alt="Hollywood">
                 <div class="article-text">
-                    <p class="article-title">Budapest ready to host biggest final in Champions League history</p>
+                    <p class="article-title"><span class="badge badge-hollywood">HOLLYWOOD</span> Avengers: Secret Wars - Marvel की सबसे बड़ी फिल्म, रिलीज डेट कन्फर्म</p>
                 </div>
-            </div>
+            </a>
+            
+            <a href="articles/Entertainment 5.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200" alt="Celebrity">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-gossip">GOSSIP</span> Virat Kohli और Anushka Sharma का दूसरा बेबी? सोशल मीडिया पर खबरें वायरल</p>
+                </div>
+            </a>
+            
+            <a href="articles/Entertainment 6.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=200" alt="Review">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-review">REVIEW</span> Jawan Movie Review: Shah Rukh Khan की एक्शन पैक्ड फिल्म कैसी है?</p>
+                </div>
+            </a>
+            
+            <a href="articles/Entertainment 7.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1517604931442-710e8ed05e3b?w=200" alt="Award">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-bollywood">BOLLYWOOD</span> Filmfare Awards 2026: किसने जीता बेस्ट एक्टर और बेस्ट फिल्म अवॉर्ड?</p>
+                </div>
+            </a>
+            
+            <a href="articles/Entertainment 8.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=200" alt="OTT">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-webseries">WEB SERIES</span> Panchayat Season 3: Jitendra Kumar की कॉमेडी का नया सीजन रिलीज</p>
+                </div>
+            </a>
+            
+            <a href="articles/Entertainment 9.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=200" alt="Music Concert">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-music">MUSIC</span> Diljit Dosanjh India Tour 2026: पंजाबी म्यूजिक का जलवा, शहर और तारीखें</p>
+                </div>
+            </a>
+            
+            <a href="articles/Entertainment 10.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1535016120720-40c646be5580?w=200" alt="Hollywood">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-hollywood">HOLLYWOOD</span> Mission Impossible 8: Tom Cruise का आखिरी स्टंट, 60 साल की उम्र में कमाल</p>
+                </div>
+            </a>
+            
+            <a href="articles/Entertainment 11.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=200" alt="Celebrity Wedding">
+                <div class="article-text">
+                    <p class="article-title"><span class="badge badge-gossip">GOSSIP</span> Sidharth Malhotra और Kiara Advani की Anniversary: रोमांटिक तस्वीरें वायरल</p>
+                </div>
+            </a>
         </div>
         
     </div>
 
 </body>
-</html>'''
-
-with open('/mnt/agents/output/news_page.html', 'w', encoding='utf-8') as f:
-    f.write(html_code)
-
-print("File saved successfully!")
+</html>
