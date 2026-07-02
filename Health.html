@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoDrive - Health News</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>स्वास्थ्य ज्ञान - Health Tips, Diseases & Wellness | AutoDrive</title>
+    <meta name="description" content="स्वास्थ्य से जुड़ी पूरी जानकारी। बीमारियां, फिटनेस, मेंटल हेल्थ, होम रेमेडीज, डॉक्टर टिप्स और वेलनेस।">
     <style>
         * {
             margin: 0;
@@ -14,25 +14,23 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        /* ====== HEADER ====== */
-        .header {
-            background: #111;
-            padding: 15px 60px;
+        /* ====== NAVBAR ====== */
+        .navbar {
+            background: #1a1a1a;
+            padding: 15px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #2a2a2a;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             color: #ff4500;
             text-decoration: none;
@@ -44,19 +42,19 @@
             gap: 10px;
         }
 
-        .search-box input {
-            width: 350px;
-            padding: 10px 18px;
-            border: 1px solid #333;
-            border-radius: 8px;
-            background: #1a1a1a;
+        .search-input {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
             color: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            width: 280px;
             font-size: 14px;
             outline: none;
         }
 
-        .search-box input::placeholder {
-            color: #666;
+        .search-input::placeholder {
+            color: #888;
         }
 
         .search-btn {
@@ -64,14 +62,10 @@
             color: #fff;
             border: none;
             padding: 10px 20px;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .search-btn:hover {
-            background: #e63e00;
+            font-size: 14px;
         }
 
         .nav-links {
@@ -88,184 +82,226 @@
             transition: color 0.3s;
         }
 
-        .nav-links a:hover,
+        .nav-links a:hover {
+            color: #ff4500;
+        }
+
         .nav-links a.active {
             color: #ff4500;
         }
 
-        /* ====== PAGE TITLE ====== */
-        .page-title {
-            padding: 30px 60px 10px;
-            max-width: 1400px;
+        /* ====== MAIN CONTAINER ====== */
+        .container {
+            max-width: 900px;
             margin: 0 auto;
+            padding: 30px 20px;
         }
 
-        .page-title h1 {
-            font-size: 32px;
+        /* ====== SECTION TITLE ====== */
+        .section-title {
+            font-size: 28px;
             font-weight: 800;
-            color: #fff;
+            margin-bottom: 25px;
+            color: #ffffff;
         }
 
-        /* ====== HEALTH HERO SECTION ====== */
-        .health-hero {
-            padding: 20px 60px;
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 25px;
-        }
-
-        /* Main Featured Article */
-        .featured-article {
-            position: relative;
-            border-radius: 16px;
+        /* ====== HERO ARTICLE ====== */
+        .hero-main {
+            background: #1a1a1a;
+            border-radius: 12px;
             overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .hero-image {
+            width: 100%;
             height: 450px;
-            cursor: pointer;
-        }
-
-        .featured-article img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            display: block;
         }
 
-        .featured-article:hover img {
-            transform: scale(1.05);
+        .image-caption {
+            text-align: right;
+            font-size: 11px;
+            color: #666;
+            padding: 8px 20px 0 0;
+            font-style: italic;
         }
 
-        .featured-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 40px;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+        .hero-content {
+            padding: 20px 25px 25px 25px;
         }
 
-        .featured-date {
+        .hero-date {
             color: #ff4500;
             font-size: 13px;
             font-weight: 600;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
-        .featured-title {
+        .hero-title {
             font-size: 28px;
             font-weight: 700;
             line-height: 1.3;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            color: #ffffff;
         }
 
-        .featured-desc {
-            font-size: 15px;
+        .hero-desc {
+            font-size: 16px;
             color: #aaa;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* Side Articles List */
-        .side-articles {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .side-article {
-            display: flex;
-            gap: 15px;
-            padding: 15px;
-            background: #111;
+        /* ====== FULL DESCRIPTION ====== */
+        .full-description {
+            background: #1a1a1a;
             border-radius: 12px;
-            transition: all 0.3s;
-            cursor: pointer;
+            padding: 30px;
+            margin-bottom: 35px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .full-description p {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .full-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ====== PAGE NAVIGATION LINKS ====== */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 40px 0;
+            padding: 20px 0;
+            border-top: 2px solid #2a2a2a;
+            border-bottom: 2px solid #2a2a2a;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             text-decoration: none;
             color: #fff;
-            border: 1px solid #1a1a1a;
-        }
-
-        .side-article:hover {
             background: #1a1a1a;
-            border-color: #333;
-            transform: translateX(5px);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+            flex: 1;
+            max-width: 48%;
         }
 
-        .side-article-img {
-            width: 100px;
-            height: 80px;
-            border-radius: 10px;
-            overflow: hidden;
-            flex-shrink: 0;
+        .nav-link:hover {
+            border-color: #ff4500;
+            background: #222;
+            transform: translateY(-2px);
         }
 
-        .side-article-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .nav-link.prev {
+            justify-content: flex-start;
+            text-align: left;
         }
 
-        .side-article-content {
+        .nav-link.next {
+            justify-content: flex-end;
+            text-align: right;
+            flex-direction: row-reverse;
+        }
+
+        .nav-link .arrow {
+            font-size: 24px;
+            color: #ff4500;
+            font-weight: 700;
+        }
+
+        .nav-link .nav-text {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            flex: 1;
         }
 
-        .side-article-time {
-            color: #ff4500;
+        .nav-link .nav-label {
             font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 6px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
         }
 
-        .side-article-title {
-            font-size: 14px;
+        .nav-link .nav-title {
+            font-size: 15px;
             font-weight: 600;
+            color: #fff;
             line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
 
-        .side-article-views {
-            color: #666;
-            font-size: 12px;
-            margin-top: 6px;
+        /* ====== TAGS ====== */
+        .tags-section {
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .tags-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .tags-list {
             display: flex;
-            align-items: center;
-            gap: 5px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        /* ====== CATEGORY SECTIONS ====== */
-        .category-section {
-            padding: 30px 60px;
-            max-width: 1400px;
-            margin: 0 auto;
+        .tag {
+            background: #2a2a2a;
+            color: #ccc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #333;
         }
 
-        .section-header {
+        .tag:hover {
+            background: #ff4500;
+            color: #fff;
+            border-color: #ff4500;
+        }
+
+        /* ====== RELATED ARTICLES GRID ====== */
+        .related-section {
+            margin: 40px 0;
+        }
+
+        .related-header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            margin-bottom: 25px;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
-        .section-title {
-            font-size: 20px;
+        .related-title {
+            font-size: 22px;
             font-weight: 700;
             color: #ff4500;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .section-title i {
-            font-size: 18px;
+            gap: 8px;
         }
 
         .see-all {
@@ -275,193 +311,163 @@
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 5px;
-            transition: gap 0.3s;
+            gap: 4px;
+            cursor: pointer;
         }
 
         .see-all:hover {
-            gap: 10px;
+            text-decoration: underline;
         }
 
-        .cards-grid {
+        .related-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        .news-card {
-            background: #111;
+        .related-card {
+            background: #1a1a1a;
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s;
-            cursor: pointer;
-            border: 1px solid #1a1a1a;
+            border: 1px solid #2a2a2a;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
         }
 
-        .news-card:hover {
+        .related-card:hover {
             transform: translateY(-5px);
-            border-color: #333;
+            border-color: #ff4500;
         }
 
-        .news-card-img {
+        .related-card img {
             width: 100%;
-            height: 160px;
-            overflow: hidden;
-        }
-
-        .news-card-img img {
-            width: 100%;
-            height: 100%;
+            height: 150px;
             object-fit: cover;
-            transition: transform 0.5s;
+            display: block;
         }
 
-        .news-card:hover .news-card-img img {
-            transform: scale(1.1);
-        }
-
-        .news-card-content {
+        .related-card-content {
             padding: 15px;
         }
 
-        .news-card-title {
-            font-size: 14px;
+        .related-card-category {
+            font-size: 11px;
+            color: #ff4500;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .related-card-title {
+            font-size: 15px;
             font-weight: 600;
             line-height: 1.4;
-            margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            color: #eee;
         }
 
-        .news-card-meta {
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
             display: flex;
             align-items: center;
+            gap: 8px;
+        }
+
+        .articles-list {
+            display: flex;
+            flex-direction: column;
             gap: 15px;
-            font-size: 12px;
-            color: #666;
         }
 
-        .news-card-meta i {
-            margin-right: 4px;
-        }
-
-        /* ====== FOOTER ====== */
-        .footer {
-            background: #111;
-            padding: 50px 60px 20px;
-            margin-top: 50px;
-            border-top: 1px solid #222;
-        }
-
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-        }
-
-        .footer-col h3 {
-            color: #ff4500;
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-
-        .footer-col h4 {
-            color: #fff;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            color: #666;
-            font-size: 14px;
-            line-height: 2.2;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .footer-col ul li:hover {
-            color: #ff4500;
-        }
-
-        .social-icons {
+        .article-card {
             display: flex;
             gap: 15px;
-            margin-top: 15px;
-        }
-
-        .social-icons i {
-            color: #666;
-            font-size: 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #2a2a2a;
+            text-decoration: none;
+            color: #fff;
         }
 
-        .social-icons i:hover {
-            color: #ff4500;
+        .article-card:hover {
+            transform: translateY(-3px);
+            background: #222;
+            border-color: #ff4500;
         }
 
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 30px auto 0;
-            padding-top: 20px;
-            border-top: 1px solid #222;
-            text-align: center;
-            color: #666;
-            font-size: 13px;
+        .article-thumb {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
         }
 
-        /* ====== MOBILE RESPONSIVE ====== */
-        @media (max-width: 1024px) {
-            .header { padding: 15px 30px; }
-            .search-box input { width: 250px; }
-            .health-hero { grid-template-columns: 1fr; padding: 20px 30px; }
-            .featured-article { height: 350px; }
-            .cards-grid { grid-template-columns: repeat(2, 1fr); }
-            .category-section { padding: 25px 30px; }
-            .page-title { padding: 25px 30px 10px; }
+        .article-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #eee;
+            line-height: 1.4;
+        }
+
+        /* ====== RESPONSIVE ====== */
         @media (max-width: 768px) {
-            .header { 
-                flex-direction: column; 
-                gap: 15px; 
-                padding: 15px 20px;
+            .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
+            .search-input { width: 200px; }
+            .nav-links { display: none; }
+            .hero-image { height: 280px; }
+            .hero-title { font-size: 22px; }
+            .hero-desc { font-size: 14px; }
+            .full-description { padding: 20px; }
+            .article-thumb { width: 90px; height: 60px; }
+            .article-title { font-size: 14px; }
+
+            .page-navigation {
+                flex-direction: column;
             }
-            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .search-box input { width: 200px; }
-            .featured-article { height: 280px; }
-            .featured-title { font-size: 20px; }
-            .featured-overlay { padding: 25px; }
-            .side-article { padding: 12px; }
-            .side-article-img { width: 80px; height: 65px; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .category-section { padding: 20px; }
-            .page-title { padding: 20px 20px 10px; }
-            .page-title h1 { font-size: 24px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-            .footer { padding: 30px 20px 15px; }
+            .nav-link {
+                max-width: 100%;
+                width: 100%;
+            }
+            .nav-link.next {
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
-    <!-- ====== HEADER ====== -->
-    <header class="header">
-        <a href="#" class="logo">AutoDrive</a>
-        
-        <div class="search-box">
-            <input type="text" placeholder="Search latest news...">
-            <button class="search-btn">Search</button>
-        </div>
-        
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">AutoDrive</a>
+
         <ul class="nav-links">
             <li><a href="Home.html">Home</a></li>
             <li><a href="Sports.html">Sports</a></li>
@@ -471,312 +477,189 @@
             <li><a href="About.html">About</a></li>
             <li><a href="Contact.html">Contact</a></li>
         </ul>
-    </header>
+    </nav>
 
-    <!-- ====== PAGE TITLE ====== -->
-    <div class="page-title">
-        <h1>Health News</h1>
+    <!-- ====== MAIN CONTENT ====== -->
+    <div class="container">
+
+        <h2 class="section-title">🏥 स्वास्थ्य ज्ञान - Health & Wellness Tips</h2>
+
+        <!-- ====== HERO ARTICLE ====== -->
+        <div class="hero-main">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900" alt="स्वास्थ्य">
+            <p class="image-caption">Source: Unsplash</p>
+            <div class="hero-content">
+                <div class="hero-date">🩺 02 July 2026</div>
+                <h1 class="hero-title">रोजाना 30 मिनट वॉक करने से शरीर को मिलते हैं ये 10 जबरदस्त फायदे</h1>
+                <p class="hero-desc">रोजाना सुबह या शाम को 30 मिनट टहलना न सिर्फ आपका वजन कम करता है, बल्कि हृदय रोग, डायबिटीज, ब्लड प्रेशर और तनाव जैसी कई बीमारियों से भी बचाता है। जानिए वॉकिंग के अद्भुत लाभ...</p>
+            </div>
+        </div>
+
+        <!-- ====== FULL DESCRIPTION ====== -->
+        <div class="full-description">
+            <p>स्वास्थ्य ही असली धन है। आज की भागदौड़ भरी जिंदगी में लोग अपनी सेहत को नजरअंदाज कर देते हैं, जिसका नतीजा गंभीर बीमारियों के रूप में सामने आता है। इस सेक्शन में आपको स्वास्थ्य से जुड़ी हर जानकारी मिलेगी — चाहे वो फिटनेस टिप्स हों, बीमारियों के लक्षण, होम रेमेडीज, या डॉक्टर की सलाह।</p>
+            <p>हमारा लक्ष्य है कि हर व्यक्ति अपने शरीर को बेहतर समझे और सही समय पर सही कदम उठाए। यहां आपको डायबिटीज, ब्लड प्रेशर, थायराइड, हृदय रोग, मानसिक स्वास्थ्य, योग, एक्सरसाइज और पोषण से जुड़े लेख मिलेंगे जो आपकी सेहत सुधारने में मदद करेंगे।</p>
+        </div>
+
+        <!-- ====== TAGS ====== -->
+        <div class="tags-section">
+            <p class="tags-label">Popular Tags:</p>
+            <div class="tags-list">
+                <a href="#" class="tag">#Diabetes</a>
+                <a href="#" class="tag">#BloodPressure</a>
+                <a href="#" class="tag">#Thyroid</a>
+                <a href="#" class="tag">#HeartHealth</a>
+                <a href="#" class="tag">#MentalHealth</a>
+                <a href="#" class="tag">#Yoga</a>
+                <a href="#" class="tag">#Fitness</a>
+                <a href="#" class="tag">#HomeRemedies</a>
+                <a href="#" class="tag">#Immunity</a>
+                <a href="#" class="tag">#WeightLoss</a>
+            </div>
+        </div>
+
+        <!-- ====== PAGE NAVIGATION ====== -->
+        <div class="page-navigation">
+            <a href="Food.html" class="nav-link prev">
+                <span class="arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Previous</span>
+                    <span class="nav-title">स्वस्थ भोजन - हेल्दी फूड टिप्स और रेसिपी</span>
+                </span>
+            </a>
+            <a href="Fitness.html" class="nav-link next">
+                <span class="arrow">→</span>
+                <span class="nav-text">
+                    <span class="nav-label">Next</span>
+                    <span class="nav-title">फिटनेस और एक्सरसाइज - Gym & Workout Guide</span>
+                </span>
+            </a>
+        </div>
+
+        <!-- ====== RELATED ARTICLES ====== -->
+        <div class="related-section">
+            <div class="related-header">
+                <h3 class="related-title">🔥 Trending Health Articles</h3>
+                <a href="#" class="see-all">See All →</a>
+            </div>
+            <div class="related-grid">
+                <a href="articles/Health-Trend1.html" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=300" alt="Immunity">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Immunity</div>
+                        <div class="related-card-title">इम्यूनिटी बढ़ाने के 7 घरेलू नुस्खे</div>
+                    </div>
+                </a>
+                <a href="articles/Health-Trend2.html" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300" alt="Yoga">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Yoga</div>
+                        <div class="related-card-title">रोजाना योग करने से मिलते हैं ये 8 फायदे</div>
+                    </div>
+                </a>
+                <a href="articles/Health-Trend3.html" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300" alt="Fitness">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Fitness</div>
+                        <div class="related-card-title">घर पर बिना जिम के फिट रहने के तरीके</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ====== MORE ARTICLES (SABSE NICHE) ====== -->
+        <div class="more-header">
+            <h3 class="more-title">📋 All Health Articles</h3>
+            <a href="Health.html" class="see-all">View All →</a>
+        </div>
+
+        <div class="articles-list">
+            <a href="articles/Health-1.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=200" alt="डायबिटीज">
+                <div class="article-text">
+                    <p class="article-title">डायबिटीज कंट्रोल करने के लिए क्या खाएं और क्या नहीं - पूरी गाइड</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-2.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200" alt="ब्लड प्रेशर">
+                <div class="article-text">
+                    <p class="article-title">हाई ब्लड प्रेशर कम करने के 10 घरेलू उपाय और डाइट टिप्स</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-3.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=200" alt="इम्यूनिटी">
+                <div class="article-text">
+                    <p class="article-title">इम्यूनिटी बढ़ाने के लिए रोजाना खाएं ये 5 चीजें</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-4.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=200" alt="योग">
+                <div class="article-text">
+                    <p class="article-title">रोजाना सुबह योग करने के अद्भुत लाभ - पूरी जानकारी</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-5.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200" alt="वजन घटाना">
+                <div class="article-text">
+                    <p class="article-title">वजन कम करने के लिए सबसे असरदार 7 एक्सरसाइज</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-6.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=200" alt="थायराइड">
+                <div class="article-text">
+                    <p class="article-title">थायराइड के लक्षण, कारण और इलाज - पूरी जानकारी हिंदी में</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-7.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200" alt="हृदय रोग">
+                <div class="article-text">
+                    <p class="article-title">हृदय रोग से बचने के लिए अपनाएं ये 8 आदतें</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-8.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200" alt="मानसिक स्वास्थ्य">
+                <div class="article-text">
+                    <p class="article-title">तनाव और डिप्रेशन से बचने के लिए 6 आसान तरीके</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-9.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200" alt="नींद">
+                <div class="article-text">
+                    <p class="article-title">अच्छी नींद लेने के लिए रात में करें ये 5 काम</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-10.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200" alt="पानी">
+                <div class="article-text">
+                    <p class="article-title">दिनभर में कितना पानी पीना चाहिए? जानिए सही समय और मात्रा</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-11.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=200" alt="विटामिन">
+                <div class="article-text">
+                    <p class="article-title">विटामिन D की कमी से बचने के लिए रोजाना करें ये काम</p>
+                </div>
+            </a>
+
+            <a href="articles/Health-12.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=200" alt="मेडिटेशन">
+                <div class="article-text">
+                    <p class="article-title">मेडिटेशन करने का सही तरीका - शुरुआती गाइड</p>
+                </div>
+            </a>
+        </div>
+
     </div>
-
-    <!-- ====== HEALTH HERO SECTION ====== -->
-    <section class="health-hero">
-        <!-- Main Featured -->
-        <div class="featured-article">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200" alt="WHO Health">
-            <div class="featured-overlay">
-                <div class="featured-date">
-                    <i class="far fa-calendar-alt"></i> May 20, 2026 • 9:00 AM
-                </div>
-                <h2 class="featured-title">WHO Launches Global Campaign for Better Mental Health Awareness</h2>
-                <p class="featured-desc">Health experts from around the world are encouraging people to focus on stress management, sleep quality, and healthy lifestyles.</p>
-            </div>
-        </div>
-
-        <!-- Side Articles -->
-        <div class="side-articles">
-            <a href="#" class="side-article">
-                <div class="side-article-img">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200" alt="Exercise">
-                </div>
-                <div class="side-article-content">
-                    <div class="side-article-time">2 hours ago</div>
-                    <h4 class="side-article-title">Doctors recommend daily exercise for stronger immunity</h4>
-                    <div class="side-article-views">
-                        <i class="far fa-eye"></i> 1.2K views
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="side-article">
-                <div class="side-article-img">
-                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=200" alt="Nutrition">
-                </div>
-                <div class="side-article-content">
-                    <div class="side-article-time">3 hours ago</div>
-                    <h4 class="side-article-title">Nutrition experts suggest reducing sugar intake for better heart health</h4>
-                    <div class="side-article-views">
-                        <i class="far fa-eye"></i> 876 views
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="side-article">
-                <div class="side-article-img">
-                    <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=200" alt="Yoga">
-                </div>
-                <div class="side-article-content">
-                    <div class="side-article-time">3 hours ago</div>
-                    <h4 class="side-article-title">Yoga and meditation proven to reduce anxiety by 40%</h4>
-                    <div class="side-article-views">
-                        <i class="far fa-eye"></i> 2.3K views
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="side-article">
-                <div class="side-article-img">
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=200" alt="Hospital">
-                </div>
-                <div class="side-article-content">
-                    <div class="side-article-time">4 hours ago</div>
-                    <h4 class="side-article-title">New AI-powered diagnostic tool detects cancer early</h4>
-                    <div class="side-article-views">
-                        <i class="far fa-eye"></i> 3.1K views
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- ====== LATEST HEALTH NEWS ====== -->
-    <section class="category-section">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fas fa-heartbeat"></i> Latest Health News</h2>
-        </div>
-        
-        <div class="cards-grid">
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400" alt="Medicine">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">New Diabetes Medicine Approved: No More Daily Injections</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 1h ago</span>
-                        <span><i class="far fa-eye"></i> 5.2K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400" alt="Mental Health">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">Mental Health Apps See 200% Growth in India Post-Pandemic</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 3h ago</span>
-                        <span><i class="far fa-eye"></i> 3.8K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" alt="Diet">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">Plant-Based Diet Reduces Heart Disease Risk by 30%</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 5h ago</span>
-                        <span><i class="far fa-eye"></i> 2.1K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400" alt="Telemedicine">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">AI Doctors Now Available in Rural India via Telemedicine</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 7h ago</span>
-                        <span><i class="far fa-eye"></i> 4.5K</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== FITNESS & WELLNESS ====== -->
-    <section class="category-section">
-        <div class="section-header">
-        </div>
-        
-        <div class="cards-grid">
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400" alt="Gym">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">10-Minute Home Workout That Burns More Calories Than Running</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 2h ago</span>
-                        <span><i class="far fa-eye"></i> 8.7K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400" alt="Meditation">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">Harvard Study: Meditation Changes Brain Structure in 8 Weeks</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 4h ago</span>
-                        <span><i class="far fa-eye"></i> 6.2K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400" alt="Food">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">Superfoods for 2026: Eat These Daily for Long Life</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 6h ago</span>
-                        <span><i class="far fa-eye"></i> 4.1K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400" alt="Sleep">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">Sleep Quality Linked to Longevity: New Research Findings</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 8h ago</span>
-                        <span><i class="far fa-eye"></i> 5.9K</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== MEDICAL BREAKTHROUGHS ====== -->
-    <section class="category-section">
-        <div class="section-header">
-        </div>
-        
-        <div class="cards-grid">
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400" alt="Lab">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">CRISPR Gene Therapy Cures Rare Blood Disorder in Trials</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 1h ago</span>
-                        <span><i class="far fa-eye"></i> 12.1K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400" alt="Vaccine">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">Universal Flu Vaccine Enters Final Phase of Human Testing</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 3h ago</span>
-                        <span><i class="far fa-eye"></i> 7.5K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400" alt="Robot Surgery">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">Robot Surgeons Perform First Fully Automated Heart Surgery</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 5h ago</span>
-                        <span><i class="far fa-eye"></i> 9.3K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400" alt="Brain">
-                </div>
-                <div class="news-card-content">
-                    <h4 class="news-card-title">Brain-Computer Interface Helps Paralyzed Patients Walk Again</h4>
-                    <div class="news-card-meta">
-                        <span><i class="far fa-clock"></i> 7h ago</span>
-                        <span><i class="far fa-eye"></i> 11.7K</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
-             </div>
-    </section>
-
-    <!-- ====== FOOTER ====== -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>AutoDrive</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">Your trusted source for latest news across all categories. Stay informed, stay ahead.</p>
-                <div class="social-icons">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-youtube"></i>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Categories</h4>
-                <ul>
-                    <li>Religion</li>
-                    <li>Sports</li>
-                    <li>Technology</li>
-                    <li>Health</li>
-                    <li>Business</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li>About Us</li>
-                    <li>Contact</li>
-                    <li>Privacy Policy</li>
-                    <li>Terms of Service</li>
-                    <li>Advertise</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Newsletter</h4>
-                <p style="color: #666; font-size: 14px; margin-bottom: 15px;">Subscribe for daily news updates.</p>
-                <div style="display: flex; gap: 10px;">
-                    <input type="email" placeholder="Your email" style="padding: 10px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; outline: none; flex: 1;">
-                    <button style="padding: 10px 20px; background: #ff4500; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Subscribe</button>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2026 AutoDrive. All rights reserved.
-        </div>
-    </footer>
 
 </body>
 </html>
