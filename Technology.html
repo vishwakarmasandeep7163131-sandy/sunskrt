@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Champions League Final - PSG vs Arsenal</title>
+    <title>टेक्नोलॉजी - Technology News, Gadgets & AI | AutoDrive</title>
+    <meta name="description" content="टेक्नोलॉजी की दुनिया से जुड़ी ताज़ा खबरें। AI, Gadgets, Mobile, Laptop, Software, Cyber Security और Tech Tips हिंदी में।">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #0f0f0f;
             color: #ffffff;
             line-height: 1.6;
         }
-        
+
         /* ====== NAVBAR ====== */
         .navbar {
             background: #1a1a1a;
@@ -27,20 +28,20 @@
             justify-content: space-between;
             border-bottom: 1px solid #2a2a2a;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: 800;
             color: #ff4500;
             text-decoration: none;
         }
-        
+
         .search-box {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .search-input {
             background: #2a2a2a;
             border: 1px solid #3a3a3a;
@@ -51,11 +52,11 @@
             font-size: 14px;
             outline: none;
         }
-        
+
         .search-input::placeholder {
             color: #888;
         }
-        
+
         .search-btn {
             background: #ff4500;
             color: #fff;
@@ -66,13 +67,13 @@
             cursor: pointer;
             font-size: 14px;
         }
-        
+
         .nav-links {
             display: flex;
             gap: 25px;
             list-style: none;
         }
-        
+
         .nav-links a {
             color: #ccc;
             text-decoration: none;
@@ -80,22 +81,22 @@
             font-weight: 500;
             transition: color 0.3s;
         }
-        
+
         .nav-links a:hover {
             color: #ff4500;
         }
-        
+
         .nav-links a.active {
             color: #ff4500;
         }
-        
+
         /* ====== MAIN CONTAINER ====== */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 30px 20px;
         }
-        
+
         /* ====== SECTION TITLE ====== */
         .section-title {
             font-size: 28px;
@@ -103,7 +104,7 @@
             margin-bottom: 25px;
             color: #ffffff;
         }
-        
+
         /* ====== HERO ARTICLE ====== */
         .hero-main {
             background: #1a1a1a;
@@ -112,14 +113,14 @@
             margin-bottom: 30px;
             border: 1px solid #2a2a2a;
         }
-        
+
         .hero-image {
             width: 100%;
             height: 450px;
             object-fit: cover;
             display: block;
         }
-        
+
         .image-caption {
             text-align: right;
             font-size: 11px;
@@ -127,11 +128,11 @@
             padding: 8px 20px 0 0;
             font-style: italic;
         }
-        
+
         .hero-content {
             padding: 20px 25px 25px 25px;
         }
-        
+
         .hero-date {
             color: #ff4500;
             font-size: 13px;
@@ -141,7 +142,7 @@
             align-items: center;
             gap: 6px;
         }
-        
+
         .hero-title {
             font-size: 28px;
             font-weight: 700;
@@ -149,13 +150,13 @@
             margin-bottom: 15px;
             color: #ffffff;
         }
-        
+
         .hero-desc {
             font-size: 16px;
             color: #aaa;
             line-height: 1.7;
         }
-        
+
         /* ====== FULL DESCRIPTION ====== */
         .full-description {
             background: #1a1a1a;
@@ -164,35 +165,145 @@
             margin-bottom: 35px;
             border: 1px solid #2a2a2a;
         }
-        
+
         .full-description p {
             font-size: 16px;
             color: #ccc;
             line-height: 1.9;
             margin-bottom: 15px;
         }
-        
+
         .full-description p:last-child {
             margin-bottom: 0;
         }
-        
-        /* ====== MORE ARTICLES ====== */
-        .more-header {
+
+        /* ====== PAGE NAVIGATION LINKS ====== */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 40px 0;
+            padding: 20px 0;
+            border-top: 2px solid #2a2a2a;
+            border-bottom: 2px solid #2a2a2a;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #fff;
+            background: #1a1a1a;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+            flex: 1;
+            max-width: 48%;
+        }
+
+        .nav-link:hover {
+            border-color: #ff4500;
+            background: #222;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.prev {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .nav-link.next {
+            justify-content: flex-end;
+            text-align: right;
+            flex-direction: row-reverse;
+        }
+
+        .nav-link .arrow {
+            font-size: 24px;
+            color: #ff4500;
+            font-weight: 700;
+        }
+
+        .nav-link .nav-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link .nav-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .nav-link .nav-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        /* ====== TAGS ====== */
+        .tags-section {
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .tags-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #2a2a2a;
+            color: #ccc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #333;
+        }
+
+        .tag:hover {
+            background: #ff4500;
+            color: #fff;
+            border-color: #ff4500;
+        }
+
+        /* ====== RELATED ARTICLES GRID ====== */
+        .related-section {
+            margin: 40px 0;
+        }
+
+        .related-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
-        .more-title {
-            font-size: 20px;
+
+        .related-title {
+            font-size: 22px;
             font-weight: 700;
             color: #ff4500;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
+
         .see-all {
             color: #ff4500;
             text-decoration: none;
@@ -203,17 +314,83 @@
             gap: 4px;
             cursor: pointer;
         }
-        
+
         .see-all:hover {
             text-decoration: underline;
         }
-        
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff4500;
+        }
+
+        .related-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .related-card-content {
+            padding: 15px;
+        }
+
+        .related-card-category {
+            font-size: 11px;
+            color: #ff4500;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .related-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #eee;
+        }
+
+        /* ====== MORE ARTICLES ====== */
+        .more-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .more-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff4500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .articles-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-        
+
         .article-card {
             display: flex;
             gap: 15px;
@@ -223,14 +400,16 @@
             cursor: pointer;
             transition: transform 0.2s, background 0.2s;
             border: 1px solid #2a2a2a;
+            text-decoration: none;
+            color: #fff;
         }
-        
+
         .article-card:hover {
             transform: translateY(-3px);
             background: #222;
             border-color: #ff4500;
         }
-        
+
         .article-thumb {
             width: 120px;
             height: 80px;
@@ -238,20 +417,20 @@
             border-radius: 8px;
             flex-shrink: 0;
         }
-        
+
         .article-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        
+
         .article-title {
             font-size: 16px;
             font-weight: 600;
             color: #eee;
             line-height: 1.4;
         }
-        
+
         /* ====== RESPONSIVE ====== */
         @media (max-width: 768px) {
             .navbar { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
@@ -263,21 +442,37 @@
             .full-description { padding: 20px; }
             .article-thumb { width: 90px; height: 60px; }
             .article-title { font-size: 14px; }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+            .nav-link {
+                max-width: 100%;
+                width: 100%;
+            }
+            .nav-link.next {
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
     <!-- ====== NAVBAR ====== -->
     <nav class="navbar">
-        <a href="#" class="logo">AutoDrive</a>
-        
-        </div>
-        
+        <a href="index.html" class="logo">AutoDrive</a>
+
         <ul class="nav-links">
-             <li><a href="Home.html">Home</a></li>
+            <li><a href="Home.html">Home</a></li>
             <li><a href="Sports.html">Sports</a></li>
-            <li><a href="Health.html" class="active">Health</a></li>
+            <li><a href="Health.html">Health</a></li>
+            <li><a href="Technology.html" class="active">Technology</a></li>
             <li><a href="Cars.html">Cars</a></li>
             <li><a href="News.html">News</a></li>
             <li><a href="About.html">About</a></li>
@@ -287,74 +482,185 @@
 
     <!-- ====== MAIN CONTENT ====== -->
     <div class="container">
-        
-        <h2 class="section-title">Champions League News</h2>
-        
-        <!-- ====== BADI IMAGE (UPAR) ====== -->
+
+        <h2 class="section-title">💻 टेक्नोलॉजी - Technology News & Updates</h2>
+
+        <!-- ====== HERO ARTICLE ====== -->
         <div class="hero-main">
-            <img class="hero-image" src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=900" alt="PSG Champions League Trophy">
-            <p class="image-caption">Odd Andersen/AFP/Getty Images</p>
+            <img class="hero-image" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900" alt="AI Technology">
+            <p class="image-caption">Source: Unsplash</p>
             <div class="hero-content">
-                <div class="hero-date">📅 May 31, 2026 • 11:00 PM</div>
-                <h1 class="hero-title">PSG retains Champions League title after edging past Arsenal on penalties</h1>
-                <p class="hero-desc">Paris Saint-Germain defended their European crown in dramatic fashion at the Puskás Aréna in Budapest.</p>
+                <div class="hero-date">🤖 02 July 2026</div>
+                <h1 class="hero-title">AI 2026: कृत्रिम बुद्धिमत्ता ने कैसे बदल दी हमारी जिंदगी - पूरी रिपोर्ट</h1>
+                <p class="hero-desc">2026 में Artificial Intelligence हर क्षेत्र में छा गया है। ChatGPT से लेकर Self-Driving Cars तक, AI ने हमारी रोजमर्रा की जिंदगी को पूरी तरह बदल दिया है। जानिए AI की नवीनतम तकनीकें और भविष्य की संभावनाएं...</p>
             </div>
-        </div>
-        
-        <!-- ====== DESCRIPTION (IMAGE KE NICHE) ====== -->
-        <div class="full-description">
-            <p>Paris Saint-Germain successfully defended their European crown in a dramatic Champions League final at the Puskás Aréna in Budapest. After a tense 1-1 draw through 120 minutes of football, the French champions held their nerve to win 4-3 on penalties against a resilient Arsenal side.</p>
-            
-            <p>The victory marks PSG's second consecutive Champions League triumph and cements their status as the dominant force in European football. Kylian Mbappé once again proved decisive, scoring the crucial penalty in the shootout after a man-of-the-match performance during regulation time.</p>
-            
-            <p>Arsenal, appearing in their first final since 2006, pushed the defending champions all the way. Bukayo Saka gave the Gunners a first-half lead before Mbappé equalized in the 67th minute. Despite creating several chances in extra time, neither side could find a winner, setting up the dramatic penalty shootout.</p>
-            
-            <p>For Arsenal, it was a case of so near yet so far. Mikel Arteta's young side had defied expectations to reach the final, knocking out Real Madrid and Bayern Munich along the way. Goalkeeper David Raya, whose journey from non-league football to the biggest stage in club football has captured hearts worldwide, saved two penalties but could not prevent PSG from lifting the trophy.</p>
-        </div>
-        
-        <!-- ====== MORE ARTICLES (SABSE NICHE) ====== -->
-        <div class="more-header">
-            <h3 class="more-title">❤ Latest Champions League News</h3>
-            
         </div>
 
-        <a href="articles/Food 4.html" class="category-card">
-        <div class="articles-list">
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=200" alt="Arsenal">
-                <div class="article-text">
-                    <p class="article-title">As the Arsenal party bus pulls into Budapest, PSG lies in wait</p>
-                </div>
-            </div>
-            
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200" alt="David Raya">
-                <div class="article-text">
-                    <p class="article-title">'I never lost faith': David Raya's incredible journey from non-league to Champions League finalist</p>
-                </div>
-            </div>
-            
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1522778119026-d647f0565c6a?w=200" alt="Tactics">
-                <div class="article-text">
-                    <p class="article-title">Tactical Breakdown: How PSG's high press dismantled Arsenal's build-up play</p>
-                </div>
-            </div>
-            
-            <div class="article-card">
-                <img class="article-thumb" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=200" alt="Stadium">
-                <div class="article-text">
-                    <p class="article-title">Budapest ready to host biggest final in Champions League history</p>
-                </div>
+        <!-- ====== FULL DESCRIPTION ====== -->
+        <div class="full-description">
+            <p>टेक्नोलॉजी की दुनिया रोजाना नए आविष्कारों से भरी हुई है। स्मार्टफोन, AI, रोबोटिक्स, क्लाउड कंप्यूटिंग और ब्लॉकचेन जैसी तकनीकें हमारे जीवन को आसान बना रही हैं। इस सेक्शन में आपको टेक्नोलॉजी से जुड़ी ताज़ा खबरें, गैजेट रिव्यू, सॉफ्टवेयर टिप्स और साइबर सुरक्षा की जानकारी मिलेगी।</p>
+            <p>चाहे आप एक टेक एन्थुसियास्ट हों या साधारण यूजर, यहां हर किसी के लिए कुछ न कुछ जरूर है। हम आपको Latest Mobile Reviews, Laptop Buying Guide, AI Tools, Coding Tips और Cyber Security से जुड़ी हर जानकारी देते हैं हिंदी में।</p>
+        </div>
+
+        <!-- ====== TAGS ====== -->
+        <div class="tags-section">
+            <p class="tags-label">Popular Tags:</p>
+            <div class="tags-list">
+                <a href="#" class="tag">#ArtificialIntelligence</a>
+                <a href="#" class="tag">#Mobile</a>
+                <a href="#" class="tag">#Laptop</a>
+                <a href="#" class="tag">#CyberSecurity</a>
+                <a href="#" class="tag">#Coding</a>
+                <a href="#" class="tag">#Gadgets</a>
+                <a href="#" class="tag">#5G</a>
+                <a href="#" class="tag">#Blockchain</a>
+                <a href="#" class="tag">#CloudComputing</a>
+                <a href="#" class="tag">#Robotics</a>
             </div>
         </div>
-        
+
+        <!-- ====== PAGE NAVIGATION ====== -->
+        <div class="page-navigation">
+            <a href="Health.html" class="nav-link prev">
+                <span class="arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Previous</span>
+                    <span class="nav-title">स्वास्थ्य ज्ञान - Health & Wellness Tips</span>
+                </span>
+            </a>
+            <a href="Cars.html" class="nav-link next">
+                <span class="arrow">→</span>
+                <span class="nav-text">
+                    <span class="nav-label">Next</span>
+                    <span class="nav-title">Cars - ऑटोमोबाइल न्यूज़ और रिव्यू</span>
+                </span>
+            </a>
+        </div>
+
+        <!-- ====== RELATED ARTICLES ====== -->
+        <div class="related-section">
+            <div class="related-header">
+                <h3 class="related-title">🔥 Trending Tech News</h3>
+                <a href="#" class="see-all">See All →</a>
+            </div>
+            <div class="related-grid">
+                <a href="articles/Tech-Trend1.html" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300" alt="Mobile">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Mobile</div>
+                        <div class="related-card-title">iPhone 17 Pro Max: फीचर्स, कीमत और लॉन्च डेट</div>
+                    </div>
+                </a>
+                <a href="articles/Tech-Trend2.html" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300" alt="Laptop">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Laptop</div>
+                        <div class="related-card-title">2026 के बेस्ट गेमिंग लैपटॉप - पूरी Buying Guide</div>
+                    </div>
+                </a>
+                <a href="articles/Tech-Trend3.html" class="related-card">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=300" alt="Cyber Security">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Security</div>
+                        <div class="related-card-title">साइबर अटैक से बचने के 10 तरीके - Cyber Safety Tips</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ====== MORE ARTICLES (SABSE NICHE) ====== -->
+        <div class="more-header">
+            <h3 class="more-title">📋 All Technology Articles</h3>
+            <a href="Technology.html" class="see-all">View All →</a>
+        </div>
+
+        <div class="articles-list">
+            <a href="articles/Tech-1.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200" alt="AI">
+                <div class="article-text">
+                    <p class="article-title">ChatGPT 5.0: नए फीचर्स, कीमत और कैसे इस्तेमाल करें - Complete Guide</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-2.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200" alt="Mobile">
+                <div class="article-text">
+                    <p class="article-title">2026 के टॉप 10 स्मार्टफोन - फीचर्स, कीमत और रिव्यू</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-3.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200" alt="Laptop">
+                <div class="article-text">
+                    <p class="article-title">बेस्ट लैपटॉप कैसे खरीदें? Student, Gamer और Professional के लिए गाइड</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-4.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=200" alt="Cyber Security">
+                <div class="article-text">
+                    <p class="article-title">साइबर सुरक्षा: अपने फोन और लैपटॉप को हैक होने से कैसे बचाएं</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-5.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=200" alt="Coding">
+                <div class="article-text">
+                    <p class="article-title">Python सीखें 30 दिनों में - Beginner to Advanced Free Course</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-6.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=200" alt="Blockchain">
+                <div class="article-text">
+                    <p class="article-title">Blockchain Technology क्या है? कैसे काम करती है - आसान भाषा में</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-7.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200" alt="Cloud">
+                <div class="article-text">
+                    <p class="article-title">Cloud Computing: AWS, Azure और Google Cloud में क्या अंतर है?</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-8.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=200" alt="Robotics">
+                <div class="article-text">
+                    <p class="article-title">Humanoid Robots 2026: क्या रोबोट जल्दी नौकरियां छीन लेंगे?</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-9.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=200" alt="5G">
+                <div class="article-text">
+                    <p class="article-title">5G vs 6G: क्या है अंतर? भारत में 6G कब आएगा?</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-10.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200" alt="Data Science">
+                <div class="article-text">
+                    <p class="article-title">Data Science Career 2026: सैलरी, स्किल्स और कैसे शुरू करें</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-11.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1563986768609-322da13575f9?w=200" alt="Social Media">
+                <div class="article-text">
+                    <p class="article-title">Social Media Addiction: सोशल मीडिया की लत से कैसे बचें</p>
+                </div>
+            </a>
+
+            <a href="articles/Tech-12.html" class="article-card">
+                <img class="article-thumb" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=200" alt="Hacking">
+                <div class="article-text">
+                    <p class="article-title">Ethical Hacking सीखें: Beginner से Professional तक का रास्ता</p>
+                </div>
+            </a>
+        </div>
+
     </div>
 
 </body>
-</html>'''
-
-with open('/mnt/agents/output/news_page.html', 'w', encoding='utf-8') as f:
-    f.write(html_code)
-
-print("File saved successfully!")
+</html>
