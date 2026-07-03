@@ -290,299 +290,259 @@
        </head>
 
 <body>
-
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISKCON रथ यात्रा न्यूयॉर्क: 50 साल की भक्ति और उत्सव</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', 'Noto Sans Devanagari', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.8; color: #e2e8f0; background: #0a0a0a; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0; background: #111111; }
-
-        /* Header */
-        .header { background: linear-gradient(135deg, #1a0a00 0%, #2d1405 50%, #1a0a00 100%); color: #fbbf24; padding: 50px 25px; text-align: center; position: relative; overflow: hidden; border-bottom: 3px solid #f97316; }
-        .header::before { content: '🪷'; position: absolute; font-size: 12em; opacity: 0.03; top: -50px; left: -30px; }
-        .header::after { content: '✨'; position: absolute; font-size: 10em; opacity: 0.03; bottom: -50px; right: -30px; }
-        .header .badge { display: inline-block; background: #f97316; color: #1a0a00; padding: 6px 20px; border-radius: 25px; font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; position: relative; z-index: 1; }
-        .header h1 { font-size: 2.2em; font-weight: 700; line-height: 1.3; margin-bottom: 15px; position: relative; z-index: 1; color: #fff; text-shadow: 0 2px 10px rgba(249, 115, 22, 0.3); }
-        .header .meta { color: #fdba74; font-size: 0.95em; position: relative; z-index: 1; }
-        .header .meta span { margin: 0 12px; }
-
-        /* Content */
-        .content { padding: 40px 30px; }
-        .lead { font-size: 1.15em; color: #fed7aa; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 1px solid #2d1405; font-weight: 500; }
-
-        h2 { color: #fbbf24; font-size: 1.6em; margin: 40px 0 20px; padding-left: 15px; border-left: 4px solid #f97316; }
-        h3 { color: #fb923c; font-size: 1.25em; margin: 25px 0 12px; }
-        p { margin-bottom: 18px; text-align: justify; font-size: 1.05em; color: #cbd5e1; }
-
-        /* Boxes */
-        .box { padding: 22px; margin: 22px 0; border-radius: 12px; border: 1px solid; }
-        .box-orange { background: linear-gradient(135deg, #1a0a00, #2d1405); border-color: #f97316; }
-        .box-yellow { background: linear-gradient(135deg, #1a1500, #2d2405); border-color: #eab308; }
-        .box-green { background: linear-gradient(135deg, #051a0a, #0d2d14); border-color: #22c55e; }
-        .box-blue { background: linear-gradient(135deg, #0a1520, #0d1f2d); border-color: #3b82f6; }
-        .box strong { color: #fbbf24; }
-        .box ul { margin-left: 20px; }
-        .box li { margin-bottom: 8px; color: #e2e8f0; }
-
-        /* Stats */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 30px 0; }
-        .stat-card { background: linear-gradient(135deg, #1a0a00, #2d1405); border: 1px solid #f97316; padding: 22px; border-radius: 12px; text-align: center; transition: transform 0.3s; }
-        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2); }
-        .stat-card .number { font-size: 2em; font-weight: 700; color: #fbbf24; }
-        .stat-card .label { font-size: 0.85em; color: #fdba74; margin-top: 8px; }
-
-        /* Timeline */
-        .timeline { position: relative; padding-left: 35px; margin: 30px 0; }
-        .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #f97316, #fbbf24); }
-        .timeline-item { position: relative; margin-bottom: 30px; padding-left: 25px; }
-        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: #f97316; border: 3px solid #0a0a0a; box-shadow: 0 0 10px rgba(249, 115, 22, 0.5); }
-        .timeline-item .time { font-size: 0.9em; color: #fbbf24; font-weight: 700; }
-        .timeline-item .text { font-size: 1em; color: #e2e8f0; margin-top: 8px; }
-
-        /* People */
-        .people-card { background: linear-gradient(135deg, #111111, #1a1a1a); border: 1px solid #2d2d2d; border-radius: 12px; padding: 22px; margin: 18px 0; transition: all 0.3s; }
-        .people-card:hover { border-color: #f97316; box-shadow: 0 5px 20px rgba(249, 115, 22, 0.1); }
-        .people-card .name { color: #fbbf24; font-weight: 700; font-size: 1.1em; }
-        .people-card .role { color: #fb923c; font-size: 0.85em; margin-bottom: 10px; }
-        .people-card p { font-size: 0.95em; color: #cbd5e1; margin: 0; font-style: italic; }
-        .people-card p::before { content: '"'; color: #f97316; font-size: 1.5em; }
-        .people-card p::after { content: '"'; color: #f97316; font-size: 1.5em; }
-
-        /* Quote */
-        .quote { background: linear-gradient(135deg, #1a0a00, #2d1405); color: #fbbf24; padding: 30px; border-radius: 12px; text-align: center; font-size: 1.2em; font-style: italic; margin: 35px 0; border: 1px solid #f97316; position: relative; }
-        .quote::before { content: '🙏'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 1.5em; background: #111111; padding: 0 15px; }
-
-        /* Lists */
-        ul { margin-left: 25px; margin-bottom: 18px; }
-        li { margin-bottom: 10px; color: #cbd5e1; }
-        li strong { color: #fb923c; }
-
-        /* Separator */
-        .separator { height: 1px; background: linear-gradient(to right, transparent, #f97316, transparent); margin: 35px 0; }
-
-        /* Footer */
-        .footer { background: #050505; color: #fdba74; padding: 35px; text-align: center; font-size: 0.9em; border-top: 2px solid #2d1405; }
-        .footer .disclaimer { color: #7c2d12; margin-top: 12px; font-size: 0.85em; }
-
-        @media (max-width: 600px) {
-            .header h1 { font-size: 1.5em; }
-            .content { padding: 25px 18px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
-<base target="_blank">
-</head>
-<body>
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="badge">🕉️ धार्मिक समाचार</div>
-            <h1>ISKCON रथ यात्रा न्यूयॉर्क: 50 साल की भक्ति और उत्सव</h1>
-            <div class="meta">
-                <span>📅 13 जून 2026</span>
-                <span>📍 न्यूयॉर्क सिटी</span>
-                <span>✍️ Trisha Mukherjee</span>
+        
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>भगवद् गीता: कर्म योग, ज्ञान योग और भक्ति योग का रहस्य</h1>
+            <p class="subtitle">तीन मार्ग, एक लक्ष्य — आत्मा की शांति और परमात्मा की प्राप्ति</p>
+            <div class="verse-quote">
+                "योगस्थः कुरु कर्माणि संगं त्यक्त्वा धनंजय ।<br>
+                सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते ॥"<br>
+                <span style="color:#90a4ae; font-size:0.9em;">— भगवद् गीता, अध्याय २, श्लोक ४८</span>
             </div>
         </div>
-
-        <!-- Content -->
-        <div class="content">
-            <p class="lead">
-                न्यूयॉर्क के लोग जो <strong style="color:#fbbf24;">निक्स बास्केटबॉल टीम</strong> के जश्न और <strong style="color:#fbbf24;">वर्ल्ड कप</strong> के मैच देखने आए थे, उन्हें शनिवार (13 जून) को एक अनोखा नज़ारा देखने को मिला। मैनहट्टन की <strong style="color:#fbbf24;">फिफ्थ एवेन्यू</strong> पर रंग-बिरंगे गुब्बारों से सजी <strong style="color:#fbbf24;">तीन विशाल रथ</strong> और हज़ारों की संख्या में गाते-बजाते भक्त — यह थी <strong style="color:#fbbf24;">ISKCON (इंटरनेशनल सोसाइटी फॉर कृष्णा कॉन्शियसनेस)</strong> की 50वीं वर्षगांठ पर आयोजित ऐतिहासिक <strong style="color:#fbbf24;">रथ यात्रा</strong>।
-            </p>
-
-            <div class="box box-orange">
-                <strong>🎉 50 साल का जश्न:</strong> यह रथ यात्रा ISKCON की <strong>पहली रथ यात्रा (1976)</strong> की 50वीं वर्षगांठ थी। आयोजकों के अनुसार, इसमें <strong>25,000 से ज़्यादा भक्त</strong> शामिल हुए।
-            </div>
-
-            <!-- Stats -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="number">25,000+</div>
-                    <div class="label">भक्त शामिल</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">50</div>
-                    <div class="label">साल की वर्षगांठ</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">25 फीट</div>
-                    <div class="label">रथ की ऊंचाई</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">$160K</div>
-                    <div class="label">खर्च (दान से)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">400+</div>
-                    <div class="label">स्वयंसेवक</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">80+</div>
-                    <div class="label">देशों में ISKCON</div>
-                </div>
-            </div>
-
-            <h2>🕉️ ISKCON क्या है?</h2>
+        
+        <!-- Introduction -->
+        <div class="section">
+            <h2 style="color:#ffb74d; font-size:1.8em; margin-bottom:20px;">🙏 प्रस्तावना</h2>
             <p>
-                <strong style="color:#fbbf24;">ISKCON</strong> यानी <strong style="color:#fbbf24;">इंटरनेशनल सोसाइटी फॉर कृष्णा कॉन्शियसनेस</strong> — इसे आम तौर पर <strong style="color:#fbbf24;">"हरे कृष्णा आंदोलन"</strong> भी कहा जाता है। इसके कुछ मुख्य बिंदु:
+                भगवद् गीता, जो महाभारत के भीष्म पर्व में संकलित है, मानव जीवन की सभी समस्याओं का समाधान प्रस्तुत करती है। जब अर्जुन कुरुक्षेत्र के युद्धभूमि में अपने कर्तव्य से विमुख हो गए, तब श्रीकृष्ण ने उन्हें जीवन के तीन मार्गों — <strong>कर्म योग, ज्ञान योग और भक्ति योग</strong> — का उपदेश दिया। ये तीनों योग एक-दूसरे के पूरक हैं और मनुष्य को जीवन की उलझनों से मुक्त कर परम शांति की ओर ले जाते हैं।
             </p>
-            <ul>
-                <li><strong>हिंदू धर्म</strong> में गौड़ीय वैष्णव परंपरा से जुड़ा है, जो <strong>15वीं सदी</strong> की भारतीय परंपरा है</li>
-                <li><strong>भक्ति योग</strong> पर आधारित — ध्यान, <strong>कीर्तन (भक्ति गान)</strong> और वैदिक सिद्धांतों का पालन</li>
-                <li><strong>1966 में न्यूयॉर्क सिटी</strong> में शुरू हुआ</li>
-                <li>आज <strong>80 से ज़्यादा देशों</strong> में <strong>10 लाख से ज़्यादा भक्त</strong></li>
-                <li>कई भक्त <strong>"हिंदू"</strong> की बजाय खुद को <strong>"भगवान के सेवक"</strong> कहते हैं — धार्मिक पहचान से ऊपर उठने का संदेश</li>
-            </ul>
-
-            <div class="separator"></div>
-
-            <h2>📅 रथ यात्रा का दिन — समय-सारणी</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="time">🌅 सुबह 10:00 बजे</div>
-                    <div class="text">भिक्षु (monks) ने देवताओं की मूर्तियों और रथों को तैयार किया। भक्त धूप से बचने के लिए छाया में जुटे। सैकड़ों लोग नाचते हुए <strong style="color:#fbbf24;">"हरे कृष्णा, हरे कृष्णा, कृष्णा कृष्णा, हरे हरे"</strong> का जाप करने लगे।</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">🕉️ सुबह 11:00 बजे</div>
-                    <div class="text">भगवा वस्त्र पहने भिक्षुओं ने आशीर्वाद दिया। भक्तों ने रथों से बंधी रस्सियां पकड़ीं। एक पुजारी ने <strong style="color:#fbbf24;">शंख</strong> बजाया और रथ खिंचने शुरू हुए। फिफ्थ एवेन्यू पर रंगीन कपड़े, ढोल और मंजीरे की धुन से माहौल भक्तिमय हो गया।</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">🌞 दोपहर</div>
-                    <div class="text">रथ <strong style="color:#fbbf24;">41वीं स्ट्रीट</strong> से निकलकर फिफ्थ एवेन्यू पर आगे बढ़े। राहगीर हैरान और खुश होकर देखते रहे। कई पर्यटकों ने तस्वीरें लीं।</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time">🌳 शाम 4 बजे (लगभग)</div>
-                    <div class="text">चार घंटे की यात्रा के बाद रथ <strong style="color:#fbbf24;">वाशिंगटन स्क्वायर पार्क</strong> पहुंचे। यहां भक्तों के लिए <strong style="color:#fbbf24;">शाकाहारी भोजन, हenna, फेस पेंटिंग</strong> और भिक्षुओं से सवाल-जवाब के स्टॉल लगे।</div>
-                </div>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>🪷 रथों में कौन थे?</h2>
-            <p>तीन रथों में तीन मूर्तियां थीं:</p>
-            <div class="box box-yellow">
-                <ul>
-                    <li><strong style="color:#fbbf24;">🪷 कृष्ण (Krishna)</strong> — भगवान विष्णु के अवतार, ISKCON के मुख्य देवता</li>
-                    <li><strong style="color:#fbbf24;">🪷 बलराम (Balarama)</strong> — कृष्ण के बड़े भाई</li>
-                    <li><strong style="color:#fbbf24;">🪷 सुभद्रा (Subhadra)</strong> — कृष्ण की छोटी बहन</li>
-                </ul>
-                <p style="margin-top: 12px; margin-bottom: 0; color: #fdba74;">यह परंपरा <strong style="color:#fbbf24;">भारत के पुरी, ओडिशा</strong> से शुरू हुई, जहां हर साल लाखों लोग रथ यात्रा में शामिल होते हैं।</p>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>👥 लोगों की प्रतिक्रिया</h2>
-
-            <div class="people-card">
-                <div class="name">पैट्रिक ऑर्नेलस (Patrick Ornelas)</div>
-                <div class="role">📍 साल्ट लेक सिटी से पर्यटक</div>
-                <p>हम अपने शहर में ऐसा कुछ नहीं देखते। यह बहुत अद्भुत और अनोखा अनुभव है।</p>
-            </div>
-
-            <div class="people-card">
-                <div class="name">ब्रैड ब्राउनिंग (Brad Browning)</div>
-                <div class="role">📍 अपस्टेट न्यूयॉर्क से — ब्राज़ील vs मोरक्को वर्ल्ड कप मैच देखने आए</div>
-                <p>मैं हरे कृष्णा के बारे में कुछ नहीं जानता, लेकिन एक भक्त ने मुझे ISKCON की पैम्फलेट दी। शायद मैं इसे पढ़ूंगा।</p>
-            </div>
-
-            <div class="people-card">
-                <div class="name">पायल मजूमदार (Payal Mazumdar)</div>
-                <div class="role">📍 15 साल की, ब्रुकलिन ISKCON मंदिर में भगवद गीता की कक्षाएं लेती हैं</div>
-                <p>मुझे बहुत ज़्यादा ओवरथिंकिंग की समस्या थी। ISKCON समुदाय और दर्शन के ज़रिए, ऐसा लगा जैसे मेरे साथ कोई सपोर्ट सिस्टम है।</p>
-            </div>
-
-            <div class="people-card">
-                <div class="name">सर्वोपम दास (Sarvopama Das)</div>
-                <div class="role">📍 79 साल, शिकागो से — पहली रथ यात्रा (1976) में तरबूज परोसने वाले स्वयंसेवक</div>
-                <p>50 साल पहले जब हम कर्म की बात करते थे, तो लोग हैरान हो जाते थे। हम सोचते थे कि हम कूल हैं। अब 'कर्म' शब्द डिक्शनरी में है!</p>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>🏀 ISKCON और निक्स — एक अनोखी जोड़ी</h2>
             <p>
-                ISKCON ने इस साल <strong style="color:#fbbf24;">न्यूयॉर्क निक्स बास्केटबॉल टीम</strong> को भी सपोर्ट किया। मैडिसन स्क्वायर गार्डन के बाहर <strong style="color:#fbbf24;">निक्स फैंस के साथ कीर्तन</strong> करने का वीडियो वायरल हुआ।
-            </p>
-            <div class="box box-blue">
-                <strong style="color:#fbbf24;">🏀 महामंत्र (Mahamantra)</strong> — ISKCON भिक्षु जो वायरल वीडियो में थे, रथ यात्रा के बाद <strong style="color:#fbbf24;">निक्स स्टाइल में हरे कृष्णा टी-शर्ट</strong> बेच रहे थे। उन्होंने कहा: <em style="color:#fb923c;">"मैं निक्स की जीत के लिए उत्साहित हूं, लेकिन सबसे ज़्यादा खुशी लोगों के साथ नाचने और गाने में है।"</em>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>💰 आयोजन की तैयारी और खर्च</h2>
-            <ul>
-                <li><strong>कुल खर्च:</strong> लगभग <strong style="color:#fbbf24;">$160,000</strong> (करीब ₹1.35 करोड़) — सब दान से जुटाया गया</li>
-                <li><strong>तैयारी का समय:</strong> 6 महीने</li>
-                <li><strong>मूल रथ:</strong> 50वीं वर्षगांठ के लिए <strong style="color:#fbbf24;">1976 का एक मूल रथ फ्लोरिडा से न्यूयॉर्क</strong> लाया गया</li>
-                <li><strong>स्वयंसेवक:</strong> 400 से ज़्यादा लोगों ने मदद की</li>
-                <li><strong>प्रसादम (भोजन):</strong> एक टीम ने <strong style="color:#fbbf24;">24 घंटे शिफ्ट में रोटी, चावल और सब्जी</strong> बनाई</li>
-                <li><strong>सुरक्षा:</strong> रथ यात्रा से पहले रात भर रथों की रक्षा के लिए गार्ड तैनात रहे</li>
-            </ul>
-
-            <div class="separator"></div>
-
-            <h2>🏛️ ISKCON का इतिहास — न्यूयॉर्क से दुनिया तक</h2>
-
-            <h3>1966 — शुरुआत</h3>
-            <p>
-                <strong style="color:#fbbf24;">A. C. भक्तिवेदांत स्वामी प्रभुपाद</strong> भारत से अमेरिका आए। उनका मिशन था — <strong style="color:#fbbf24;">पश्चिम में कृष्ण भावनामृत फैलाना</strong>। काउंटरकल्चर आंदोलन के दौरान उन्होंने कुछ अनुयायी बनाए, जो नौकरी और परिवार छोड़कर आश्रम में रहने लगे।
-            </p>
-
-            <h3>1976 — पहली रथ यात्रा और ट्रम्प का योगदान</h3>
-            <p>
-                जब प्रभुपाद ने मैनहट्टन में रथ यात्रा का विचार किया, तो <strong style="color:#fbbf24;">फिफ्थ एवेन्यू के पास ज़मीन</strong> नहीं मिल रही थी। तभी उन्होंने उस समय के नए प्रॉपर्टी मालिक <strong style="color:#fbbf24;">डोनाल्ड ट्रम्प</strong> से मदद मांगी। ट्रम्प ने अपनी ज़मीन रथ बनाने के लिए दी, और इस तरह पहली रथ यात्रा संभव हुई।
-            </p>
-
-            <h3>1990 के दशक — बदलाव</h3>
-            <p>
-                ISKCON ने <strong style="color:#fbbf24;">नया मॉडल</strong> अपनाया — अब भक्त आश्रम में नहीं रहते, बल्कि <strong style="color:#fbbf24;">अपनी ज़िंदगी जीते हुए ISKCON कार्यक्रमों में शामिल</strong> होते हैं। यह मॉडल आज भी लोकप्रिय है।
-            </p>
-
-            <div class="separator"></div>
-
-            <h2>🎯 ISKCON का लक्ष्य</h2>
-            <div class="box box-green">
-                <strong style="color:#fbbf24;">🌍 आउटरीच मिशन:</strong> ISKCON उपाध्यक्ष <strong style="color:#fbbf24;">आदित्य देवी दासी</strong> ने कहा — <em style="color:#fb923c;">"हमारा लक्ष्य है कि उत्तर अमेरिका की लगभग 3% आबादी इन त्योहारों में आए, भक्तों की संगति का आनंद ले और sanctified भोजन खाए।"</em>
-                <p style="margin-top: 12px; margin-bottom: 0; color: #86efac;">ब्रुकलिन का ISKCON मंदिर में <strong style="color:#fbbf24;">40 पूर्णकालिक भिक्षु</strong> रहते हैं और <strong style="color:#fbbf24;">500 नियमित भक्त</strong> सेवाओं में आते हैं। सालाना रथ यात्रा सबसे बड़ा कार्यक्रम है।</p>
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>🌎 आगे क्या?</h2>
-            <p>
-                रथ यात्रा के बाद, <strong style="color:#fbbf24;">तीनों रथ अमेरिका के अन्य शहरों में भेजे जाएंगे</strong> — जहां वे अपनी सालाना रथ यात्राओं में शामिल होंगे। ISKCON आयोजकों की उम्मीद है कि <strong style="color:#fbbf24;">हर पहिए के घूमने से नए भक्त जुड़ेंगे</strong>।
-            </p>
-
-            <div class="quote">
-                हर पहिए के साथ एक नई आत्मा जुड़े,<br>
-                हर कीर्तन के साथ एक नया दिल जी उठे।<br><br>
-                हरे कृष्णा!
-            </div>
-
-            <div class="separator"></div>
-
-            <h2>🎯 निष्कर्ष</h2>
-            <p>
-                न्यूयॉर्क की यह रथ यात्रा सिर्फ एक धार्मिक कार्यक्रम नहीं थी, बल्कि <strong style="color:#fbbf24;">भक्ति, सांस्कृतिक विविधता और सामुदायिक एकता</strong> का जश्न था। 50 साल पहले एक छोटे से आंदोलन ने जो शुरुआत की, वो आज <strong style="color:#fbbf24;">दुनिया भर में लाखों लोगों</strong> को जोड़ रही है। चाहे वो <strong style="color:#fbbf24;">बास्केटबॉल फैन</strong> हो या <strong style="color:#fbbf24;">वर्ल्ड कप पर्यटक</strong>, <strong style="color:#fbbf24;">15 साल की छात्रा</strong> हो या <strong style="color:#fbbf24;">79 साल का वेटरन भक्त</strong> — सभी को इस रंगीन यात्रा में अपनी जगह मिली।
-            </p>
-            <p style="text-align: center; font-size: 1.3em; color: #fbbf24; font-weight: 700; margin-top: 30px; text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);">
-                🕉️ हरे कृष्णा, हरे कृष्णा,<br>
-                कृष्णा कृष्णा, हरे हरे 🕉️
+                गीता में कहा गया है कि कोई भी मनुष्य इन तीनों में से किसी एक मार्ग को अपनाकर भी परमात्मा तक पहुँच सकता है। आइए, इन तीनों योगों के गूढ़ रहस्य को समझें।
             </p>
         </div>
-
+        
+        <!-- Karma Yoga -->
+        <div class="section karma">
+            <h2 class="section-title">
+                <span class="section-icon">⚔️</span>
+                कर्म योग — कर्तव्य का मार्ग
+            </h2>
+            
+            <h3>कर्म योग क्या है?</h3>
+            <p>
+                कर्म योग का अर्थ है — <strong>निष्काम कर्म</strong>, अर्थात् फल की इच्छा रखे बिना अपने कर्तव्य का पालन करना। श्रीकृष्ण ने अर्जुन से कहा कि हर मनुष्य को अपने धर्म और कर्तव्य के अनुसार कर्म करना चाहिए, लेकिन उस कर्म के फल में आसक्ति नहीं रखनी चाहिए।
+            </p>
+            
+            <div class="shloka-box">
+                <div class="shloka">
+                    कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।<br>
+                    मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥
+                </div>
+                <div class="meaning">
+                    "तुम्हारा अधिकार केवल कर्म करने में है, फल में कभी नहीं। कर्म के फल को कारण मत बनाओ, न ही अकर्म में आसक्ति रखो।"
+                </div>
+                <div class="chapter-ref">— भगवद् गीता, अध्याय २, श्लोक ४७</div>
+            </div>
+            
+            <h3>कर्म योग के मुख्य सिद्धांत</h3>
+            <ul class="key-points">
+                <li><strong>निष्काम कर्म:</strong> कर्म करो, लेकिन फल की चाहना छोड़ दो। जब कर्म फल के बंधन से मुक्त हो जाता है, तो वह योग बन जाता है।</li>
+                <li><strong>समत्व बुद्धि:</strong> सफलता और असफलता दोनों में समान रहो। यही समत्व योग है।</li>
+                <li><strong>यज्ञ की भावना:</strong> अपने कर्म को समाज और ईश्वर की सेवा के रूप में करो, न कि केवल स्वार्थपूर्ति के लिए।</li>
+                <li><strong>शुद्ध हृदय:</strong> कर्म योगी का हृदय शुद्ध होता है, क्योंकि वह ईर्ष्या, लोभ और क्रोध से मुक्त रहता है।</li>
+                <li><strong>आत्म-त्याग:</strong> अहंकार को त्यागकर कर्म करो। कर्म का फल ईश्वर को समर्पित कर दो।</li>
+            </ul>
+            
+            <h3>कर्म योग का महत्व</h3>
+            <p>
+                आज के युग में, जब मनुष्य केवल लाभ और हानि के आधार पर कर्म करता है, कर्म योग का उपदेश विशेष रूप से प्रासंगिक है। जब कोई व्यक्ति अपने कर्म को समर्पण भाव से करता है, तो उसे कर्म के बंधन से मुक्ति मिलती है। कर्म योग हमें सिखाता है कि कर्म करना हमारा धर्म है, लेकिन उसका फल ईश्वर के हाथ में है।
+            </p>
+        </div>
+        
+        <!-- Jnana Yoga -->
+        <div class="section jnana">
+            <h2 class="section-title">
+                <span class="section-icon">📖</span>
+                ज्ञान योग — विवेक का मार्ग
+            </h2>
+            
+            <h3>ज्ञान योग क्या है?</h3>
+            <p>
+                ज्ञान योग <strong>आत्म-ज्ञान</strong> और <strong>ब्रह्म-ज्ञान</strong> का मार्ग है। यह मार्ग उन लोगों के लिए है जो तर्क, विवेक और विचार द्वारा सत्य को जानना चाहते हैं। ज्ञान योगी यह समझता है कि आत्मा अविनाशी है और शरीर नश्वर है।
+            </p>
+            
+            <div class="shloka-box">
+                <div class="shloka">
+                    नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः ।<br>
+                    न चैनं क्लेदयन्त्यापो न शोषयति मारुतः ॥
+                </div>
+                <div class="meaning">
+                    "इस आत्मा को न शस्त्र काट सकते हैं, न अग्नि जला सकती है, न जल गला सकता है और न वायु सुखा सकती है।"
+                </div>
+                <div class="chapter-ref">— भगवद् गीता, अध्याय २, श्लोक २३</div>
+            </div>
+            
+            <h3>ज्ञान योग के मुख्य सिद्धांत</h3>
+            <ul class="key-points">
+                <li><strong>विवेक (Discrimination):</strong> नित्य और अनित्य में भेद करना। शरीर, मन और इंद्रियाँ अनित्य हैं, केवल आत्मा नित्य है।</li>
+                <li><strong>वैराग्य (Detachment):</strong> संसारिक वस्तुओं से मोह त्यागना। ज्ञान योगी जानता है कि सुख-दुःख दोनों अस्थायी हैं।</li>
+                <li><strong>षड्‌सम्पत्ति (Six Virtues):</strong> शम, दम, उपरति, तितिक्षा, श्रद्धा और समाधान — ये छह गुण ज्ञान योगी के लिए आवश्यक हैं।</li>
+                <li><strong>मुमुक्षुत्व (Desire for Liberation):</strong> मोक्ष की अत्यंत इच्छा रखना। ज्ञान योगी का एकमात्र लक्ष्य आत्मा की मुक्ति है।</li>
+                <li><strong>आत्मानुभूति:</strong> गुरु की शरण में रहकर शास्त्रों का अध्ययन करना और आत्मा का अनुभव करना।</li>
+            </ul>
+            
+            <h3>ज्ञान योग का महत्व</h3>
+            <p>
+                ज्ञान योग हमें यह समझाता है कि हम यह शरीर नहीं हैं, बल्कि शुद्ध चेतन आत्मा हैं। जब मनुष्य इस सत्य को अनुभव कर लेता है, तो उसका जन्म-मरण का चक्र समाप्त हो जाता है। आज के युग में, ज्ञान योग हमें तनाव और चिंता से मुक्त करने में सहायक है, क्योंकि यह हमें सिखाता है कि अस्थायी चीजों में आसक्ति व्यर्थ है।
+            </p>
+        </div>
+        
+        <!-- Bhakti Yoga -->
+        <div class="section bhakti">
+            <h2 class="section-title">
+                <span class="section-icon">🪷</span>
+                भक्ति योग — प्रेम और समर्पण का मार्ग
+            </h2>
+            
+            <h3>भक्ति योग क्या है?</h3>
+            <p>
+                भक्ति योग <strong>प्रेम, श्रद्धा और समर्पण</strong> का मार्ग है। यह गीता का सबसे सरल और सुलभ मार्ग माना जाता है। भक्ति योगी ईश्वर को अपना सब कुछ मानकर उनमें समर्पित हो जाता है। श्रीकृष्ण ने कहा है कि भक्ति योग के माध्यम से कोई भी, चाहे वह कितना ही निम्न क्यों न हो, परमात्मा को प्राप्त कर सकता है।
+            </p>
+            
+            <div class="shloka-box">
+                <div class="shloka">
+                    मन्मना भव मद्भक्तो मद्याजी मां नमस्कुरु ।<br>
+                    मामेवैष्यसि सत्यं ते प्रतिजाने प्रियोऽसि मे ॥
+                </div>
+                <div class="meaning">
+                    "मुझमें मन लगा, मेरा भक्त बन, मेरा पूजन कर और मुझे प्रणाम कर। इस प्रकार तुम मुझे ही प्राप्त होगा — यह मैं तुझसे सत्य कहता हूँ, क्योंकि तुम मुझे प्रिय हो।"
+                </div>
+                <div class="chapter-ref">— भगवद् गीता, अध्याय १८, श्लोक ६५</div>
+            </div>
+            
+            <h3>भक्ति योग के मुख्य सिद्धांत</h3>
+            <ul class="key-points">
+                <li><strong>श्रद्धा (Faith):</strong> ईश्वर में अटूट विश्वास रखना। भक्ति की नींव श्रद्धा है।</li>
+                <li><strong>प्रेम (Love):</strong> ईश्वर के प्रति निस्वार्थ प्रेम। यह प्रेम किसी लाभ की अपेक्षा के बिना होता है।</li>
+                <li><strong>समर्पण (Surrender):</strong> अपने को पूर्णतः ईश्वर के हाथों में सौंप देना। "तवदीनं" — मैं तेरा हूँ।</li>
+                <li><strong>निरंतर स्मरण:</strong> ईश्वर का नाम जप, कीर्तन और सत्संग। हर कर्म में ईश्वर को याद रखना।</li>
+                <li><strong>ईश्वर में समत्व:</strong> सभी जीवों में ईश्वर का दर्शन करना। कोई भी भेदभाव न रखना।</li>
+            </ul>
+            
+            <h3>भक्ति योग का महत्व</h3>
+            <p>
+                भक्ति योग कलियुग का सर्वश्रेष्ठ मार्ग माना जाता है। इसमें कठिन तपस्या या जटिल दार्शनिक विचार की आवश्यकता नहीं होती। केवल शुद्ध हृदय से ईश्वर का नाम लेना और उनमें समर्पित होना ही काफी है। भक्ति योग हमें अहंकार से मुक्त करता है और हृदय में प्रेम और करुणा भर देता है।
+            </p>
+        </div>
+        
+        <!-- Comparison Table -->
+        <div class="section">
+            <h2 style="color:#ffb74d; font-size:1.8em; margin-bottom:25px;">📊 तीनों योगों की तुलना</h2>
+            <table class="comparison-table">
+                <tr>
+                    <th>पहलू</th>
+                    <th>कर्म योग</th>
+                    <th>ज्ञान योग</th>
+                    <th>भक्ति योग</th>
+                </tr>
+                <tr>
+                    <td><strong>मुख्य साधन</strong></td>
+                    <td>निष्काम कर्म</td>
+                    <td>विवेक और वैराग्य</td>
+                    <td>प्रेम और समर्पण</td>
+                </tr>
+                <tr>
+                    <td><strong>किसके लिए?</strong></td>
+                    <td>सक्रिय व्यक्ति</td>
+                    <td>विचारशील व्यक्ति</td>
+                    <td>भावुक व्यक्ति</td>
+                </tr>
+                <tr>
+                    <td><strong>मुख्य लक्ष्य</strong></td>
+                    <td>कर्म बंधन से मुक्ति</td>
+                    <td>आत्म-ज्ञान</td>
+                    <td>ईश्वर-प्रेम</td>
+                </tr>
+                <tr>
+                    <td><strong>मुख्य गुण</strong></td>
+                    <td>त्याग और समत्व</td>
+                    <td>विवेक और वैराग्य</td>
+                    <td>श्रद्धा और प्रेम</td>
+                </tr>
+                <tr>
+                    <td><strong>सर्वोत्तम श्लोक</strong></td>
+                    <td>अध्याय २, श्लोक ४७</td>
+                    <td>अध्याय २, श्लोक २३</td>
+                    <td>अध्याय १८, श्लोक ६५</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Integration -->
+        <div class="section integration">
+            <h2 class="section-title">
+                <span class="section-icon">🕉️</span>
+                तीनों योगों का एकीकरण — गीता का अंतिम संदेश
+            </h2>
+            
+            <p>
+                गीता का सबसे महत्वपूर्ण संदेश यह है कि <strong>तीनों योग एक-दूसरे के पूरक हैं</strong>। कर्म योग शुद्ध हृदय बनाता है, ज्ञान योग सत्य का बोध कराता है, और भक्ति योग ईश्वर तक पहुँचाता है।
+            </p>
+            
+            <div class="shloka-box">
+                <div class="shloka">
+                    योगिनामपि सर्वेषां मद्गतेनान्तरात्मना ।<br>
+                    श्रद्धावान्भजते यो मां स मे युक्ततमो मतः ॥
+                </div>
+                <div class="meaning">
+                    "समस्त योगियों में भी जो योगी अपने अंतःकरण को मुझमें स्थिर करके, श्रद्धापूर्वक मेरा भजन करता है, वह मुझे सबसे अधिक युक्त (संयुक्त) प्रतीत होता है।"
+                </div>
+                <div class="chapter-ref">— भगवद् गीता, अध्याय ६, श्लोक ४७</div>
+            </div>
+            
+            <h3>तीनों योगों का समन्वय</h3>
+            <p>
+                <strong>कर्म योग + भक्ति योग:</strong> जब हम अपने कर्म को ईश्वर की सेवा के रूप में करते हैं, तो कर्म योग भक्ति योग में परिवर्तित हो जाता है। यही "कर्मण्येवाधिकारस्ते" का गूढ़ अर्थ है।
+            </p>
+            <p>
+                <strong>ज्ञान योग + भक्ति योग:</strong> ज्ञान योगी जब यह समझ लेता है कि सब कुछ ईश्वर का ही रूप है, तो उसका ज्ञान भक्ति में बदल जाता है।
+            </p>
+            <p>
+                <strong>भक्ति योग + कर्म योग:</strong> भक्ति योगी अपने प्रेम के बल पर निष्काम कर्म करता है, क्योंकि वह जानता है कि ईश्वर ही सब कुछ करा रहा है।
+            </p>
+            
+            <h3>गीता का अंतिम उपदेश</h3>
+            <p>
+                गीता के अंत में श्रीकृष्ण अर्जुन से कहते हैं — <strong>"सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज"</strong> (अध्याय १८, श्लोक ६६) — "सब धर्मों को त्यागकर केवल मेरी शरण में आ जा।" यह भक्ति योग का परम सार है। लेकिन इस समर्पण के लिए हृदय का शुद्ध होना आवश्यक है, जो कर्म योग से होता है, और यह समझना आवश्यक है कि हम कौन हैं, जो ज्ञान योग से होता है।
+            </p>
+        </div>
+        
+        <!-- Practical Application -->
+        <div class="section">
+            <h2 style="color:#ffb74d; font-size:1.8em; margin-bottom:20px;">🌟 आज के युग में इन योगों का अनुसरण</h2>
+            
+            <p>
+                आज के आधुनिक युग में भी इन तीनों योगों का अनुसरण करना संभव है:
+            </p>
+            
+            <ul class="key-points">
+                <li><strong>कर्म योग:</strong> अपने कार्यस्थल पर ईमानदारी और निष्ठा से काम करें, लेकिन परिणाम की चिंता न करें। सफलता मिले तो ईश्वर को धन्यवाद दें, असफलता मिले तो उसे सीख के रूप में स्वीकार करें।</li>
+                <li><strong>ज्ञान योग:</strong> आत्म-चिंतन और ध्यान का अभ्यास करें। शास्त्रों का अध्ययन करें और जीवन के वास्तविक उद्देश्य को समझें।</li>
+                <li><strong>भक्ति योग:</strong> प्रतिदिन ईश्वर का स्मरण करें, सत्संग में जाएँ और सभी जीवों में ईश्वर का दर्शन करें।</li>
+            </ul>
+            
+            <p>
+                याद रखें — <strong>"योगः कर्मसु कौशलम्"</strong> (अध्याय २, श्लोक ५०) — योग कर्म में कुशलता है। जब हम अपने कर्म को योग के रूप में करते हैं, तो जीवन एक यज्ञ बन जाता है और हर क्षण ईश्वर की सेवा में बीतता है।
+            </p>
+        </div>
+        
         <!-- Footer -->
         <div class="footer">
-            <p>📰 स्रोत: Religion News Service (RNS) | ✍️ Trisha Mukherjee</p>
-            <p>📝 हिंदी अनुवाद और संकलन | 📅 13 जून 2026</p>
-            <p class="disclaimer">⚠️ यह लेख Religion News Service (RNS) के मूल अंग्रेज़ी लेख का हिंदी अनुवाद है। सभी तस्वीरें और उद्धरण मूल लेख से हैं।</p>
+            <div class="closing-shloka">
+                "यत्र योगेश्वरः कृष्णो यत्र पार्धो धनुर्धरः ।<br>
+                तत्र श्रीर्विजयो भूतिर्ध्रुवा नीतिर्मतिर्मम ॥"
+            </div>
+            <p style="color:#b0bec5; margin-bottom:5px;">"जहाँ योगेश्वर श्रीकृष्ण हैं और जहाँ धनुर्धर अर्जुन हैं, वहाँ ही श्री (समृद्धि), विजय, भूति (ऐश्वर्य) और निश्चित नीति है — यह मेरा मत है।"</p>
+            <p style="color:#78909c; font-size:0.9em;">— भगवद् गीता, अध्याय १८, श्लोक ७८</p>
+            <div class="author" style="margin-top:30px;">
+                <p>🙏 जय श्री कृष्ण 🙏</p>
+                <p style="margin-top:10px; font-size:0.85em;">भगवद् गीता: कर्म योग, ज्ञान योग और भक्ति योग का रहस्य</p>
+            </div>
         </div>
+        
     </div>
 </body>
-</html>
+</html>"""
